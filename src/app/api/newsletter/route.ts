@@ -10,11 +10,20 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Validate input
-    const validatedData = newsletterSchema.parse(body);
+    const result = newsletterSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Invalid email address", details: result.error.flatten() },
+        { status: 400 }
+      );
+    }
+
+    const validatedData = result.data;
 
     // Here you would integrate with your email service (Resend, Mailchimp, etc.)
     // For now, we'll use a simple approach that can be enhanced
-    
+
     // Example: Add to Resend audience (uncomment when API key is configured)
     /*
     const resend = new Resend(process.env.RESEND_API_KEY);
@@ -33,13 +42,6 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: "Invalid email address", details: error.errors },
-        { status: 400 }
-      );
-    }
-
     console.error("Newsletter subscription error:", error);
     return NextResponse.json(
       { error: "Failed to subscribe" },

@@ -1,5 +1,6 @@
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { caseStudies } from "@/data/case-studies";
+import type { CaseStudy } from "@/data/case-studies";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default function CaseStudiesPage() {
 
         {caseStudies.length > 0 ? (
           <div className="grid md:grid-cols-2 gap-6">
-            {caseStudies.map((caseStudy, index) => (
+            {caseStudies.map((caseStudy: CaseStudy, index: number) => (
               <CaseStudyCard key={caseStudy.slug} caseStudy={caseStudy} index={index} />
             ))}
           </div>

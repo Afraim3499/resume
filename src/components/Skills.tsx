@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { skills, skillCategories, type Skill, type SkillsByCategory } from "@/data/skills";
+import { skills, skillCategories, type Skill, type SkillsByCategory, type SkillLevel } from "@/data/skills";
 import { Code, Database, Cloud, Brain, Wrench, Layers } from "lucide-react";
 import { fadeUp, staggerContainer, hoverScale } from "@/lib/animations";
 
@@ -24,14 +24,14 @@ const categoryLabels = {
   tools: "Tools",
 };
 
-const levelColors = {
+const levelColors: Record<SkillLevel, string> = {
   expert: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
   advanced: "bg-blue-500/20 text-blue-400 border-blue-500/30",
   intermediate: "bg-purple-500/20 text-purple-400 border-purple-500/30",
   beginner: "bg-gray-500/20 text-gray-400 border-gray-500/30",
 };
 
-const levelLabels = {
+const levelLabels: Record<SkillLevel, string> = {
   expert: "Expert",
   advanced: "Advanced",
   intermediate: "Intermediate",
@@ -41,7 +41,7 @@ const levelLabels = {
 export function Skills() {
   const [selectedCategory, setSelectedCategory] = useState<keyof SkillsByCategory | "all">("all");
 
-  const displaySkills = selectedCategory === "all" 
+  const displaySkills: Skill[] = selectedCategory === "all"
     ? Object.values(skills).flat()
     : skills[selectedCategory];
 
@@ -86,11 +86,10 @@ export function Skills() {
         >
           <button
             onClick={() => setSelectedCategory("all")}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-              selectedCategory === "all"
-                ? "bg-primary text-primary-foreground"
-                : "bg-foreground/5 dark:bg-white/5 text-foreground/70 hover:bg-foreground/10 dark:hover:bg-white/10 hover:text-foreground border border-foreground/10 dark:border-white/10"
-            }`}
+            className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === "all"
+              ? "bg-primary text-primary-foreground"
+              : "bg-foreground/5 dark:bg-white/5 text-foreground/70 hover:bg-foreground/10 dark:hover:bg-white/10 hover:text-foreground border border-foreground/10 dark:border-white/10"
+              }`}
           >
             All Skills
           </button>
@@ -100,11 +99,10 @@ export function Skills() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
-                  selectedCategory === category
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-foreground/5 dark:bg-white/5 text-foreground/70 hover:bg-foreground/10 dark:hover:bg-white/10 hover:text-foreground border border-foreground/10 dark:border-white/10"
-                }`}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${selectedCategory === category
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-foreground/5 dark:bg-white/5 text-foreground/70 hover:bg-foreground/10 dark:hover:bg-white/10 hover:text-foreground border border-foreground/10 dark:border-white/10"
+                  }`}
               >
                 <Icon className="w-4 h-4" />
                 {categoryLabels[category]}

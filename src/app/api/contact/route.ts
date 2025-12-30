@@ -13,11 +13,20 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Validate input
-    const validatedData = contactSchema.parse(body);
+    const result = contactSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Invalid form data", details: result.error.flatten() },
+        { status: 400 }
+      );
+    }
+
+    const validatedData = result.data;
 
     // Here you would integrate with your email service
     // For now, we'll use a simple approach that can be enhanced with Resend/Nodemailer
-    
+
     // Example: Send email using Resend (uncomment when API key is configured)
     /*
     const resend = new Resend(process.env.RESEND_API_KEY);
@@ -46,13 +55,6 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: "Invalid form data", details: error.errors },
-        { status: 400 }
-      );
-    }
-
     console.error("Contact form error:", error);
     return NextResponse.json(
       { error: "Failed to send message" },

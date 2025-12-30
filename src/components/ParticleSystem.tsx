@@ -40,15 +40,15 @@ const colorPalette = {
 export function ParticleSystem({ count = 60 }: { count?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | null>(null);
   const mouseRef = useRef({ x: 0, y: 0, active: false });
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    
+
     setMounted(true);
-    
+
     // Wait for canvas to be mounted before initializing
     const checkCanvas = () => {
       const canvas = canvasRef.current;
@@ -57,10 +57,10 @@ export function ParticleSystem({ count = 60 }: { count?: number }) {
         setTimeout(checkCanvas, 50);
         return;
       }
-      
+
       initializeCanvas(canvas);
     };
-    
+
     const initializeCanvas = (canvas: HTMLCanvasElement) => {
       const ctx = canvas.getContext("2d", { alpha: true });
       if (!ctx) {
@@ -84,20 +84,20 @@ export function ParticleSystem({ count = 60 }: { count?: number }) {
         // Reinitialize particles on resize
         initParticles();
       };
-      
+
       const initParticles = () => {
         if (!canvas || !canvas.width || !canvas.height) {
           setTimeout(initParticles, 100);
           return;
         }
-        
+
         particlesRef.current = Array.from({ length: count }, (_, i) => {
           const type = i % 3 === 0 ? "primary" : i % 3 === 1 ? "accent" : "neutral";
           const colors = colorPalette[type];
           const baseSize = type === "primary" ? 3.0 : type === "accent" ? 2.5 : 2.0;
           const speed = 0.15 + Math.random() * 0.25;
           const angle = Math.random() * Math.PI * 2;
-          
+
           return {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
@@ -113,7 +113,7 @@ export function ParticleSystem({ count = 60 }: { count?: number }) {
             speed,
           };
         });
-        
+
         console.log(`ParticleSystem: Initialized ${particlesRef.current.length} particles on canvas ${canvas.width}x${canvas.height}`);
       };
 
@@ -139,31 +139,31 @@ export function ParticleSystem({ count = 60 }: { count?: number }) {
           animationFrameRef.current = requestAnimationFrame(animate);
           return;
         }
-        
+
         if (particlesRef.current.length === 0) {
           initParticles();
           animationFrameRef.current = requestAnimationFrame(animate);
           return;
         }
-        
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Update and draw particles
         particlesRef.current.forEach((particle, i) => {
-          const angleVariation = particle.type === "primary" 
-            ? 0.015 
-            : particle.type === "accent" 
-            ? 0.02 
-            : 0.01;
-          
+          const angleVariation = particle.type === "primary"
+            ? 0.015
+            : particle.type === "accent"
+              ? 0.02
+              : 0.01;
+
           particle.angle += (Math.random() - 0.5) * angleVariation;
-          
+
           const driftX = Math.sin(particle.pulsePhase * 0.5) * 0.1;
           const driftY = Math.cos(particle.pulsePhase * 0.3) * 0.1;
-          
+
           particle.vx = Math.cos(particle.angle) * particle.speed + driftX;
           particle.vy = Math.sin(particle.angle) * particle.speed + driftY;
-          
+
           particle.vx *= 0.98;
           particle.vy *= 0.98;
 
@@ -172,12 +172,12 @@ export function ParticleSystem({ count = 60 }: { count?: number }) {
             const dx = particle.x - mouseRef.current.x;
             const dy = particle.y - mouseRef.current.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            
+
             if (distance < 120) {
               const force = (120 - distance) / 120;
               const normalizedDx = dx / distance;
               const normalizedDy = dy / distance;
-              
+
               particle.vx += normalizedDx * force * 0.3;
               particle.vy += normalizedDy * force * 0.3;
             }
@@ -208,7 +208,7 @@ export function ParticleSystem({ count = 60 }: { count?: number }) {
             particle.y,
             glowRadius
           );
-          
+
           const baseOpacity = particle.color.match(/[\d.]+(?=\)$)/)?.[0] || "0.8";
           gradient.addColorStop(0, particle.color);
           gradient.addColorStop(0.5, particle.color.replace(/[\d.]+\)$/g, `${parseFloat(baseOpacity) * 0.5})`));
@@ -293,7 +293,7 @@ export function ParticleSystem({ count = 60 }: { count?: number }) {
           setTimeout(startAnimation, 50);
         }
       };
-      
+
       startAnimation();
 
       return () => {
@@ -305,7 +305,7 @@ export function ParticleSystem({ count = 60 }: { count?: number }) {
         }
       };
     };
-    
+
     // Start checking for canvas
     checkCanvas();
 
@@ -324,7 +324,7 @@ export function ParticleSystem({ count = 60 }: { count?: number }) {
       className="absolute inset-0 pointer-events-none z-[2]"
       width={typeof window !== "undefined" ? window.innerWidth : 1920}
       height={typeof window !== "undefined" ? window.innerHeight : 1080}
-      style={{ 
+      style={{
         mixBlendMode: "normal",
         opacity: 1,
         width: "100%",

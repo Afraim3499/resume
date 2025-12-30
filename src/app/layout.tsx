@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
@@ -126,7 +127,9 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <SchemaData />
-          <Analytics />
+          <Suspense fallback={null}>
+            <Analytics />
+          </Suspense>
           <CustomCursor />
           <ScrollProgress />
           <Navigation />
