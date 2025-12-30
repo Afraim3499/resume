@@ -9,7 +9,7 @@ interface GitHubStatsProps {
   username?: string;
 }
 
-export function GitHubStats({ username = "rizwanulislam" }: GitHubStatsProps) {
+export function GitHubStats({ username = "Afraim3499" }: GitHubStatsProps) {
   const [stats, setStats] = useState<GitHubStatsType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 

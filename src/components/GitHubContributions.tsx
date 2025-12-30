@@ -10,7 +10,7 @@ interface GitHubContributionsProps {
   limit?: number;
 }
 
-export function GitHubContributions({ username = "rizwanulislam", limit = 6 }: GitHubContributionsProps) {
+export function GitHubContributions({ username = "Afraim3499", limit = 6 }: GitHubContributionsProps) {
   const [repos, setRepos] = useState<GitHubRepository[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 

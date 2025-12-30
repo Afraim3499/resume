@@ -46,7 +46,7 @@ export default function Home() {
       <SectionDivider variant="morph" />
       <section id="github" className="py-32 bg-secondary/10 relative overflow-hidden">
         <div className="container px-4 mx-auto max-w-6xl">
-          <GitHubStats username="rizwanulislam" />
+          <GitHubStats username="Afraim3499" />
         </div>
       </section>
       <SectionDivider variant="gradient" />
