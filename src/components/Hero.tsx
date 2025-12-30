@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
@@ -11,36 +12,43 @@ import { MagneticButton } from "./MagneticButton";
 import { ParticleSystem } from "./ParticleSystem";
 
 export function Hero() {
+    const ref = useRef(null);
+    const isInView = useInView(ref);
+
     return (
-        <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background/85 antialiased">
+        <section ref={ref} className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background/85 antialiased">
             {/* Enhanced Ambient Backgrounds - Layer 0 (bottom) */}
             <div className="absolute inset-0 z-0">
-                <motion.div
-                    animate={{
-                        x: [0, 100, 0],
-                        y: [0, 50, 0],
-                        scale: [1, 1.2, 1],
-                    }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                    className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]"
-                />
-                <motion.div
-                    animate={{
-                        x: [0, -80, 0],
-                        y: [0, -60, 0],
-                        scale: [1, 1.3, 1],
-                    }}
-                    transition={{
-                        duration: 25,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                    className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px]"
-                />
+                {isInView && (
+                    <>
+                        <motion.div
+                            animate={{
+                                x: [0, 100, 0],
+                                y: [0, 50, 0],
+                                scale: [1, 1.2, 1],
+                            }}
+                            transition={{
+                                duration: 20,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]"
+                        />
+                        <motion.div
+                            animate={{
+                                x: [0, -80, 0],
+                                y: [0, -60, 0],
+                                scale: [1, 1.3, 1],
+                            }}
+                            transition={{
+                                duration: 25,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                            className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px]"
+                        />
+                    </>
+                )}
             </div>
 
             {/* Spotlight Effect - Layer 0 */}
@@ -48,7 +56,7 @@ export function Hero() {
 
             {/* Particle System - Layer 1 (above backgrounds, below content) */}
             <ParticleSystem count={60} />
-            
+
             {/* Floating 3D Shapes - Layer 1 */}
             <FloatingShapes count={15} />
 

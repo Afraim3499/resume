@@ -1,19 +1,23 @@
 import { Hero } from "@/components/Hero";
-import { Projects } from "@/components/Projects";
-import { SignatureWork } from "@/components/SignatureWork";
-import { Skills } from "@/components/Skills";
-import { Achievements } from "@/components/Achievements";
-import { Experience } from "@/components/Experience";
-import { Certifications } from "@/components/Certifications";
-import { Events } from "@/components/Events";
-import { About } from "@/components/About";
-import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
-import { GitHubStats } from "@/components/GitHubStats";
-import { Testimonials } from "@/components/Testimonials";
-import { ContentSection } from "@/components/ContentSection";
 import { SectionDivider } from "@/components/SectionDivider";
 import { ParallaxSection } from "@/components/ParallaxSection";
+import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
+import dynamic from "next/dynamic";
+
+// Lazy load heavy sections
+const About = dynamic(() => import("@/components/About").then((mod) => mod.About), { loading: () => <LoadingSpinner /> });
+const Skills = dynamic(() => import("@/components/Skills").then((mod) => mod.Skills), { loading: () => <LoadingSpinner /> });
+const Achievements = dynamic(() => import("@/components/Achievements").then((mod) => mod.Achievements), { loading: () => <LoadingSpinner /> });
+const Experience = dynamic(() => import("@/components/Experience").then((mod) => mod.Experience), { loading: () => <LoadingSpinner /> });
+const SignatureWork = dynamic(() => import("@/components/SignatureWork").then((mod) => mod.SignatureWork), { loading: () => <LoadingSpinner /> });
+const Projects = dynamic(() => import("@/components/Projects").then((mod) => mod.Projects), { loading: () => <LoadingSpinner /> });
+const Testimonials = dynamic(() => import("@/components/Testimonials").then((mod) => mod.Testimonials), { loading: () => <LoadingSpinner /> });
+const GitHubStats = dynamic(() => import("@/components/GitHubStats").then((mod) => mod.GitHubStats), { loading: () => <LoadingSpinner /> });
+const ContentSection = dynamic(() => import("@/components/ContentSection").then((mod) => mod.ContentSection), { loading: () => <LoadingSpinner /> });
+const Events = dynamic(() => import("@/components/Events").then((mod) => mod.Events), { loading: () => <LoadingSpinner /> });
+const Certifications = dynamic(() => import("@/components/Certifications").then((mod) => mod.Certifications), { loading: () => <LoadingSpinner /> });
+const Contact = dynamic(() => import("@/components/Contact").then((mod) => mod.Contact), { loading: () => <LoadingSpinner /> });
 
 export default function Home() {
   return (

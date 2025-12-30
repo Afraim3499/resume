@@ -37,7 +37,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {(project.image || (project.screenshots && project.screenshots.length > 0)) && (
                 <div className="relative h-48 w-full overflow-hidden">
                     <ImageHover3D
-                        src={project.image || project.screenshots[0]}
+                        src={project.image || project.screenshots?.[0] || ""}
                         alt={project.title}
                         width={800}
                         height={400}

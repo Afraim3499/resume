@@ -91,7 +91,7 @@ export function Events() {
                                 {(event.image || (event.images && event.images.length > 0)) && (
                                     <div className="relative w-full md:w-64 h-48 md:h-auto flex-shrink-0">
                                         <Image
-                                            src={event.image || event.images[0]}
+                                            src={event.image || event.images?.[0] || ""}
                                             alt={event.name}
                                             fill
                                             className="object-cover group-hover:scale-105 transition-transform duration-500"
