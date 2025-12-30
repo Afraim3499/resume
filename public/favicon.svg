@@ -1,0 +1,36 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Strategist Icon: Compass Rose representing strategic direction and navigation -->
+  <defs>
+    <linearGradient id="strategistGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="15" fill="url(#strategistGradient)"/>
+  
+  <!-- Compass Rose - Strategic Direction -->
+  <!-- North arrow (pointing up) -->
+  <path d="M 16 4 L 18 10 L 16 8 L 14 10 Z" fill="#ffffff"/>
+  
+  <!-- South arrow -->
+  <path d="M 16 28 L 18 22 L 16 24 L 14 22 Z" fill="#ffffff" opacity="0.7"/>
+  
+  <!-- East arrow -->
+  <path d="M 28 16 L 22 14 L 24 16 L 22 18 Z" fill="#ffffff" opacity="0.7"/>
+  
+  <!-- West arrow -->
+  <path d="M 4 16 L 10 14 L 8 16 L 10 18 Z" fill="#ffffff" opacity="0.7"/>
+  
+  <!-- Inner circle -->
+  <circle cx="16" cy="16" r="6" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+  
+  <!-- Center point -->
+  <circle cx="16" cy="16" r="2" fill="#ffffff"/>
+  
+  <!-- Strategic lines connecting directions -->
+  <line x1="16" y1="10" x2="16" y2="22" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+  <line x1="10" y1="16" x2="22" y2="16" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+</svg>
+

@@ -1,0 +1,36 @@
+export interface SocialProfile {
+  platform: string;
+  url: string;
+  username?: string;
+  icon: string;
+}
+
+export const socialProfiles: SocialProfile[] = [
+  {
+    platform: "LinkedIn",
+    url: "https://www.linkedin.com/in/rizwanul-islam-afraim99/",
+    username: "rizwanul-islam-afraim99",
+    icon: "linkedin",
+  },
+  {
+    platform: "GitHub",
+    url: "https://github.com/Afraim3499",
+    username: "Afraim3499",
+    icon: "github",
+  },
+  {
+    platform: "Facebook",
+    url: "https://www.facebook.com/Rizwan.Afraim/",
+    username: "Rizwan.Afraim",
+    icon: "facebook",
+  },
+];
+
+export const socialProof = {
+  communitySize: "3,500+",
+  communityLabel: "Investors",
+  projects: 6,
+  experience: "3+",
+  experienceLabel: "Years",
+};
+
