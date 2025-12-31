@@ -47,7 +47,7 @@ export function ImageHover3D({
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden rounded-xl ${className}`}
+      className={`relative overflow-hidden rounded-xl w-full h-full ${className}`}
       style={{
         perspective: "1000px",
       }}
@@ -58,15 +58,17 @@ export function ImageHover3D({
           rotateY,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="w-full h-full"
         style={{
           transformStyle: "preserve-3d",
         }}
       >
-        <div className="relative" style={{ width, height }}>
+        <div className="relative w-full h-full">
           <Image
             src={src}
             alt={alt}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
             style={{
               transform: "translateZ(20px)",
@@ -86,4 +88,3 @@ export function ImageHover3D({
     </motion.div>
   );
 }
-
