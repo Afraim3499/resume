@@ -235,8 +235,7 @@ select option:hover {
 .prose pre {
   background-color: var(--secondary);
   color: var(--foreground);
-  border: 1px solid var(--foreground);
-  opacity: 0.1;
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
 }
 
 .prose pre code {

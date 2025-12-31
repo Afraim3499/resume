@@ -32,7 +32,7 @@ export function SignatureWork() {
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.08),transparent_50%)] pointer-events-none" />
 
       {/* Particle System - Layer 1 (above backgrounds, below content) */}
-      <ParticleSystem count={40} />
+      <ParticleSystem count={16} />
 
       {/* Content - Layer 10 */}
       <div className="container px-4 mx-auto max-w-7xl relative z-10">
@@ -81,18 +81,16 @@ export function SignatureWork() {
                   key={project.slug}
                   onClick={() => setSelectedProject(project)}
                   whileHover={hoverScale}
-                  className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${
-                    isSelected
+                  className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${isSelected
                       ? "bg-primary/10 border-primary/50 shadow-lg shadow-primary/10"
                       : "bg-secondary/30 border-foreground/10 hover:border-primary/30"
-                  }`}
+                    }`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className={`text-xl md:text-2xl lg:text-3xl font-bold transition-colors ${
-                          isSelected ? "text-primary" : "text-foreground"
-                        }`}>
+                        <h3 className={`text-xl md:text-2xl lg:text-3xl font-bold transition-colors ${isSelected ? "text-primary" : "text-foreground"
+                          }`}>
                           {project.title}
                         </h3>
                         {project.status === "production" && (
@@ -101,17 +99,16 @@ export function SignatureWork() {
                           </span>
                         )}
                       </div>
-                      
+
                       {/* Category Labels */}
                       <div className="flex flex-wrap gap-2 mb-3">
                         {project.tags.slice(0, 2).map((tag) => (
                           <span
                             key={tag}
-                            className={`text-xs font-medium px-2 py-1 rounded ${
-                              isSelected
+                            className={`text-xs font-medium px-2 py-1 rounded ${isSelected
                                 ? "bg-primary/20 text-primary border border-primary/30"
                                 : "bg-foreground/5 text-foreground/60 border border-foreground/10"
-                            }`}
+                              }`}
                           >
                             {tag}
                           </span>

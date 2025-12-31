@@ -37,17 +37,35 @@ const colorPalette = {
   ],
 };
 
-export function ParticleSystem({ count = 60 }: { count?: number }) {
+export function ParticleSystem({ count = 24 }: { count?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number | null>(null);
   const mouseRef = useRef({ x: 0, y: 0, active: false });
   const [mounted, setMounted] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    // Check for reduced motion preference
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    // Listen for changes
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    mediaQuery.addEventListener("change", handleChange);
+
     setMounted(true);
+
+    // Skip animation if reduced motion is preferred
+    if (mediaQuery.matches) {
+      return () => {
+        mediaQuery.removeEventListener("change", handleChange);
+      };
+    }
 
     // Wait for canvas to be mounted before initializing
     const checkCanvas = () => {
@@ -316,7 +334,8 @@ export function ParticleSystem({ count = 60 }: { count?: number }) {
     };
   }, [count]);
 
-  if (!mounted) return null;
+  // Don't render if reduced motion is preferred
+  if (!mounted || prefersReducedMotion) return null;
 
   return (
     <canvas

@@ -55,7 +55,7 @@ export function Hero() {
             <div className="absolute md:top-0 md:left-20 md:h-screen w-full md:w-[600px] h-[500px] bg-gradient-to-b from-primary/20 dark:from-white/10 to-transparent blur-[120px] pointer-events-none z-0 transform -rotate-12 translate-y-[-20%]" />
 
             {/* Particle System - Layer 1 (above backgrounds, below content) */}
-            <ParticleSystem count={60} />
+            <ParticleSystem count={24} />
 
             {/* Floating 3D Shapes - Layer 1 */}
             <FloatingShapes count={15} />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
@@ -21,28 +21,43 @@ export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Cancel any pending animation frame
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
 
-      // Update active section based on scroll position
-      const sections = navItems.map((item) => item.href.replace("/#", ""));
-      const currentSection = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
+      // Throttle with requestAnimationFrame
+      rafRef.current = requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 50);
+
+        // Update active section based on scroll position
+        const sections = navItems.map((item) => item.href.replace("/#", ""));
+        const currentSection = sections.find((section) => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 100 && rect.bottom >= 100;
+          }
+          return false;
+        });
+        setActiveSection(currentSection || "");
       });
-      setActiveSection(currentSection || "");
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Use passive listener for better performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial check
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
   }, []);
 
   const handleNavClick = (href: string) => {
@@ -66,11 +81,10 @@ export function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-background/80 backdrop-blur-md border-b border-white/5"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-white/5"
+          : "bg-transparent"
+          }`}
       >
         <div className="container px-4 mx-auto max-w-7xl">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -91,11 +105,10 @@ export function Navigation() {
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
-                    className={`relative text-sm font-medium transition-colors ${
-                      isActive
-                        ? "text-primary"
-                        : "text-foreground/70 hover:text-foreground"
-                    }`}
+                    className={`relative text-sm font-medium transition-colors ${isActive
+                      ? "text-primary"
+                      : "text-foreground/70 hover:text-foreground"
+                      }`}
                   >
                     {item.name}
                     {isActive && (
@@ -151,11 +164,10 @@ export function Navigation() {
                     <button
                       key={item.name}
                       onClick={() => handleNavClick(item.href)}
-                      className={`block w-full text-left px-4 py-2 rounded-lg transition-colors ${
-                        isActive
-                          ? "bg-primary/20 text-primary border border-primary/30"
-                          : "text-foreground/70 hover:text-foreground hover:bg-foreground/5"
-                      }`}
+                      className={`block w-full text-left px-4 py-2 rounded-lg transition-colors ${isActive
+                        ? "bg-primary/20 text-primary border border-primary/30"
+                        : "text-foreground/70 hover:text-foreground hover:bg-foreground/5"
+                        }`}
                     >
                       {item.name}
                     </button>
