@@ -33,9 +33,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: "/icon.svg",
+    apple: "/favicon.svg",
   },
   title: {
     default: "Rizwanul Islam | Digital Strategist & Full-Stack Developer",
