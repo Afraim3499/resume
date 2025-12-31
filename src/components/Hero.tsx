@@ -97,10 +97,12 @@ export function Hero() {
                     transition={{ delay: 0.2, duration: 0.8, ease: premiumEasing }}
                     className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl display-text mb-6 md:mb-8"
                 >
-                    <TextReveal mode="word" delay={0.2} className="inline">
-                        The{" "}
-                    </TextReveal>
-                    <span className="text-gradient">
+                    <span className="block sm:inline">
+                        <TextReveal mode="word" delay={0.2} className="inline">
+                            The{" "}
+                        </TextReveal>
+                    </span>
+                    <span className="text-gradient block sm:inline">
                         <TextReveal mode="word" delay={0.3} className="inline">
                             Strategist
                         </TextReveal>

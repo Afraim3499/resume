@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 interface FloatingShape {
   id: number;
@@ -15,7 +15,28 @@ interface FloatingShape {
 
 export function FloatingShapes({ count = 12 }: { count?: number }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flash
+
+  useEffect(() => {
+    const checkMobile = () => {
+      return (
+        window.innerWidth < 768 ||
+        window.matchMedia("(pointer: coarse)").matches ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      );
+    };
+
+    setIsMobile(checkMobile());
+
+    const handleResize = () => setIsMobile(checkMobile());
+    window.addEventListener("resize", handleResize, { passive: true });
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Don't render on mobile
+  if (isMobile) return null;
+
   const shapes: FloatingShape[] = Array.from({ length: count }, (_, i) => ({
     id: i,
     x: Math.random() * 100,

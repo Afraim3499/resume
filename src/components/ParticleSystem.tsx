@@ -44,13 +44,23 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
   const mouseRef = useRef({ x: 0, y: 0, active: false });
   const [mounted, setMounted] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flash on mobile
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    // Check for mobile device
+    const checkMobile = () => {
+      return (
+        window.innerWidth < 768 ||
+        window.matchMedia("(pointer: coarse)").matches
+      );
+    };
+
     // Check for reduced motion preference
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mediaQuery.matches);
+    setIsMobile(checkMobile());
 
     // Listen for changes
     const handleChange = (e: MediaQueryListEvent) => {
@@ -58,12 +68,19 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
     };
     mediaQuery.addEventListener("change", handleChange);
 
+    // Listen for resize to update mobile state
+    const handleResize = () => {
+      setIsMobile(checkMobile());
+    };
+    window.addEventListener("resize", handleResize, { passive: true });
+
     setMounted(true);
 
-    // Skip animation if reduced motion is preferred
-    if (mediaQuery.matches) {
+    // Skip animation if reduced motion is preferred or on mobile
+    if (mediaQuery.matches || checkMobile()) {
       return () => {
         mediaQuery.removeEventListener("change", handleChange);
+        window.removeEventListener("resize", handleResize);
       };
     }
 
@@ -334,8 +351,8 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
     };
   }, [count]);
 
-  // Don't render if reduced motion is preferred
-  if (!mounted || prefersReducedMotion) return null;
+  // Don't render if reduced motion is preferred or on mobile
+  if (!mounted || prefersReducedMotion || isMobile) return null;
 
   return (
     <canvas
