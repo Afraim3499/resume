@@ -16,7 +16,7 @@ export function Hero() {
     const isInView = useInView(ref);
 
     return (
-        <section ref={ref} className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background/85 antialiased">
+        <section ref={ref} className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background/85 antialiased pt-20 md:pt-0">
             {/* Enhanced Ambient Backgrounds - Layer 0 (bottom) */}
             <div className="absolute inset-0 z-0">
                 {isInView && (
