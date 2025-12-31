@@ -83,7 +83,7 @@ export const projects: Project[] = [
       loadTime: "0.4s",
     },
     category: "ecommerce",
-    year: 2024,
+    year: 2025,
     status: "production",
   },
   {
@@ -148,10 +148,10 @@ export const projects: Project[] = [
     longDescription: "Working as Product & Market Researcher and Business Development Executive at PrimeSync Solutions, an AI company specializing in creating AI voice agents for businesses. Conducting comprehensive market research, identifying high-potential lead generation strategies, and developing business development frameworks for AI solutions across sectors like HVAC, Plumbing, and Car Dealerships.",
     tags: ["AI", "Voice Agents", "Market Research", "Business Development", "Product Research"],
     link: "https://primesyncsolutions.com",
-    image: "/assets/primesync 1.png",
+    image: "/assets/primesync 1.jpg",
     screenshots: [
-      "/assets/primesync 1.png",
-      "/assets/primesync 2.png",
+      "/assets/primesync 1.jpg",
+      "/assets/primesync 2.jpg",
     ],
     techStack: [
       "Market Research",
@@ -213,11 +213,11 @@ export const projects: Project[] = [
     description: "Cloud kitchen management and operations. Partnered with major food delivery platforms (Foodpanda, Pathao) to optimize delivery logistics and customer satisfaction.",
     longDescription: "Co-founded and served as CEO of a cloud kitchen business. Managed operations, logistics, and strategic partnerships with major food delivery platforms (Foodpanda, Pathao). Optimized delivery logistics and customer satisfaction across multiple platforms.",
     tags: ["Operations", "Management", "Logistics"],
-    image: "/assets/carnival of crust.png",
+    image: "/assets/carnival of crust.jpg",
     screenshots: [
-      "/assets/carnival of crust.png",
-      "/assets/carnival of crust 2.png",
-      "/assets/carnival of crust 3.png",
+      "/assets/carnival of crust.jpg",
+      "/assets/carnival of crust 2.jpg",
+      "/assets/carnival of crust 3.jpg",
     ],
     techStack: [
       "Operations Management",
@@ -277,7 +277,7 @@ export const getProjectsByCategory = (category: Project["category"]): Project[] 
 };
 
 export const getProjectsByTech = (tech: string): Project[] => {
-  return projects.filter((project) => 
+  return projects.filter((project) =>
     project.techStack.some((t) => t.toLowerCase().includes(tech.toLowerCase()))
   );
 };

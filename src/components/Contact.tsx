@@ -29,7 +29,7 @@ export function Contact() {
                             afraim.afraim99@gmail.com
                         </a>
 
-                        <a href="tel:01751299259" className="flex items-center gap-3 text-lg font-medium text-foreground hover:text-primary transition-colors">
+                        <a href="tel:+8801751299259" className="flex items-center gap-3 text-lg font-medium text-foreground hover:text-primary transition-colors">
                             <div className="p-3 rounded-full bg-foreground/5 dark:bg-white/5 border border-foreground/10 dark:border-white/10">
                                 <Phone className="w-6 h-6" />
                             </div>

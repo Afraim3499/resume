@@ -8,7 +8,7 @@ export function SchemaData() {
     alternateName: "Afraim",
     jobTitle: "Founder & Digital Strategist",
     description: "Full-stack developer, digital strategist, and founder specializing in Next.js, React, TypeScript, and AI/ML solutions.",
-    url: "https://rizwanulislam.com", // Update with actual domain
+    url: "https://portfolio-rizwanul.vercel.app",
     sameAs: [
       // Add social media profiles when available
       // "https://linkedin.com/in/rizwanulislam",
@@ -37,7 +37,7 @@ export function SchemaData() {
     "@type": "Organization",
     name: "Rizwanul Islam - Digital Strategist",
     description: "Full-stack development and digital strategy services",
-    url: "https://rizwanulislam.com", // Update with actual domain
+    url: "https://portfolio-rizwanul.vercel.app",
     founder: {
       "@type": "Person",
       name: "Rizwanul Islam",
@@ -65,7 +65,7 @@ export function SchemaData() {
     "@type": "WebSite",
     name: "Rizwanul Islam - Portfolio",
     description: "Portfolio of Rizwanul Islam (Afraim) - Full-stack developer and digital strategist",
-    url: "https://rizwanulislam.com", // Update with actual domain
+    url: "https://portfolio-rizwanul.vercel.app",
     author: {
       "@type": "Person",
       name: "Rizwanul Islam",
@@ -80,13 +80,13 @@ export function SchemaData() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://rizwanulislam.com", // Update with actual domain
+        item: "https://portfolio-rizwanul.vercel.app",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Projects",
-        item: "https://rizwanulislam.com/projects", // Update with actual domain
+        item: "https://portfolio-rizwanul.vercel.app/projects",
       },
     ],
   };
