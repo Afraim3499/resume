@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
-import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { SchemaData } from "@/components/SchemaData";
 import { Analytics } from "@/components/Analytics";
 import { Navigation } from "@/components/Navigation";
@@ -11,20 +10,24 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { EntryWrapper } from "./EntryWrapper";
 import { CustomCursor } from "@/components/CustomCursor";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -109,6 +112,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml" />
         <meta name="theme-color" content="#10b981" />
