@@ -31,7 +31,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             whileHover={hoverScale}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="group relative rounded-xl bg-secondary/30 border border-foreground/10 overflow-hidden hover:border-primary/50 transition-all"
+            className="group relative rounded-xl bg-secondary/30 border border-foreground/10 overflow-hidden hover:border-primary/50 transition-all max-w-full box-border"
         >
             {/* Project Image/Screenshot with 3D Hover */}
             {(project.image || (project.screenshots && project.screenshots.length > 0)) && (
@@ -47,7 +47,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 </div>
             )}
 
-            <div className="p-5 md:p-6 lg:p-8">
+            <div className="p-4 sm:p-5 md:p-6 lg:p-8 overflow-hidden">
                 <div className="mb-4">
                     <div className="flex items-start justify-between gap-3 md:gap-4">
                         <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
@@ -62,7 +62,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                     <div className="text-sm text-foreground/50 mt-1">{project.year}</div>
                 </div>
 
-                <p className="text-foreground/70 mb-4 line-clamp-3">
+                <p className="text-foreground/70 mb-4 line-clamp-3 break-words">
                     {project.description}
                 </p>
 

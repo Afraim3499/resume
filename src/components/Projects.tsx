@@ -17,7 +17,7 @@ export function Projects() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(16,185,129,0.08),transparent_50%)] pointer-events-none" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.08),transparent_50%)] pointer-events-none" />
 
-            <div className="container px-4 mx-auto max-w-6xl relative z-10">
+            <div className="container px-4 mx-auto max-w-6xl relative z-10 overflow-x-hidden">
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
