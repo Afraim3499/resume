@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 
 // Lazy load heavy sections
 const About = dynamic(() => import("@/components/About").then((mod) => mod.About), { loading: () => <LoadingSpinner /> });
+const MyStory = dynamic(() => import("@/components/MyStory").then((mod) => mod.MyStory), { loading: () => <LoadingSpinner /> });
 const Skills = dynamic(() => import("@/components/Skills").then((mod) => mod.Skills), { loading: () => <LoadingSpinner /> });
 const Achievements = dynamic(() => import("@/components/Achievements").then((mod) => mod.Achievements), { loading: () => <LoadingSpinner /> });
 const Experience = dynamic(() => import("@/components/Experience").then((mod) => mod.Experience), { loading: () => <LoadingSpinner /> });
@@ -29,6 +30,8 @@ export default function Home() {
       <ParallaxSection speed={0.3}>
         <About />
       </ParallaxSection>
+      <SectionDivider variant="gradient" />
+      <MyStory />
       <SectionDivider variant="morph" />
       <ParallaxSection speed={0.2}>
         <Skills />

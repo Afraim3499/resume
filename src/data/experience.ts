@@ -46,7 +46,7 @@ export const experience: Experience[] = [
     company: "Gaari",
     companyUrl: "https://gaaribd.com",
     location: "Dhaka, Bangladesh",
-    startDate: "2023",
+    startDate: "2025",
     endDate: "Present",
     description: "Founded and leading Bangladesh's premium car rental and travel platform. Building scalable systems, managing development, and driving strategic growth. The platform features a robust booking system, dynamic pricing, AI-powered chatbot, and comprehensive travel services.",
     achievements: [
@@ -75,7 +75,7 @@ export const experience: Experience[] = [
     company: "The Trail",
     companyUrl: "https://trailheadlines.com",
     location: "Dhaka, Bangladesh",
-    startDate: "2024",
+    startDate: "Dec 2025",
     endDate: "Present",
     description: "Co-founded and leading technical development of a production-ready news platform with custom CMS, analytics system, and comprehensive admin dashboard. Built scalable systems with advanced filtering, trending algorithms, and high-performance delivery.",
     achievements: [
@@ -156,7 +156,7 @@ export const experience: Experience[] = [
     location: "Dhaka, Bangladesh",
     startDate: "2022",
     endDate: "2023",
-    description: "Co-founded an online clothing business specializing in unique designs, particularly known for doodle hoodies. Led product development, marketing strategy, and e-commerce operations.",
+    description: "Co-founded a seasonal clothing line specializing in unique designs, particularly doodle hoodies. One season of focused execution delivered hefty returns—proof that timing and strategic execution beat perfection.",
     achievements: [
       "Co-founded online clothing business",
       "Developed unique product line, especially doodle hoodies",

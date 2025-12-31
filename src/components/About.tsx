@@ -44,8 +44,8 @@ const stats = [
     {
         icon: Rocket,
         title: "6 Production Ventures",
-        subtitle: "Strategic Execution",
-        description: "Building ecosystems at the intersection of Data, AI, and Human Experience. From Gaari and The Trail to Yagacalls—ventures that scale.",
+        subtitle: "Strategic Orchestration",
+        description: "I architect the vision; dedicated operations teams run the show. From Gaari and The Trail to Yagacalls—ventures designed to scale into unicorns.",
         highlight: "6 production ventures",
         companies: ["Gaari", "The Trail", "Yagacalls"],
         gradient: "from-emerald-500/20 via-cyan-500/10 to-transparent",
@@ -84,7 +84,7 @@ export function About() {
                         Where <span className="text-gradient">Strategy</span> Meets Execution
                     </h2>
                     <p className="text-foreground/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                        A 360-degree perspective that transforms ideas into scalable ventures. 
+                        A 360-degree perspective that transforms ideas into scalable ventures.
                         Combining technical execution with business development to build systems that win.
                     </p>
                 </motion.div>
@@ -114,7 +114,7 @@ export function About() {
                                     hover:shadow-2xl hover:shadow-emerald-500/10
                                 `}>
                                     {/* Background Pattern */}
-                                    <div 
+                                    <div
                                         className="absolute inset-0 opacity-30"
                                         style={{ background: stat.bgPattern }}
                                     ></div>

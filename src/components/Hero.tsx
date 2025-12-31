@@ -119,7 +119,7 @@ export function Hero() {
                 >
                     <TextReveal mode="word" delay={0.5}>
                         Rizwanul Islam (Afraim) —{" "}
-                        <span className="text-foreground font-medium">Founder, Strategist & Executioner</span>.
+                        <span className="text-foreground font-medium">Founder, Strategist & Orchestrator</span>.
                     </TextReveal>
                     <br />
                     <TextReveal mode="word" delay={0.7}>

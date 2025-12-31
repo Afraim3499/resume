@@ -178,6 +178,24 @@ export function Skills() {
             <div className="text-foreground/70">Categories</div>
           </div>
         </motion.div>
+
+        {/* Next Horizon */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 p-6 rounded-xl bg-gradient-to-r from-purple-500/10 via-transparent to-primary/10 border border-foreground/10"
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-2xl">🎮</span>
+            <h3 className="text-xl font-bold text-foreground">Next Horizon</h3>
+          </div>
+          <p className="text-foreground/70 leading-relaxed">
+            Currently exploring <span className="text-primary font-medium">3D game development</span> with code-first approaches.
+            While time constraints have delayed the first release, this space represents my next creative frontier—combining
+            technical depth with immersive experiences. First game coming soon.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
