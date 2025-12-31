@@ -55,17 +55,17 @@ export const metadata: Metadata = {
     "AI/ML",
     "Portfolio",
   ],
-  authors: [{ name: "Rizwanul Islam", url: "https://rizwanulislam.com" }],
+  authors: [{ name: "Rizwanul Islam", url: "https://portfolio-rizwanul.vercel.app" }],
   creator: "Rizwanul Islam",
   publisher: "Rizwanul Islam",
-  metadataBase: new URL("https://rizwanulislam.com"), // Update with actual domain
+  metadataBase: new URL("https://portfolio-rizwanul.vercel.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://rizwanulislam.com", // Update with actual domain
+    url: "https://portfolio-rizwanul.vercel.app",
     title: "Rizwanul Islam | Digital Strategist & Full-Stack Developer",
     description: "Full-stack developer and digital strategist specializing in Next.js, React, TypeScript, PostgreSQL, and AI/ML solutions.",
     siteName: "Rizwanul Islam Portfolio",
