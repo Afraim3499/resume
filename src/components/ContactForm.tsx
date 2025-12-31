@@ -43,22 +43,31 @@ export function ContactForm() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          subject: data.subject,
-          message: data.message,
-        }),
-      });
+      // WhatsApp number (Bangladesh format without +)
+      const whatsappNumber = "8801751299259";
 
-      if (!response.ok) {
-        throw new Error("Failed to send message");
-      }
+      // Build message from form data or use default
+      const name = data.name?.trim() || "Someone";
+      const email = data.email?.trim() || "Not provided";
+      const subject = data.subject?.trim() || "General Inquiry";
+      const message = data.message?.trim() || "Hi! I'd like to connect with you.";
+
+      // Format the WhatsApp message
+      const whatsappMessage = `*New Portfolio Contact*
+
+*Name:* ${name}
+*Email:* ${email}
+*Subject:* ${subject}
+
+*Message:*
+${message}`;
+
+      // Encode the message for URL
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+
+      // Open WhatsApp
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+      window.open(whatsappUrl, "_blank");
 
       setSubmitStatus("success");
       reset();
@@ -161,7 +170,7 @@ export function ContactForm() {
         >
           <CheckCircle className="w-5 h-5 text-emerald-400" />
           <p className="text-emerald-400">
-            Message sent successfully! I'll get back to you soon.
+            WhatsApp opened! Send the message to connect with me.
           </p>
         </motion.div>
       )}
@@ -194,7 +203,7 @@ export function ContactForm() {
         ) : (
           <>
             <Send className="w-4 h-4 mr-2" />
-            Send Message
+            Send via WhatsApp
           </>
         )}
       </Button>
