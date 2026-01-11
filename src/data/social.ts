@@ -19,6 +19,12 @@ export const socialProfiles: SocialProfile[] = [
     icon: "github",
   },
   {
+    platform: "X",
+    url: "https://x.com/rizwanul_afraim",
+    username: "rizwanul_afraim",
+    icon: "twitter",
+  },
+  {
     platform: "Facebook",
     url: "https://www.facebook.com/Rizwan.Afraim/",
     username: "Rizwan.Afraim",
