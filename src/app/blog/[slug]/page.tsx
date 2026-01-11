@@ -31,7 +31,7 @@ export async function generateMetadata({
     };
   }
 
-  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://rizwanulislam.com";
+  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
 
   return {
     title: `${post.title} | Blog`,
@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   const relatedPosts = getRelatedPosts(post, blogPosts);
-  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://rizwanulislam.com";
+  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
   const postUrl = `${url}/blog/${post.slug}`;
 
   // Find related project and case study

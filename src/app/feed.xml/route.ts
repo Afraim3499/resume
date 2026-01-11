@@ -2,7 +2,7 @@ import { blogPosts } from "@/data/blog";
 import { formatPostDate } from "@/lib/blog";
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://rizwanulislam.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
 
   const rssItems = blogPosts
     .map((post) => {

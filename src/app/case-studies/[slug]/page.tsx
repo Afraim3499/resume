@@ -49,7 +49,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
   const project = getProjectBySlug(caseStudy.projectSlug);
   const blogPost = getBlogPostByProjectSlug(caseStudy.projectSlug);
-  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://rizwanulislam.com";
+  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
   const caseStudyUrl = `${url}/case-studies/${caseStudy.slug}`;
 
   return (
