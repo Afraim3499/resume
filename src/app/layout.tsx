@@ -71,10 +71,10 @@ export const metadata: Metadata = {
     siteName: "Rizwanul Islam Portfolio",
     images: [
       {
-        url: "/assets/IMG_5210.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Rizwanul Islam - Digital Strategist",
+        alt: "Rizwanul Islam - Full-Stack Developer & Digital Strategist",
       },
     ],
   },
@@ -82,8 +82,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rizwanul Islam | Digital Strategist & Full-Stack Developer",
     description: "Full-stack developer and digital strategist specializing in Next.js, React, TypeScript, PostgreSQL, and AI/ML solutions.",
-    images: ["/assets/IMG_5210.jpg"],
-    creator: "@rizwanulislam", // Update with actual Twitter handle
+    images: ["/og-image.jpg"],
+    creator: "@rizwanul_afraim",
   },
   robots: {
     index: true,
@@ -113,6 +113,8 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="AgEIer9xlB7rHjMCi02zynoNYCDMXwU8UyVjkqyU5xI" />
+        {/* Bing Webmaster */}
+        <meta name="msvalidate.01" content="D856AACF6C5D5003C81D9CF9ED47668C" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="manifest" href="/manifest.json" />

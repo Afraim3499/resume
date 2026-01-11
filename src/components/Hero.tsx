@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 
 export function Hero() {
     return (
-        <section id="hero" className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background pt-20 md:pt-0">
+        <section id="hero" className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background pt-28 md:pt-32">
             {/* Simple gradient background */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
@@ -17,14 +17,14 @@ export function Hero() {
             <div className="container relative z-10 px-4 max-w-4xl mx-auto text-center">
                 {/* Profile Image */}
                 <div className="mb-8">
-                    <div className="relative inline-block w-40 h-40 md:w-48 md:h-48 rounded-full p-[2px] bg-gradient-to-tr from-primary via-accent to-transparent">
-                        <div className="absolute inset-0 bg-background rounded-full m-[1px] overflow-hidden">
+                    <div className="relative inline-block w-56 h-56 md:w-64 md:h-64 rounded-full p-[3px] bg-gradient-to-tr from-primary via-accent to-transparent">
+                        <div className="absolute inset-0 bg-background rounded-full m-[2px] overflow-hidden">
                             <Image
-                                src="/assets/IMG_5210.jpg"
+                                src="/assets/hero-image.jpg"
                                 alt="Rizwanul Islam"
                                 width={192}
                                 height={192}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover object-top"
                                 priority
                             />
                         </div>

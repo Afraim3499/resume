@@ -1,0 +1,26 @@
+# Rizwanul Islam - Portfolio
+
+## Summary
+Rizwanul Islam is a full-stack developer and digital strategist based in Dhaka, Bangladesh. He specializes in Next.js, React, TypeScript, and AI/ML solutions. He has founded multiple ventures including Gaari (car rental platform) and co-founded The Trail (news platform).
+
+## Key Information
+- **Name**: Rizwanul Islam (Afraim)
+- **Role**: Founder, Digital Strategist, Full-Stack Developer
+- **Location**: Dhaka, Bangladesh
+- **Contact**: https://portfolio-rizwanul.vercel.app/contact
+
+## Expertise
+- Next.js, React, TypeScript
+- PostgreSQL, Supabase
+- AI Chatbots, NLP
+- Startup Founding & Strategy
+
+## Notable Projects
+1. **Gaari** - Car rental booking platform with AI chatbot
+2. **The Trail** - News platform with custom CMS
+3. **Yagacalls** - SEO-focused market analysis platform
+
+## Social
+- LinkedIn: /in/rizwanul-islam-afraim99
+- GitHub: /Afraim3499
+- Twitter: @rizwanul_afraim

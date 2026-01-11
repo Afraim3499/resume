@@ -1,0 +1,46 @@
+# Rizwanul Islam - Portfolio
+
+> Full-stack developer, digital strategist, and startup founder specializing in Next.js, React, TypeScript, and AI/ML solutions.
+
+## About
+
+Rizwanul Islam (also known as Afraim) is a dynamic professional with expertise in:
+- **Full-Stack Development**: Next.js, React, TypeScript, Node.js
+- **Database**: PostgreSQL, Supabase, Row Level Security
+- **AI/ML**: Chatbots, NLP, Voice Agents, Content Generation
+- **DevOps**: Docker, Nginx, VPS Deployment, CI/CD
+
+## Key Projects
+
+### Gaari
+Car rental booking platform with 80+ components, AI chatbot (Gaariwala), and multi-payment integration.
+- Technologies: Next.js, TypeScript, Supabase, PostgreSQL
+- Role: Founder & Lead Developer
+
+### The Trail  
+Production-ready news platform with custom CMS, analytics, and advanced filtering.
+- Technologies: Next.js, React, TypeScript, Supabase
+- Role: Co-Founder & Lead Technical Developer
+
+### Yagacalls
+Expert market analysis platform with 4-layer SEO framework and AI content generation.
+- Technologies: PHP, JavaScript, JSON Database
+- Role: Lead Developer
+
+## Services
+
+- Full-stack web application development
+- Digital strategy consulting
+- AI/ML integration and chatbot development
+- Startup technical advisory
+
+## Contact
+
+- Website: https://portfolio-rizwanul.vercel.app
+- LinkedIn: https://www.linkedin.com/in/rizwanul-islam-afraim99/
+- GitHub: https://github.com/Afraim3499
+- Twitter: https://x.com/rizwanul_afraim
+
+## Location
+
+Dhaka, Bangladesh

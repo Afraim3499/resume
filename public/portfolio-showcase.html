@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizwanul Islam - Portfolio Showcase</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+            padding: 40px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #10b981;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 15px;
+        }
+        
+        .header .tagline {
+            font-size: 1rem;
+            color: #64748b;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #10b981;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, #10b981, #3b82f6);
+            border-radius: 2px;
+        }
+        
+        /* Project Card */
+        .project {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+        
+        .project-year {
+            background: #10b981;
+            color: #0f172a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .project-description {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .project-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .project-metrics {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .metric {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        
+        .metric-value {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .skill-category {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .skill-category h4 {
+            color: #10b981;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .skill-category ul {
+            list-style: none;
+        }
+        
+        .skill-category li {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            padding: 4px 0;
+        }
+        
+        /* Contact */
+        .contact {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 30px;
+        }
+        
+        .contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        
+        .contact-link span {
+            color: #10b981;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: #1e293b;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                color: #10b981;
+                -webkit-text-fill-color: #10b981;
+            }
+            
+            .project {
+                background: #f8fafc;
+                border-color: #e2e8f0;
+                break-inside: avoid;
+            }
+            
+            .skill-category {
+                background: #f8fafc;
+                border-color: #e2e8f0;
+            }
+            
+            .contact {
+                background: #f8fafc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Rizwanul Islam</h1>
+            <p class="subtitle">Full Stack Developer & Founder</p>
+            <p class="tagline">Building production-ready web applications with Next.js, React & TypeScript</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">3+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">6+</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">98</div>
+                    <div class="stat-label">Lighthouse Score</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Featured Projects -->
+        <div class="section">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <!-- Gaari -->
+            <div class="project">
+                <div class="project-header">
+                    <h3 class="project-title">🚗 Gaari</h3>
+                    <span class="project-year">2025</span>
+                </div>
+                <p class="project-description">
+                    Bangladesh's premium car rental and travel platform. Features a robust booking system, 
+                    dynamic pricing, AI-powered chatbot (Gaariwala), and comprehensive travel services 
+                    including car rentals, travel packages, and activities.
+                </p>
+                <a class="project-link" href="https://gaaribd.com">🔗 gaaribd.com</a>
+                
+                <div class="project-metrics">
+                    <div class="metric"><span class="metric-value">80+</span> Components</div>
+                    <div class="metric"><span class="metric-value">110+</span> API Endpoints</div>
+                    <div class="metric"><span class="metric-value">98/100</span> Lighthouse</div>
+                    <div class="metric"><span class="metric-value">0.4s</span> Load Time</div>
+                </div>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js 14</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Supabase</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">Stripe</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                </div>
+            </div>
+            
+            <!-- The Trail -->
+            <div class="project">
+                <div class="project-header">
+                    <h3 class="project-title">📰 The Trail</h3>
+                    <span class="project-year">2024</span>
+                </div>
+                <p class="project-description">
+                    High-performance news platform with custom CMS, analytics dashboard, and advanced filtering. 
+                    Features Editor's Picks, trending articles, breaking news banners, and comprehensive 
+                    content management with multi-stage approval workflow.
+                </p>
+                <a class="project-link" href="https://trailheadlines.com">🔗 trailheadlines.com</a>
+                
+                <div class="project-metrics">
+                    <div class="metric"><span class="metric-value">150+</span> Components</div>
+                    <div class="metric"><span class="metric-value">30+</span> Database Tables</div>
+                    <div class="metric"><span class="metric-value">95/100</span> Lighthouse</div>
+                    <div class="metric"><span class="metric-value">Docker</span> Deployed</div>
+                </div>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js 14+</span>
+                    <span class="tech-tag">React 19</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Supabase</span>
+                    <span class="tech-tag">Tiptap</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+            </div>
+            
+            <!-- Yagacalls -->
+            <div class="project">
+                <div class="project-header">
+                    <h3 class="project-title">📈 Yagacalls</h3>
+                    <span class="project-year">2024</span>
+                </div>
+                <p class="project-description">
+                    Trading calls and market analysis platform with custom CMS, AI-powered content generation, 
+                    and community features supporting 3,500+ investors. Implements advanced 4-layer SEO framework.
+                </p>
+                <a class="project-link" href="https://yagacalls.com">🔗 yagacalls.com</a>
+                
+                <div class="project-metrics">
+                    <div class="metric"><span class="metric-value">3,500+</span> Investors</div>
+                    <div class="metric"><span class="metric-value">AI</span> Content Gen</div>
+                    <div class="metric"><span class="metric-value">4-Layer</span> SEO</div>
+                </div>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">HTML5/CSS3</span>
+                    <span class="tech-tag">JSON DB</span>
+                    <span class="tech-tag">SEO</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Skills -->
+        <div class="section">
+            <h2 class="section-title">Technical Expertise</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Frontend</h4>
+                    <ul>
+                        <li>Next.js / React</li>
+                        <li>TypeScript</li>
+                        <li>Tailwind CSS</li>
+                        <li>Framer Motion</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Backend</h4>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>API Routes</li>
+                        <li>RESTful APIs</li>
+                        <li>Authentication</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Database</h4>
+                    <ul>
+                        <li>PostgreSQL</li>
+                        <li>Supabase</li>
+                        <li>Redis</li>
+                        <li>Database Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>DevOps</h4>
+                    <ul>
+                        <li>Docker</li>
+                        <li>Nginx</li>
+                        <li>VPS Deployment</li>
+                        <li>CI/CD</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>AI/ML</h4>
+                    <ul>
+                        <li>AI Chatbots</li>
+                        <li>NLP</li>
+                        <li>Content Gen</li>
+                        <li>Voice Agents</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Integrations</h4>
+                    <ul>
+                        <li>Stripe / Bkash</li>
+                        <li>Cloudinary</li>
+                        <li>Email APIs</li>
+                        <li>GitHub API</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact -->
+        <div class="contact">
+            <h3>Let's Build Something Great Together</h3>
+            <div class="contact-links">
+                <a class="contact-link" href="https://www.linkedin.com/in/rizwanul-islam-afraim99/">
+                    <span>LinkedIn:</span> rizwanul-islam-afraim99
+                </a>
+                <a class="contact-link" href="https://github.com/Afraim3499">
+                    <span>GitHub:</span> Afraim3499
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
