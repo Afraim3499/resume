@@ -978,7 +978,7 @@ Row Level Security is a game-changer for application security. By enforcing rule
 ---
 
 *Have questions about implementing RLS? Connect with me on [LinkedIn](https://www.linkedin.com/in/rizwanul-islam-afraim99/) or [Twitter](https://x.com/rizwanul_afraim).*`,
-    date: "2024-12-25",
+    date: "2026-12-25",
     category: "Database",
     tags: ["Supabase", "PostgreSQL", "Security", "RLS", "Tutorial", "Database"],
     readingTime: 14,
@@ -1708,7 +1708,7 @@ You've now built a complete booking system with:
 ---
 
 *Have questions about building booking systems? Connect with me on [LinkedIn](https://www.linkedin.com/in/rizwanul-islam-afraim99/) or [Twitter](https://x.com/rizwanul_afraim).*`,
-    date: "2024-12-28",
+    date: "2026-12-28",
     category: "Web Development",
     tags: ["Next.js", "TypeScript", "Supabase", "Stripe", "Tutorial", "Booking System"],
     readingTime: 15,
@@ -1813,7 +1813,7 @@ The booking system now handles:
 5. **User Experience**: Multi-step flows with clear progress indicators reduce abandonment
 
 Building Gaari's booking system taught me that the best technical solutions are those that feel invisible to users—complexity hidden behind simplicity.`,
-    date: "2024-11-15",
+    date: "2025-11-15",
     category: "Web Development",
     tags: ["Next.js", "TypeScript", "E-commerce", "Supabase", "Payment Integration"],
     readingTime: 8,
@@ -1941,7 +1941,7 @@ The Trail now features:
 5. **Scalability Planning**: Design for growth from the start
 
 Building The Trail taught me that successful platforms balance technical excellence with user experience—both for readers and content creators.`,
-    date: "2024-10-20",
+    date: "2025-10-20",
     category: "Web Development",
     tags: ["Next.js", "CMS", "TypeScript", "PostgreSQL", "Performance"],
     readingTime: 7,
@@ -2104,7 +2104,7 @@ The 4-layer framework delivered:
 - **Performance Monitoring**: Core Web Vitals tracking
 
 The 4-layer SEO framework transformed Yagacalls from a startup platform to a recognized authority in trading signals and market analysis. The key was treating SEO as a comprehensive strategy, not just keyword optimization.`,
-    date: "2024-09-10",
+    date: "2025-09-10",
     category: "SEO",
     tags: ["SEO", "Content Strategy", "Performance", "Analytics"],
     readingTime: 6,
@@ -2267,7 +2267,7 @@ Under my leadership, NSUSS achieved:
 - **Stakeholder Management**: Balancing multiple interests
 
 Leading 200+ people taught me that leadership isn't about control—it's about enabling others to succeed. The best leaders create systems, empower teams, and step back to let excellence happen.`,
-    date: "2024-08-05",
+    date: "2025-08-05",
     category: "Leadership",
     tags: ["Leadership", "Event Management", "Team Management", "Strategy"],
     readingTime: 7,
