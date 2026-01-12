@@ -38,7 +38,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 <div className="relative h-48 w-full overflow-hidden">
                     <ImageHover3D
                         src={project.image || project.screenshots?.[0] || ""}
-                        alt={project.title}
+                        alt={`${project.title} - Strategic Web Application developed by Rizwanul Islam (Afraim)`}
                         width={800}
                         height={400}
                         className="w-full h-full"

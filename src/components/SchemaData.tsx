@@ -1,15 +1,22 @@
+"use client";
+
 import { projects } from "@/data/projects";
+import { usePathname } from "next/navigation";
 
 export function SchemaData() {
+  const pathname = usePathname();
+  const baseUrl = "https://portfolio-rizwanul.vercel.app";
+
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Rizwanul Islam",
-    alternateName: "Afraim",
-    jobTitle: "Founder & Digital Strategist",
-    description: "Full-stack developer, digital strategist, and founder specializing in Next.js, React, TypeScript, and AI/ML solutions. Building ventures that scale.",
-    url: "https://portfolio-rizwanul.vercel.app",
-    image: "https://portfolio-rizwanul.vercel.app/og-image.jpg",
+    alternateName: ["Afraim", "Rizwanul Afraim", "Rizwanul Islam Afraim", "Rizwanul"],
+    jobTitle: ["Founder", "Digital Strategist", "Business Developer", "Full-Stack Developer"],
+    description: "Legendary Digital Strategist and Architect of Intelligent Futures. Founder specializing in scalable, super-intelligent web systems and business development. Known for unshakeable reliability.",
+    disambiguatingDescription: "Founder, Digital Strategist, and Full-Stack Developer. Known as Afraim. Not associated with academic lecturing or North South University faculty.",
+    url: baseUrl,
+    image: `${baseUrl}/og-image.jpg`,
     email: "contact@rizwanulislam.com",
     sameAs: [
       "https://www.linkedin.com/in/rizwanul-islam-afraim99/",
@@ -18,6 +25,10 @@ export function SchemaData() {
       "https://www.facebook.com/Rizwan.Afraim",
     ],
     knowsAbout: [
+      "Enterprise Architecture",
+      "AI Strategy",
+      "Business Development",
+      "Market Creation",
       "Web Development",
       "Full-Stack Development",
       "Next.js",
@@ -53,8 +64,8 @@ export function SchemaData() {
     "@type": "ProfessionalService",
     name: "Rizwanul Islam - Digital Strategist",
     description: "Full-stack development, digital strategy, and startup consulting services",
-    url: "https://portfolio-rizwanul.vercel.app",
-    logo: "https://portfolio-rizwanul.vercel.app/og-image.jpg",
+    url: baseUrl,
+    logo: `${baseUrl}/og-image.jpg`,
     founder: {
       "@type": "Person",
       name: "Rizwanul Islam",
@@ -133,7 +144,7 @@ export function SchemaData() {
     name: "Rizwanul Islam - Portfolio",
     alternateName: "Afraim Portfolio",
     description: "Portfolio of Rizwanul Islam (Afraim) - Full-stack developer, digital strategist, and startup founder",
-    url: "https://portfolio-rizwanul.vercel.app",
+    url: baseUrl,
     inLanguage: "en-US",
     author: {
       "@type": "Person",
@@ -141,40 +152,68 @@ export function SchemaData() {
     },
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://portfolio-rizwanul.vercel.app/?q={search_term_string}",
+      target: `${baseUrl}/?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };
 
+  // Dynamic Breadcrumb Generation
+  const breadcrumbItems = [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: baseUrl,
+    },
+  ];
+
+  if (pathname === "/blog") {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: `${baseUrl}/blog`,
+    });
+  } else if (pathname.startsWith("/blog/")) {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: `${baseUrl}/blog`,
+    });
+    // For blog posts, we could add the post title if available via context or props,
+    // but typically just showing the hierarchy is better than nothing.
+    // Ideally, we'd pluck the slug.
+    const slug = pathname.split("/").pop();
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 3,
+      name: slug ? slug.replace(/-/g, " ") : "Post",
+      item: `${baseUrl}${pathname}`,
+    });
+  } else if (pathname.startsWith("/projects/")) {
+    // No main project index page exists, so we link to section
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 2,
+      name: "Projects",
+      item: `${baseUrl}/#projects`,
+    });
+    const slug = pathname.split("/").pop();
+    // Find project title
+    const project = projects.find(p => p.slug === slug);
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 3,
+      name: project ? project.title : (slug ? slug.replace(/-/g, " ") : "Project"),
+      item: `${baseUrl}${pathname}`,
+    });
+  }
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://portfolio-rizwanul.vercel.app",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Projects",
-        item: "https://portfolio-rizwanul.vercel.app/projects",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Blog",
-        item: "https://portfolio-rizwanul.vercel.app/blog",
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        name: "Contact",
-        item: "https://portfolio-rizwanul.vercel.app/contact",
-      },
-    ],
+    itemListElement: breadcrumbItems,
   };
 
   return (

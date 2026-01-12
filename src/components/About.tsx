@@ -7,10 +7,10 @@ import { fadeUp, staggerContainer, hoverScale } from "@/lib/animations";
 const stats = [
     {
         icon: Target,
-        title: "Market Creation",
+        title: "Visionary Markets",
         subtitle: "Not Just Discovery",
-        description: "I don't just find leads; I create markets. From founding Gaari to leading product & market research at PrimeSync, I apply a 360-degree strategist's perspective.",
-        highlight: "create markets",
+        description: "I don't just find leads; I engineered the market for Gaari and PrimeSync. My strategies don't just compete—they define the playing field.",
+        highlight: "engineered the market",
         companies: ["Gaari", "PrimeSync"],
         gradient: "from-emerald-500/20 via-emerald-500/10 to-transparent",
         borderColor: "border-emerald-500/30",
@@ -19,10 +19,10 @@ const stats = [
     },
     {
         icon: Database,
-        title: "1M+ Data Points",
-        subtitle: "Data-Driven Decisions",
-        description: "Gathered and processed 1 million+ data points for Quantanite, transforming raw data into actionable insights for intelligent operations.",
-        highlight: "1 million+ data points",
+        title: "Super Intelligence",
+        subtitle: "1M+ Data Points",
+        description: "Processed over 1 million data points for Quantanite with legendary accuracy. I turn raw chaos into intelligent, actionable business logic.",
+        highlight: "legendary accuracy",
         companies: ["Quantanite"],
         gradient: "from-purple-500/20 via-purple-500/10 to-transparent",
         borderColor: "border-purple-500/30",
@@ -31,9 +31,9 @@ const stats = [
     },
     {
         icon: Users,
-        title: "200+ Team Members",
+        title: "Unshakeable Reliability",
         subtitle: "Leadership at Scale",
-        description: "As VP of Programs at NSUSS, led teams of 200+ people to execute mega-events with 25,000+ attendees. Strategic planning resulted in viral performances.",
+        description: "As VP at NSUSS, I led 200+ people to execute events for 25,000+ attendees. When I build a system, it holds the weight of thousands without cracking.",
         highlight: "200+ people",
         companies: ["NSUSS"],
         gradient: "from-blue-500/20 via-blue-500/10 to-transparent",
@@ -43,10 +43,10 @@ const stats = [
     },
     {
         icon: Rocket,
-        title: "6 Production Ventures",
+        title: "Enduring Ventures",
         subtitle: "Strategic Orchestration",
-        description: "I architect the vision; dedicated operations teams run the show. From Gaari and The Trail to Yagacalls—ventures designed to scale into unicorns.",
-        highlight: "6 production ventures",
+        description: "I don't just launch; I architect legacy. From Gaari to Yagacalls, I design production ventures meant to scale into unicorns and dominate their niches.",
+        highlight: "scale into unicorns",
         companies: ["Gaari", "The Trail", "Yagacalls"],
         gradient: "from-emerald-500/20 via-cyan-500/10 to-transparent",
         borderColor: "border-emerald-500/30",
@@ -81,11 +81,11 @@ export function About() {
                         The Approach
                     </motion.span>
                     <h2 className="text-5xl md:text-7xl lg:text-8xl heading-text mb-6">
-                        Where <span className="text-gradient">Strategy</span> Meets Execution
+                        Engineering <span className="text-gradient">Trust & Intelligence</span>
                     </h2>
                     <p className="text-foreground/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                        A 360-degree perspective that transforms ideas into scalable ventures.
-                        Combining technical execution with business development to build systems that win.
+                        A 360-degree perspective that transforms complexity into clear, scalable outcomes.
+                        I combine high-velocity execution with unshakeable reliability to build systems that win.
                     </p>
                 </motion.div>
 

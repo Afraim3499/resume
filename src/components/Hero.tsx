@@ -21,7 +21,7 @@ export function Hero() {
                         <div className="absolute inset-0 bg-background rounded-full m-[2px] overflow-hidden">
                             <Image
                                 src="/assets/hero-image.jpg"
-                                alt="Rizwanul Islam"
+                                alt="Rizwanul Islam Afraim - Legendary Digital Strategist and Developer"
                                 width={192}
                                 height={192}
                                 className="w-full h-full object-cover object-top"
@@ -33,14 +33,14 @@ export function Hero() {
 
                 {/* Heading */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-                    The <span className="text-gradient">Strategist</span>.
+                    Architect of <span className="text-gradient">Intelligent Futures</span>.
                 </h1>
 
                 {/* Subtitle */}
                 <p className="text-foreground/70 max-w-2xl mx-auto text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
-                    Rizwanul Islam (Afraim) — <span className="text-foreground font-medium">Founder, Strategist & Orchestrator</span>.
+                    The <span className="text-foreground font-medium">Legendary Partner</span> for visionary businesses.
                     <br />
-                    Building ventures that scale, leading teams that deliver, executing strategies that win.
+                    I orchestrate precision, intelligence, and scale for those who demand unshakeable reliability.
                 </p>
 
                 {/* CTA Buttons */}
