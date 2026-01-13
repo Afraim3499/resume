@@ -11,32 +11,32 @@ export function Footer() {
                         <h3 className="text-sm font-semibold text-foreground mb-4">Quick Links</h3>
                         <ul className="space-y-2">
                             <li>
-                                <Link 
-                                    href="/blog" 
+                                <Link
+                                    href="/blog"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
                                     Blog & Articles
                                 </Link>
                             </li>
                             <li>
-                                <Link 
-                                    href="/case-studies" 
+                                <Link
+                                    href="/case-studies"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
                                     Case Studies
                                 </Link>
                             </li>
                             <li>
-                                <Link 
-                                    href="/#projects" 
+                                <Link
+                                    href="/#projects"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
                                     Projects
                                 </Link>
                             </li>
                             <li>
-                                <Link 
-                                    href="/#contact" 
+                                <Link
+                                    href="/#contact"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
                                     Contact
@@ -50,32 +50,40 @@ export function Footer() {
                         <h3 className="text-sm font-semibold text-foreground mb-4">Content</h3>
                         <ul className="space-y-2">
                             <li>
-                                <Link 
-                                    href="/blog" 
+                                <Link
+                                    href="/manifesto"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    Manifesto
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/blog"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
                                     Technical Articles
                                 </Link>
                             </li>
                             <li>
-                                <Link 
-                                    href="/case-studies" 
+                                <Link
+                                    href="/case-studies"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
                                     Project Case Studies
                                 </Link>
                             </li>
                             <li>
-                                <Link 
-                                    href="/#experience" 
+                                <Link
+                                    href="/#experience"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
                                     Experience
                                 </Link>
                             </li>
                             <li>
-                                <Link 
-                                    href="/#skills" 
+                                <Link
+                                    href="/#skills"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
                                     Skills

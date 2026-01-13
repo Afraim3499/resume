@@ -36,19 +36,22 @@ export async function generateMetadata({
   return {
     title: `${post.title} | Blog`,
     description: post.excerpt,
+    alternates: {
+      canonical: `${url}/blog/${post.slug}`,
+    },
     openGraph: {
-      title: `${post.title} | Rizwanul Islam`,
+      title: `${post.title} | Rizwanul Islam (Afraim)`,
       description: post.excerpt,
       type: "article",
       publishedTime: post.date,
-      authors: [post.author?.name || "Rizwanul Islam"],
+      authors: [post.author?.name || "Rizwanul Islam (Afraim)"],
       tags: post.tags,
       images: post.image ? [post.image] : [],
       url: `${url}/blog/${post.slug}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | Rizwanul Islam`,
+      title: `${post.title} | Rizwanul Islam (Afraim)`,
       description: post.excerpt,
     },
   };
