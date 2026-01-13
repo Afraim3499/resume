@@ -103,6 +103,7 @@ export const metadata: Metadata = {
     google: "AgEIer9xlB7rHjMCi02zynoNYCDMXwU8UyVjkqyU5xI",
     other: {
       "msvalidate.01": "D856AACF6C5D5003C81D9CF9ED47668C",
+      "p:domain_verify": "09fdfc9215d7eeefb6030ff991b9c026",
     },
   },
 };
@@ -118,6 +119,8 @@ export default function RootLayout({
         <meta name="google-site-verification" content="AgEIer9xlB7rHjMCi02zynoNYCDMXwU8UyVjkqyU5xI" />
         {/* Bing Webmaster */}
         <meta name="msvalidate.01" content="D856AACF6C5D5003C81D9CF9ED47668C" />
+        {/* Pinterest Verification */}
+        <meta name="p:domain_verify" content="09fdfc9215d7eeefb6030ff991b9c026" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="manifest" href="/manifest.json" />
