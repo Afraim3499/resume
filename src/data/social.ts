@@ -30,6 +30,12 @@ export const socialProfiles: SocialProfile[] = [
     username: "Rizwan.Afraim",
     icon: "facebook",
   },
+  {
+    platform: "Dev.to",
+    url: "https://dev.to/rizwanul_islam_afraim",
+    username: "rizwanul_islam_afraim",
+    icon: "book", // mapped to BookOpen in SocialLinks component
+  },
 ];
 
 export const socialProof = {

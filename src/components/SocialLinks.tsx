@@ -1,6 +1,6 @@
 "use client";
 
-import { Linkedin, Github, Facebook } from "lucide-react";
+import { Linkedin, Github, Facebook, BookOpen } from "lucide-react";
 import { socialProfiles } from "@/data/social";
 
 const XIcon = ({ className }: { className?: string }) => (
@@ -20,6 +20,7 @@ const iconMap = {
   github: Github,
   facebook: Facebook,
   twitter: XIcon,
+  book: BookOpen,
 };
 
 interface SocialLinksProps {

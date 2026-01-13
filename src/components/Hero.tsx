@@ -31,6 +31,19 @@ export function Hero() {
                     </div>
                 </div>
 
+                {/* Dev.to Badge */}
+                <div className="flex justify-center mb-6">
+                    <a
+                        href="https://dev.to/rizwanul_islam_afraim/how-i-built-a-production-ai-chatbot-that-actually-handles-complexity-55l6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-black text-white text-sm font-medium hover:bg-black/80 transition-colors border border-white/10 shadow-lg"
+                    >
+                        <img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Dev.to" className="w-4 h-4" />
+                        Featured on Dev.to
+                    </a>
+                </div>
+
                 {/* Heading */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
                     Architect of <span className="text-gradient">Intelligent Futures</span>.
