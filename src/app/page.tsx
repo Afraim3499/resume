@@ -52,13 +52,13 @@ export default function Home() {
           <GitHubStats username="Afraim3499" />
         </div>
       </section>
-      <SectionDivider variant="gradient" />
-      <ContentSection />
-      <SectionDivider variant="wave" />
-      <Events />
       <SectionDivider variant="morph" />
-      <Certifications />
+      <Events />
       <SectionDivider variant="gradient" />
+      <Certifications />
+      <SectionDivider variant="wave" />
+      <ContentSection />
+      <SectionDivider variant="morph" />
       <Contact />
       <Footer />
     </main>
