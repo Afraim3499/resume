@@ -120,15 +120,44 @@ Create these **5 Boards** to define your aesthetic:
 *   **Employment Credential**: "Operations Associate at PrimeSync Solutions (AI Agents)"
 *   **Location Credential**: "Lives in Dhaka, Bangladesh"
 
-### Profile Description (The "Pitch")
-> I bridge the gap between high-level business strategy and low-level code execution.
->
-> *   **Founder of Gaari**: Architected Bangladesh's premium mobility marketplace (Next.js/Supabase).
-> *   **Venture Architect**: Specializing in "Zero to One" scaling and AI Agentic Systems.
->
-> I write about **Systems Engineering**, **Venture Capital in Frontier Markets**, and the **"Founder Mode"** operational philosophy.
->
-> *Ask me about: Next.js Architecture, RAG Pipelines, and building startups in Bangladesh.*
+### Profile Description (The "Manifesto")
+
+> **"The greatest team you’ll ever lead is the one inside your screen."**
+
+I am **Rizwanul Islam (Afraim)**, a Venture Architect and Systems Orchestrator. I operate at the intersection of high-level business strategy and low-level technical execution—a state I call **"Founder Mode."**
+
+I do not just write code; I architect intelligent futures.
+
+---
+
+### 🚀 What I Build
+
+1.  **Gaari (Founder & CEO)**: Bangladesh’s premium mobility ecosystem. I successfully architected a platform handling **1M+ data points** using Next.js and Supabase, proving that complex marketplaces can be built with lean, high-intelligence teams.
+2.  **PrimeSync Solutions (Operations Associate)**: Leading the frontier of **AI Voice Agents**. I design the lead generation frameworks and operational strategies that power the next generation of business automation.
+3.  **The Trail (Co-Founder)**: A production-grade news aggregation engine built on a scalable CMS, designed to handle high-velocity content.
+
+---
+
+### 🧠 My "Orchestrator" Philosophy
+
+Most founders are trapped in a binary: they are either "Idea People" who can't build, or "Technical People" who can't sell. I reject this.
+
+*   **I Build**: I specialize in the **"T3 Stack"** (Next.js, TypeScript, Tailwind) and **AI Agentic Systems** (RAG, pgvector).
+*   **I Scale**: I design systems that remove human bottlenecks. If a process happens three times, I write a script for it. If it happens thirty times, I build an agent for it.
+*   **I Lead**: My background leading **200+ people** at North South University (NSUSS) taught me that software architecture and organizational architecture are the same thing: it's all about data flow.
+
+---
+
+### 🛠 The Technical Arsenal
+
+*   **Frontend**: Next.js (App Router), React, Framer Motion.
+*   **Backend**: Supabase (PostgreSQL), Edge Functions, Redis.
+*   **AI/ML**: RAG Pipelines, OpenAI API, Vector Embeddings.
+*   **Strategy**: The "4-Layer SEO Framework" (SXO, AIO, GEO, AEO).
+
+**I write on Quora to document the transition from "Developer" to "Venture Architect."** Follow me if you want to learn how to build systems that scale, teams that perform, and ventures that last.
+
+*Ask me about: Startup Architecture, AI Agents, and the Digital Economy in Frontier Markets.*
 
 ### Strategic Topics to Follow
 *   **Startups & Entrepreneurship**: Look for questions about "MVP", "Scaling", "Founding Challenges".
