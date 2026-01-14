@@ -62,7 +62,7 @@ export function Hero() {
                         variant="outline"
                         size="lg"
                         className="rounded-full"
-                        onClick={() => window.open('/assets/resume.pdf', '_blank')}
+                        onClick={() => window.open('/resume', '_blank')}
                     >
                         <Download className="w-4 h-4 mr-2" /> Resume
                     </Button>
