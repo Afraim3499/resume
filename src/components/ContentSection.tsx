@@ -109,8 +109,8 @@ export function ContentSection() {
           </h3>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Medium Article */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {/* Feature Story (Medium) */}
           <a
             href="https://kalababascrypto.medium.com/beyond-hello-world-meet-the-architect-reimagining-dhakas-digital-infrastructure-41482724e196"
             target="_blank"
@@ -129,7 +129,29 @@ export function ContentSection() {
             <p className="text-foreground/70 text-sm mb-4">
               "Meet The Architect Reimagining Dhaka's Digital Infrastructure" — An independent deep-dive into the engineering philosophy behind Gaari.
             </p>
-            <span className="text-xs font-medium text-foreground/50 uppercase tracking-wider mt-auto">Read on Medium</span>
+            <span className="text-xs font-medium text-foreground/50 uppercase tracking-wider mt-auto">Featured Story</span>
+          </a>
+
+          {/* Manifesto (Medium) */}
+          <a
+            href="https://medium.com/@rizwanulislamafraim/the-death-of-the-coder-why-i-became-a-system-architect-276563ae6338"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col p-6 rounded-2xl bg-background border border-foreground/10 dark:border-white/5 hover:border-black/20 hover:shadow-lg transition-all group"
+          >
+            <div className="flex items-start justify-between mb-4">
+              <div className="p-3 bg-black rounded-lg text-white">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.82 24 12z" />
+                </svg>
+              </div>
+              <ArrowRight className="w-5 h-5 text-foreground/30 group-hover:text-black transition-colors" />
+            </div>
+            <h4 className="text-xl font-bold mb-2 group-hover:text-black transition-colors">The Death of the "Coder"</h4>
+            <p className="text-foreground/70 text-sm mb-4">
+              "Why I Became a System Architect" — My manifesto on moving from syntax to systems, future-proofing your career.
+            </p>
+            <span className="text-xs font-medium text-foreground/50 uppercase tracking-wider mt-auto">My Manifesto</span>
           </a>
 
           {/* Dev.to Profile */}

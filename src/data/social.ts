@@ -36,6 +36,12 @@ export const socialProfiles: SocialProfile[] = [
     username: "rizwanul_islam_afraim",
     icon: "book", // mapped to BookOpen in SocialLinks component
   },
+  {
+    platform: "Medium",
+    url: "https://medium.com/@rizwanul_afraim",
+    username: "@rizwanul_afraim",
+    icon: "medium",
+  },
 ];
 
 export const socialProof = {
