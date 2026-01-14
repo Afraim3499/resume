@@ -4,11 +4,10 @@ import type { BlogPost } from "@/lib/blog";
 export const blogPosts: BlogPost[] = [
   {
     slug: "building-ai-chatbot-nextjs-openai",
-    title: "Building an AI Chatbot with Next.js and OpenAI: From Zero to Production",
+    title: "Building an AI Chatbot with Next.js and OpenAI",
     excerpt: "Learn how I built Gaariwala, an AI-powered customer support chatbot that handles thousands of queries. A practical guide with code examples, streaming responses, and production optimization.",
-    content: `# Building an AI Chatbot with Next.js and OpenAI: From Zero to Production
+    content: `## The 3 AM Problem
 
-## The 3 AM Problem
 
 It was 3 AM when I received the notification: another customer had abandoned their booking on Gaari.
 
@@ -443,11 +442,10 @@ The key is not just building the chat interface—it's connecting it to your rea
   },
   {
     slug: "supabase-row-level-security-complete-guide",
-    title: "Supabase Row Level Security (RLS) - Complete Guide for 2026",
+    title: "Supabase Row Level Security (RLS): The 2026 Guide",
     excerpt: "Master Supabase Row Level Security with this comprehensive guide. Learn how to implement secure, scalable authorization policies for your Next.js applications with practical examples.",
-    content: `# Supabase Row Level Security (RLS) - Complete Guide for 2026
+    content: `Row Level Security (RLS) is one of Supabase's most powerful features, yet it's often misunderstood or underutilized. In this comprehensive guide, I'll show you how to implement bulletproof security policies that protect your data at the database level.
 
-Row Level Security (RLS) is one of Supabase's most powerful features, yet it's often misunderstood or underutilized. In this comprehensive guide, I'll show you how to implement bulletproof security policies that protect your data at the database level.
 
 This tutorial is based on my experience building [The Trail](https://portfolio-rizwanul.vercel.app/projects/the-trail) (a news platform with 30+ database tables) and [Gaari](https://portfolio-rizwanul.vercel.app/projects/gaari) (a booking platform), where RLS was critical for multi-user security.
 

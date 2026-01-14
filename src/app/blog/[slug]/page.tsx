@@ -34,7 +34,7 @@ export async function generateMetadata({
   const url = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
 
   return {
-    title: `${post.title} | Blog`,
+    title: post.title,
     description: post.excerpt,
     alternates: {
       canonical: `${url}/blog/${post.slug}`,
