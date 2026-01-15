@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/Button";
 export function Hero() {
     return (
         <section id="hero" className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background pt-28 md:pt-32">
-            {/* Simple gradient background - Optimized for mobile */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
-                <div className="absolute top-1/4 left-1/4 w-[200px] md:w-[600px] h-[200px] md:h-[600px] bg-primary/10 rounded-full blur-[80px] md:blur-[120px]" />
-                <div className="absolute bottom-1/4 right-1/4 w-[200px] md:w-[500px] h-[200px] md:h-[500px] bg-accent/10 rounded-full blur-[80px] md:blur-[120px]" />
+            {/* Simple gradient background - Hidden on mobile for performance */}
+            <div className="absolute inset-0 z-0 overflow-hidden hidden md:block">
+                <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px]" />
             </div>
 
             {/* Content */}
