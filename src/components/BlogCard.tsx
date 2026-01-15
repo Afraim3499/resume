@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock, Tag } from "lucide-react";
+import { Calendar, Clock, Tag, RefreshCw } from "lucide-react";
 
 export interface BlogPost {
   slug: string;
@@ -14,6 +14,7 @@ export interface BlogPost {
   tags: string[];
   readingTime: string;
   image?: string;
+  updatedAt?: string;
 }
 
 interface BlogCardProps {
@@ -47,8 +48,19 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
 
         <div className="flex items-center gap-4 text-xs text-foreground/60 mb-3">
           <div className="flex items-center gap-1">
-            <Calendar className="w-3 h-3" />
-            {new Date(post.date).toLocaleDateString()}
+            {post.updatedAt ? (
+              <>
+                <RefreshCw className="w-3 h-3 text-emerald-500" />
+                <time dateTime={post.updatedAt} className="text-emerald-500 font-medium">
+                  {new Date(post.updatedAt).toLocaleDateString()}
+                </time>
+              </>
+            ) : (
+              <>
+                <Calendar className="w-3 h-3" />
+                <time dateTime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+              </>
+            )}
           </div>
           <div className="flex items-center gap-1">
             <Clock className="w-3 h-3" />

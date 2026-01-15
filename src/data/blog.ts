@@ -431,6 +431,7 @@ The key is not just building the chat interface—it's connecting it to your rea
 
 *Building an AI chatbot for your business? Let's connect on [LinkedIn](https://www.linkedin.com/in/rizwanul-islam-afraim99/) or [Twitter](https://x.com/rizwanul_afraim).*`,
     date: "2026-01-08",
+    updatedAt: "2026-01-15",
     category: "AI/ML",
     tags: ["AI", "ChatBot", "Next.js", "OpenAI", "Tutorial", "Machine Learning"],
     readingTime: 12,

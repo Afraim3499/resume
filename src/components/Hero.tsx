@@ -20,12 +20,12 @@ export function Hero() {
                     <div className="relative inline-block w-56 h-56 md:w-64 md:h-64 rounded-full p-[3px] bg-gradient-to-tr from-primary via-accent to-transparent">
                         <div className="absolute inset-0 bg-background rounded-full m-[2px] overflow-hidden">
                             <Image
-                                src="/assets/hero-image.jpg"
+                                src="/assets/rizwanul-islam-afraim.jpg"
                                 alt="Rizwanul Islam Afraim - Legendary Digital Strategist and Developer"
                                 width={192}
                                 height={192}
                                 className="w-full h-full object-cover object-top"
-                                priority
+                                priority={true}
                             />
                         </div>
                     </div>

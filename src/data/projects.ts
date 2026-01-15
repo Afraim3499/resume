@@ -37,12 +37,12 @@ export const projects: Project[] = [
     longDescription: "A comprehensive car rental and travel platform serving Bangladesh. Features include multi-service booking engine (Car Rental, Travel Packages, Activities), advanced search with location, date, time, and car type filters, dynamic pricing algorithms, AI-powered chatbot (Gaariwala), geographic services with 500+ landmarks, real-time availability management, payment integration (Stripe & Bkash), and PWA capabilities. Built with Next.js 14, TypeScript, Supabase, and Redis caching.",
     tags: ["Next.js", "Travel", "E-commerce", "Performance", "AI", "PWA"],
     link: "https://gaaribd.com",
-    image: "/assets/gaari 1.jpg",
+    image: "/assets/gaari-1.jpg",
     screenshots: [
-      "/assets/gaari 1.jpg",
-      "/assets/gaari 2.jpg",
-      "/assets/gaari 3.jpg",
-      "/assets/gaari 4.jpg",
+      "/assets/gaari-1.jpg",
+      "/assets/gaari-2.jpg",
+      "/assets/gaari-3.jpg",
+      "/assets/gaari-4.jpg",
     ],
     metrics: {
       components: 80,
@@ -93,10 +93,10 @@ export const projects: Project[] = [
     longDescription: "A production-ready news platform with custom CMS, analytics system, and comprehensive admin dashboard. Features include advanced filtering system (Latest, Most Popular, Trending, Hot), category navigation (Politics, Tech, Culture, Business, etc.), trending articles with view counts, breaking news banner system, date-based filtering, rich text editor (Tiptap), content workflow (Draft → Review → Approved → Published), custom analytics with charts, SEO optimization with structured data, newsletter system, comments moderation, and Docker deployment.",
     tags: ["Next.js", "News Aggregator", "Automation", "High Traffic", "CMS"],
     link: "https://trailheadlines.com",
-    image: "/assets/the trail.jpg",
+    image: "/assets/the-trail.jpg",
     screenshots: [
-      "/assets/the trail.jpg",
-      "/assets/the trail 2.jpg",
+      "/assets/the-trail.jpg",
+      "/assets/the-trail-2.jpg",
     ],
     metrics: {
       components: 150,
@@ -148,10 +148,10 @@ export const projects: Project[] = [
     longDescription: "Working as Product & Market Researcher and Business Development Executive at PrimeSync Solutions, an AI company specializing in creating AI voice agents for businesses. Conducting comprehensive market research, identifying high-potential lead generation strategies, and developing business development frameworks for AI solutions across sectors like HVAC, Plumbing, and Car Dealerships.",
     tags: ["AI", "Voice Agents", "Market Research", "Business Development", "Product Research"],
     link: "https://primesyncsolutions.com",
-    image: "/assets/primesync 1.jpg",
+    image: "/assets/primesync-1.jpg",
     screenshots: [
-      "/assets/primesync 1.jpg",
-      "/assets/primesync 2.jpg",
+      "/assets/primesync-1.jpg",
+      "/assets/primesync-2.jpg",
     ],
     techStack: [
       "Market Research",
@@ -213,11 +213,11 @@ export const projects: Project[] = [
     description: "Cloud kitchen management and operations. Partnered with major food delivery platforms (Foodpanda, Pathao) to optimize delivery logistics and customer satisfaction.",
     longDescription: "Co-founded and served as CEO of a cloud kitchen business. Managed operations, logistics, and strategic partnerships with major food delivery platforms (Foodpanda, Pathao). Optimized delivery logistics and customer satisfaction across multiple platforms.",
     tags: ["Operations", "Management", "Logistics"],
-    image: "/assets/carnival of crust.jpg",
+    image: "/assets/carnival-of-crust.jpg",
     screenshots: [
-      "/assets/carnival of crust.jpg",
-      "/assets/carnival of crust 2.jpg",
-      "/assets/carnival of crust 3.jpg",
+      "/assets/carnival-of-crust.jpg",
+      "/assets/carnival-of-crust-2.jpg",
+      "/assets/carnival-of-crust-3.jpg",
     ],
     techStack: [
       "Operations Management",

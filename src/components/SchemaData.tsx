@@ -22,7 +22,7 @@ export function SchemaData() {
     description: "Legendary Digital Strategist and Architect of Intelligent Futures. Rizwanul Islam (Afraim) combines high-level business strategy with low-level technical execution.",
     disambiguatingDescription: "Founder of Gaari. Operations Associate at PrimeSync Solutions. Known as 'Afraim'. Distinct from Dr. Md. Rizwanul Islam (Dean).",
     url: baseUrl,
-    image: `${baseUrl}/og-image.jpg`,
+    image: `${baseUrl}/assets/rizwanul-islam-afraim.jpg`,
     email: "contact@rizwanulislam.com",
     sameAs: [
       "https://www.linkedin.com/in/rizwanul-islam-afraim99/",
@@ -92,7 +92,7 @@ export function SchemaData() {
     name: "Rizwanul Islam (Afraim) - Venture Architect",
     description: "Full-stack development, digital strategy, and venture orchestration services.",
     url: baseUrl,
-    logo: `${baseUrl}/og-image.jpg`,
+    logo: `${baseUrl}/assets/rizwanul-islam-afraim.jpg`,
     founder: {
       "@type": "Person",
       name: "Rizwanul Islam (Afraim)",
@@ -128,12 +128,25 @@ export function SchemaData() {
     "@type": "SoftwareApplication",
     name: project.title,
     description: project.description,
-    applicationCategory: "WebApplication",
-    operatingSystem: "Web",
+    applicationCategory: "WebApplication", // God Mode: Specific category
+    operatingSystem: "Web, iOS, Android", // God Mode: Cross-platform capability
     url: project.link,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    aggregateRating: project.performance?.lighthouse ? { // God Mode: Performance as rating
+      "@type": "AggregateRating",
+      ratingValue: (project.performance.lighthouse / 20).toFixed(1), // Scale 100 to 5
+      ratingCount: "1",
+      bestRating: "5",
+      worstRating: "1"
+    } : undefined,
     author: {
       "@type": "Person",
       name: "Rizwanul Islam (Afraim)",
+      url: baseUrl,
     },
     datePublished: `${project.year}-01-01`,
     programmingLanguage: project.techStack,

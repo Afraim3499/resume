@@ -11,6 +11,7 @@ const navItems = [
   { name: "Home", href: "/#hero" },
   { name: "About", href: "/#about" },
   { name: "Manifesto", href: "/manifesto" },
+  { name: "Wiki", href: "/wiki" },
   { name: "My Story", href: "/#story" },
   { name: "Skills", href: "/#skills" },
   { name: "Experience", href: "/#experience" },
@@ -104,8 +105,9 @@ export function Navigation() {
                 const sectionId = item.href.replace("/#", "");
                 const isActive = activeSection === sectionId;
                 return (
-                  <button
+                  <Link
                     key={item.name}
+                    href={item.href}
                     onClick={() => handleNavClick(item.href)}
                     className={`relative text-sm font-medium transition-colors ${isActive
                       ? "text-primary"
@@ -119,7 +121,7 @@ export function Navigation() {
                         className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
                       />
                     )}
-                  </button>
+                  </Link>
                 );
               })}
               <ThemeToggle />
@@ -163,8 +165,9 @@ export function Navigation() {
                   const sectionId = item.href.replace("/#", "");
                   const isActive = activeSection === sectionId;
                   return (
-                    <button
+                    <Link
                       key={item.name}
+                      href={item.href}
                       onClick={() => handleNavClick(item.href)}
                       className={`block w-full text-left px-4 py-2 rounded-lg transition-colors ${isActive
                         ? "bg-primary/20 text-primary border border-primary/30"
@@ -172,7 +175,7 @@ export function Navigation() {
                         }`}
                     >
                       {item.name}
-                    </button>
+                    </Link>
                   );
                 })}
                 <div className="pt-4 border-t border-foreground/10">

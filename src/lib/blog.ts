@@ -7,6 +7,7 @@ export interface BlogPost {
   excerpt: string;
   content: string;
   date: string;
+  updatedAt?: string;
   category: string;
   tags: string[];
   readingTime: number;

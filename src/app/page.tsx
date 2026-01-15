@@ -22,7 +22,7 @@ const Contact = dynamic(() => import("@/components/Contact").then((mod) => mod.C
 
 export default function Home() {
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
+    <main id="main-content" className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
       <div id="hero">
         <Hero />
       </div>

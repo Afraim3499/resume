@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, Tag, ExternalLink, FileText } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Tag, ExternalLink, FileText, RefreshCw, List } from "lucide-react";
 import type { Metadata } from "next";
 import { getBlogPostBySlug, blogPosts, getBlogPostByProjectSlug } from "@/data/blog";
 import { MarkdownContent } from "@/components/MarkdownContent";
-import { formatPostDate, getRelatedPosts } from "@/lib/blog";
+import { formatPostDate, getRelatedPosts, getPostHeadings } from "@/lib/blog";
 import { SocialShare } from "@/components/SocialShare";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -79,8 +79,42 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const project = projectSlug ? projects.find((p) => p.slug === projectSlug) : undefined;
   const caseStudy = projectSlug ? getCaseStudyByProject(projectSlug) : undefined;
 
+  // Generate Article Schema
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image ? [post.image] : [`${url}/assets/rizwanul-islam-afraim.jpg`],
+    datePublished: post.date,
+    dateModified: post.updatedAt || post.date,
+    author: {
+      "@type": "Person",
+      name: post.author?.name || "Rizwanul Islam (Afraim)",
+      url: "https://portfolio-rizwanul.vercel.app",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Rizwanul Islam (Afraim)",
+      logo: {
+        "@type": "ImageObject",
+        url: `${url}/assets/rizwanul-islam-afraim.jpg`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+  };
+
+  const headings = getPostHeadings(post.content);
+
   return (
     <main className="bg-background min-h-screen text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <ReadingProgress />
       <article className="container px-4 mx-auto max-w-4xl py-12">
         <Breadcrumbs
@@ -93,8 +127,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <header className="mb-8">
           <div className="flex items-center gap-4 text-sm text-foreground/60 mb-4">
             <div className="flex items-center gap-1">
-              <Calendar className="w-4 h-4" />
-              {formatPostDate(post.date)}
+              {post.updatedAt ? (
+                <>
+                  <RefreshCw className="w-4 h-4 text-emerald-500" />
+                  <time dateTime={post.updatedAt} className="text-emerald-500 font-medium">
+                    Updated {formatPostDate(post.updatedAt)}
+                  </time>
+                </>
+              ) : (
+                <>
+                  <Calendar className="w-4 h-4" />
+                  <time dateTime={post.date}>{formatPostDate(post.date)}</time>
+                </>
+              )}
             </div>
             <div className="flex items-center gap-1">
               <Clock className="w-4 h-4" />
@@ -128,6 +173,30 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           <SocialShare url={postUrl} title={post.title} description={post.excerpt} />
         </header>
+
+        {headings.length > 0 && (
+          <nav aria-label="Table of Contents" className="mb-8 p-6 bg-secondary/20 rounded-lg border border-white/5">
+            <div className="flex items-center gap-2 mb-4 text-lg font-semibold text-foreground/90">
+              <List className="w-5 h-5" />
+              <h2>Table of Contents</h2>
+            </div>
+            <ul className="space-y-2 text-sm">
+              {headings.map((heading) => (
+                <li
+                  key={heading.id}
+                  style={{ paddingLeft: `${(heading.level - 2) * 1}rem` }}
+                >
+                  <a
+                    href={`#${heading.id}`}
+                    className="text-foreground/70 hover:text-primary transition-colors block py-0.5"
+                  >
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
 
         <div className="mb-12">
           <MarkdownContent content={post.content} />
