@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { Download, Plus, Trash2, X, Check } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 import { IncomeSource, ExpenseItem, LoanEntry } from "@/types/budget";
 import { IncomeScheduler } from "@/components/budget/IncomeScheduler";
 import { BudgetInput } from "@/components/budget/BudgetInput";
 import { AnalysisPanel } from "@/components/budget/AnalysisPanel";
 import { DailyTracker } from "@/components/budget/DailyTracker";
 import { DebtManager } from "@/components/budget/DebtManager";
+import { SupabaseMigration } from "@/components/budget/SupabaseMigration";
 
 const DEFAULT_EXPENSES: ExpenseItem[] = [
     { id: "1", name: "Rent & Grocery", amount: 0, category: "Rent", isFixed: true },
@@ -18,44 +20,71 @@ const DEFAULT_EXPENSES: ExpenseItem[] = [
 ];
 
 export default function BudgetPage() {
-    const [incomes, setIncomes] = useState<IncomeSource[]>([
-        { id: "1", name: "Office Salary", amount: 0, expectedDateRange: { start: 5, end: 7 }, isRecurring: true, repeats: 'monthly' },
-        { id: "2", name: "Fahad Payment 1", amount: 0, expectedDateRange: { start: 20, end: 22 }, isRecurring: true, repeats: 'monthly' },
-        { id: "3", name: "Fahad Payment 2", amount: 0, expectedDateRange: { start: 23, end: 25 }, isRecurring: true, repeats: 'monthly' },
-    ]);
+    const [incomes, setIncomes] = useState<IncomeSource[]>([]);
 
-    const [expenses, setExpenses] = useState<ExpenseItem[]>(DEFAULT_EXPENSES);
+    const [expenses, setExpenses] = useState<ExpenseItem[]>([]);
     const [loans, setLoans] = useState<LoanEntry[]>([]);
     const [investmentTarget, setInvestmentTarget] = useState<number>(0);
     const [currentBalance, setCurrentBalance] = useState<number | undefined>(undefined);
     const [lastBalanceUpdate, setLastBalanceUpdate] = useState<Date | null>(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    // Load from LocalStorage
-    useEffect(() => {
-        const savedData = localStorage.getItem("budget_data");
-        if (savedData) {
-            try {
-                const parsed = JSON.parse(savedData);
-                setIncomes(parsed.incomes && parsed.incomes.length > 0 ? parsed.incomes : incomes);
-                setExpenses(parsed.expenses || DEFAULT_EXPENSES);
-                setInvestmentTarget(parsed.investmentTarget || 0);
-                if (parsed.currentBalance !== undefined) setCurrentBalance(parsed.currentBalance);
-                if (parsed.lastBalanceUpdate) setLastBalanceUpdate(new Date(parsed.lastBalanceUpdate));
-            } catch (e) {
-                console.error("Failed to load budget data", e);
-            }
-        }
-        setIsLoaded(true);
-    }, []);
+    // Cloud State
+    const [user, setUser] = useState<any>(null);
+    const [profile, setProfile] = useState<any>(null);
+    const [goals, setGoals] = useState<any[]>([]);
 
-    // Auto-Save to LocalStorage
+    // Load from Supabase
     useEffect(() => {
-        if (isLoaded) {
-            const data = { incomes, expenses, investmentTarget, currentBalance, lastBalanceUpdate, loans };
-            localStorage.setItem("budget_data", JSON.stringify(data));
-        }
-    }, [incomes, expenses, investmentTarget, currentBalance, lastBalanceUpdate, loans, isLoaded]);
+        const loadCloudData = async () => {
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
+                if (!user) return;
+                setUser(user);
+
+                // 1. Profile
+                const { data: profile } = await supabase.from('budget_profiles').select('*').eq('id', user.id).single();
+                setProfile(profile);
+
+                // 2. Incomes
+                const { data: cloudIncomes } = await supabase.from('budget_incomes').select('*');
+                if (cloudIncomes) setIncomes(cloudIncomes.map((i: any) => ({
+                    id: i.id,
+                    name: i.name,
+                    amount: i.amount,
+                    startDate: i.start_date,
+                    repeats: i.repeats,
+                    isRecurring: true,
+                    expectedDateRange: { start: 1, end: 1 } // Fallback
+                })));
+
+                // 3. Expenses
+                const { data: cloudExpenses } = await supabase.from('budget_expenses').select('*');
+                if (cloudExpenses) setExpenses(cloudExpenses.map((e: any) => ({
+                    id: e.id,
+                    name: e.name,
+                    amount: e.amount,
+                    category: e.category,
+                    isFixed: e.is_fixed
+                })));
+
+                // 4. Goals (Target)
+                const { data: cloudGoals } = await supabase.from('budget_goals').select('*');
+                if (cloudGoals) {
+                    setGoals(cloudGoals);
+                    // Do NOT set monthly investment target to the total goal amount (e.g. 5 Lakhs)
+                    // We will let the user set their monthly contribution manually or calculate it later.
+                }
+
+                setIsLoaded(true);
+
+            } catch (e) {
+                console.error("Sync Error:", e);
+            }
+        };
+
+        loadCloudData();
+    }, []);
 
     const [isAddingExpense, setIsAddingExpense] = useState(false);
     const [newExpense, setNewExpense] = useState<Partial<ExpenseItem>>({
@@ -69,18 +98,30 @@ export default function BudgetPage() {
         setExpenses(prev => prev.map(exp => exp.id === id ? { ...exp, amount } : exp));
     };
 
-    const handleAddExpense = () => {
-        if (!newExpense.name) return;
-        const item: ExpenseItem = {
-            id: crypto.randomUUID(),
+    const handleAddExpense = async () => {
+        if (!newExpense.name || !user) return;
+
+        const newItem = {
+            user_id: user.id,
             name: newExpense.name,
             amount: newExpense.amount || 0,
-            category: (newExpense.category as any) || "Other",
-            isFixed: newExpense.isFixed || false
+            category: newExpense.category || "Other",
+            is_fixed: newExpense.isFixed || false
         };
-        setExpenses([...expenses, item]);
-        setNewExpense({ name: "", amount: 0, category: "Other", isFixed: false, isReimbursable: false });
-        setIsAddingExpense(false);
+
+        const { data: inserted, error } = await supabase.from('budget_expenses').insert(newItem).select().single();
+
+        if (inserted) {
+            setExpenses([...expenses, {
+                id: inserted.id,
+                name: inserted.name,
+                amount: inserted.amount,
+                category: inserted.category,
+                isFixed: inserted.is_fixed
+            }]);
+            setNewExpense({ name: "", amount: 0, category: "Other", isFixed: false, isReimbursable: false });
+            setIsAddingExpense(false);
+        }
     };
 
     const handleDeleteExpense = (id: string) => {
@@ -127,12 +168,16 @@ export default function BudgetPage() {
             <div className="bg-white/80 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-50">
                 <div className="container max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6 flex justify-between items-center">
                     <div className="flex items-center gap-2 md:gap-3">
-                        <div className="w-8 h-8 md:w-10 md:h-10 bg-black rounded-full flex items-center justify-center text-white shadow-lg shadow-black/20">
-                            <span className="font-serif italic font-bold text-lg md:text-xl">W</span>
+                        <div className="w-8 h-8 md:w-10 md:h-10 bg-black rounded-full flex items-center justify-center text-white shadow-lg shadow-black/20 text-xs font-bold">
+                            {profile?.full_name?.substring(0, 2).toUpperCase() || "WO"}
                         </div>
                         <div>
-                            <h1 className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">Wealth Optimizer</h1>
-                            <p className="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-widest hidden sm:block">Personal Finance Command</p>
+                            <h1 className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">
+                                {profile ? `${profile.full_name.split(' ')[0]}'s Wealth` : "Wealth Optimizer"}
+                            </h1>
+                            <p className="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-widest hidden sm:block flex items-center gap-1">
+                                {goals.length > 0 ? `Target: ${goals[0].name}` : "Financial Command"}
+                            </p>
                         </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -168,6 +213,7 @@ export default function BudgetPage() {
                     investmentTarget={investmentTarget}
                     lastBalanceUpdate={lastBalanceUpdate}
                     loans={loans}
+                    goals={goals} // Phase 10: North Star
                 />
 
                 {/* Phase 6: Debt Manager (The Ledger of Truth) */}
@@ -213,11 +259,27 @@ export default function BudgetPage() {
                                     placeholder="e.g. 20000"
                                     className="bg-white shadow-sm"
                                 />
-                                <div className="mt-6 flex gap-4 text-sm text-gray-500 bg-white/60 p-4 md:p-5 rounded-2xl border border-indigo-50/50 backdrop-blur-sm">
-                                    <div className="min-w-[4px] bg-indigo-500 rounded-full"></div>
-                                    <p className="leading-relaxed text-xs">
-                                        This is your <strong>North Star</strong>. The calculator will optimize your daily limit to ensuring you hit this target first.
+                                <div className="mt-3 flex items-center justify-between">
+                                    <p
+                                        onClick={() => setInvestmentTarget(Math.round(incomes.reduce((a, b) => a + b.amount, 0) * 0.2))}
+                                        className="text-xs text-indigo-500 font-medium cursor-pointer hover:underline"
+                                    >
+                                        Recommended: ৳{Math.round(incomes.reduce((a, b) => a + b.amount, 0) * 0.2).toLocaleString()} (20%)
                                     </p>
+                                    <button
+                                        onClick={async () => {
+                                            if (!user) return;
+                                            // Optimistic UI
+                                            alert("Target Saved!");
+                                            await supabase.from('budget_profiles').update({ monthly_savings_target: investmentTarget }).eq('id', user.id);
+                                        }}
+                                        className="text-[10px] bg-indigo-600 text-white px-3 py-1.5 rounded-full font-bold uppercase tracking-wider hover:bg-indigo-700 transition-colors"
+                                    >
+                                        Confirm
+                                    </button>
+                                </div>
+                                <div className="mt-4 p-3 bg-indigo-50/50 rounded-xl border border-indigo-100/50 text-xs text-indigo-800 leading-relaxed">
+                                    This is your <strong>North Star</strong>. The calculator will optimize your daily limit to ensuring you hit this target first.
                                 </div>
                             </div>
                         </section>

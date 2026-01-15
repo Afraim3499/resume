@@ -11,6 +11,7 @@ interface AnalysisPanelProps {
     currentBalance?: number;
     lastBalanceUpdate?: Date | null;
     loans?: LoanEntry[];
+    goals?: any[]; // Phase 10: Goal Tracking
 }
 
 export function AnalysisPanel({
@@ -19,7 +20,8 @@ export function AnalysisPanel({
     investmentTarget,
     currentBalance,
     lastBalanceUpdate,
-    loans
+    loans,
+    goals = []
 }: AnalysisPanelProps) {
     // Phase 7: Reality Toggles
     const [showRealValue, setShowRealValue] = useState(false); // Inflation View
@@ -43,8 +45,8 @@ export function AnalysisPanel({
     const variableExpenses = expenses.filter(e => !e.isFixed && !e.isReimbursable).reduce((acc, curr) => acc + getMonthlyAmount(curr), 0);
 
     // Financial Deepening: Safety Buffer (Float)
-    // Rule: Keep 10% of Income as "Do Not Touch" buffer for liquidity crunches.
-    const SAFETY_BUFFER_PCT = 0.10;
+    // Rule: Keep 0% (User requested exact math)
+    const SAFETY_BUFFER_PCT = 0;
     const safetyBuffer = totalIncome * SAFETY_BUFFER_PCT;
 
     const projectedSurplus = totalIncome - totalExpenses - safetyBuffer - investmentTarget;
@@ -400,6 +402,44 @@ export function AnalysisPanel({
                                     <div className="absolute -bottom-4 -right-4 text-emerald-100">
                                         <PieChart className="w-16 h-16" />
                                     </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* GOAL TRACKER (North Star) */}
+                        {goals && goals.length > 0 && (
+                            <div className="bg-black text-white p-6 rounded-3xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
+
+                                <div className="flex justify-between items-start mb-4">
+                                    <div>
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <Rocket className="w-4 h-4 text-gray-400" />
+                                            <span className="text-xs font-bold uppercase tracking-widest text-gray-400">North Star</span>
+                                        </div>
+                                        <h3 className="text-2xl font-serif font-bold">{goals[0].name}</h3>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Target</p>
+                                        <p className="text-xl font-bold">৳{(goals[0].target_amount || 0).toLocaleString()}</p>
+                                    </div>
+                                </div>
+
+                                {/* Progress Bar (Mocked for now based on Balance) */}
+                                <div className="space-y-2">
+                                    <div className="flex justify-between text-xs font-medium text-gray-400">
+                                        <span>Current Status</span>
+                                        <span>{Math.min(100, Math.round(((currentBalance || 0) / (goals[0].target_amount || 1)) * 100))}%</span>
+                                    </div>
+                                    <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                                        <div
+                                            className="h-full bg-white transition-all duration-1000"
+                                            style={{ width: `${Math.min(100, ((currentBalance || 0) / (goals[0].target_amount || 1)) * 100)}%` }}
+                                        />
+                                    </div>
+                                    <p className="text-[10px] text-gray-500 mt-2">
+                                        *Progress is calculated based on your current Wallet Balance.
+                                    </p>
                                 </div>
                             </div>
                         )}
