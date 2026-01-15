@@ -25,6 +25,7 @@ export function IncomeScheduler({ incomes, setIncomes }: IncomeSchedulerProps) {
             amount: 0,
             expectedDateRange: { start: 1, end: 5 },
             isRecurring: true,
+            repeats: 'monthly'
         };
         // Don't add to main list yet, put in "staging"
         setNewItem(newIncome);
@@ -72,7 +73,7 @@ export function IncomeScheduler({ incomes, setIncomes }: IncomeSchedulerProps) {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h3 className="text-lg font-bold text-gray-900 tracking-tight">Income Sources</h3>
-                    <p className="text-sm text-gray-500">Visualize your monthly cash flow.</p>
+                    <p className="text-sm text-gray-500">Add your Salary, Freelance, or any inflows here. Toggle "One-time" for bonuses.</p>
                 </div>
                 <button
                     onClick={addIncome}
@@ -131,7 +132,11 @@ function CompactIncomeRow({ income, onEdit, onRemove }: { income: IncomeSource, 
                 <div>
                     <h4 className="font-bold text-gray-900 line-clamp-1">{income.name || "Unnamed Source"}</h4>
                     <p className="text-xs text-gray-500 font-medium">
-                        Expected: <span className="text-gray-700">{getOrdinal(income.expectedDateRange.start)} - {getOrdinal(income.expectedDateRange.end || income.expectedDateRange.start)}</span>
+                        Expected: <span className="text-gray-700">
+                            {income.startDate
+                                ? new Date(income.startDate).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: income.repeats === 'once' ? 'numeric' : undefined })
+                                : getOrdinal(income.expectedDateRange.start)}
+                        </span>
                     </p>
                 </div>
             </div>
@@ -187,6 +192,27 @@ function IncomeEditor({
                         />
                     </div>
 
+                    <div className="flex gap-2 p-1 bg-gray-50 rounded-lg w-fit">
+                        <button
+                            onClick={() => onUpdate({ repeats: 'monthly', isRecurring: true })}
+                            className={cn(
+                                "px-3 py-1.5 rounded-md text-xs font-bold transition-all",
+                                income.repeats === 'monthly' || income.isRecurring ? "bg-white shadow-sm text-black" : "text-gray-400 hover:text-gray-600"
+                            )}
+                        >
+                            Monthly
+                        </button>
+                        <button
+                            onClick={() => onUpdate({ repeats: 'once', isRecurring: false })}
+                            className={cn(
+                                "px-3 py-1.5 rounded-md text-xs font-bold transition-all",
+                                income.repeats === 'once' && !income.isRecurring ? "bg-white shadow-sm text-black" : "text-gray-400 hover:text-gray-600"
+                            )}
+                        >
+                            One-Time
+                        </button>
+                    </div>
+
                     <BudgetInput
                         label="Expected Amount"
                         value={income.amount}
@@ -197,14 +223,24 @@ function IncomeEditor({
 
                 {/* Date Picker */}
                 <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block">Expected Date Range</label>
-                    <div className="bg-gray-50/50 rounded-2xl p-2 border border-black/[0.02]">
-                        <DayPicker
-                            startDay={income.expectedDateRange.start}
-                            endDay={income.expectedDateRange.end}
-                            onChange={(s, e) => onUpdate({ expectedDateRange: { start: s, end: e || s } })}
-                            className="h-full border-none shadow-none bg-transparent w-full"
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest block">Expected Date</label>
+                    <div className="bg-gray-50/50 rounded-2xl p-4 border border-black/[0.02]">
+                        <input
+                            type="date"
+                            value={income.startDate || (new Date().toISOString().split('T')[0])}
+                            onChange={(e) => {
+                                const dateVal = e.target.value;
+                                const day = parseInt(dateVal.split('-')[2]);
+                                onUpdate({
+                                    startDate: dateVal,
+                                    expectedDateRange: { start: day, end: day } // fallback sync
+                                });
+                            }}
+                            className="bg-transparent text-2xl font-bold text-gray-900 w-full outline-none"
                         />
+                        <p className="text-xs text-gray-500 mt-2">
+                            {income.repeats === 'monthly' ? "Recurrs monthly on this day." : "One-time payout date."}
+                        </p>
                     </div>
                 </div>
             </div>

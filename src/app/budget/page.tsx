@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Download } from "lucide-react";
-import { IncomeSource, ExpenseItem } from "@/types/budget";
+import { Download, Plus, Trash2, X, Check } from "lucide-react";
+import { IncomeSource, ExpenseItem, LoanEntry } from "@/types/budget";
 import { IncomeScheduler } from "@/components/budget/IncomeScheduler";
 import { BudgetInput } from "@/components/budget/BudgetInput";
 import { AnalysisPanel } from "@/components/budget/AnalysisPanel";
 import { DailyTracker } from "@/components/budget/DailyTracker";
+import { DebtManager } from "@/components/budget/DebtManager";
 
 const DEFAULT_EXPENSES: ExpenseItem[] = [
     { id: "1", name: "Rent & Grocery", amount: 0, category: "Rent", isFixed: true },
@@ -18,12 +19,13 @@ const DEFAULT_EXPENSES: ExpenseItem[] = [
 
 export default function BudgetPage() {
     const [incomes, setIncomes] = useState<IncomeSource[]>([
-        { id: "1", name: "Office Salary", amount: 0, expectedDateRange: { start: 5, end: 7 }, isRecurring: true },
-        { id: "2", name: "Fahad Payment 1", amount: 0, expectedDateRange: { start: 20, end: 22 }, isRecurring: true },
-        { id: "3", name: "Fahad Payment 2", amount: 0, expectedDateRange: { start: 23, end: 25 }, isRecurring: true },
+        { id: "1", name: "Office Salary", amount: 0, expectedDateRange: { start: 5, end: 7 }, isRecurring: true, repeats: 'monthly' },
+        { id: "2", name: "Fahad Payment 1", amount: 0, expectedDateRange: { start: 20, end: 22 }, isRecurring: true, repeats: 'monthly' },
+        { id: "3", name: "Fahad Payment 2", amount: 0, expectedDateRange: { start: 23, end: 25 }, isRecurring: true, repeats: 'monthly' },
     ]);
 
     const [expenses, setExpenses] = useState<ExpenseItem[]>(DEFAULT_EXPENSES);
+    const [loans, setLoans] = useState<LoanEntry[]>([]);
     const [investmentTarget, setInvestmentTarget] = useState<number>(0);
     const [currentBalance, setCurrentBalance] = useState<number | undefined>(undefined);
     const [lastBalanceUpdate, setLastBalanceUpdate] = useState<Date | null>(null);
@@ -50,13 +52,39 @@ export default function BudgetPage() {
     // Auto-Save to LocalStorage
     useEffect(() => {
         if (isLoaded) {
-            const data = { incomes, expenses, investmentTarget, currentBalance, lastBalanceUpdate };
+            const data = { incomes, expenses, investmentTarget, currentBalance, lastBalanceUpdate, loans };
             localStorage.setItem("budget_data", JSON.stringify(data));
         }
-    }, [incomes, expenses, investmentTarget, currentBalance, lastBalanceUpdate, isLoaded]);
+    }, [incomes, expenses, investmentTarget, currentBalance, lastBalanceUpdate, loans, isLoaded]);
+
+    const [isAddingExpense, setIsAddingExpense] = useState(false);
+    const [newExpense, setNewExpense] = useState<Partial<ExpenseItem>>({
+        name: "",
+        amount: 0,
+        category: "Other",
+        isFixed: false
+    });
 
     const updateExpense = (id: string, amount: number) => {
         setExpenses(prev => prev.map(exp => exp.id === id ? { ...exp, amount } : exp));
+    };
+
+    const handleAddExpense = () => {
+        if (!newExpense.name) return;
+        const item: ExpenseItem = {
+            id: crypto.randomUUID(),
+            name: newExpense.name,
+            amount: newExpense.amount || 0,
+            category: (newExpense.category as any) || "Other",
+            isFixed: newExpense.isFixed || false
+        };
+        setExpenses([...expenses, item]);
+        setNewExpense({ name: "", amount: 0, category: "Other", isFixed: false, isReimbursable: false });
+        setIsAddingExpense(false);
+    };
+
+    const handleDeleteExpense = (id: string) => {
+        setExpenses(prev => prev.filter(e => e.id !== id));
     };
 
     const handleBalanceUpdate = (amount: number) => {
@@ -64,8 +92,23 @@ export default function BudgetPage() {
         setLastBalanceUpdate(new Date());
     };
 
+    // Phase 6: Debt Ledger Handlers
+    const handleAddLoan = (loan: LoanEntry) => {
+        setLoans(prev => [...prev, loan]);
+    };
+
+    const handleSettleLoan = (id: string) => {
+        setLoans(prev => prev.map(l => l.id === id ? { ...l, status: 'settled' } : l));
+        // Optional: If settled, does it affect balance? 
+        // For now, keep it manual update via DailyTracker.
+    };
+
+    const handleDeleteLoan = (id: string) => {
+        setLoans(prev => prev.filter(l => l.id !== id));
+    };
+
     const handleDownload = () => {
-        const data = JSON.stringify({ incomes, expenses, investmentTarget, currentBalance }, null, 2);
+        const data = JSON.stringify({ incomes, expenses, investmentTarget, currentBalance, loans }, null, 2);
         const blob = new Blob([data], { type: "application/json" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
@@ -92,13 +135,27 @@ export default function BudgetPage() {
                             <p className="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-widest hidden sm:block">Personal Finance Command</p>
                         </div>
                     </div>
-                    <button
-                        onClick={handleDownload}
-                        className="group flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-full bg-white border border-gray-200 hover:border-black transition-colors text-xs font-bold uppercase tracking-wider text-gray-600 hover:text-black shadow-sm"
-                    >
-                        <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
-                        <span>Backup</span>
-                    </button>
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={() => {
+                                if (confirm("Are you sure? This will wipe all data and reset to defaults.")) {
+                                    localStorage.removeItem("budget_data");
+                                    window.location.reload();
+                                }
+                            }}
+                            className="group flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-full bg-white border border-gray-200 hover:border-red-200 hover:bg-red-50 text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-red-500 transition-colors"
+                        >
+                            <Trash2 className="w-4 h-4" />
+                            <span className="hidden sm:inline">Reset</span>
+                        </button>
+                        <button
+                            onClick={handleDownload}
+                            className="group flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-full bg-white border border-gray-200 hover:border-black transition-colors text-xs font-bold uppercase tracking-wider text-gray-600 hover:text-black shadow-sm"
+                        >
+                            <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+                            <span>Backup</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -107,10 +164,21 @@ export default function BudgetPage() {
                 <AnalysisPanel
                     incomes={incomes}
                     expenses={expenses}
-                    investmentTarget={investmentTarget}
                     currentBalance={currentBalance}
+                    investmentTarget={investmentTarget}
                     lastBalanceUpdate={lastBalanceUpdate}
+                    loans={loans}
                 />
+
+                {/* Phase 6: Debt Manager (The Ledger of Truth) */}
+                <div className="mb-12">
+                    <DebtManager
+                        loans={loans}
+                        onAddLoan={handleAddLoan}
+                        onSettleLoan={handleSettleLoan}
+                        onDeleteLoan={handleDeleteLoan}
+                    />
+                </div>
 
                 <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 md:gap-12">
                     {/* Left Column: Cash Flow & Check-in (7/12) */}
@@ -161,30 +229,123 @@ export default function BudgetPage() {
                                     <span className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-lg">💸</span>
                                     Monthly Expenses
                                 </h3>
+                                <button
+                                    onClick={() => setIsAddingExpense(true)}
+                                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800 transition-colors text-xs font-bold uppercase tracking-wider shadow-lg shadow-black/20"
+                                >
+                                    <Plus className="w-4 h-4" />
+                                    <span>Add Expense</span>
+                                </button>
+                            </div>
+
+                            {/* User Guide for Expenses */}
+                            <div className="mb-6 bg-blue-50/50 p-4 rounded-xl border border-blue-100/50 flex gap-3">
+                                <span className="text-xl">💡</span>
+                                <div className="space-y-1">
+                                    <p className="text-xs font-bold text-blue-900 uppercase tracking-wide">Expense Guide</p>
+                                    <ul className="text-xs text-blue-700 space-y-1 list-disc list-inside">
+                                        <li><strong>Fixed:</strong> Must-haves (Rent, Wifi). Deducted immediately.</li>
+                                        <li><strong>Variable:</strong> Daily spending (Food, Fun). Affects Daily Limit.</li>
+                                        <li><strong>Reimbursable:</strong> Office expenses. Reduces Cash but adds to "Owed to You".</li>
+                                    </ul>
+                                </div>
                             </div>
 
                             <div className="space-y-4 md:space-y-6">
                                 {expenses.map((expense) => (
-                                    <div key={expense.id} className="group flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl hover:bg-gray-50/80 transition-all border border-transparent hover:border-gray-100 bg-gray-50/30 sm:bg-transparent">
+                                    <div key={expense.id} className="group flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl hover:bg-gray-50/80 transition-all border border-transparent hover:border-gray-100 bg-gray-50/30 sm:bg-transparent relative">
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2 mb-1">
                                                 <label className="text-base font-bold text-gray-900 truncate">{expense.name}</label>
                                                 {expense.isFixed && (
                                                     <span className="text-[10px] bg-gray-100 px-2 py-0.5 rounded-full text-gray-500 font-bold uppercase tracking-wider">Fixed</span>
                                                 )}
+                                                {expense.isReimbursable && (
+                                                    <span className="text-[10px] bg-indigo-100 px-2 py-0.5 rounded-full text-indigo-600 font-bold uppercase tracking-wider">Reimbursable</span>
+                                                )}
                                             </div>
                                             <p className="text-xs text-gray-400 capitalize">{expense.category}</p>
                                         </div>
-                                        <div className="w-full sm:w-40">
-                                            <BudgetInput
-                                                label="Amount"
-                                                value={expense.amount}
-                                                onChange={(val) => updateExpense(expense.id, val)}
-                                                className="bg-white"
-                                            />
+                                        <div className="flex items-center gap-3 w-full sm:w-auto">
+                                            <div className="w-full sm:w-40">
+                                                <BudgetInput
+                                                    label="Amount"
+                                                    value={expense.amount}
+                                                    onChange={(val) => updateExpense(expense.id, val)}
+                                                    className="bg-white"
+                                                />
+                                            </div>
+                                            <button
+                                                onClick={() => handleDeleteExpense(expense.id)}
+                                                className="p-2 text-gray-300 hover:text-red-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"
+                                            >
+                                                <Trash2 className="w-4 h-4" />
+                                            </button>
                                         </div>
                                     </div>
                                 ))}
+
+                                {/* Add Expense Form */}
+                                {isAddingExpense && (
+                                    <div className="p-4 rounded-2xl bg-white border-2 border-dashed border-gray-200 animate-in fade-in slide-in-from-top-2">
+                                        <div className="flex items-center justify-between mb-4">
+                                            <h4 className="text-sm font-bold text-gray-900">New Expense</h4>
+                                            <button onClick={() => setIsAddingExpense(false)} className="text-gray-400 hover:text-black">
+                                                <X className="w-4 h-4" />
+                                            </button>
+                                        </div>
+                                        <div className="space-y-4">
+                                            <input
+                                                autoFocus
+                                                type="text"
+                                                placeholder="Expense Name (e.g. Netflix)"
+                                                value={newExpense.name}
+                                                onChange={e => setNewExpense({ ...newExpense, name: e.target.value })}
+                                                className="w-full bg-gray-50 p-3 rounded-lg text-sm font-bold text-gray-900 outline-none focus:ring-2 focus:ring-black/5 placeholder-gray-400"
+                                            />
+                                            <div className="flex gap-2">
+                                                <select
+                                                    value={newExpense.category}
+                                                    onChange={e => setNewExpense({ ...newExpense, category: e.target.value })}
+                                                    className="flex-1 bg-gray-50 p-3 rounded-lg text-xs font-bold text-gray-900 outline-none"
+                                                >
+                                                    <option value="Rent">Rent</option>
+                                                    <option value="Food Order">Food Order</option>
+                                                    <option value="Personal">Personal</option>
+                                                    <option value="Regular">Regular</option>
+                                                    <option value="Restaurants">Restaurants</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                                <button
+                                                    onClick={() => setNewExpense({ ...newExpense, isFixed: !newExpense.isFixed })}
+                                                    className={`px-3 py-2 rounded-lg text-xs font-bold border transition-colors ${newExpense.isFixed ? 'bg-black text-white border-black' : 'bg-white border-gray-200 text-gray-500'}`}
+                                                >
+                                                    {newExpense.isFixed ? 'FIXED' : 'VAR'}
+                                                </button>
+                                                <button
+                                                    onClick={() => setNewExpense({ ...newExpense, isReimbursable: !newExpense.isReimbursable })}
+                                                    className={`px-3 py-2 rounded-lg text-xs font-bold border transition-colors ${newExpense.isReimbursable ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white border-gray-200 text-gray-500'}`}
+                                                    title="I will act as a bank (reimbursed later)"
+                                                >
+                                                    {newExpense.isReimbursable ? 'REIMB' : 'OWN'}
+                                                </button>
+                                            </div>
+                                            <BudgetInput
+                                                label="Amount"
+                                                value={newExpense.amount || 0}
+                                                onChange={val => setNewExpense({ ...newExpense, amount: val })}
+                                                className="bg-gray-50"
+                                            />
+                                            <button
+                                                onClick={handleAddExpense}
+                                                disabled={!newExpense.name}
+                                                className="w-full py-3 bg-black text-white rounded-xl text-sm font-bold hover:bg-gray-800 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+                                            >
+                                                <Check className="w-4 h-4" /> Add Item
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="mt-8 pt-8 border-t border-gray-100/50 flex justify-between items-center">

@@ -62,6 +62,7 @@ export function DayPicker({ startDay, endDay, onChange, className }: DayPickerPr
                         <button
                             key={day}
                             onClick={() => handleDayClick(day)}
+                            aria-label={`Select Date ${day}`}
                             className={cn(
                                 "h-8 w-8 rounded-full text-sm font-medium transition-all duration-200 flex items-center justify-center relative",
                                 isSelected
