@@ -72,7 +72,7 @@ export function Timeline() {
                         {/* Timeline Start Marker */}
                         <div className="flex flex-col items-center justify-center min-w-[100px] shrink-0">
                             <div className="w-3 h-3 rounded-full bg-primary/50 mb-4" />
-                            <span className="text-xs uppercase tracking-widest text-foreground/40 font-mono">Start</span>
+                            <span className="text-xs uppercase tracking-widest text-foreground/70 font-mono">Start</span>
                         </div>
 
                         {/* Timeline Cards */}
@@ -84,7 +84,7 @@ export function Timeline() {
                         <div className="flex flex-col items-center justify-center min-w-[200px] md:min-w-[300px] shrink-0">
                             <div className="w-12 h-[2px] bg-gradient-to-r from-primary to-transparent mb-4" />
                             <span className="text-2xl md:text-3xl font-serif text-foreground/80">Present</span>
-                            <span className="text-xs text-foreground/40 uppercase tracking-widest mt-2">& Beyond</span>
+                            <span className="text-xs text-foreground/70 uppercase tracking-widest mt-2">& Beyond</span>
                         </div>
 
                     </motion.div>
@@ -116,11 +116,11 @@ function TimelineCard({ exp, index, isLast }: { exp: typeof experience[0], index
                 {/* Header */}
                 <div className="mb-4">
                     <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-mono text-primary/70 uppercase">
+                        <span className="text-xs font-mono text-primary font-medium uppercase">
                             {exp.startDate} — {exp.endDate}
                         </span>
                         {exp.type === "founder" && (
-                            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[9px] uppercase font-bold">
+                            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 text-[9px] uppercase font-bold">
                                 Founder
                             </span>
                         )}
@@ -130,14 +130,14 @@ function TimelineCard({ exp, index, isLast }: { exp: typeof experience[0], index
                         {exp.role}
                     </h3>
 
-                    <div className="flex items-center gap-1.5 text-sm text-foreground/50 font-medium mt-1">
+                    <div className="flex items-center gap-1.5 text-sm text-foreground/70 font-medium mt-1">
                         {exp.company}
                         {exp.companyUrl && <ExternalLink className="w-3 h-3 opacity-50" />}
                     </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-foreground/60 text-sm leading-relaxed mb-4 line-clamp-3">
+                <p className="text-foreground/80 text-sm leading-relaxed mb-4 line-clamp-3">
                     {exp.description}
                 </p>
 
@@ -145,8 +145,8 @@ function TimelineCard({ exp, index, isLast }: { exp: typeof experience[0], index
                 <div className="flex-1 overflow-y-auto pr-2 mb-4">
                     <ul className="space-y-2">
                         {exp.achievements.slice(0, 4).map((ach, i) => (
-                            <li key={i} className="flex items-start gap-2 text-foreground/60 text-xs leading-relaxed">
-                                <div className="w-1 h-1 rounded-full bg-primary/50 mt-1.5 shrink-0" />
+                            <li key={i} className="flex items-start gap-2 text-foreground/70 text-xs leading-relaxed">
+                                <div className="w-1 h-1 rounded-full bg-primary/70 mt-1.5 shrink-0" />
                                 <span className="line-clamp-2">{ach}</span>
                             </li>
                         ))}
@@ -157,12 +157,12 @@ function TimelineCard({ exp, index, isLast }: { exp: typeof experience[0], index
                 <div className="pt-4 border-t border-foreground/5 mt-auto">
                     <div className="flex flex-wrap gap-1.5">
                         {exp.technologies.slice(0, 4).map(tech => (
-                            <span key={tech} className="bg-background/50 px-2 py-1 rounded text-[10px] text-foreground/60 border border-foreground/5">
+                            <span key={tech} className="bg-background/50 px-2 py-1 rounded text-[10px] text-foreground/70 border border-foreground/10">
                                 {tech}
                             </span>
                         ))}
                         {exp.technologies.length > 4 && (
-                            <span className="text-[10px] text-foreground/40 px-1">+{exp.technologies.length - 4}</span>
+                            <span className="text-[10px] text-foreground/60 px-1">+{exp.technologies.length - 4}</span>
                         )}
                     </div>
                 </div>

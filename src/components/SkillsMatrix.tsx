@@ -71,8 +71,8 @@ export function SkillsMatrix() {
                         className={`
                relative px-6 py-2 rounded-full text-sm font-medium tracking-wide transition-all duration-300
                ${(activeCategory === cat || (cat === 'all' && activeCategory === null))
-                                ? "bg-primary text-primary-foreground shadow-[0_0_20px_-5px_rgba(var(--primary-rgb),0.5)] scale-105"
-                                : "bg-secondary/20 hover:bg-secondary/40 text-foreground/60 hover:text-foreground border border-foreground/5"}
+                                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 ring-2 ring-primary ring-offset-2 ring-offset-background"
+                                : "bg-secondary/30 text-foreground/80 hover:bg-secondary/50 hover:text-foreground border border-foreground/10"}
              `}
                     >
                         {cat.charAt(0).toUpperCase() + cat.slice(1)}
