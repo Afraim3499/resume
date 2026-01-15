@@ -55,8 +55,8 @@ export function Timeline() {
                                     A curated timeline of roles and ventures that shaped my path.
                                 </p>
 
-                                <div className="flex items-center gap-3 text-sm font-medium text-foreground/40">
-                                    <div className="w-8 h-[1px] bg-foreground/20" />
+                                <div className="flex items-center gap-3 text-sm font-medium text-foreground/60">
+                                    <div className="w-8 h-[1px] bg-foreground/30" />
                                     <span className="uppercase tracking-wider text-xs">Scroll to explore</span>
                                     <motion.div
                                         animate={{ x: [0, 8, 0] }}

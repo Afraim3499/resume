@@ -17,17 +17,15 @@ export function Hero() {
             <div className="container relative z-10 px-4 max-w-4xl mx-auto text-center">
                 {/* Profile Image */}
                 <div className="mb-8">
-                    <div className="relative inline-block w-56 h-56 md:w-64 md:h-64 rounded-full p-[3px] bg-gradient-to-tr from-primary via-accent to-transparent">
-                        <div className="absolute inset-0 bg-background rounded-full m-[2px] overflow-hidden">
-                            <Image
-                                src="/assets/rizwanul-islam-afraim.jpg"
-                                alt="Rizwanul Islam Afraim - Legendary Digital Strategist and Developer"
-                                width={192}
-                                height={192}
-                                className="w-full h-full object-cover object-top"
-                                priority={true}
-                            />
-                        </div>
+                    <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto mb-8 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl">
+                        <Image
+                            src="/assets/rizwanul-islam-afraim.jpg"
+                            alt="Rizwanul Islam Afraim - Legendary Digital Strategist and Developer"
+                            fill
+                            className="object-cover object-top"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority={true}
+                        />
                     </div>
                 </div>
 
@@ -46,17 +44,12 @@ export function Hero() {
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Button
-                        variant="primary"
+                        variant="outline"
                         size="lg"
-                        className="rounded-full"
-                        onClick={() => {
-                            const element = document.getElementById('projects');
-                            if (element) {
-                                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
-                        }}
+                        className="rounded-full px-8 border-foreground/20 text-foreground hover:bg-foreground/5"
+                        onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                     >
-                        Explore Ventures <ArrowRight className="w-4 h-4 ml-2" />
+                        Explore Ventures
                     </Button>
                     <Button
                         variant="outline"
