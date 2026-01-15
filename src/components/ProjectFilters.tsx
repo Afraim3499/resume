@@ -57,10 +57,13 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
       <div className="relative">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/50" />
         <input
+          id="project-search"
           type="text"
           placeholder="Search projects..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          autoComplete="off"
+          aria-label="Search projects"
           className="w-full pl-12 pr-10 py-3 rounded-lg bg-foreground/5 dark:bg-white/5 border border-foreground/10 dark:border-white/10 text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
         />
         {searchQuery && (
@@ -77,16 +80,17 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
       <div className="flex flex-wrap gap-4">
         {/* Category Filter */}
         <div className="flex-1 min-w-[200px]">
-          <label className="block text-sm text-foreground/70 mb-2">Category</label>
+          <label htmlFor="category-filter" className="block text-sm text-foreground/70 mb-2">Category</label>
           <select
+            id="category-filter"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value as Project["category"] | "all")}
             className="w-full px-4 py-2 rounded-lg bg-background border border-foreground/10 text-foreground focus:outline-none focus:border-primary/50 transition-colors"
           >
             <option value="all">All Categories</option>
             {categories.map((category) => (
-              <option 
-                key={category} 
+              <option
+                key={category}
                 value={category}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -97,16 +101,17 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
 
         {/* Tech Filter */}
         <div className="flex-1 min-w-[200px]">
-          <label className="block text-sm text-foreground/70 mb-2">Technology</label>
+          <label htmlFor="tech-filter" className="block text-sm text-foreground/70 mb-2">Technology</label>
           <select
+            id="tech-filter"
             value={selectedTech}
             onChange={(e) => setSelectedTech(e.target.value)}
             className="w-full px-4 py-2 rounded-lg bg-background border border-foreground/10 text-foreground focus:outline-none focus:border-primary/50 transition-colors"
           >
             <option value="all">All Technologies</option>
             {allTechs.map((tech) => (
-              <option 
-                key={tech} 
+              <option
+                key={tech}
                 value={tech}
               >
                 {tech}

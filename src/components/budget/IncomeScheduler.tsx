@@ -174,13 +174,15 @@ function IncomeEditor({
                 {/* Details */}
                 <div className="space-y-6">
                     <div>
-                        <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">Source Name</label>
+                        <label htmlFor="income-source-name" className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">Source Name</label>
                         <input
+                            id="income-source-name"
                             type="text"
                             autoFocus
                             value={income.name}
                             onChange={(e) => onUpdate({ name: e.target.value })}
                             placeholder="Checking Account..."
+                            autoComplete="off"
                             className="w-full bg-gray-50 p-3 rounded-lg text-lg font-bold text-gray-900 placeholder:text-gray-300 border-none outline-none focus:ring-2 focus:ring-black/5 transition-all"
                         />
                     </div>

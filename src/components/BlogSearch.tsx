@@ -14,7 +14,7 @@ export function BlogSearch({ posts, onSearchChange }: BlogSearchProps) {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    
+
     if (!query.trim()) {
       onSearchChange(posts);
       return;
@@ -37,11 +37,14 @@ export function BlogSearch({ posts, onSearchChange }: BlogSearchProps) {
   return (
     <div className="relative mb-8">
       <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+      <label htmlFor="blog-search" className="sr-only">Search articles</label>
       <input
+        id="blog-search"
         type="text"
         placeholder="Search articles..."
         value={searchQuery}
         onChange={(e) => handleSearch(e.target.value)}
+        autoComplete="off"
         className="w-full pl-12 pr-10 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors"
       />
       {searchQuery && (

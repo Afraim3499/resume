@@ -64,10 +64,15 @@ export function NewsletterForm({ variant = "default", className = "" }: Newslett
   if (variant === "inline") {
     return (
       <form onSubmit={handleSubmit(onSubmit)} className={`flex gap-2 ${className}`}>
+        <label htmlFor="newsletter-inline-email" className="sr-only">
+          Email Address
+        </label>
         <input
+          id="newsletter-inline-email"
           type="email"
           {...register("email")}
           placeholder="Enter your email"
+          autoComplete="email"
           className="flex-1 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors"
         />
         <Button type="submit" disabled={isSubmitting}>
@@ -104,6 +109,7 @@ export function NewsletterForm({ variant = "default", className = "" }: Newslett
             type="email"
             {...register("email")}
             placeholder="your.email@example.com"
+            autoComplete="email"
             className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors"
           />
         </div>

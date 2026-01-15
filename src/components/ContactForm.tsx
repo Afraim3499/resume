@@ -107,6 +107,7 @@ ${message}`;
             {...register("name")}
             className="w-full px-4 py-3 rounded-lg bg-foreground/5 border border-foreground/10 text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
             placeholder="Your name"
+            autoComplete="name"
           />
           {errors.name && (
             <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.name.message}</p>
@@ -123,6 +124,7 @@ ${message}`;
             {...register("email")}
             className="w-full px-4 py-3 rounded-lg bg-foreground/5 border border-foreground/10 text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
             placeholder="your.email@example.com"
+            autoComplete="email"
           />
           {errors.email && (
             <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.email.message}</p>
@@ -139,6 +141,7 @@ ${message}`;
           {...register("subject")}
           className="w-full px-4 py-3 rounded-lg bg-foreground/5 border border-foreground/10 text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
           placeholder="What's this about?"
+          autoComplete="off"
         />
         {errors.subject && (
           <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.subject.message}</p>
@@ -155,6 +158,7 @@ ${message}`;
           rows={6}
           className="w-full px-4 py-3 rounded-lg bg-foreground/5 border border-foreground/10 text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none"
           placeholder="Tell me about your project or inquiry..."
+          autoComplete="off"
         />
         {errors.message && (
           <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.message.message}</p>

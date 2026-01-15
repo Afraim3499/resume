@@ -25,6 +25,8 @@ export function BudgetInput({
         inputRef.current?.focus();
     };
 
+    const inputId = label.toLowerCase().replace(/\s+/g, '-');
+
     return (
         <div
             onClick={handleContainerClick}
@@ -37,12 +39,14 @@ export function BudgetInput({
             )}
         >
             <div className="absolute top-3 left-4 flex gap-2 pointer-events-none">
-                <span className={cn(
-                    "text-[10px] font-bold uppercase tracking-widest transition-colors duration-300",
-                    isFocused ? "text-black" : "text-gray-500"
-                )}>
+                <label
+                    htmlFor={inputId}
+                    className={cn(
+                        "text-[10px] font-bold uppercase tracking-widest transition-colors duration-300 cursor-text pointer-events-auto",
+                        isFocused ? "text-black" : "text-gray-500"
+                    )}>
                     {label}
-                </span>
+                </label>
             </div>
 
             <div className="flex items-baseline px-4 pb-2.5 pt-7">
@@ -53,6 +57,7 @@ export function BudgetInput({
                     {prefix}
                 </span>
                 <input
+                    id={inputId}
                     ref={inputRef}
                     type="number"
                     value={value === 0 ? "" : value}
@@ -60,6 +65,7 @@ export function BudgetInput({
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
                     placeholder={placeholder}
+                    autoComplete="off"
                     className="w-full bg-transparent border-none outline-none p-0 text-xl font-semibold text-gray-900 placeholder:text-gray-200 font-mono"
                     step="100" // Helps with arrow keys for money
                 />
