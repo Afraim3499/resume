@@ -25,10 +25,10 @@ const events = [
         year: "2024",
         location: "NSU",
         images: [
-            "/assets/unplugged 1.jpg",
-            "/assets/unplugged 2.jpg",
-            "/assets/unplugged 3.jpg",
-            "/assets/unplugged 4.jpg",
+            "/assets/unplugged-1.jpg",
+            "/assets/unplugged-2.jpg",
+            "/assets/unplugged-3.jpg",
+            "/assets/unplugged-4.jpg",
         ],
     },
     {
@@ -37,12 +37,12 @@ const events = [
         year: "2023-2024",
         location: "NSU",
         images: [
-            "/assets/ace 1.jpg",
-            "/assets/ace 2.jpg",
-            "/assets/ace 3.jpg",
-            "/assets/ace 4.jpg",
-            "/assets/ace 5.jpg",
-            "/assets/ace 6.jpg",
+            "/assets/ace-1.jpg",
+            "/assets/ace-2.jpg",
+            "/assets/ace-3.jpg",
+            "/assets/ace-4.jpg",
+            "/assets/ace-5.jpg",
+            "/assets/ace-6.jpg",
         ],
     },
     {
@@ -50,7 +50,7 @@ const events = [
         role: "Event Management & Coordination",
         year: "2023",
         location: "Chittagong",
-        image: "/assets/english olympiad.jpg",
+        image: "/assets/english-olympiad.jpg",
         description: "International English Language Olympiad (IELO) - A global platform inspiring leadership through English language excellence. Participated and managed event coordination for one of the world's largest English language competitions in Chittagong, reaching 190+ million people across 100+ countries.",
     },
     {

@@ -39,7 +39,8 @@ export function Analytics() {
 
   // Performance monitoring
   useEffect(() => {
-    if (typeof window !== "undefined" && "PerformanceObserver" in window) {
+    /* Performance logging disabled for cleaner console
+    if (process.env.NODE_ENV === "development" && typeof window !== "undefined" && "PerformanceObserver" in window) {
       // Track Core Web Vitals
       try {
         // Largest Contentful Paint (LCP)
@@ -77,6 +78,7 @@ export function Analytics() {
         // Performance Observer not supported
       }
     }
+    */
   }, []);
 
   return null;

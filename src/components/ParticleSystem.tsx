@@ -149,7 +149,9 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
           };
         });
 
-        console.log(`ParticleSystem: Initialized ${particlesRef.current.length} particles on canvas ${canvas.width}x${canvas.height}`);
+        if (process.env.NODE_ENV === "development") {
+          console.log(`ParticleSystem: Initialized ${particlesRef.current.length} particles on canvas ${canvas.width}x${canvas.height}`);
+        }
       };
 
       resize();

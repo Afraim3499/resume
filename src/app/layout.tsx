@@ -136,7 +136,7 @@ export default function RootLayout({
           geistSans.variable,
           geistMono.variable,
           playfair.variable,
-          "antialiased min-h-screen flex flex-col bg-background text-foreground"
+          "antialiased min-h-screen flex flex-col bg-background text-foreground relative"
         )}
       >
         <ThemeProvider>
