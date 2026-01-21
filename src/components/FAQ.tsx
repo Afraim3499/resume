@@ -3,14 +3,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import { faqData } from "@/data/faq";
 import { cn } from "@/lib/utils";
+import type { FAQItem } from "@/lib/faq-loader";
 
-export function FAQ() {
+interface FAQProps {
+    items: FAQItem[];
+}
+
+export function FAQ({ items }: FAQProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     // Group FAQs by category for better UX
-    const categories = Array.from(new Set(faqData.map((item) => item.category)));
+    const categories = Array.from(new Set(items.map((item) => item.category)));
 
     return (
         <section className="py-24 bg-background relative overflow-hidden">
@@ -32,14 +36,14 @@ export function FAQ() {
                             </h3>
 
                             <div className="space-y-4">
-                                {faqData
+                                {items
                                     .filter((item) => item.category === category)
                                     .map((item) => {
                                         // Find the original index in the full array for stable keys if needed, 
                                         // but here we can just use the item.question as key
-                                        const isOpen = openIndex === faqData.indexOf(item);
+                                        const isOpen = openIndex === items.indexOf(item);
                                         const handleToggle = () => {
-                                            setOpenIndex(isOpen ? null : faqData.indexOf(item));
+                                            setOpenIndex(isOpen ? null : items.indexOf(item));
                                         };
 
                                         return (

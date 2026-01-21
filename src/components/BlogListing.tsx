@@ -4,11 +4,14 @@ import { useState } from "react";
 import { BlogCard } from "@/components/BlogCard";
 import { BlogSearch } from "@/components/BlogSearch";
 import { BlogFilters } from "@/components/BlogFilters";
-import { blogPosts } from "@/data/blog";
 import type { BlogPost } from "@/lib/blog";
 
-export function BlogListing() {
-    const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(blogPosts);
+interface BlogListingProps {
+    initialPosts: BlogPost[];
+}
+
+export function BlogListing({ initialPosts }: BlogListingProps) {
+    const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(initialPosts);
 
     return (
         <div className="container px-4 mx-auto max-w-6xl py-20">
@@ -21,10 +24,10 @@ export function BlogListing() {
                 </p>
             </div>
 
-            {blogPosts.length > 0 ? (
+            {initialPosts.length > 0 ? (
                 <>
-                    <BlogSearch posts={blogPosts} onSearchChange={setFilteredPosts} />
-                    <BlogFilters posts={blogPosts} onFilterChange={setFilteredPosts} />
+                    <BlogSearch posts={initialPosts} onSearchChange={setFilteredPosts} />
+                    <BlogFilters posts={initialPosts} onFilterChange={setFilteredPosts} />
 
                     {filteredPosts.length > 0 ? (
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -4,7 +4,7 @@ import { ArrowLeft, BookOpen, GitBranch } from "lucide-react";
 import type { Metadata } from "next";
 import { getTerm, getAllTerms } from "@/data/knowledge-graph";
 import { MarkdownContent } from "@/components/MarkdownContent";
-import { blogPosts } from "@/data/blog";
+import { getAllBlogPosts } from "@/lib/blog-loader";
 
 export async function generateStaticParams() {
     const terms = getAllTerms();
@@ -52,7 +52,7 @@ export default async function WikiPage({ params }: { params: Promise<{ slug: str
     // Bidirectional Intelligence: Find blog posts that might mention this term or be related
     // For now, checking if term ID is in blog tags or category (simple matching)
     // In a real "God Mode", we would fuzzy search the content.
-    const relatedPosts = blogPosts.filter(
+    const relatedPosts = getAllBlogPosts().filter(
         (post) =>
             post.tags.map(t => t.toLowerCase().replace(/\s+/g, '-')).includes(term.id) ||
             post.category.toLowerCase().replace(/\s+/g, '-') === term.id ||

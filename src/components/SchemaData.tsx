@@ -1,8 +1,8 @@
 "use client";
 
 import { projects } from "@/data/projects";
-import { faqData } from "@/data/faq";
 import { usePathname } from "next/navigation";
+import type { FAQItem } from "@/lib/faq-loader";
 
 interface FAQSchemaItem {
   "@type": "Question";
@@ -21,7 +21,11 @@ interface BreadcrumbItem {
   item: string;
 }
 
-export function SchemaData() {
+interface SchemaDataProps {
+  faqItems: FAQItem[];
+}
+
+export function SchemaData({ faqItems }: SchemaDataProps) {
   const pathname = usePathname();
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
 
@@ -29,7 +33,7 @@ export function SchemaData() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqData.map((item): FAQSchemaItem => ({
+    mainEntity: faqItems.map((item): FAQSchemaItem => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {

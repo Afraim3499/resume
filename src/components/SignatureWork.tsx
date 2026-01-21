@@ -5,8 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, ExternalLink, FileText, BookOpen } from "lucide-react";
 import { projects } from "@/data/projects";
-import { getCaseStudyByProject } from "@/data/case-studies";
-import { getBlogPostByProjectSlug } from "@/data/blog";
+import { getBlogSlugForProject, getCaseStudySlugForProject } from "@/lib/project-blog-mapper";
 import { fadeUp, slideInLeft, slideInRight, hoverScale } from "@/lib/animations";
 import { ImageHover3D } from "./ImageHover3D";
 import { ParticleSystem } from "./ParticleSystem";
@@ -22,8 +21,8 @@ export function SignatureWork() {
     signatureProjects[0] || null
   );
 
-  const selectedCaseStudy = selectedProject ? getCaseStudyByProject(selectedProject.slug) : null;
-  const selectedBlogPost = selectedProject ? getBlogPostByProjectSlug(selectedProject.slug) : null;
+  const selectedCaseStudySlug = selectedProject ? getCaseStudySlugForProject(selectedProject.slug) : null;
+  const selectedBlogSlug = selectedProject ? getBlogSlugForProject(selectedProject.slug) : null;
 
   return (
     <section id="signature-work" className="py-32 md:py-40 lg:py-48 bg-background/85 relative overflow-hidden">
@@ -231,9 +230,9 @@ export function SignatureWork() {
                           Visit Live Site <ExternalLink className="w-4 h-4" />
                         </a>
                       )}
-                      {selectedCaseStudy && (
+                      {selectedCaseStudySlug && (
                         <Link
-                          href={`/case-studies/${selectedCaseStudy.slug}`}
+                          href={`/case-studies/${selectedCaseStudySlug}`}
                           className="inline-flex items-center justify-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-full bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 border border-emerald-500/30 transition-colors text-sm md:text-base"
                         >
                           <FileText className="w-4 h-4" />
@@ -241,9 +240,9 @@ export function SignatureWork() {
                           <ArrowRight className="w-4 h-4" />
                         </Link>
                       )}
-                      {selectedBlogPost && (
+                      {selectedBlogSlug && (
                         <Link
-                          href={`/blog/${selectedBlogPost.slug}`}
+                          href={`/blog/${selectedBlogSlug}`}
                           className="inline-flex items-center justify-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-full bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 border border-blue-500/30 transition-colors text-sm md:text-base"
                         >
                           <BookOpen className="w-4 h-4" />

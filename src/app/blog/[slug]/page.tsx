@@ -2,17 +2,18 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Calendar, Clock, Tag, ExternalLink, FileText, RefreshCw, List } from "lucide-react";
 import type { Metadata } from "next";
-import { getBlogPostBySlug, blogPosts } from "@/data/blog";
+import { getBlogPostBySlug, getAllBlogPosts } from "@/lib/blog-loader";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { formatPostDate, getRelatedPosts, getPostHeadings } from "@/lib/blog";
 import { SocialShare } from "@/components/SocialShare";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { getCaseStudyByProject } from "@/data/case-studies";
+import { getCaseStudyByProject } from "@/lib/case-study-loader";
 import { projects } from "@/data/projects";
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
+  const posts = getAllBlogPosts();
+  return posts.map((post) => ({
     slug: post.slug,
   }));
 }
@@ -65,7 +66,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
-  const relatedPosts = getRelatedPosts(post, blogPosts);
+  const relatedPosts = getRelatedPosts(post, getAllBlogPosts());
   const url = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
   const postUrl = `${url}/blog/${post.slug}`;
 

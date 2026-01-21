@@ -1,14 +1,15 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Target, CheckCircle, TrendingUp, Lightbulb, Code, BookOpen } from "lucide-react";
-import { getCaseStudyBySlug, caseStudies } from "@/data/case-studies";
+import { getCaseStudyBySlug, getAllCaseStudies } from "@/lib/case-study-loader";
 import { getProjectBySlug } from "@/data/projects";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 import { SocialShare } from "@/components/SocialShare";
-import { getBlogPostByProjectSlug } from "@/data/blog";
+import { getBlogPostByProjectSlug } from "@/lib/blog-loader";
 
 export async function generateStaticParams() {
+  const caseStudies = getAllCaseStudies();
   return caseStudies.map((study) => ({
     slug: study.slug,
   }));

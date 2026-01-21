@@ -6,8 +6,7 @@ import Link from "next/link";
 import { ExternalLink, Github, Calendar, Code, Database, Layers, Zap, Tag, FileText, BookOpen, ArrowRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { projects } from "@/data/projects";
-import { getBlogPostByProjectSlug } from "@/data/blog";
-import { getCaseStudyByProject } from "@/data/case-studies";
+import { getBlogSlugForProject, getCaseStudySlugForProject } from "@/lib/project-blog-mapper";
 
 interface ProjectDetailProps {
   project: Project;
@@ -17,10 +16,10 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   const relatedProjects = projects
     .filter((p) => p.slug !== project.slug && p.category === project.category)
     .slice(0, 2);
-  
+
   // Get related case study and blog post
-  const caseStudy = getCaseStudyByProject(project.slug);
-  const blogPost = getBlogPostByProjectSlug(project.slug);
+  const caseStudySlug = getCaseStudySlugForProject(project.slug);
+  const blogSlug = getBlogSlugForProject(project.slug);
 
   const metrics = [
     project.metrics?.components && {
@@ -115,16 +114,16 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
         </div>
 
         {/* Related Content Links */}
-        {(caseStudy || blogPost) && (
+        {(caseStudySlug || blogSlug) && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.05 }}
             className="flex flex-wrap items-center gap-4 pt-4 border-t border-white/10"
           >
-            {caseStudy && (
+            {caseStudySlug && (
               <Link
-                href={`/case-studies/${caseStudy.slug}`}
+                href={`/case-studies/${caseStudySlug}`}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 border border-emerald-500/30 transition-colors"
               >
                 <FileText className="w-4 h-4" />
@@ -132,9 +131,9 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 <ArrowRight className="w-4 h-4" />
               </Link>
             )}
-            {blogPost && (
+            {blogSlug && (
               <Link
-                href={`/blog/${blogPost.slug}`}
+                href={`/blog/${blogSlug}`}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 border border-blue-500/30 transition-colors"
               >
                 <BookOpen className="w-4 h-4" />

@@ -1,6 +1,7 @@
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import type { Metadata } from "next";
+import { getAllFAQs } from "@/lib/faq-loader";
 
 export const metadata: Metadata = {
     title: "Manifesto | The Operations Expert's Protocol",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function ManifestoPage() {
+    const faqItems = getAllFAQs();
     return (
         <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-24">
             <article className="container px-4 mx-auto max-w-3xl py-12 md:py-24">
@@ -78,7 +80,7 @@ export default function ManifestoPage() {
 
             {/* FAQ Section */}
             <div className="border-t border-border/40">
-                <FAQ />
+                <FAQ items={faqItems} />
             </div>
 
             <Footer />

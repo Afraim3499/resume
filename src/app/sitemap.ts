@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
-import { blogPosts } from "@/data/blog";
-import { caseStudies } from "@/data/case-studies";
+import { getAllBlogPosts } from "@/lib/blog-loader";
+import { getAllCaseStudies } from "@/lib/case-study-loader";
 import { getAllTerms } from "@/data/knowledge-graph";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -56,7 +56,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Dynamic Blog Post Routes - Priority 0.7-0.9 (featured)
-  const blogRoutes = blogPosts.map((post) => ({
+  const posts = getAllBlogPosts();
+  const blogRoutes = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.updatedAt || post.date),
     changeFrequency: "weekly" as const,
@@ -64,6 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Dynamic Case Study Routes - Priority 0.8
+  const caseStudies = getAllCaseStudies();
   const caseStudyRoutes = caseStudies.map((study) => ({
     url: `${baseUrl}/case-studies/${study.slug}`,
     lastModified: new Date(),

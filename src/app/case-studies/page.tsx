@@ -1,7 +1,7 @@
 import { CaseStudyCard } from "@/components/CaseStudyCard";
-import { caseStudies } from "@/data/case-studies";
-import type { CaseStudy } from "@/data/case-studies";
+import { getAllCaseStudies } from "@/lib/case-study-loader";
 import type { Metadata } from "next";
+import type { CaseStudy } from "@/data/case-studies";
 
 export const metadata: Metadata = {
   title: "Case Studies | Engineering Scalable Platform Architecture",
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function CaseStudiesPage() {
+  const caseStudies = getAllCaseStudies();
   return (
     <main className="bg-background min-h-screen text-foreground">
       <div className="container px-4 mx-auto max-w-6xl py-20">

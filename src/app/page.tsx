@@ -20,7 +20,12 @@ const Events = dynamic(() => import("@/components/Events").then((mod) => mod.Eve
 const Certifications = dynamic(() => import("@/components/Certifications").then((mod) => mod.Certifications), { loading: () => <LoadingSpinner /> });
 const Contact = dynamic(() => import("@/components/Contact").then((mod) => mod.Contact), { loading: () => <LoadingSpinner /> });
 
+import { getAllBlogPosts } from "@/lib/blog-loader";
+import { getAllCaseStudies } from "@/lib/case-study-loader";
+
 export default function Home() {
+  const blogCount = getAllBlogPosts().length;
+  const caseStudyCount = getAllCaseStudies().length;
   return (
     <main id="main-content" className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
       <Hero />
@@ -55,7 +60,7 @@ export default function Home() {
       <SectionDivider variant="gradient" />
       <Certifications />
       <SectionDivider variant="wave" />
-      <ContentSection />
+      <ContentSection blogCount={blogCount} caseStudyCount={caseStudyCount} />
       <SectionDivider variant="morph" />
       <Contact />
       <Footer />

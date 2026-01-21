@@ -3,7 +3,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { Flame, TrendingUp, Clock, Star } from "lucide-react";
 import type { BlogPost } from "@/lib/blog";
-import { getAllCategories, getAllTags } from "@/data/blog";
 
 interface BlogFiltersProps {
   posts: BlogPost[];
@@ -18,8 +17,15 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
   const [sortBy, setSortBy] = useState<SortOption>("latest");
   const [dateFilter, setDateFilter] = useState<string>("all");
 
-  const categories = useMemo(() => ["all", ...getAllCategories()], []);
-  const tags = useMemo(() => ["all", ...getAllTags()], []);
+  const categories = useMemo(() => {
+    const cats = new Set(posts.map(post => post.category));
+    return ["all", ...Array.from(cats).sort()];
+  }, [posts]);
+
+  const tags = useMemo(() => {
+    const t = new Set(posts.flatMap(post => post.tags));
+    return ["all", ...Array.from(t).sort()];
+  }, [posts]);
 
   // Capture timestamp once for stable sorting
   const [nowTimestamp] = useState(() => Date.now());

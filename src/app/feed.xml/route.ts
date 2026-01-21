@@ -1,8 +1,9 @@
-import { blogPosts } from "@/data/blog";
+import { getAllBlogPosts } from "@/lib/blog-loader";
 
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
+  const blogPosts = getAllBlogPosts();
 
   const rssItems = blogPosts
     .map((post) => {

@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import { SchemaData } from "@/components/SchemaData";
+import { getAllFAQs } from "@/lib/faq-loader";
 import { Analytics } from "@/components/Analytics";
 import { Navigation } from "@/components/Navigation";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -120,6 +121,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const faqItems = getAllFAQs();
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
@@ -155,7 +157,7 @@ export default function RootLayout({
             Skip to main content
           </a>
           <GlobalSchema />
-          <SchemaData />
+          <SchemaData faqItems={faqItems} />
           <Suspense fallback={null}>
             <Analytics />
           </Suspense>

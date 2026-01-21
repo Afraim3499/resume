@@ -4,10 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { BookOpen, FileText, ArrowRight } from "lucide-react";
-import { blogPosts } from "@/data/blog";
-import { caseStudies } from "@/data/case-studies";
+interface ContentSectionProps {
+  blogCount?: number;
+  caseStudyCount?: number;
+}
 
-export function ContentSection() {
+export function ContentSection({ blogCount = 0, caseStudyCount = 0 }: ContentSectionProps) {
   return (
     <section id="content" className="py-32 bg-background/85 relative overflow-hidden">
       <div className="container px-4 mx-auto max-w-7xl">
@@ -45,7 +47,7 @@ export function ContentSection() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-foreground mb-1">Blog & Articles</h3>
-                  <p className="text-sm text-foreground/60">{blogPosts.length} articles</p>
+                  <p className="text-sm text-foreground/60">{blogCount} articles</p>
                 </div>
               </div>
               <p className="text-foreground/70 mb-6 leading-relaxed">
@@ -77,7 +79,7 @@ export function ContentSection() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-foreground mb-1">Case Studies</h3>
-                  <p className="text-sm text-foreground/60">{caseStudies.length} case studies</p>
+                  <p className="text-sm text-foreground/60">{caseStudyCount} case studies</p>
                 </div>
               </div>
               <p className="text-foreground/70 mb-6 leading-relaxed">
