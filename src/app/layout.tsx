@@ -11,6 +11,7 @@ import { EntryWrapper } from "./EntryWrapper";
 import { CustomCursor } from "@/components/CustomCursor";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { GlobalSchema } from "@/components/json-ld/GlobalSchema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,32 +39,30 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   title: {
-    default: "Rizwanul Islam (Afraim) | Venture Architect & Systems Orchestrator",
+    default: "Rizwanul Islam (Afraim) | Advanced Venture Architect & Expert",
     template: "%s | Rizwanul Islam (Afraim)",
   },
-  description: "Official portfolio of Rizwanul Islam (Afraim), the Orchestrator of Intelligent Futures. Venture Architect, Full-Stack Strategist, and Founder of Gaari & PrimeSync.",
+  description: "Official portfolio of Rizwanul Islam (Afraim). Advanced Venture Architect & Operations Expert. Building intelligent data platforms and technical systems.",
   keywords: [
     "Rizwanul Islam",
     "Afraim",
     "Rizwanul Islam Afraim",
-    "The Orchestrator",
     "Venture Architect",
-    "System Orchestration",
-    "Founder Mode",
-    "Full-Stack Developer",
+    "Advanced Systems",
+    "Operations Expert",
+    "Technical Lead",
+    "Data Strategy",
+    "Gaari Founder",
+    "Platform Development",
     "Next.js Expert",
     "AI Agentic Systems",
-    "RAG Pipelines",
-    "Gaari Founder",
-    "Dhaka Tech",
-    "North South University Alumni",
   ],
   authors: [{ name: "Rizwanul Islam (Afraim)", url: "https://portfolio-rizwanul.vercel.app" }],
   creator: "Rizwanul Islam (Afraim)",
   publisher: "Rizwanul Islam (Afraim)",
-  metadataBase: new URL("https://portfolio-rizwanul.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app"),
   alternates: {
-    canonical: "/",
+    canonical: "./",
   },
   openGraph: {
     type: "website",
@@ -106,6 +105,14 @@ export const metadata: Metadata = {
       "p:domain_verify": "09fdfc9215d7eeefb6030ff991b9c026",
     },
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Rizwanul Islam (Afraim)",
+  },
+  formatDetection: {
+    telephone: false,
+  },
 };
 
 export default function RootLayout({
@@ -116,20 +123,21 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <meta name="google-site-verification" content="AgEIer9xlB7rHjMCi02zynoNYCDMXwU8UyVjkqyU5xI" />
-        {/* Bing Webmaster */}
-        <meta name="msvalidate.01" content="D856AACF6C5D5003C81D9CF9ED47668C" />
-        {/* Pinterest Verification */}
-        <meta name="p:domain_verify" content="09fdfc9215d7eeefb6030ff991b9c026" />
+        {/* Priority Preload: Hero Image - LCP Optimization */}
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/rizwanul-islam-afraim.jpg"
+          imageSrcSet="/assets/rizwanul-islam-afraim.jpg 320w, /assets/rizwanul-islam-afraim.jpg 640w"
+          imageSizes="(max-width: 768px) 256px, (max-width: 1200px) 320px, 320px"
+          fetchPriority="high"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://d2fltix0v2e0sb.cloudfront.net" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml" />
         <meta name="theme-color" content="#10b981" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Rizwanul Islam" />
       </head>
       <body
         className={clsx(
@@ -146,6 +154,7 @@ export default function RootLayout({
           >
             Skip to main content
           </a>
+          <GlobalSchema />
           <SchemaData />
           <Suspense fallback={null}>
             <Analytics />

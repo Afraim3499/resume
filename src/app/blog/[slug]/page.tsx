@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, Tag, ExternalLink, FileText, RefreshCw, List } from "lucide-react";
+import { Calendar, Clock, Tag, ExternalLink, FileText, RefreshCw, List } from "lucide-react";
 import type { Metadata } from "next";
-import { getBlogPostBySlug, blogPosts, getBlogPostByProjectSlug } from "@/data/blog";
+import { getBlogPostBySlug, blogPosts } from "@/data/blog";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { formatPostDate, getRelatedPosts, getPostHeadings } from "@/lib/blog";
 import { SocialShare } from "@/components/SocialShare";
@@ -171,7 +171,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           )}
 
-          <SocialShare url={postUrl} title={post.title} description={post.excerpt} />
+          <SocialShare url={postUrl} title={post.title} />
         </header>
 
         {headings.length > 0 && (

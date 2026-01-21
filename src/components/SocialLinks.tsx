@@ -1,6 +1,4 @@
-"use client";
-
-import { Linkedin, Github, Facebook, BookOpen } from "lucide-react";
+import { Linkedin, Github, Facebook, BookOpen, Instagram } from "lucide-react";
 import { socialProfiles } from "@/data/social";
 
 const XIcon = ({ className }: { className?: string }) => (
@@ -34,15 +32,15 @@ const iconMap = {
   twitter: XIcon,
   book: BookOpen,
   medium: MediumIcon,
+  instagram: Instagram,
 };
 
 interface SocialLinksProps {
-  variant?: "default" | "minimal" | "icons-only";
   size?: "sm" | "md" | "lg";
   className?: string;
 }
 
-export function SocialLinks({ variant = "default", size = "md", className = "" }: SocialLinksProps) {
+export function SocialLinks({ size = "md", className = "" }: SocialLinksProps) {
   const sizeClasses = {
     sm: "w-8 h-8",
     md: "w-10 h-10",

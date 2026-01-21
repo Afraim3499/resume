@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Compass3D } from "./3D/Compass3D";
@@ -13,16 +13,18 @@ export function EntryGate({ onEnter }: EntryGateProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [canSkip, setCanSkip] = useState(false);
 
-  useEffect(() => {
-    // Check if user has seen entry gate before
-    const hasSeenGate = localStorage.getItem("hasSeenEntryGate");
-    
-    if (hasSeenGate === "true") {
-      setIsVisible(false);
+  // Define handleEnter before useEffect to avoid hoisting issues
+  const handleEnter = useCallback(() => {
+    localStorage.setItem("hasSeenEntryGate", "true");
+    setIsVisible(false);
+    setTimeout(() => {
       onEnter();
-      return;
-    }
+    }, 500);
+  }, [onEnter]);
 
+
+
+  useEffect(() => {
     // Allow skip after 2 seconds
     const skipTimer = setTimeout(() => {
       setCanSkip(true);
@@ -37,15 +39,8 @@ export function EntryGate({ onEnter }: EntryGateProps) {
       clearTimeout(skipTimer);
       clearTimeout(autoEnterTimer);
     };
-  }, [onEnter]);
-
-  const handleEnter = () => {
-    localStorage.setItem("hasSeenEntryGate", "true");
-    setIsVisible(false);
-    setTimeout(() => {
-      onEnter();
-    }, 500);
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Mount-only to prevent re-execution
 
   return (
     <AnimatePresence>
@@ -92,12 +87,12 @@ export function EntryGate({ onEnter }: EntryGateProps) {
             {/* 3D Compass Icon */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ 
-                opacity: 1, 
+              animate={{
+                opacity: 1,
                 scale: 1
               }}
-              transition={{ 
-                duration: 1.2, 
+              transition={{
+                duration: 1.2,
                 ease: [0.22, 1, 0.36, 1],
                 delay: 0.2
               }}
@@ -140,7 +135,7 @@ export function EntryGate({ onEnter }: EntryGateProps) {
                 >
                   <ArrowRight className="w-5 h-5" />
                 </motion.div>
-                
+
                 {/* Shimmer effect */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"

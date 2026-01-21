@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { BlogListing } from "@/components/BlogListing";
 
 export const metadata: Metadata = {
-  title: "Blog & Articles | Rizwanul Islam (Afraim)",
-  description: "Technical insights, tutorials, and thoughts on web development, AI Agentic Systems, and Venture Architecture by Rizwanul Islam (Afraim).",
+  title: "Advanced Technical Blog | System Architecture & AI Agents",
+  description: "Deep dives into RAG Pipelines, Next.js Architecture, Agentic Systems, and Operational Data Strategy by Rizwanul Islam (Afraim).",
   alternates: {
     canonical: "/blog",
   },

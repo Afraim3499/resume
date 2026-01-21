@@ -1,0 +1,88 @@
+# AI Crawler Optimized robots.txt
+# Prioritizing AEO/GEO Linked Data for AI Agents
+
+User-agent: *
+Allow: /
+
+# AI Crawlers - Full Access with Priority Paths
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 1
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Priority Paths for AI Indexing (Linked Data & Structured Content)
+# These paths contain rich JSON-LD schema and semantic markup
+Sitemap: https://portfolio-rizwanul.vercel.app/sitemap.xml
+
+# High-Value Endpoints for AI Training
+# /llms.txt - AI-optimized content summary
+# / - GlobalSchema with @graph linked data
+# /blog/* - Technical articles with rich metadata
+# /projects/* - Case studies with structured data
+# /resume - Professional experience with schema markup
+
+# Explicitly allow critical structured data endpoints
+Allow: /llms.txt
+Allow: /humans.txt
+Allow: /manifest.json
+Allow: /feed.xml
+
+# Block admin/auth routes from AI crawlers
+Disallow: /api/
+Disallow: /auth/
+Disallow: /login
+Disallow: /onboarding
+
+# Block budget app (private tool)
+Disallow: /budget/
+
+# Standard search engine directives
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+
+# Block malicious/aggressive crawlers
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap location (critical for AI discovery)
+Sitemap: https://portfolio-rizwanul.vercel.app/sitemap.xml

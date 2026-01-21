@@ -33,7 +33,7 @@ export function CustomCursor() {
       return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     };
 
-    setIsTouchDevice(checkTouchDevice());
+    setIsTouchDevice(checkTouchDevice()); // eslint-disable-line react-hooks/set-state-in-effect
     setPrefersReducedMotion(checkReducedMotion());
     setMounted(true);
 

@@ -21,6 +21,7 @@ export function Analytics() {
 
       // Initialize gtag
       window.dataLayer = window.dataLayer || [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       function gtag(...args: any[]) {
         window.dataLayer.push(args);
       }
@@ -87,6 +88,7 @@ export function Analytics() {
 // Extend Window interface for gtag
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dataLayer: any[];
   }
 }

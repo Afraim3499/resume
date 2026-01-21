@@ -20,7 +20,7 @@ export function FAQ() {
                         Common Queries
                     </h2>
                     <p className="text-muted-foreground text-lg">
-                        Clarifying the "Afraim" Identity & Methodology
+                        Clarifying the &quot;Afraim&quot; Identity & Methodology
                     </p>
                 </div>
 
@@ -34,7 +34,7 @@ export function FAQ() {
                             <div className="space-y-4">
                                 {faqData
                                     .filter((item) => item.category === category)
-                                    .map((item, index) => {
+                                    .map((item) => {
                                         // Find the original index in the full array for stable keys if needed, 
                                         // but here we can just use the item.question as key
                                         const isOpen = openIndex === faqData.indexOf(item);

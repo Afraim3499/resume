@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Share2, BookOpen, GitBranch } from "lucide-react";
+import { ArrowLeft, BookOpen, GitBranch } from "lucide-react";
 import type { Metadata } from "next";
 import { getTerm, getAllTerms } from "@/data/knowledge-graph";
 import { MarkdownContent } from "@/components/MarkdownContent";

@@ -56,7 +56,9 @@ export async function getGitHubStats(username: string): Promise<GitHubStats | nu
 
     if (reposResponse.ok) {
       const repos = await reposResponse.json();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       totalStars = repos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       totalForks = repos.reduce((sum: number, repo: any) => sum + repo.forks_count, 0);
     }
 
@@ -98,6 +100,7 @@ export async function getGitHubRepositories(
 
     const repos = await response.json();
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return repos.map((repo: any) => ({
       name: repo.name,
       description: repo.description || "",

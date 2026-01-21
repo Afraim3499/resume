@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Pre-commit hook: Zero-tolerance for warnings and build errors
+echo "🔍 Running pre-commit checks..."
+
+# Step 1: Run lint-staged (ESLint with --max-warnings 0)
+echo "📋 Linting staged files..."
+npx lint-staged
+
+if [ $? -ne 0 ]; then
+  echo "❌ Lint failed! Fix all errors and warnings before committing."
+  exit 1
+fi
+
+# Step 2: Run full build to catch any compilation errors
+echo "🏗️  Running production build..."
+npm run build
+
+if [ $? -ne 0 ]; then
+  echo "❌ Build failed! Fix all build errors before committing."
+  exit 1
+fi
+
+echo "✅ All checks passed! Proceeding with commit..."

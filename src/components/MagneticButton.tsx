@@ -37,7 +37,7 @@ export function MagneticButton({
     const distanceX = e.clientX - centerX;
     const distanceY = e.clientY - centerY;
 
-    const maxDistance = 50;
+
     const strength = 0.3;
 
     x.set(distanceX * strength);

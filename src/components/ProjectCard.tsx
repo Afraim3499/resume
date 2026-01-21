@@ -2,8 +2,14 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Code, Database, Layers, Zap, ChevronDown, ChevronUp } from "lucide-react";
-import Image from "next/image";
+import ExternalLink from "lucide-react/dist/esm/icons/external-link";
+import Github from "lucide-react/dist/esm/icons/github";
+import Code from "lucide-react/dist/esm/icons/code";
+import Database from "lucide-react/dist/esm/icons/database";
+import Layers from "lucide-react/dist/esm/icons/layers";
+import Zap from "lucide-react/dist/esm/icons/zap";
+import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
+import ChevronUp from "lucide-react/dist/esm/icons/chevron-up";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { ImageHover3D } from "./ImageHover3D";
@@ -39,8 +45,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                     <ImageHover3D
                         src={project.image || project.screenshots?.[0] || ""}
                         alt={`${project.title} - Strategic Web Application developed by Rizwanul Islam (Afraim)`}
-                        width={800}
-                        height={400}
                         className="w-full h-full"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent pointer-events-none" />

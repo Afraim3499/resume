@@ -11,14 +11,28 @@ interface FloatingShape {
   duration: number;
   delay: number;
   shape: "circle" | "triangle" | "square" | "hexagon";
+  opacity: number;
+  randomOffset: number;
+  driftX: number;
+  driftY: number;
 }
 
 export function FloatingShapes({ count = 12 }: { count?: number }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flash
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== "undefined") {
+      return (
+        window.innerWidth < 768 ||
+        window.matchMedia("(pointer: coarse)").matches ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      );
+    }
+    return true; // Default to true for SSR safety
+  });
 
   useEffect(() => {
     const checkMobile = () => {
+      // Logic for resize updates
       return (
         window.innerWidth < 768 ||
         window.matchMedia("(pointer: coarse)").matches ||
@@ -26,31 +40,34 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
       );
     };
 
-    setIsMobile(checkMobile());
-
     const handleResize = () => setIsMobile(checkMobile());
     window.addEventListener("resize", handleResize, { passive: true });
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  const [shapes] = useState<FloatingShape[]>(() => {
+    return Array.from({ length: count }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: 20 + Math.random() * 60,
+      duration: 15 + Math.random() * 20,
+      delay: Math.random() * 5,
+      shape: ["circle", "triangle", "square", "hexagon"][Math.floor(Math.random() * 4)] as "circle" | "triangle" | "square" | "hexagon",
+      opacity: 0.1 + Math.random() * 0.15,
+      randomOffset: Math.random(),
+      driftX: (Math.random() - 0.5) * 20,
+      driftY: (Math.random() - 0.5) * 20,
+    }));
+  });
 
-  // Don't render on mobile
+  // Safe early return
   if (isMobile) return null;
-
-  const shapes: FloatingShape[] = Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: 20 + Math.random() * 60,
-    duration: 15 + Math.random() * 20,
-    delay: Math.random() * 5,
-    shape: ["circle", "triangle", "square", "hexagon"][Math.floor(Math.random() * 4)] as any,
-  }));
 
   const renderShape = (shape: FloatingShape) => {
     const baseProps = {
       fill: "url(#shapeGradient)",
-      opacity: 0.1 + Math.random() * 0.15,
+      opacity: shape.opacity,
       filter: "url(#shapeBlur)",
     };
 
@@ -65,7 +82,7 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
             {...baseProps}
             animate={{
               y: [shape.y, shape.y - 30, shape.y],
-              x: [shape.x, shape.x + (Math.random() - 0.5) * 20, shape.x],
+              x: [shape.x, shape.x + shape.driftX, shape.x],
               rotate: [0, 360],
             }}
             transition={{
@@ -84,7 +101,7 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
             {...baseProps}
             animate={{
               y: [shape.y, shape.y - 25, shape.y],
-              x: [shape.x, shape.x + (Math.random() - 0.5) * 15, shape.x],
+              x: [shape.x, shape.x + shape.driftX, shape.x],
               rotate: [0, 360],
             }}
             transition={{
@@ -106,7 +123,7 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
             {...baseProps}
             animate={{
               y: [shape.y, shape.y - 35, shape.y],
-              x: [shape.x, shape.x + (Math.random() - 0.5) * 18, shape.x],
+              x: [shape.x, shape.x + shape.driftX, shape.x],
               rotate: [0, 360],
             }}
             transition={{
@@ -129,7 +146,7 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
             {...baseProps}
             animate={{
               y: [shape.y, shape.y - 28, shape.y],
-              x: [shape.x, shape.x + (Math.random() - 0.5) * 16, shape.x],
+              x: [shape.x, shape.x + shape.driftX, shape.x],
               rotate: [0, 360],
             }}
             transition={{
@@ -161,4 +178,5 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
     </div>
   );
 }
+
 

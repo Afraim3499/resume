@@ -7,16 +7,12 @@ import Image from "next/image";
 interface ImageHover3DProps {
   src: string;
   alt: string;
-  width?: number;
-  height?: number;
   className?: string;
 }
 
 export function ImageHover3D({
   src,
   alt,
-  width = 400,
-  height = 300,
   className = "",
 }: ImageHover3DProps) {
   const ref = useRef<HTMLDivElement>(null);

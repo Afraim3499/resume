@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowRight, Download } from "lucide-react";
+
+import Download from "lucide-react/dist/esm/icons/download";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 
@@ -30,14 +31,14 @@ export function Hero() {
                 </div>
 
                 {/* Heading */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
                     Orchestrator of <span className="text-gradient">Intelligent Futures</span>.
                 </h1>
 
                 {/* Subtitle */}
-                <p className="text-foreground/70 max-w-2xl mx-auto text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
-                    The <span className="text-foreground font-medium">Venture Architect</span> for visionary businesses.
-                    <br />
+                <p className="text-foreground/70 max-w-2xl mx-auto text-sm sm:text-lg md:text-xl mb-8 leading-relaxed px-2">
+                    The <span className="text-foreground font-medium">Advanced Venture Architect</span> & <span className="text-foreground font-medium">Operations Expert</span> for visionary businesses.
+                    <br className="hidden sm:block" />
                     I orchestrate precision, intelligence, and scale for those who demand unshakeable reliability.
                 </p>
 

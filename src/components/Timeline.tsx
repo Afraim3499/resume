@@ -76,8 +76,8 @@ export function Timeline() {
                         </div>
 
                         {/* Timeline Cards */}
-                        {chronologicalExperience.map((exp, index) => (
-                            <TimelineCard key={exp.id} exp={exp} index={index} isLast={index === chronologicalExperience.length - 1} />
+                        {chronologicalExperience.map((exp) => (
+                            <TimelineCard key={exp.id} exp={exp} />
                         ))}
 
                         {/* Timeline End Marker */}
@@ -94,7 +94,7 @@ export function Timeline() {
     );
 }
 
-function TimelineCard({ exp, index, isLast }: { exp: typeof experience[0], index: number, isLast: boolean }) {
+function TimelineCard({ exp }: { exp: typeof experience[0] }) {
     return (
         <div className="relative group shrink-0">
             {/* Connector Line */}

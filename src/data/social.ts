@@ -42,6 +42,12 @@ export const socialProfiles: SocialProfile[] = [
     username: "@rizwanul_afraim",
     icon: "medium",
   },
+  {
+    platform: "Instagram",
+    url: "https://www.instagram.com/afraim_privateer/",
+    username: "afraim_privateer",
+    icon: "instagram",
+  },
 ];
 
 export const socialProof = {

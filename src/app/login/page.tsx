@@ -3,11 +3,11 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { useRouter } from "next/navigation";
+
 import { ArrowRight, Loader2 } from "lucide-react";
 
 export default function LoginPage() {
-    const router = useRouter();
+
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState("");
 

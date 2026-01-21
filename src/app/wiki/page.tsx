@@ -4,8 +4,8 @@ import { getAllTerms } from "@/data/knowledge-graph";
 import { ArrowRight, Network } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "The Knowledge Graph | Rizwanul Islam (Afraim)",
-    description: "A comprehensive digital lexicon of Venture Architecture, Founder Mode, and Agentic Systems.",
+    title: "The Knowledge Graph | Advanced Venture Architecture Lexicon",
+    description: "The Orchestrator's comprehensive digital lexicon. Advanced concepts in Venture Architecture, Founder Mode, Agentic Systems, and Operations Expert methodologies.",
     alternates: {
         canonical: "/wiki",
     },
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function WikiIndex() {
     const terms = getAllTerms();
-    const categories = Array.from(new Set(terms.map((t) => t.category)));
+
 
     return (
         <main className="bg-background min-h-screen text-foreground pt-24 pb-12">
@@ -22,9 +22,9 @@ export default function WikiIndex() {
                     <span className="inline-block p-3 rounded-2xl bg-primary/10 text-primary mb-6">
                         <Network className="w-8 h-8" />
                     </span>
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6 font-serif">The Knowledge Graph</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-6 font-serif">The Knowledge Graph: Advanced Systems Lexicon</h1>
                     <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                        The Orchestrator's Lexicon. A living network of concepts that define the methodology of modern Venture Architecture.
+                        The Orchestrator&apos;s Lexicon. A living network of advanced concepts that define the methodology of modern Venture Architecture and Operations Strategy.
                     </p>
                 </header>
 

@@ -1,13 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TrendingUp, Users, Database, Rocket, Target, Zap, BarChart3, ArrowRight } from "lucide-react";
-import { fadeUp, staggerContainer, hoverScale } from "@/lib/animations";
+import Users from "lucide-react/dist/esm/icons/users";
+import Database from "lucide-react/dist/esm/icons/database";
+import Rocket from "lucide-react/dist/esm/icons/rocket";
+import Target from "lucide-react/dist/esm/icons/target";
+import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
+import { fadeUp, staggerContainer } from "@/lib/animations";
 
 const stats = [
     {
         icon: Target,
-        title: "Visionary Markets",
+        title: "Visionary Market Operations",
         subtitle: "Not Just Discovery",
         description: "I don't just find leads; I engineered the market for Gaari and PrimeSync. My strategies don't just compete—they define the playing field.",
         highlight: "engineered the market",
@@ -19,9 +23,9 @@ const stats = [
     },
     {
         icon: Database,
-        title: "Super Intelligence",
+        title: "Advanced Data Intelligence",
         subtitle: "1M+ Data Points",
-        description: "Processed over 1 million data points for Quantanite with legendary accuracy. I turn raw chaos into intelligent, actionable business logic.",
+        description: "Processed over 1 million data points for Quantanite with legendary accuracy. I turn raw chaos into intelligent, actionable business logic and data strategy.",
         highlight: "legendary accuracy",
         companies: ["Quantanite"],
         gradient: "from-purple-500/20 via-purple-500/10 to-transparent",
@@ -31,7 +35,7 @@ const stats = [
     },
     {
         icon: Users,
-        title: "Unshakeable Reliability",
+        title: "Unshakeable System Reliability",
         subtitle: "Leadership at Scale",
         description: "As VP at NSUSS, I led 200+ people to execute events for 25,000+ attendees. When I build a system, it holds the weight of thousands without cracking.",
         highlight: "200+ people",
@@ -43,9 +47,9 @@ const stats = [
     },
     {
         icon: Rocket,
-        title: "Enduring Ventures",
+        title: "Enduring Platform Ventures",
         subtitle: "Strategic Orchestration",
-        description: "I don't just launch; I architect legacy. From Gaari to Yagacalls, I design production ventures meant to scale into unicorns and dominate their niches.",
+        description: "I don't just launch; I architect legacy. From Gaari to Yagacalls, I design production-grade platform ventures meant to scale into unicorns.",
         highlight: "scale into unicorns",
         companies: ["Gaari", "The Trail", "Yagacalls"],
         gradient: "from-emerald-500/20 via-cyan-500/10 to-transparent",
@@ -81,7 +85,7 @@ export function About() {
                         The Approach
                     </motion.span>
                     <h2 className="text-5xl md:text-7xl lg:text-8xl heading-text mb-6">
-                        Engineering <span className="text-gradient">Trust & Intelligence</span>
+                        Engineering <span className="text-gradient">Advanced Trust</span> & <span className="text-gradient">Operational Intelligence</span>
                     </h2>
                     <p className="text-foreground/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
                         A 360-degree perspective that transforms complexity into clear, scalable outcomes.

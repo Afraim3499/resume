@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Download, Plus, Trash2, X, Check } from "lucide-react";
+import { Plus, X, Check, Trash2, Download } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { IncomeSource, ExpenseItem, LoanEntry } from "@/types/budget";
 import { IncomeScheduler } from "@/components/budget/IncomeScheduler";
@@ -9,19 +9,9 @@ import { BudgetInput } from "@/components/budget/BudgetInput";
 import { AnalysisPanel } from "@/components/budget/AnalysisPanel";
 import { DailyTracker } from "@/components/budget/DailyTracker";
 import { DebtManager } from "@/components/budget/DebtManager";
-import { SupabaseMigration } from "@/components/budget/SupabaseMigration";
-
-const DEFAULT_EXPENSES: ExpenseItem[] = [
-    { id: "1", name: "Rent & Grocery", amount: 0, category: "Rent", isFixed: true },
-    { id: "2", name: "Food Order", amount: 0, category: "Food Order", isFixed: false },
-    { id: "3", name: "Personal Care", amount: 0, category: "Personal", isFixed: false },
-    { id: "4", name: "Regular (Fares/Tea)", amount: 0, category: "Regular", isFixed: false },
-    { id: "5", name: "Restaurants/Other", amount: 0, category: "Restaurants", isFixed: false },
-];
 
 export default function BudgetPage() {
     const [incomes, setIncomes] = useState<IncomeSource[]>([]);
-
     const [expenses, setExpenses] = useState<ExpenseItem[]>([]);
     const [loans, setLoans] = useState<LoanEntry[]>([]);
     const [investmentTarget, setInvestmentTarget] = useState<number>(0);
@@ -30,8 +20,11 @@ export default function BudgetPage() {
     const [isLoaded, setIsLoaded] = useState(false);
 
     // Cloud State
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [user, setUser] = useState<any>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [profile, setProfile] = useState<any>(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [goals, setGoals] = useState<any[]>([]);
 
     // Load from Supabase
@@ -48,6 +41,7 @@ export default function BudgetPage() {
 
                 // 2. Incomes
                 const { data: cloudIncomes } = await supabase.from('budget_incomes').select('*');
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 if (cloudIncomes) setIncomes(cloudIncomes.map((i: any) => ({
                     id: i.id,
                     name: i.name,
@@ -60,6 +54,7 @@ export default function BudgetPage() {
 
                 // 3. Expenses
                 const { data: cloudExpenses } = await supabase.from('budget_expenses').select('*');
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 if (cloudExpenses) setExpenses(cloudExpenses.map((e: any) => ({
                     id: e.id,
                     name: e.name,
@@ -72,8 +67,6 @@ export default function BudgetPage() {
                 const { data: cloudGoals } = await supabase.from('budget_goals').select('*');
                 if (cloudGoals) {
                     setGoals(cloudGoals);
-                    // Do NOT set monthly investment target to the total goal amount (e.g. 5 Lakhs)
-                    // We will let the user set their monthly contribution manually or calculate it later.
                 }
 
                 setIsLoaded(true);
@@ -94,9 +87,7 @@ export default function BudgetPage() {
         isFixed: false
     });
 
-    const updateExpense = (id: string, amount: number) => {
-        setExpenses(prev => prev.map(exp => exp.id === id ? { ...exp, amount } : exp));
-    };
+
 
     const handleAddExpense = async () => {
         if (!newExpense.name || !user) return;
@@ -109,7 +100,7 @@ export default function BudgetPage() {
             is_fixed: newExpense.isFixed || false
         };
 
-        const { data: inserted, error } = await supabase.from('budget_expenses').insert(newItem).select().single();
+        const { data: inserted } = await supabase.from('budget_expenses').insert(newItem).select().single();
 
         if (inserted) {
             setExpenses([...expenses, {
@@ -119,7 +110,7 @@ export default function BudgetPage() {
                 category: inserted.category,
                 isFixed: inserted.is_fixed
             }]);
-            setNewExpense({ name: "", amount: 0, category: "Other", isFixed: false, isReimbursable: false });
+            setNewExpense({ name: "", amount: 0, category: "Other", isFixed: false });
             setIsAddingExpense(false);
         }
     };
@@ -133,15 +124,12 @@ export default function BudgetPage() {
         setLastBalanceUpdate(new Date());
     };
 
-    // Phase 6: Debt Ledger Handlers
     const handleAddLoan = (loan: LoanEntry) => {
         setLoans(prev => [...prev, loan]);
     };
 
     const handleSettleLoan = (id: string) => {
         setLoans(prev => prev.map(l => l.id === id ? { ...l, status: 'settled' } : l));
-        // Optional: If settled, does it affect balance? 
-        // For now, keep it manual update via DailyTracker.
     };
 
     const handleDeleteLoan = (id: string) => {
@@ -211,9 +199,8 @@ export default function BudgetPage() {
                     expenses={expenses}
                     currentBalance={currentBalance}
                     investmentTarget={investmentTarget}
-                    lastBalanceUpdate={lastBalanceUpdate}
                     loans={loans}
-                    goals={goals} // Phase 10: North Star
+                    goals={goals}
                 />
 
                 {/* Phase 6: Debt Manager (The Ledger of Truth) */}
@@ -230,14 +217,20 @@ export default function BudgetPage() {
                     {/* Left Column: Cash Flow & Check-in (7/12) */}
                     <div className="xl:col-span-7 space-y-6 md:space-y-8">
                         {/* Daily Check-in */}
-                        <DailyTracker
-                            currentBalance={currentBalance || 0}
-                            lastUpdated={lastBalanceUpdate}
-                            onUpdate={handleBalanceUpdate}
-                        />
+                        <div className="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-100 shadow-sm relative overflow-hidden group">
+                            <DailyTracker
+                                currentBalance={currentBalance || 0}
+                                lastUpdated={lastBalanceUpdate}
+                                onUpdate={handleBalanceUpdate}
+                            />
+                        </div>
 
                         {/* Income Schedule */}
                         <section className="bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-gray-100">
+                            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                                <span className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-lg">💰</span>
+                                Income Streams
+                            </h3>
                             <IncomeScheduler incomes={incomes} setIncomes={setIncomes} />
                         </section>
                     </div>
@@ -253,173 +246,142 @@ export default function BudgetPage() {
                                 </h3>
                                 <BudgetInput
                                     label="Monthly Target"
-                                    prefix="৳"
                                     value={investmentTarget}
                                     onChange={setInvestmentTarget}
-                                    placeholder="e.g. 20000"
-                                    className="bg-white shadow-sm"
                                 />
-                                <div className="mt-3 flex items-center justify-between">
-                                    <p
-                                        onClick={() => setInvestmentTarget(Math.round(incomes.reduce((a, b) => a + b.amount, 0) * 0.2))}
-                                        className="text-xs text-indigo-500 font-medium cursor-pointer hover:underline"
-                                    >
-                                        Recommended: ৳{Math.round(incomes.reduce((a, b) => a + b.amount, 0) * 0.2).toLocaleString()} (20%)
-                                    </p>
-                                    <button
-                                        onClick={async () => {
-                                            if (!user) return;
-                                            // Optimistic UI
-                                            alert("Target Saved!");
-                                            await supabase.from('budget_profiles').update({ monthly_savings_target: investmentTarget }).eq('id', user.id);
-                                        }}
-                                        className="text-[10px] bg-indigo-600 text-white px-3 py-1.5 rounded-full font-bold uppercase tracking-wider hover:bg-indigo-700 transition-colors"
-                                    >
-                                        Confirm
-                                    </button>
-                                </div>
-                                <div className="mt-4 p-3 bg-indigo-50/50 rounded-xl border border-indigo-100/50 text-xs text-indigo-800 leading-relaxed">
-                                    This is your <strong>North Star</strong>. The calculator will optimize your daily limit to ensuring you hit this target first.
-                                </div>
                             </div>
                         </section>
 
-                        {/* Expenses */}
+                        {/* Expenses List */}
                         <section className="bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-gray-100">
-                            <div className="flex items-center justify-between mb-6 md:mb-8">
+                            <div className="flex justify-between items-center mb-6">
                                 <h3 className="text-lg md:text-xl font-bold text-gray-900 flex items-center gap-3">
                                     <span className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-lg">💸</span>
-                                    Monthly Expenses
+                                    Expenses
                                 </h3>
                                 <button
                                     onClick={() => setIsAddingExpense(true)}
-                                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800 transition-colors text-xs font-bold uppercase tracking-wider shadow-lg shadow-black/20"
+                                    className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg shadow-black/20"
                                 >
                                     <Plus className="w-4 h-4" />
-                                    <span>Add Expense</span>
                                 </button>
                             </div>
 
-                            {/* User Guide for Expenses */}
-                            <div className="mb-6 bg-blue-50/50 p-4 rounded-xl border border-blue-100/50 flex gap-3">
-                                <span className="text-xl">💡</span>
-                                <div className="space-y-1">
-                                    <p className="text-xs font-bold text-blue-900 uppercase tracking-wide">Expense Guide</p>
-                                    <ul className="text-xs text-blue-700 space-y-1 list-disc list-inside">
-                                        <li><strong>Fixed:</strong> Must-haves (Rent, Wifi). Deducted immediately.</li>
-                                        <li><strong>Variable:</strong> Daily spending (Food, Fun). Affects Daily Limit.</li>
-                                        <li><strong>Reimbursable:</strong> Office expenses. Reduces Cash but adds to "Owed to You".</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="space-y-4 md:space-y-6">
-                                {expenses.map((expense) => (
-                                    <div key={expense.id} className="group flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-2xl hover:bg-gray-50/80 transition-all border border-transparent hover:border-gray-100 bg-gray-50/30 sm:bg-transparent relative">
-                                        <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2 mb-1">
-                                                <label className="text-base font-bold text-gray-900 truncate">{expense.name}</label>
-                                                {expense.isFixed && (
-                                                    <span className="text-[10px] bg-gray-100 px-2 py-0.5 rounded-full text-gray-500 font-bold uppercase tracking-wider">Fixed</span>
-                                                )}
-                                                {expense.isReimbursable && (
-                                                    <span className="text-[10px] bg-indigo-100 px-2 py-0.5 rounded-full text-indigo-600 font-bold uppercase tracking-wider">Reimbursable</span>
-                                                )}
+                            <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                                {expenses.map(expense => (
+                                    <div key={expense.id} className="group flex items-center justify-between p-4 rounded-xl bg-gray-50 border border-transparent hover:border-gray-200 hover:bg-white transition-all duration-300">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center text-lg shadow-sm">
+                                                {expense.category === "Rent" ? "🏠" :
+                                                    expense.category === "Food" ? "🍔" :
+                                                        expense.category === "Transport" ? "🚗" : "🛍️"}
                                             </div>
-                                            <p className="text-xs text-gray-400 capitalize">{expense.category}</p>
+                                            <div>
+                                                <div className="font-bold text-gray-900">{expense.name}</div>
+                                                <div className="text-xs text-gray-400 font-medium uppercase tracking-wider">{expense.category}</div>
+                                            </div>
                                         </div>
-                                        <div className="flex items-center gap-3 w-full sm:w-auto">
-                                            <div className="w-full sm:w-40">
-                                                <BudgetInput
-                                                    label="Amount"
-                                                    value={expense.amount}
-                                                    onChange={(val) => updateExpense(expense.id, val)}
-                                                    className="bg-white"
-                                                />
+                                        <div className="flex items-center gap-4">
+                                            <div className="text-right">
+                                                <div className="font-bold text-gray-900">৳{expense.amount.toLocaleString()}</div>
+                                                <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+                                                    {expense.isFixed ? "Fixed" : "Variable"}
+                                                </div>
                                             </div>
                                             <button
                                                 onClick={() => handleDeleteExpense(expense.id)}
-                                                className="p-2 text-gray-300 hover:text-red-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"
+                                                className="opacity-0 group-hover:opacity-100 p-2 text-gray-300 hover:text-red-500 transition-all hover:bg-red-50 rounded-full"
                                             >
-                                                <Trash2 className="w-4 h-4" />
+                                                <X className="w-4 h-4" />
                                             </button>
                                         </div>
                                     </div>
                                 ))}
-
-                                {/* Add Expense Form */}
-                                {isAddingExpense && (
-                                    <div className="p-4 rounded-2xl bg-white border-2 border-dashed border-gray-200 animate-in fade-in slide-in-from-top-2">
-                                        <div className="flex items-center justify-between mb-4">
-                                            <h4 className="text-sm font-bold text-gray-900">New Expense</h4>
-                                            <button onClick={() => setIsAddingExpense(false)} className="text-gray-400 hover:text-black">
-                                                <X className="w-4 h-4" />
-                                            </button>
-                                        </div>
-                                        <div className="space-y-4">
-                                            <input
-                                                autoFocus
-                                                type="text"
-                                                placeholder="Expense Name (e.g. Netflix)"
-                                                value={newExpense.name}
-                                                onChange={e => setNewExpense({ ...newExpense, name: e.target.value })}
-                                                className="w-full bg-gray-50 p-3 rounded-lg text-sm font-bold text-gray-900 outline-none focus:ring-2 focus:ring-black/5 placeholder-gray-400"
-                                            />
-                                            <div className="flex gap-2">
-                                                <select
-                                                    value={newExpense.category}
-                                                    onChange={e => setNewExpense({ ...newExpense, category: e.target.value })}
-                                                    className="flex-1 bg-gray-50 p-3 rounded-lg text-xs font-bold text-gray-900 outline-none"
-                                                >
-                                                    <option value="Rent">Rent</option>
-                                                    <option value="Food Order">Food Order</option>
-                                                    <option value="Personal">Personal</option>
-                                                    <option value="Regular">Regular</option>
-                                                    <option value="Restaurants">Restaurants</option>
-                                                    <option value="Other">Other</option>
-                                                </select>
-                                                <button
-                                                    onClick={() => setNewExpense({ ...newExpense, isFixed: !newExpense.isFixed })}
-                                                    className={`px-3 py-2 rounded-lg text-xs font-bold border transition-colors ${newExpense.isFixed ? 'bg-black text-white border-black' : 'bg-white border-gray-200 text-gray-500'}`}
-                                                >
-                                                    {newExpense.isFixed ? 'FIXED' : 'VAR'}
-                                                </button>
-                                                <button
-                                                    onClick={() => setNewExpense({ ...newExpense, isReimbursable: !newExpense.isReimbursable })}
-                                                    className={`px-3 py-2 rounded-lg text-xs font-bold border transition-colors ${newExpense.isReimbursable ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white border-gray-200 text-gray-500'}`}
-                                                    title="I will act as a bank (reimbursed later)"
-                                                >
-                                                    {newExpense.isReimbursable ? 'REIMB' : 'OWN'}
-                                                </button>
-                                            </div>
-                                            <BudgetInput
-                                                label="Amount"
-                                                value={newExpense.amount || 0}
-                                                onChange={val => setNewExpense({ ...newExpense, amount: val })}
-                                                className="bg-gray-50"
-                                            />
-                                            <button
-                                                onClick={handleAddExpense}
-                                                disabled={!newExpense.name}
-                                                className="w-full py-3 bg-black text-white rounded-xl text-sm font-bold hover:bg-gray-800 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
-                                            >
-                                                <Check className="w-4 h-4" /> Add Item
-                                            </button>
-                                        </div>
+                                {expenses.length === 0 && (
+                                    <div className="text-center py-12 text-gray-300 italic">
+                                        No expenses recorded yet.
                                     </div>
                                 )}
-                            </div>
-
-                            <div className="mt-8 pt-8 border-t border-gray-100/50 flex justify-between items-center">
-                                <span className="font-bold text-gray-500 text-sm uppercase tracking-widest">Total Outflow</span>
-                                <span className="font-serif font-bold text-red-600 text-xl md:text-2xl">
-                                    ৳{expenses.reduce((a, b) => a + b.amount, 0).toLocaleString()}
-                                </span>
                             </div>
                         </section>
                     </div>
                 </div>
             </div>
+
+            {/* Add Expense Modal */}
+            {isAddingExpense && (
+                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+                    <div className="bg-white rounded-[2rem] w-full max-w-md p-6 md:p-8 shadow-2xl animate-in fade-in zoom-in duration-300">
+                        <div className="flex justify-between items-center mb-6">
+                            <h3 className="text-xl font-bold text-gray-900">New Expense</h3>
+                            <button onClick={() => setIsAddingExpense(false)} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                                <X className="w-5 h-5 text-gray-500" />
+                            </button>
+                        </div>
+
+                        <div className="space-y-4">
+                            <div className="group relative bg-white border border-gray-200 rounded-2xl transition-all duration-300 hover:border-gray-300 focus-within:border-black focus-within:shadow-[0_0_0_4px_rgba(0,0,0,0.05)]">
+                                <label className="absolute top-3 left-4 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+                                    Expense Name
+                                </label>
+                                <div className="px-4 pb-2.5 pt-7">
+                                    <input
+                                        type="text"
+                                        value={newExpense.name || ""}
+                                        onChange={(e) => setNewExpense({ ...newExpense, name: e.target.value })}
+                                        placeholder="e.g., Grocery"
+                                        className="w-full bg-transparent border-none outline-none p-0 text-xl font-semibold text-gray-900 placeholder:text-gray-200"
+                                    />
+                                </div>
+                            </div>
+                            <BudgetInput
+                                label="Amount"
+                                value={newExpense.amount || 0}
+                                onChange={(val) => setNewExpense({ ...newExpense, amount: Number(val) })}
+                            />
+
+                            <div className="grid grid-cols-2 gap-3">
+                                {["Rent", "Food", "Transport", "Utilities", "Shopping", "Health", "Education", "Other"].map(cat => (
+                                    <button
+                                        key={cat}
+                                        onClick={() => setNewExpense({ ...newExpense, category: cat as import("@/types/budget").ExpenseCategory })}
+                                        className={`p-3 rounded-xl text-sm font-bold border transition-all ${newExpense.category === cat
+                                            ? "bg-black text-white border-black shadow-lg"
+                                            : "bg-white text-gray-500 border-gray-100 hover:border-gray-300"
+                                            }`}
+                                    >
+                                        {cat}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <button
+                                onClick={() => setNewExpense({ ...newExpense, isFixed: !newExpense.isFixed })}
+                                className={`w-full p-4 rounded-xl flex items-center justify-center gap-2 border transition-all ${newExpense.isFixed
+                                    ? "bg-indigo-50 border-indigo-200 text-indigo-700"
+                                    : "bg-white border-gray-100 text-gray-400 hover:border-gray-300"
+                                    }`}
+                            >
+                                <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${newExpense.isFixed ? "bg-indigo-600 border-indigo-600" : "border-gray-300"
+                                    }`}>
+                                    {newExpense.isFixed && <Check className="w-3 h-3 text-white" />}
+                                </div>
+                                <span className="font-bold text-sm">Fixed Monthly Expense</span>
+                            </button>
+
+                            <button
+                                onClick={handleAddExpense}
+                                disabled={!newExpense.name || !newExpense.amount}
+                                className="w-full py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg active:scale-95"
+                            >
+                                Add Expense
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
+
+

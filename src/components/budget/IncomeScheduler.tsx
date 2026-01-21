@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Trash2, Calendar, Edit2, Check, X } from "lucide-react";
+import { Plus, Trash2, Edit2, Check } from "lucide-react";
 import { IncomeSource } from "@/types/budget";
 import { BudgetInput } from "./BudgetInput";
-import { DayPicker } from "./DayPicker";
 import { IncomeTimeline } from "./IncomeTimeline";
 import { cn } from "@/lib/utils";
 
@@ -62,18 +61,14 @@ export function IncomeScheduler({ incomes, setIncomes }: IncomeSchedulerProps) {
         if (editingId === id) setEditingId(null);
     };
 
-    // Helper to get the object being edited (either from state or temp)
-    const getEditingObject = (id: string) => {
-        if (newItem && newItem.id === id) return newItem;
-        return incomes.find(i => i.id === id);
-    };
+
 
     return (
         <div className="space-y-6 md:space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h3 className="text-lg font-bold text-gray-900 tracking-tight">Income Sources</h3>
-                    <p className="text-sm text-gray-500">Add your Salary, Freelance, or any inflows here. Toggle "One-time" for bonuses.</p>
+                    <p className="text-sm text-gray-500">Add your Salary, Freelance, or any inflows here. Toggle &quot;One-time&quot; for bonuses.</p>
                 </div>
                 <button
                     onClick={addIncome}

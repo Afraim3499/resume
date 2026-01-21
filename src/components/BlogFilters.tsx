@@ -21,6 +21,9 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
   const categories = useMemo(() => ["all", ...getAllCategories()], []);
   const tags = useMemo(() => ["all", ...getAllTags()], []);
 
+  // Capture timestamp once for stable sorting
+  const [nowTimestamp] = useState(() => Date.now());
+
   const filteredAndSortedPosts = useMemo(() => {
     let filtered = [...posts];
 
@@ -38,7 +41,7 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
     if (dateFilter !== "all") {
       const now = new Date();
       const filterDate = new Date();
-      
+
       switch (dateFilter) {
         case "week":
           filterDate.setDate(now.getDate() - 7);
@@ -50,7 +53,7 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
           filterDate.setFullYear(now.getFullYear() - 1);
           break;
       }
-      
+
       filtered = filtered.filter((post) => new Date(post.date) >= filterDate);
     }
 
@@ -63,13 +66,13 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
           return (b.views || 0) - (a.views || 0);
         case "trending":
           // Combine views and recency for trending
-          const aScore = (a.views || 0) * (1 / (Date.now() - new Date(a.date).getTime() + 1));
-          const bScore = (b.views || 0) * (1 / (Date.now() - new Date(b.date).getTime() + 1));
+          const aScore = (a.views || 0) * (1 / (nowTimestamp - new Date(a.date).getTime() + 1));
+          const bScore = (b.views || 0) * (1 / (nowTimestamp - new Date(b.date).getTime() + 1));
           return bScore - aScore;
         case "hot":
           // Recent posts with high views
-          const aHot = (a.views || 0) * (new Date(a.date).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000 ? 2 : 1);
-          const bHot = (b.views || 0) * (new Date(b.date).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000 ? 2 : 1);
+          const aHot = (a.views || 0) * (new Date(a.date).getTime() > nowTimestamp - 7 * 24 * 60 * 60 * 1000 ? 2 : 1);
+          const bHot = (b.views || 0) * (new Date(b.date).getTime() > nowTimestamp - 7 * 24 * 60 * 60 * 1000 ? 2 : 1);
           return bHot - aHot;
         default:
           return 0;
@@ -77,7 +80,7 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
     });
 
     return filtered;
-  }, [posts, selectedCategory, selectedTag, sortBy, dateFilter]);
+  }, [posts, selectedCategory, selectedTag, sortBy, dateFilter, nowTimestamp]);
 
   // Update parent when filters change
   useEffect(() => {
@@ -91,44 +94,40 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
         <span className="text-sm text-gray-400">Filter:</span>
         <button
           onClick={() => setSortBy("latest")}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-            sortBy === "latest"
-              ? "bg-primary text-white"
-              : "bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10"
-          }`}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${sortBy === "latest"
+            ? "bg-primary text-white"
+            : "bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10"
+            }`}
         >
           <Clock className="w-4 h-4 inline mr-2" />
           Latest
         </button>
         <button
           onClick={() => setSortBy("popular")}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-            sortBy === "popular"
-              ? "bg-primary text-white"
-              : "bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10"
-          }`}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${sortBy === "popular"
+            ? "bg-primary text-white"
+            : "bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10"
+            }`}
         >
           <Star className="w-4 h-4 inline mr-2" />
           Most Popular
         </button>
         <button
           onClick={() => setSortBy("trending")}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-            sortBy === "trending"
-              ? "bg-primary text-white"
-              : "bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10"
-          }`}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${sortBy === "trending"
+            ? "bg-primary text-white"
+            : "bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10"
+            }`}
         >
           <TrendingUp className="w-4 h-4 inline mr-2" />
           Trending
         </button>
         <button
           onClick={() => setSortBy("hot")}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-            sortBy === "hot"
-              ? "bg-primary text-white"
-              : "bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10"
-          }`}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${sortBy === "hot"
+            ? "bg-primary text-white"
+            : "bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10"
+            }`}
         >
           <Flame className="w-4 h-4 inline mr-2" />
           Hot
@@ -148,8 +147,8 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
             }}
           >
             {categories.map((category) => (
-              <option 
-                key={category} 
+              <option
+                key={category}
                 value={category}
                 style={{ backgroundColor: 'rgb(10, 10, 10)', color: 'white' }}
               >
@@ -170,8 +169,8 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
             }}
           >
             {tags.map((tag) => (
-              <option 
-                key={tag} 
+              <option
+                key={tag}
                 value={tag}
                 style={{ backgroundColor: 'rgb(10, 10, 10)', color: 'white' }}
               >
@@ -186,15 +185,12 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
           <select
             value={dateFilter}
             onChange={(e) => setDateFilter(e.target.value)}
-            className="w-full px-4 py-2 rounded-lg bg-background border border-white/10 text-white focus:outline-none focus:border-primary/50 transition-colors"
-            style={{
-              backgroundColor: 'rgb(10, 10, 10)',
-            }}
+            className="w-full px-4 py-2 rounded-lg bg-[#0a0a0a] border border-white/10 text-white focus:outline-none focus:border-primary/50 transition-colors"
           >
-            <option value="all" style={{ backgroundColor: 'rgb(10, 10, 10)', color: 'white' }}>All Time</option>
-            <option value="week" style={{ backgroundColor: 'rgb(10, 10, 10)', color: 'white' }}>Past Week</option>
-            <option value="month" style={{ backgroundColor: 'rgb(10, 10, 10)', color: 'white' }}>Past Month</option>
-            <option value="year" style={{ backgroundColor: 'rgb(10, 10, 10)', color: 'white' }}>Past Year</option>
+            <option value="all" className="bg-[#0a0a0a] text-white">All Time</option>
+            <option value="week" className="bg-[#0a0a0a] text-white">Past Week</option>
+            <option value="month" className="bg-[#0a0a0a] text-white">Past Month</option>
+            <option value="year" className="bg-[#0a0a0a] text-white">Past Year</option>
           </select>
         </div>
       </div>

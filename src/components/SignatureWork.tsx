@@ -71,10 +71,8 @@ export function SignatureWork() {
             variants={slideInLeft}
             className="lg:col-span-2 space-y-4"
           >
-            {signatureProjects.map((project, index) => {
+            {signatureProjects.map((project) => {
               const isSelected = selectedProject?.slug === project.slug;
-              const caseStudy = getCaseStudyByProject(project.slug);
-              const blogPost = getBlogPostByProjectSlug(project.slug);
 
               return (
                 <motion.button
@@ -82,8 +80,8 @@ export function SignatureWork() {
                   onClick={() => setSelectedProject(project)}
                   whileHover={hoverScale}
                   className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 ${isSelected
-                      ? "bg-primary/10 border-primary/50 shadow-lg shadow-primary/10"
-                      : "bg-secondary/30 border-foreground/10 hover:border-primary/30"
+                    ? "bg-primary/10 border-primary/50 shadow-lg shadow-primary/10"
+                    : "bg-secondary/30 border-foreground/10 hover:border-primary/30"
                     }`}
                 >
                   <div className="flex items-start justify-between gap-4">
@@ -106,8 +104,8 @@ export function SignatureWork() {
                           <span
                             key={tag}
                             className={`text-xs font-medium px-2 py-1 rounded ${isSelected
-                                ? "bg-primary/20 text-primary border border-primary/30"
-                                : "bg-foreground/5 text-foreground/60 border border-foreground/10"
+                              ? "bg-primary/20 text-primary border border-primary/30"
+                              : "bg-foreground/5 text-foreground/60 border border-foreground/10"
                               }`}
                           >
                             {tag}
@@ -166,8 +164,6 @@ export function SignatureWork() {
                       <ImageHover3D
                         src={selectedProject.image}
                         alt={selectedProject.title}
-                        width={1200}
-                        height={600}
                         className="w-full h-full"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent pointer-events-none" />

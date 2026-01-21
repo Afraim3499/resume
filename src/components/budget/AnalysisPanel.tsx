@@ -9,9 +9,13 @@ interface AnalysisPanelProps {
     expenses: ExpenseItem[];
     investmentTarget: number;
     currentBalance?: number;
-    lastBalanceUpdate?: Date | null;
     loans?: LoanEntry[];
-    goals?: any[]; // Phase 10: Goal Tracking
+    goals?: BudgetGoal[]; // Phase 10: Goal Tracking
+}
+
+interface BudgetGoal {
+    name: string;
+    target_amount: number;
 }
 
 export function AnalysisPanel({
@@ -19,7 +23,6 @@ export function AnalysisPanel({
     expenses,
     investmentTarget,
     currentBalance,
-    lastBalanceUpdate,
     loans,
     goals = []
 }: AnalysisPanelProps) {
@@ -50,7 +53,7 @@ export function AnalysisPanel({
     const safetyBuffer = totalIncome * SAFETY_BUFFER_PCT;
 
     const projectedSurplus = totalIncome - totalExpenses - safetyBuffer - investmentTarget;
-    const isInvestmentAtRisk = (projectedSurplus < 0);
+
 
     // Phase 6 & 9: Debt Ledger Logic
     // Receivable = Money owed TO me (Asset, but illiquid)
@@ -144,8 +147,6 @@ export function AnalysisPanel({
 
         // Scenario A: User HAS provided a real-time balance
         if (currentBalance !== undefined) {
-            // We must reserve money for the remaining days' essential variable costs
-            const reservedForVariable = dailyVariableBurn * days;
 
             // What's left is TRUE discretionary money (or "Safe to Spend" on extras)
             // If balance is high, this will be positive. If low, it might be negative (meaning they are eating into fixed bills).
@@ -155,7 +156,7 @@ export function AnalysisPanel({
             // We shouldn't subtract Fixed expenses here if the user's mental model of "Wallet" doesn't include Rent currency.
             // Usually "Wallet" = Spending money. 
 
-            const trueDisposable = currentBalance - reservedForVariable;
+
 
             // If they have MORE than needed for basics, that surplus is divided by days.
             // But wait, the standard daily limit INCLUDES variable expenses (like lunch).
@@ -382,8 +383,6 @@ export function AnalysisPanel({
                                                 {(() => {
                                                     const monthlyBurn = totalExpenses;
                                                     const fireNumber = monthlyBurn * 12 * 25; // 25x Rule
-                                                    const netWorth = (currentBalance || 0) + totalReceivables - totalPayables + (investmentTarget * 12 * 2); // Rough Estimate of Portfolio? No, just use Net Worth + Invested.
-                                                    // Actually for MVP, let's use Net Worth Calculated in Phase 7.
                                                     const currentNW = (currentBalance || 0) + totalReceivables - totalPayables;
 
                                                     const monthlySavings = Math.max(0, totalIncome - monthlyBurn);
@@ -570,7 +569,16 @@ export function AnalysisPanel({
     );
 }
 
-function StrategyCard({ label, amount, total, targetPct, color, bg }: any) {
+interface StrategyCardProps {
+    label: string;
+    amount: number;
+    total: number;
+    targetPct: number;
+    color: string;
+    bg: string;
+}
+
+function StrategyCard({ label, amount, total, targetPct, color, bg }: StrategyCardProps) {
     const pct = Math.round((amount / total) * 100) || 0;
     const isOver = pct > targetPct;
 

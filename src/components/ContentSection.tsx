@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { BookOpen, FileText, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blog";
@@ -125,9 +126,9 @@ export function ContentSection() {
               </div>
               <ArrowRight className="w-5 h-5 text-foreground/30 group-hover:text-black transition-colors" />
             </div>
-            <h4 className="text-xl font-bold mb-2 group-hover:text-black transition-colors">Beyond "Hello World"</h4>
+            <h4 className="text-xl font-bold mb-2 group-hover:text-black transition-colors">Beyond &quot;Hello World&quot;</h4>
             <p className="text-foreground/70 text-sm mb-4">
-              "Meet The Architect Reimagining Dhaka's Digital Infrastructure" — An independent deep-dive into the engineering philosophy behind Gaari.
+              &quot;Meet The Architect Reimagining Dhaka&apos;s Digital Infrastructure&quot; — An independent deep-dive into the engineering philosophy behind Gaari.
             </p>
             <span className="text-xs font-medium text-foreground/50 uppercase tracking-wider mt-auto">Featured Story</span>
           </a>
@@ -147,9 +148,9 @@ export function ContentSection() {
               </div>
               <ArrowRight className="w-5 h-5 text-foreground/30 group-hover:text-black transition-colors" />
             </div>
-            <h4 className="text-xl font-bold mb-2 group-hover:text-black transition-colors">The Death of the "Coder"</h4>
+            <h4 className="text-xl font-bold mb-2 group-hover:text-black transition-colors">The Death of the &quot;Coder&quot;</h4>
             <p className="text-foreground/70 text-sm mb-4">
-              "Why I Became a System Architect" — My manifesto on moving from syntax to systems, future-proofing your career.
+              &quot;Why I Became a System Architect&quot; — My manifesto on moving from syntax to systems, future-proofing your career.
             </p>
             <span className="text-xs font-medium text-foreground/50 uppercase tracking-wider mt-auto">My Manifesto</span>
           </a>
@@ -163,7 +164,13 @@ export function ContentSection() {
           >
             <div className="flex items-start justify-between mb-4">
               <div className="p-3 bg-black rounded-lg text-white">
-                <img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Dev.to" className="w-6 h-6 invert brightness-0" />
+                <Image
+                  src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
+                  alt="Dev.to"
+                  width={24}
+                  height={24}
+                  className="invert brightness-0"
+                />
               </div>
               <ArrowRight className="w-5 h-5 text-foreground/30 group-hover:text-black transition-colors" />
             </div>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Mail, Phone } from "lucide-react";
 import { ContactForm } from "./ContactForm";
+import { EmailDisplay } from "./EmailDisplay";
 
 export function Contact() {
     return (
@@ -18,16 +19,16 @@ export function Contact() {
                         Ready to <span className="text-gradient">Collaborate?</span>
                     </h2>
                     <p className="text-xl text-foreground/70 mb-8 max-w-2xl mx-auto">
-                        Whether it's optimizing your marketing strategy, managing your next big event, or automating with AI—let's make it happen.
+                        Whether it&apos;s optimizing your marketing strategy, managing your next big event, or automating with AI—let&apos;s make it happen.
                     </p>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
-                        <a href="mailto:afraim.afraim99@gmail.com" className="flex items-center gap-3 text-lg font-medium text-foreground hover:text-primary transition-colors">
+                        <div className="flex items-center gap-3 text-lg font-medium text-foreground hover:text-primary transition-colors">
                             <div className="p-3 rounded-full bg-foreground/5 dark:bg-white/5 border border-foreground/10 dark:border-white/10">
                                 <Mail className="w-6 h-6" />
                             </div>
-                            afraim.afraim99@gmail.com
-                        </a>
+                            <EmailDisplay className="hover:text-primary transition-colors" />
+                        </div>
 
                         <a href="tel:+8801751299259" className="flex items-center gap-3 text-lg font-medium text-foreground hover:text-primary transition-colors">
                             <div className="p-3 rounded-full bg-foreground/5 dark:bg-white/5 border border-foreground/10 dark:border-white/10">

@@ -37,7 +37,7 @@ export function Testimonials() {
             What People <span className="text-gradient">Say</span>
           </h2>
           <p className="text-foreground/70 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
-            Testimonials from clients and colleagues I've worked with.
+            Testimonials from clients and colleagues I&apos;ve worked with.
           </p>
         </motion.div>
 
@@ -48,7 +48,7 @@ export function Testimonials() {
           variants={staggerContainer}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial) => (
             <motion.div
               key={testimonial.id}
               variants={fadeUp}
@@ -56,8 +56,8 @@ export function Testimonials() {
               className="relative p-6 rounded-xl bg-background border border-foreground/10 dark:border-white/5 hover:border-primary/50 transition-all group"
             >
               <Quote className="w-8 h-8 text-primary/30 mb-4" />
-              
-              <p className="text-foreground/80 mb-6 leading-relaxed">"{testimonial.content}"</p>
+
+              <p className="text-foreground/80 mb-6 leading-relaxed">&quot;{testimonial.content}&quot;</p>
 
               {testimonial.rating && (
                 <div className="flex items-center gap-1 mb-4">

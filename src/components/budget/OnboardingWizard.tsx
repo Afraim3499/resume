@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Wallet, Target, Rocket, Check, Building, Briefcase, TrendingUp } from "lucide-react";
+import { ArrowRight, Wallet, Rocket, Check, Building } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
 // STEPS
@@ -27,7 +27,7 @@ export function OnboardingWizard({ onComplete }: { onComplete: () => void }) {
         target_amount: 1000000
     });
 
-    const updateData = (key: string, val: any) => setData(prev => ({ ...prev, [key]: val }));
+    const updateData = (key: string, val: string | number) => setData(prev => ({ ...prev, [key]: val }));
 
     const handleNext = async () => {
         if (step < 4) {
@@ -109,7 +109,7 @@ export function OnboardingWizard({ onComplete }: { onComplete: () => void }) {
                     <motion.div key="1" variants={variants} initial="enter" animate="center" exit="exit" className="space-y-6">
                         <div className="space-y-2">
                             <h2 className="text-3xl font-bold font-serif text-gray-900">Who are you?</h2>
-                            <p className="text-gray-500">Let's personalize your financial engine.</p>
+                            <p className="text-gray-500">Let&apos;s personalize your financial engine.</p>
                         </div>
 
                         <div className="space-y-4">
@@ -226,7 +226,16 @@ export function OnboardingWizard({ onComplete }: { onComplete: () => void }) {
     );
 }
 
-function GoalCard({ selected, onClick, icon: Icon, label, desc }: any) {
+interface GoalCardProps {
+    selected: boolean;
+    onClick: () => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    icon: any;
+    label: string;
+    desc: string;
+}
+
+function GoalCard({ selected, onClick, icon: Icon, label, desc }: GoalCardProps) {
     return (
         <div
             onClick={onClick}

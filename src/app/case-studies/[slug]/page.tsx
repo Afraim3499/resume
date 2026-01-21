@@ -29,10 +29,10 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${caseStudy.title} | Case Study`,
-    description: `Case study: ${caseStudy.problem} - ${caseStudy.solution}`,
+    title: `${caseStudy.title} | Advanced Platform Case Study`,
+    description: `Deep dive case study: ${caseStudy.problem.substring(0, 100)}... Engineering scalable solutions with ${caseStudy.technologies.slice(0, 3).join(", ")}.`,
     openGraph: {
-      title: `${caseStudy.title} | Rizwanul Islam`,
+      title: `${caseStudy.title} | Rizwanul Islam - Operations Expert`,
       description: caseStudy.problem,
       type: "article",
     },
@@ -52,8 +52,33 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const url = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
   const caseStudyUrl = `${url}/case-studies/${caseStudy.slug}`;
 
+  // Article Schema for SEO
+  const caseStudySchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: caseStudy.title,
+    description: caseStudy.problem,
+    author: {
+      "@type": "Person",
+      name: "Rizwanul Islam (Afraim)",
+      url: "https://portfolio-rizwanul.vercel.app",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Rizwanul Islam (Afraim)",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": caseStudyUrl,
+    },
+  };
+
   return (
     <main className="bg-background min-h-screen text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }}
+      />
       <article className="container px-4 mx-auto max-w-4xl py-12">
         <Breadcrumbs
           items={[

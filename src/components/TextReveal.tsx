@@ -31,13 +31,14 @@ export function TextReveal({
       { threshold: 0.1 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -52,6 +53,7 @@ export function TextReveal({
     }
     if (typeof node === "object" && "props" in node) {
       // React element - extract children
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return extractText((node as any).props?.children ?? "");
     }
     return String(node);

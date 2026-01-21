@@ -14,10 +14,10 @@ export function BlogListing() {
         <div className="container px-4 mx-auto max-w-6xl py-20">
             <div className="text-center mb-16">
                 <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4">
-                    Blog & <span className="text-gradient">Articles</span>
+                    Advanced Technical <span className="text-gradient">Insights</span>
                 </h1>
                 <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
-                    Technical insights, tutorials, and thoughts on web development, AI/ML, and digital strategy.
+                    Expert deep dives into AI/ML, Next.js architecture, RAG pipelines, and operational data strategy.
                 </p>
             </div>
 

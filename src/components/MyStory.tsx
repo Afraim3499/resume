@@ -73,7 +73,7 @@ export function MyStory() {
                         The Journey
                     </motion.span>
                     <h2 className="text-4xl md:text-6xl lg:text-7xl heading-text mb-6">
-                        From <span className="text-gradient">Poultry Farming</span> to Building Unicorns
+                        From <span className="text-gradient">Poultry Farming</span> to <span className="text-gradient">Advanced Venture Architect</span>
                     </h2>
                     <p className="text-foreground/70 text-lg md:text-xl max-w-2xl mx-auto">
                         Every pivot was a lesson. Every failure, a foundation.
@@ -133,9 +133,9 @@ export function MyStory() {
                         My Philosophy
                     </h3>
                     <p className="text-foreground/80 text-lg leading-relaxed">
-                        I don't micromanage—I orchestrate. Build the vision, assemble the team, create systems that run without me.
+                        I don&apos;t micromanage—I orchestrate. As an Operations Expert, I build the vision, assemble the team, and create advanced systems that run without me.
                         <span className="block mt-4 text-primary font-medium">
-                            The goal? Build unicorns with operational foundations solid enough to run independently.
+                            The goal? Build unicorns with solid operational foundations and data strategy.
                         </span>
                     </p>
                 </motion.div>

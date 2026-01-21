@@ -4,8 +4,8 @@ import type { CaseStudy } from "@/data/case-studies";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Case Studies",
-  description: "Detailed case studies showcasing problem-solving, technical implementation, and measurable results from production projects.",
+  title: "Case Studies | Engineering Scalable Platform Architecture",
+  description: "Deep dive case studies on building Advanced Systems, Gaari's booking engine, and Data Operations strategies. Engineering scale for production ventures.",
 };
 
 export default function CaseStudiesPage() {
@@ -14,10 +14,10 @@ export default function CaseStudiesPage() {
       <div className="container px-4 mx-auto max-w-6xl py-20">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4">
-            Case <span className="text-gradient">Studies</span>
+            Engineering <span className="text-gradient">Scalable Platforms</span>
           </h1>
           <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
-            Deep dives into real projects: problems solved, solutions implemented, and results achieved.
+            Deep dives into advanced systems, operational logic, and the architecture behind production-grade platform ventures.
           </p>
         </div>
 

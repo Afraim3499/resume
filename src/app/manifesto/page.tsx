@@ -1,14 +1,10 @@
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
-import { Navigation } from "@/components/Navigation";
-import { CustomCursor } from "@/components/CustomCursor";
-import { ScrollProgress } from "@/components/ScrollProgress";
-import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Manifesto | The Orchestrator's Protocol",
-    description: "The operating philosophy of Rizwanul Islam (Afraim). Founder Mode, Systematic Venture Building, and the rejection of the manager/maker binary.",
+    title: "Manifesto | The Operations Expert's Protocol",
+    description: "The operating philosophy of Rizwanul Islam (Afraim). Founder Mode, Advanced Systems Thinking, Data Strategy, and the rejection of the manager/maker binary.",
     alternates: {
         canonical: "/manifesto",
     },
@@ -24,7 +20,7 @@ export default function ManifestoPage() {
                         The Philosophy
                     </span>
                     <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
-                        The Greatest Team You'll Ever Lead is the One Inside Your Screen
+                        The Greatest Team You&apos;ll Ever Lead is the One Inside Your Screen
                     </h1>
                     <p className="text-xl md:text-2xl text-muted-foreground italic font-serif">
                         Why I fired my managers to hire my compilers.
@@ -34,17 +30,17 @@ export default function ManifestoPage() {
                 {/* Content Body */}
                 <div className="prose prose-lg prose-invert mx-auto prose-headings:font-serif prose-headings:font-bold prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
                     <p className="lead text-2xl text-foreground font-medium">
-                        In the mid-2020s, the definition of a "Founder" is broken.
+                        In the mid-2020s, the definition of a &quot;Founder&quot; is broken.
                     </p>
 
                     <p>
-                        We are taught to delegate. We are told that "real CEOs" don't write code, don't design Figma files, and certainly don't debug database schemas at 2 AM. We are told to hire people to do the work.
+                        We are taught to delegate. We are told that &quot;real CEOs&quot; don&apos;t write code, don&apos;t design Figma files, and certainly don&apos;t debug database schemas at 2 AM. We are told to hire people to do the work.
                     </p>
                     <p>
                         <strong>I reject this premise.</strong>
                     </p>
                     <p>
-                        I am Rizwanul Islam (Afraim), and I am an <strong>Orchestrator</strong>.
+                        I am Rizwanul Islam (Afraim), and I am an <strong>Advanced Orchestrator</strong> and <strong>Operations Expert</strong>.
                     </p>
 
                     <hr className="my-12 border-border" />
@@ -54,15 +50,15 @@ export default function ManifestoPage() {
                         An Orchestrator is not a manager. A manager oversees people. An Orchestrator oversees <em>systems</em>.
                     </p>
                     <p>
-                        When I built <strong>Gaari</strong>, I didn't hire a 10-person dev team. I built a RAG pipeline that could answer customer queries better than a support team. When I architected <strong>The Trail</strong>, I didn't hire a content operations manager. I built a Next.js CMS that enforced editorial standards programmatically.
+                        When I built <strong>Gaari</strong>, I didn&apos;t hire a 10-person dev team. I built a RAG pipeline that could answer customer queries better than a support team. When I architected <strong>The Trail</strong>, I didn&apos;t hire a content operations manager. I built a Next.js CMS that enforced editorial standards programmatically.
                     </p>
                     <p>
-                        This is "Founder Mode" in its purest form: the refusal to let the signal loss of delegation dilute the product vision.
+                        This is &quot;Founder Mode&quot; in its purest form: the refusal to let the signal loss of delegation dilute the product vision.
                     </p>
 
-                    <h3>The "Afraim" Standard</h3>
+                    <h3>The &quot;Afraim&quot; Standard</h3>
                     <p>
-                        The name "Afraim" is my primary key. In a world of duplicate identities, it stands for:
+                        The name &quot;Afraim&quot; is my primary key. In a world of duplicate identities, it stands for:
                     </p>
                     <ul>
                         <li><strong>Velocity over Bureaucracy</strong>: Ship logic, not meetings.</li>
@@ -72,10 +68,10 @@ export default function ManifestoPage() {
 
                     <h3>The Turnkey Revolution</h3>
                     <p>
-                        We are entering an era where one person, armed with intelligent agents and robust frameworks (Next.js, Supabase), can outmaneuver a corporation of 50. I am living proof of this. From poultry farming in my teens to architecting digital ecosystems for millions of data points today, the lever has always been the same: <strong>Systems Thinking</strong>.
+                        We are entering an era where one person, armed with intelligent agents and robust frameworks (Next.js, Supabase), can outmaneuver a corporation of 50. I am living proof of this. From poultry farming in my teens to architecting advanced digital ecosystems for millions of data points today, the lever has always been the same: <strong>Advanced Systems Thinking</strong> and <strong>Operational Data Strategy</strong>.
                     </p>
                     <p>
-                        I don't just build software. I orchestrate markets.
+                        I don&apos;t just build software. I orchestrate markets.
                     </p>
                 </div>
             </article>

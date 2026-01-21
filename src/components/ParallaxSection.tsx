@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { ReactNode } from "react";
 
 interface ParallaxSectionProps {
@@ -24,9 +24,9 @@ export function ParallaxSection({
   const y = useTransform(scrollYProgress, [0, 1], [0, -100 * speed]);
 
   return (
-    <motion.div ref={ref} style={{ y }} className={`relative ${className}`}>
+    <m.div ref={ref} style={{ y, willChange: 'transform' }} className={`relative ${className}`}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 

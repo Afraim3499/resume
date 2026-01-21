@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useRef, MouseEvent } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { skills, skillCategories, type Skill } from "@/data/skills";
-import { Code, Database, Cloud, Brain, Wrench, Layers, Terminal, Cpu } from "lucide-react";
+import { Cpu } from "lucide-react";
 
 // Helper for magnetic effect
 function MagneticKey({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -42,18 +42,11 @@ function MagneticKey({ children, className }: { children: React.ReactNode; class
     );
 }
 
-const categoryIcons: Record<string, any> = {
-    frontend: Code,
-    backend: Layers,
-    database: Database,
-    devops: Cloud,
-    ai: Brain,
-    tools: Wrench,
-};
+
 
 export function SkillsMatrix() {
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
-    const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+
 
     const allSkills = Object.values(skills).flat();
     const displaySkills = activeCategory

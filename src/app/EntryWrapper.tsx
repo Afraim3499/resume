@@ -1,6 +1,11 @@
-"use client";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 export function EntryWrapper({ children }: { children: React.ReactNode }) {
   // Entry gate removed for SEO - crawlers need to see content immediately
-  return <>{children}</>;
+  // Added LazyMotion for Tree-Shaking optimization
+  return (
+    <LazyMotion features={domAnimation}>
+      {children}
+    </LazyMotion>
+  );
 }

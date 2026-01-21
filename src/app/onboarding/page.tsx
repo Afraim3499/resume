@@ -2,7 +2,7 @@
 "use client";
 
 import { OnboardingWizard } from "@/components/budget/OnboardingWizard";
-import { redirect } from "next/navigation";
+
 
 export default function OnboardingPage() {
     return (

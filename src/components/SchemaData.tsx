@@ -4,116 +4,32 @@ import { projects } from "@/data/projects";
 import { faqData } from "@/data/faq";
 import { usePathname } from "next/navigation";
 
+interface FAQSchemaItem {
+  "@type": "Question";
+  name: string;
+  acceptedAnswer: {
+    "@type": "Answer";
+    text: string;
+  };
+}
+
+
+interface BreadcrumbItem {
+  "@type": "ListItem";
+  position: number;
+  name: string;
+  item: string;
+}
+
 export function SchemaData() {
   const pathname = usePathname();
-  const baseUrl = "https://portfolio-rizwanul.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
 
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Rizwanul Islam",
-    alternateName: ["Afraim", "Rizwanul Afraim", "Rizwanul Islam (Afraim)", "The Orchestrator"],
-    brand: {
-      "@type": "Brand",
-      name: "Afraim",
-      slogan: "The Orchestrator of Intelligent Futures",
-    },
-    jobTitle: ["Founder", "Venture Architect", "Operations Associate", "Systems Orchestrator"],
-    description: "Legendary Digital Strategist and Architect of Intelligent Futures. Rizwanul Islam (Afraim) combines high-level business strategy with low-level technical execution.",
-    disambiguatingDescription: "Founder of Gaari. Operations Associate at PrimeSync Solutions. Known as 'Afraim'. Distinct from Dr. Md. Rizwanul Islam (Dean).",
-    url: baseUrl,
-    image: `${baseUrl}/assets/rizwanul-islam-afraim.jpg`,
-    email: "contact@rizwanulislam.com",
-    sameAs: [
-      "https://www.linkedin.com/in/rizwanul-islam-afraim99/",
-      "https://github.com/Afraim3499",
-      "https://x.com/rizwanul_afraim",
-      "https://www.facebook.com/Rizwan.Afraim",
-      "https://dev.to/rizwanul_islam_afraim",
-    ],
-    worksFor: [
-      {
-        "@type": "Organization",
-        name: "PrimeSync",
-        roleName: "Operations Associate",
-      },
-      {
-        "@type": "Organization",
-        name: "Gaari",
-        url: "https://gaari.com",
-        roleName: "Founder & CEO",
-      },
-      {
-        "@type": "Organization",
-        name: "The Trail",
-        roleName: "Co-Founder",
-      },
-      {
-        "@type": "Organization",
-        name: "Yagacalls",
-        roleName: "Lead Developer",
-      },
-    ],
-    knowsAbout: [
-      "Business Strategy",
-      "Operations Management",
-      "Venture Architecture",
-      "Systems Orchestration",
-      "AI Agentic Systems",
-      "Market Creation",
-      "Full-Stack Development",
-      "Next.js",
-      "React",
-      "Supabase",
-      "RAG Pipelines",
-      "SEO Strategy (SXO/AIO)",
-    ],
-    alumniOf: {
-      "@type": "EducationalOrganization",
-      name: "North South University",
-      url: "https://www.northsouth.edu/",
-    },
-    // Geo/Location data
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Dhaka",
-      addressRegion: "Dhaka Division",
-      addressCountry: "Bangladesh",
-    },
-    nationality: {
-      "@type": "Country",
-      name: "Bangladesh",
-    },
-  };
-
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "Rizwanul Islam (Afraim) - Venture Architect",
-    description: "Full-stack development, digital strategy, and venture orchestration services.",
-    url: baseUrl,
-    logo: `${baseUrl}/assets/rizwanul-islam-afraim.jpg`,
-    founder: {
-      "@type": "Person",
-      name: "Rizwanul Islam (Afraim)",
-    },
-    areaServed: {
-      "@type": "GeoCircle",
-      geoMidpoint: {
-        "@type": "GeoCoordinates",
-        latitude: 23.8103,
-        longitude: 90.4125,
-      },
-      geoRadius: "Global",
-    },
-    serviceType: ["Venture Building", "System Architecture", "AI Solutions", "Startup Consulting"],
-  };
-
-  // Dynamic FAQ Schema from centralized data
+  // Dynamic FAQ Schema
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
+    mainEntity: faqData.map((item): FAQSchemaItem => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {
@@ -123,56 +39,36 @@ export function SchemaData() {
     })),
   };
 
+  // Dynamic Project Schemas
   const projectSchemas = projects.map((project) => ({
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: project.title,
     description: project.description,
-    applicationCategory: "WebApplication", // God Mode: Specific category
-    operatingSystem: "Web, iOS, Android", // God Mode: Cross-platform capability
+    applicationCategory: "WebApplication",
+    operatingSystem: "Web, iOS, Android",
     url: project.link,
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
     },
-    aggregateRating: project.performance?.lighthouse ? { // God Mode: Performance as rating
+    aggregateRating: project.performance?.lighthouse ? {
       "@type": "AggregateRating",
-      ratingValue: (project.performance.lighthouse / 20).toFixed(1), // Scale 100 to 5
+      ratingValue: (project.performance.lighthouse / 20).toFixed(1),
       ratingCount: "1",
       bestRating: "5",
       worstRating: "1"
     } : undefined,
     author: {
-      "@type": "Person",
-      name: "Rizwanul Islam (Afraim)",
-      url: baseUrl,
+      "@id": `${baseUrl}/#person`
     },
     datePublished: `${project.year}-01-01`,
     programmingLanguage: project.techStack,
   }));
 
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Rizwanul Islam (Afraim) Portfolio",
-    alternateName: ["Afraim Portfolio", "The Orchestrator Portfolio"],
-    description: "Official digital presence of Rizwanul Islam (Afraim) - Venture Architect and Full-Stack Strategist.",
-    url: baseUrl,
-    inLanguage: "en-US",
-    author: {
-      "@type": "Person",
-      name: "Rizwanul Islam (Afraim)",
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${baseUrl}/?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
-  };
-
   // Dynamic Breadcrumb Generation
-  const breadcrumbItems: any[] = [
+  const breadcrumbItems: BreadcrumbItem[] = [
     {
       "@type": "ListItem",
       position: 1,
@@ -188,7 +84,7 @@ export function SchemaData() {
       name: "Blog",
       item: `${baseUrl}/blog`,
     });
-  } else if (pathname.startsWith("/blog/")) {
+  } else if (pathname?.startsWith("/blog/")) {
     breadcrumbItems.push({
       "@type": "ListItem",
       position: 2,
@@ -202,7 +98,7 @@ export function SchemaData() {
       name: slug ? slug.replace(/-/g, " ") : "Post",
       item: `${baseUrl}${pathname}`,
     });
-  } else if (pathname.startsWith("/projects/")) {
+  } else if (pathname?.startsWith("/projects/")) {
     breadcrumbItems.push({
       "@type": "ListItem",
       position: 2,
@@ -234,18 +130,6 @@ export function SchemaData() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

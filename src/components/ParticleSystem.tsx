@@ -59,7 +59,7 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
 
     // Check for reduced motion preference
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
+    setPrefersReducedMotion(mediaQuery.matches); // eslint-disable-line react-hooks/set-state-in-effect
     setIsMobile(checkMobile());
 
     // Listen for changes
@@ -183,10 +183,13 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
           return;
         }
 
+        // Frame Budget Guard: Track performance and adapt particle count
+        const frameStart = performance.now();
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Update and draw particles
-        particlesRef.current.forEach((particle, i) => {
+        particlesRef.current.forEach((particle) => {
           const angleVariation = particle.type === "primary"
             ? 0.015
             : particle.type === "accent"
@@ -204,13 +207,16 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
           particle.vx *= 0.98;
           particle.vy *= 0.98;
 
-          // Mouse interaction
+          // Mouse interaction - OPTIMIZED: Squared distance comparison (no Math.sqrt)
           if (mouseRef.current.active) {
             const dx = particle.x - mouseRef.current.x;
             const dy = particle.y - mouseRef.current.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+            const distanceSquared = dx * dx + dy * dy;
+            const maxDistanceSquared = 120 * 120; // 14400
 
-            if (distance < 120) {
+            if (distanceSquared < maxDistanceSquared) {
+              // Only calculate sqrt when needed for normalization
+              const distance = Math.sqrt(distanceSquared);
               const force = (120 - distance) / 120;
               const normalizedDx = dx / distance;
               const normalizedDy = dy / distance;
@@ -315,6 +321,20 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
             }
           });
         });
+
+        // Frame Budget Guard: Check execution time and adapt
+        const frameEnd = performance.now();
+        const frameDelta = frameEnd - frameStart;
+
+        // If frame exceeds 4ms budget, reduce particle count by 10%
+        if (frameDelta > 4 && particlesRef.current.length > 20) {
+          const targetCount = Math.floor(particlesRef.current.length * 0.9);
+          particlesRef.current = particlesRef.current.slice(0, targetCount);
+
+          if (process.env.NODE_ENV === "development") {
+            console.warn(`ParticleSystem: Frame budget exceeded (${frameDelta.toFixed(2)}ms). Reduced particles to ${targetCount}`);
+          }
+        }
 
         animationFrameRef.current = requestAnimationFrame(animate);
       };

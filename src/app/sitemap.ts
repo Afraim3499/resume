@@ -1,29 +1,61 @@
 import { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 import { blogPosts } from "@/data/blog";
+import { caseStudies } from "@/data/case-studies";
+import { getAllTerms } from "@/data/knowledge-graph";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://portfolio-rizwanul.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
 
+  // Core Routes - Priority 1.0 for Home, 0.9 for key pages
   const routes = [
-    "",
-    "/blog",
-    "/manifesto",
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: route === "" ? 1 : route === "/manifesto" ? 0.9 : 0.8,
-  }));
+    {
+      url: `${baseUrl}`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/manifesto`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/resume`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/wiki`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/case-studies`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+  ];
 
+  // Dynamic Project Routes - Priority 0.8
   const projectRoutes = projects.map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date(project.year ? `${project.year}-01-01` : Date.now()),
     changeFrequency: "monthly" as const,
-    priority: 0.7,
+    priority: 0.8,
   }));
 
-  // Dynamic blog post routes
+  // Dynamic Blog Post Routes - Priority 0.7-0.9 (featured)
   const blogRoutes = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.updatedAt || post.date),
@@ -31,5 +63,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: post.featured ? 0.9 : 0.7,
   }));
 
-  return [...routes, ...projectRoutes, ...blogRoutes];
+  // Dynamic Case Study Routes - Priority 0.8
+  const caseStudyRoutes = caseStudies.map((study) => ({
+    url: `${baseUrl}/case-studies/${study.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  // Dynamic Wiki Term Routes - Priority 0.6
+  const wikiTerms = getAllTerms();
+  const wikiRoutes = wikiTerms.map((term) => ({
+    url: `${baseUrl}/wiki/${term.id}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...routes, ...projectRoutes, ...blogRoutes, ...caseStudyRoutes, ...wikiRoutes];
 }
