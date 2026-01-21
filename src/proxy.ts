@@ -10,9 +10,12 @@ export async function proxy(request: NextRequest) {
     })
 
     // Create an unmodified Supabase client
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key';
+
     const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        supabaseUrl,
+        supabaseKey,
         {
             cookies: {
                 get(name: string) {
@@ -56,7 +59,14 @@ export async function proxy(request: NextRequest) {
         }
     )
 
-    const { data: { user } } = await supabase.auth.getUser()
+    let user = null;
+    try {
+        const { data } = await supabase.auth.getUser();
+        user = data.user;
+    } catch (error) {
+        // Suppress auth errors in middleware to avoid 500s
+        console.error('Middleware Auth Error:', error);
+    }
 
     // Protected Routes Logic
     // If user is NOT logged in and trying to access /budget or /onboarding

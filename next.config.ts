@@ -26,6 +26,9 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  outputFileTracingIncludes: {
+    "/*": ["./src/content/**/*"],
+  },
   async headers() {
     return [
       {
