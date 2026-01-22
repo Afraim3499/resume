@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { SchemaData } from "@/components/SchemaData";
 import { getAllFAQs } from "@/lib/faq-loader";
 import { Analytics } from "@/components/Analytics";
-import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { Navigation } from "@/components/Navigation";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { EntryWrapper } from "./EntryWrapper";
