@@ -66,12 +66,12 @@ export const metadata: Metadata = {
     "Next.js Expert",
     "AI Agentic Systems",
   ],
-  authors: [{ name: "Rizwanul Islam (Afraim)", url: "https://portfolio-rizwanul.vercel.app" }],
+  authors: [{ name: "Rizwanul Islam (Afraim)", url: "https://www.rizwanulafraim.com" }],
   creator: "Rizwanul Islam (Afraim)",
   publisher: "Rizwanul Islam (Afraim)",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com"),
   alternates: {
-    canonical: 'https://portfolio-rizwanul.vercel.app',
+    canonical: 'https://www.rizwanulafraim.com',
     languages: {
       'en-US': '/en-US',
     },
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://portfolio-rizwanul.vercel.app",
+    url: "https://www.rizwanulafraim.com",
     title: "Rizwanul Islam (Afraim) | Venture Architect",
     description: "Architecting Intelligent Futures through scalable ventures and robust code. The portfolio of Rizwanul Islam (Afraim).",
     siteName: "Rizwanul Islam (Afraim) Portfolio",

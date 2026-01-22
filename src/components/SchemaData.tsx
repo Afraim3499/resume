@@ -27,7 +27,7 @@ interface SchemaDataProps {
 
 export function SchemaData({ faqItems }: SchemaDataProps) {
   const pathname = usePathname();
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
 
   // Dynamic FAQ Schema
   const faqSchema = {

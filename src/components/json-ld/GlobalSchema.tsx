@@ -1,5 +1,5 @@
 export function GlobalSchema() {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
 
     // Wikidata URIs for GEO (Generative Engine Optimization)
     const topicUris: Record<string, string> = {
@@ -35,7 +35,7 @@ export function GlobalSchema() {
                 },
                 "jobTitle": ["Founder", "Venture Architect", "Operations Associate", "Systems Orchestrator"],
                 "description": "Legendary Digital Strategist and Architect of Intelligent Futures. Rizwanul Islam (Afraim) combines high-level business strategy with low-level technical execution.",
-                "email": "contact@rizwanulislam.com",
+                "email": "contact@rizwanulafraim.com",
                 "telephone": "+8801751299259",
                 "sameAs": [
                     "https://www.linkedin.com/in/rizwanul-islam-afraim99/",
