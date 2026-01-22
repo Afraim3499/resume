@@ -111,6 +111,20 @@ export function GlobalSchema() {
                     },
                     "geoRadius": "Global",
                 },
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Dhaka",
+                    "addressRegion": "Dhaka Division",
+                    "addressCountry": "BD"
+                },
+                "sameAs": [
+                    "https://www.linkedin.com/in/rizwanul-islam-afraim99/",
+                    "https://github.com/Afraim3499",
+                    "https://x.com/rizwanul_afraim",
+                    "https://www.facebook.com/Rizwan.Afraim",
+                    "https://dev.to/rizwanul_islam_afraim",
+                    "https://www.instagram.com/afraim_privateer/",
+                ],
                 "serviceType": ["Venture Building", "System Architecture", "AI Solutions", "Startup Consulting"],
             },
             {
