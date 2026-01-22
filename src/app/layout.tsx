@@ -7,6 +7,7 @@ import { SchemaData } from "@/components/SchemaData";
 import { getAllFAQs } from "@/lib/faq-loader";
 import { Analytics } from "@/components/Analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Navigation } from "@/components/Navigation";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { EntryWrapper } from "./EntryWrapper";
@@ -175,6 +176,7 @@ export default function RootLayout({
             <Analytics />
             <VercelAnalytics />
           </Suspense>
+          <SpeedInsights />
           <CustomCursor />
           <ScrollProgress />
           <Navigation />
