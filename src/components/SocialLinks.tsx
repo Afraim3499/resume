@@ -49,7 +49,7 @@ export function SocialLinks({ size = "md", className = "" }: SocialLinksProps) {
   };
 
   return (
-    <div className={`flex items-center gap-4 ${className}`}>
+    <div className={`flex flex-wrap items-center gap-4 ${className}`}>
       {socialProfiles.map((profile) => {
         const Icon = iconMap[profile.icon as keyof typeof iconMap] || Github;
         return (
