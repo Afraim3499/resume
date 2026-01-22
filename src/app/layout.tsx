@@ -111,7 +111,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "AgEIer9xlB7rHjMCi02zynoNYCDMXwU8UyVjkqyU5xI",
+    google: "bxgbWtpcZz0UeIdXK_U1hyPALpOnAezUEOBZo6c5nHA",
     other: {
       "msvalidate.01": "D856AACF6C5D5003C81D9CF9ED47668C",
       "p:domain_verify": "09fdfc9215d7eeefb6030ff991b9c026",
