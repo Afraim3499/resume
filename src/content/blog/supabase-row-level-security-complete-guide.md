@@ -10,7 +10,7 @@ author: "Rizwanul Islam"
 ---Row Level Security (RLS) is one of Supabase's most powerful features, yet it's often misunderstood or underutilized. In this comprehensive guide, I'll show you how to implement bulletproof security policies that protect your data at the database level.
 
 
-This tutorial is based on my experience building [The Trail](https://portfolio-rizwanul.vercel.app/projects/the-trail) (a news platform with 30+ database tables) and [Gaari](https://portfolio-rizwanul.vercel.app/projects/gaari) (a booking platform), where RLS was critical for multi-user security.
+This tutorial is based on my experience building [The Trail](https://www.rizwanulafraim.com/projects/the-trail) (a news platform with 30+ database tables) and [Gaari](https://www.rizwanulafraim.com/projects/gaari) (a booking platform), where RLS was critical for multi-user security.
 
 ## What You'll Learn
 
@@ -464,7 +464,7 @@ const { data } = await supabase
 
 ## Real-World Example: News Platform
 
-Here's how I implemented RLS for [The Trail](https://portfolio-rizwanul.vercel.app/projects/the-trail):
+Here's how I implemented RLS for [The Trail](https://www.rizwanulafraim.com/projects/the-trail):
 
 ```sql
 -- Articles table
@@ -532,8 +532,8 @@ Row Level Security is a game-changer for application security. By enforcing rule
 
 ### Related Resources
 
-- [Gaari Project](https://portfolio-rizwanul.vercel.app/projects/gaari) - Multi-tenant booking system with RLS
-- [The Trail Project](https://portfolio-rizwanul.vercel.app/projects/the-trail) - News platform with role-based RLS
+- [Gaari Project](https://www.rizwanulafraim.com/projects/gaari) - Multi-tenant booking system with RLS
+- [The Trail Project](https://www.rizwanulafraim.com/projects/the-trail) - News platform with role-based RLS
 - [Supabase Docs](https://supabase.com/docs/guides/auth/row-level-security)
 
 ---

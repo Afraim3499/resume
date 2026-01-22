@@ -52,7 +52,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
-  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
+  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
 
   // SoftwareApplication Schema for SEO
   const projectSchema = {
@@ -65,7 +65,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     author: {
       "@type": "Person",
       name: "Rizwanul Islam (Afraim)",
-      url: "https://portfolio-rizwanul.vercel.app",
+      url: "https://www.rizwanulafraim.com",
     },
     url: project.link || `${url}/projects/${project.slug}`,
   };

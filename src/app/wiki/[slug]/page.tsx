@@ -62,12 +62,12 @@ export default async function WikiPage({ params }: { params: Promise<{ slug: str
     const termSchema = {
         "@context": "https://schema.org",
         "@type": "DefinedTerm",
-        "@id": `https://portfolio-rizwanul.vercel.app/wiki/${term.id}`,
+        "@id": `https://www.rizwanulafraim.com/wiki/${term.id}`,
         name: term.term,
         description: term.definition,
         inDefinedTermSet: {
             "@type": "DefinedTermSet",
-            "@id": "https://portfolio-rizwanul.vercel.app/wiki",
+            "@id": "https://www.rizwanulafraim.com/wiki",
             name: "The Orchestrator's Knowledge Graph",
         },
     };

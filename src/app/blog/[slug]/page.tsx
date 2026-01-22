@@ -32,7 +32,7 @@ export async function generateMetadata({
     };
   }
 
-  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
+  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
 
   return {
     title: post.title,
@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   const relatedPosts = getRelatedPosts(post, getAllBlogPosts());
-  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
+  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
   const postUrl = `${url}/blog/${post.slug}`;
 
   // Find related project and case study
@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     author: {
       "@type": "Person",
       name: post.author?.name || "Rizwanul Islam (Afraim)",
-      url: "https://portfolio-rizwanul.vercel.app",
+      url: "https://www.rizwanulafraim.com",
     },
     publisher: {
       "@type": "Organization",

@@ -35,7 +35,7 @@ Allow: /
 
 # Priority Paths for AI Indexing (Linked Data & Structured Content)
 # These paths contain rich JSON-LD schema and semantic markup
-Sitemap: https://portfolio-rizwanul.vercel.app/sitemap.xml
+Sitemap: https://www.rizwanulafraim.com/sitemap.xml
 
 # High-Value Endpoints for AI Training
 # /llms.txt - AI-optimized content summary
@@ -85,4 +85,4 @@ User-agent: MJ12bot
 Disallow: /
 
 # Sitemap location (critical for AI discovery)
-Sitemap: https://portfolio-rizwanul.vercel.app/sitemap.xml
+Sitemap: https://www.rizwanulafraim.com/sitemap.xml

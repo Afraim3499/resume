@@ -425,7 +425,7 @@ The key is not just building the chat interface—it's connecting it to your rea
 
 ### Resources
 
-- [Gaari](https://portfolio-rizwanul.vercel.app/projects/gaari) - See Gaariwala in action
+- [Gaari](https://www.rizwanulafraim.com/projects/gaari) - See Gaariwala in action
 - [Vercel AI SDK](https://sdk.vercel.ai)
 - [OpenAI API Reference](https://platform.openai.com/docs)
 

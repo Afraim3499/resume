@@ -7,7 +7,7 @@ Rizwanul Islam is a full-stack developer and digital strategist based in Dhaka, 
 - **Name**: Rizwanul Islam (Afraim)
 - **Role**: Founder, Digital Strategist, Full-Stack Developer
 - **Location**: Dhaka, Bangladesh
-- **Contact**: https://portfolio-rizwanul.vercel.app/contact
+- **Contact**: https://www.rizwanulafraim.com/contact
 
 ## Expertise
 - Next.js, React, TypeScript

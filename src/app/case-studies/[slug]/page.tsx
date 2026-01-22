@@ -50,7 +50,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
   const project = getProjectBySlug(caseStudy.projectSlug);
   const blogPost = getBlogPostByProjectSlug(caseStudy.projectSlug);
-  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
+  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
   const caseStudyUrl = `${url}/case-studies/${caseStudy.slug}`;
 
   // Article Schema for SEO
@@ -62,7 +62,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     author: {
       "@type": "Person",
       name: "Rizwanul Islam (Afraim)",
-      url: "https://portfolio-rizwanul.vercel.app",
+      url: "https://www.rizwanulafraim.com",
     },
     publisher: {
       "@type": "Organization",

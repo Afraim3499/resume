@@ -11,7 +11,7 @@ author: "Rizwanul Islam"
 
 Building a booking system is one of the most common yet challenging projects for developers. Whether you're creating a car rental platform, hotel reservation system, or appointment scheduler, the core concepts remain the same.
 
-In this comprehensive guide, I'll walk you through building a production-ready booking system from scratch using **Next.js 14**, **TypeScript**, **Supabase**, and **Stripe**. This tutorial is based on my experience building [Gaari](https://portfolio-rizwanul.vercel.app/projects/gaari), a car rental platform with 80+ components and 110+ API endpoints.
+In this comprehensive guide, I'll walk you through building a production-ready booking system from scratch using **Next.js 14**, **TypeScript**, **Supabase**, and **Stripe**. This tutorial is based on my experience building [Gaari](https://www.rizwanulafraim.com/projects/gaari), a car rental platform with 80+ components and 110+ API endpoints.
 
 ## What You'll Learn
 
@@ -717,8 +717,8 @@ You've now built a complete booking system with:
 
 ### Related Projects
 
-- [Gaari](https://portfolio-rizwanul.vercel.app/projects/gaari) - My car rental platform built with these concepts
-- [View the Gaari Case Study](https://portfolio-rizwanul.vercel.app/blog/building-gaari-booking-system)
+- [Gaari](https://www.rizwanulafraim.com/projects/gaari) - My car rental platform built with these concepts
+- [View the Gaari Case Study](https://www.rizwanulafraim.com/blog/building-gaari-booking-system)
 
 ---
 

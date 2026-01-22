@@ -2,7 +2,7 @@ import { getAllBlogPosts } from "@/lib/blog-loader";
 
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
   const blogPosts = getAllBlogPosts();
 
   const rssItems = blogPosts

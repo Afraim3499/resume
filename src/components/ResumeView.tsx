@@ -40,8 +40,8 @@ export function ResumeView() {
                             <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-600 font-medium">
                                 <div className="flex items-center gap-1.5">
                                     <LinkIcon className="w-3.5 h-3.5" />
-                                    <Link href="https://portfolio-rizwanul.vercel.app" className="hover:underline">
-                                        portfolio-rizwanul.vercel.app
+                                    <Link href="https://www.rizwanulafraim.com" className="hover:underline">
+                                        rizwanulafraim.com
                                     </Link>
                                 </div>
                                 <div className="flex items-center gap-1.5">

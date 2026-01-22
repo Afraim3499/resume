@@ -11,7 +11,7 @@ Here are three variations for your LinkedIn post. Choose the one that best fits 
 
 I’ve spent the last few weeks not just building a portfolio, but architecting a space that truly represents how I think and build.
 
-Today, I’m officially launching **[https://portfolio-rizwanul.vercel.app/](https://portfolio-rizwanul.vercel.app/)**.
+Today, I’m officially launching **[https://www.rizwanulafraim.com/](https://www.rizwanulafraim.com/)**.
 
 It’s more than a showcase of my work with **Gaari** and **The Trail**; it’s a deep dive into my philosophy as a Digital Strategist and Full-Stack Developer. I wanted a platform that feels alive, premium, and relentlessly focused on the truth of what we build.
 
@@ -33,7 +33,7 @@ Check it out and let me know—what does your Digital HQ say about you?
 
 **Headline:** Redefining my digital presence. 💻
 
-I’m excited to share my newly redesigned portfolio: **[https://portfolio-rizwanul.vercel.app/](https://portfolio-rizwanul.vercel.app/)**.
+I’m excited to share my newly redesigned portfolio: **[https://www.rizwanulafraim.com/](https://www.rizwanulafraim.com/)**.
 
 The goal was simple: **Evolved Minimalism**. I wanted high performance, zero clutter, and a design that gets out of the way of the content.
 
@@ -56,7 +56,7 @@ It’s live on Vercel now. I’d love to hear your feedback on the UX and perfor
 
 For a long time, I’ve been heads-down building **Gaari**, **The Trail**, and helping businesses scale with digital strategies. But I realized I needed a central place to bring all these stories together.
 
-So, I built this: **[https://portfolio-rizwanul.vercel.app/](https://portfolio-rizwanul.vercel.app/)**
+So, I built this: **[https://www.rizwanulafraim.com/](https://www.rizwanulafraim.com/)**
 
 It’s a collection of my case studies, my technical writing, and my journey so far. It’s still day one, and I have a lot more to add (including a new series on AI integration), but I’m proud to ship it today.
 

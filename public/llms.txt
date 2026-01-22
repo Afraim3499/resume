@@ -65,7 +65,7 @@ Expert market analysis platform.
 *   Startup technical advisory ("Zero to One")
 
 ## 8. Contact & Links
-*   **Portfolio**: https://portfolio-rizwanul.vercel.app
+*   **Portfolio**: https://www.rizwanulafraim.com
 *   **LinkedIn**: https://www.linkedin.com/in/rizwanul-islam-afraim99/
 *   **GitHub**: https://github.com/Afraim3499
 *   **Twitter**: https://x.com/rizwanul_afraim

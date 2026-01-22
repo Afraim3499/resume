@@ -23,7 +23,7 @@ I am not a theorist. I am a builder who strategizes.
 ---
 
 ### X (Twitter) Bio
-**Orchestrator of Intelligent Futures. Founder @Gaari_App & @TheTrail_News. Building systems that scale to 1M+ data points. #NextJS #AIAgents #FounderMode | portfolio-rizwanul.vercel.app**
+**Orchestrator of Intelligent Futures. Founder @Gaari_App & @TheTrail_News. Building systems that scale to 1M+ data points. #NextJS #AIAgents #FounderMode | rizwanulafraim.com**
 
 ### GitHub Bio
 **Venture Architect & Systems Orchestrator. Building @Gaari and @PrimeSync. Turning logic into markets with Next.js & AI. 🇧🇩**
@@ -44,7 +44,7 @@ I build "Founder Mode" systems—scalable, intelligent, and autonomous. I operat
 - 🔭 **I’m currently building**: [Gaari](https://gaari.com), a mobility ecosystem handling 1M+ data points.
 - 🌱 **I’m architecting**: AI Agent swarms using RAG and Supabase pgvector.
 - 💬 **Ask me about**: Next.js, System Design, and the "4-Layer SEO Framework".
-- 📫 **Reach me**: [portfolio-rizwanul.vercel.app](https://portfolio-rizwanul.vercel.app)
+- 📫 **Reach me**: [rizwanulafraim.com](https://www.rizwanulafraim.com)
 
 #### 🛠 The Arsenal
 ![Next.js](https://img.shields.io/badge/Next.js-black?style=flat&logo=next.js&logoColor=white) 
@@ -71,7 +71,7 @@ I build "Founder Mode" systems—scalable, intelligent, and autonomous. I operat
 *   **Educated at**: North South University
 *   **Founder of**: Gaari, The Trail, PrimeSync
 *   **Known for**: Systematic Venture Building, 4-Layer SEO Framework
-*   **Website**: https://portfolio-rizwanul.vercel.app
+*   **Website**: https://www.rizwanulafraim.com
 
 ---
 
@@ -82,7 +82,7 @@ I build "Founder Mode" systems—scalable, intelligent, and autonomous. I operat
 ### Profile Setup (Copy-Paste)
 *   **Name**: Rizwanul Islam (Afraim) | Venture Architect
 *   **Username**: `@Afraim3499` (or `@RizwanulAfraim`)
-*   **Website**: `https://portfolio-rizwanul.vercel.app` (**Important**: Claim this in Settings)
+*   **Website**: `https://www.rizwanulafraim.com` (**Important**: Claim this in Settings)
 *   **About**:
     > Venture Architect & Systems Orchestrator. Building intelligent digital futures. Founder @Gaari, @TheTrail. | Next.js, AI Agents, Minimalist Design.
 
