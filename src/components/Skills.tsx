@@ -1,8 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SkillsMatrix } from "@/components/SkillsMatrix";
+import dynamic from "next/dynamic";
 import { fadeUp } from "@/lib/animations";
+
+const SkillsMatrix = dynamic(() => import("@/components/SkillsMatrix").then(mod => mod.SkillsMatrix), {
+  ssr: false
+});
 
 export function Skills() {
   return (

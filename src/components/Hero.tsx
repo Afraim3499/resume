@@ -24,8 +24,10 @@ export function Hero() {
                             alt="Rizwanul Islam Afraim - Legendary Digital Strategist and Developer"
                             fill
                             className="object-cover object-top"
-                            sizes="(max-width: 768px) 256px, (max-width: 1200px) 320px, 320px"
+                            sizes="(max-width: 450px) 450px, (max-width: 768px) 768px, (max-width: 1200px) 800px, 800px"
                             priority={true}
+                            loading="eager"
+                            fetchPriority="high"
                         />
                     </div>
                 </div>

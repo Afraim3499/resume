@@ -42,6 +42,7 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number | null>(null);
   const mouseRef = useRef({ x: 0, y: 0, active: false });
+  const dimensionsRef = useRef({ width: 0, height: 0 }); // Cache dimensions
   const [mounted, setMounted] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flash on mobile
@@ -123,12 +124,19 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
           canvas.width = window.innerWidth;
           canvas.height = window.innerHeight;
         }
+
+        // Update cached dimensions
+        dimensionsRef.current = {
+          width: canvas.width,
+          height: canvas.height
+        };
+
         // Reinitialize particles on resize
         initParticles();
       };
 
       const initParticles = () => {
-        if (!canvas || !canvas.width || !canvas.height) {
+        if (!canvas || !dimensionsRef.current.width || !dimensionsRef.current.height) {
           setTimeout(initParticles, 100);
           return;
         }
@@ -141,8 +149,8 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
           const angle = Math.random() * Math.PI * 2;
 
           return {
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
+            x: Math.random() * dimensionsRef.current.width,
+            y: Math.random() * dimensionsRef.current.height,
             vx: Math.cos(angle) * speed,
             vy: Math.sin(angle) * speed,
             size: baseSize + Math.random() * 1.5,
@@ -179,7 +187,7 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
       window.addEventListener("mouseleave", handleMouseLeave);
 
       const animate = () => {
-        if (!ctx || !canvas || !canvas.width || !canvas.height) {
+        if (!ctx || !canvas || !dimensionsRef.current.width || !dimensionsRef.current.height) {
           animationFrameRef.current = requestAnimationFrame(animate);
           return;
         }
@@ -193,7 +201,8 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
         // Frame Budget Guard: Track performance and adapt particle count
         const frameStart = performance.now();
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const { width, height } = dimensionsRef.current;
+        ctx.clearRect(0, 0, width, height);
 
         // Update and draw particles
         particlesRef.current.forEach((particle) => {
@@ -238,10 +247,10 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
           particle.y += particle.vy;
 
           // Wrap around edges
-          if (particle.x < 0) particle.x = canvas.width;
-          if (particle.x > canvas.width) particle.x = 0;
-          if (particle.y < 0) particle.y = canvas.height;
-          if (particle.y > canvas.height) particle.y = 0;
+          if (particle.x < 0) particle.x = width;
+          if (particle.x > width) particle.x = 0;
+          if (particle.y < 0) particle.y = height;
+          if (particle.y > height) particle.y = 0;
 
           // Pulse animation
           particle.pulsePhase += 0.015;

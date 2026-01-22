@@ -9,6 +9,25 @@ export async function proxy(request: NextRequest) {
         },
     })
 
+    // Domain Lockdown & Canonicalization
+    const hostname = request.headers.get('host') || '';
+    const currentPath = request.nextUrl.pathname;
+    const currentSearch = request.nextUrl.search;
+    const primaryDomain = 'www.rizwanulafraim.com';
+    const isProduction = process.env.NODE_ENV === 'production';
+
+    // 1. Canonical Header Injection
+    const canonicalUrl = `https://${primaryDomain}${currentPath}`;
+    response.headers.set('Link', `<${canonicalUrl}>; rel="canonical"`);
+
+    // 2. Proxy Domain Lockdown (301 Redirect)
+    if (isProduction && hostname !== primaryDomain && !hostname.includes('localhost')) {
+        if (hostname) {
+            const newUrl = new URL(`https://${primaryDomain}${currentPath}${currentSearch}`);
+            return NextResponse.redirect(newUrl, { status: 301 });
+        }
+    }
+
     // Create an unmodified Supabase client
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key';
@@ -27,11 +46,15 @@ export async function proxy(request: NextRequest) {
                         value,
                         ...options,
                     })
-                    response = NextResponse.next({
+                    const newResponse = NextResponse.next({
                         request: {
                             headers: request.headers,
                         },
                     })
+                    response.headers.forEach((value, key) => {
+                        newResponse.headers.set(key, value);
+                    });
+                    response = newResponse;
                     response.cookies.set({
                         name,
                         value,
@@ -44,11 +67,15 @@ export async function proxy(request: NextRequest) {
                         value: '',
                         ...options,
                     })
-                    response = NextResponse.next({
+                    const newResponse = NextResponse.next({
                         request: {
                             headers: request.headers,
                         },
                     })
+                    response.headers.forEach((value, key) => {
+                        newResponse.headers.set(key, value);
+                    });
+                    response = newResponse;
                     response.cookies.set({
                         name,
                         value: '',

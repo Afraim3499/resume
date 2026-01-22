@@ -5,7 +5,8 @@ import { getAllCaseStudies } from "@/lib/case-study-loader";
 import { getAllTerms } from "@/data/knowledge-graph";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
+  /* Absolute URL Verification: Hardcoded for production SEO stability */
+  const baseUrl = "https://www.rizwanulafraim.com";
 
   // Core Routes - Priority 1.0 for Home, 0.9 for key pages
   const routes = [

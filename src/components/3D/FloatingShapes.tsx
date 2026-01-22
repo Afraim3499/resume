@@ -98,8 +98,8 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
             r={shape.size / 2}
             {...baseProps}
             animate={{
-              y: [shape.y, shape.y - 30, shape.y],
-              x: [shape.x, shape.x + shape.driftX, shape.x],
+              translateY: [0, -30, 0],
+              translateX: [0, shape.driftX, 0],
               rotate: [0, 360],
             }}
             transition={{
@@ -117,8 +117,8 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
             points={`${shape.x},${shape.y - shape.size / 2} ${shape.x - shape.size / 2},${shape.y + shape.size / 2} ${shape.x + shape.size / 2},${shape.y + shape.size / 2}`}
             {...baseProps}
             animate={{
-              y: [shape.y, shape.y - 25, shape.y],
-              x: [shape.x, shape.x + shape.driftX, shape.x],
+              translateY: [0, -25, 0],
+              translateX: [0, shape.driftX, 0],
               rotate: [0, 360],
             }}
             transition={{
@@ -139,8 +139,8 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
             height={shape.size}
             {...baseProps}
             animate={{
-              y: [shape.y, shape.y - 35, shape.y],
-              x: [shape.x, shape.x + shape.driftX, shape.x],
+              translateY: [0, -35, 0],
+              translateX: [0, shape.driftX, 0],
               rotate: [0, 360],
             }}
             transition={{
@@ -162,8 +162,8 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
             points={hexPoints}
             {...baseProps}
             animate={{
-              y: [shape.y, shape.y - 28, shape.y],
-              x: [shape.x, shape.x + shape.driftX, shape.x],
+              translateY: [0, -28, 0],
+              translateX: [0, shape.driftX, 0],
               rotate: [0, 360],
             }}
             transition={{
