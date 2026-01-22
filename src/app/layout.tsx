@@ -145,6 +145,7 @@ export default function RootLayout({
           imageSizes="(max-width: 768px) 256px, (max-width: 1200px) 320px, 320px"
           fetchPriority="high"
         />
+        <link rel="alternate" href="https://www.rizwanulafraim.com/" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://d2fltix0v2e0sb.cloudfront.net" />

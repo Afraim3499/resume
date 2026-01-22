@@ -117,6 +117,7 @@ body {
 /* Smooth Scroll Behavior */
 html {
   /* scroll-behavior: smooth;  <-- REMOVED: Conflict with Lenis */
+  overflow-x: hidden;
 }
 
 /* Custom Scrollbar */

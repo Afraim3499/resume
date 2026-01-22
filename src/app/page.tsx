@@ -27,7 +27,7 @@ export default function Home() {
   const blogCount = getAllBlogPosts().length;
   const caseStudyCount = getAllCaseStudies().length;
   return (
-    <main id="main-content" className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
+    <main id="main-content" className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
       <Hero />
       <SectionDivider variant="wave" />
       <ParallaxSection speed={0.3}>
