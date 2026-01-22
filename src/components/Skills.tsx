@@ -48,7 +48,7 @@ export function Skills() {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4 text-2xl">
             🚀
           </div>
-          <h3 className="text-xl font-bold text-foreground mb-2">Next Horizon</h3>
+          <div className="text-xl font-bold text-foreground mb-2">Next Horizon</div>
           <p className="text-foreground/70 leading-relaxed">
             Currently exploring <span className="text-primary font-medium">3D game development</span> and <span className="text-primary font-medium">Agentic AI</span> architectures.
             Blending immersive code-first experiences with intelligent autonomy.

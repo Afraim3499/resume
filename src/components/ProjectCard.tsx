@@ -54,9 +54,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             <div className="p-4 sm:p-5 md:p-6 lg:p-8 overflow-hidden">
                 <div className="mb-4">
                     <div className="flex items-start justify-between gap-3 md:gap-4">
-                        <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        <div className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
                             {project.title}
-                        </h3>
+                        </div>
                         {project.status === "production" && (
                             <span className="px-2 py-1 text-xs font-medium rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                                 Live

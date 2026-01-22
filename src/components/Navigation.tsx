@@ -111,7 +111,7 @@ export function Navigation() {
                     key={item.name}
                     href={item.href}
                     onClick={() => handleNavClick(item.href)}
-                    className={`relative text-sm font-medium transition-colors ${isActive
+                    className={`relative min-h-[44px] min-w-[44px] flex items-center justify-center px-1 text-sm font-medium transition-colors ${isActive
                       ? "text-primary"
                       : "text-foreground/70 hover:text-foreground"
                       }`}
@@ -126,13 +126,15 @@ export function Navigation() {
                   </Link>
                 );
               })}
-              <ThemeToggle />
+              <div className="min-h-[44px] min-w-[44px] flex items-center justify-center">
+                <ThemeToggle />
+              </div>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-foreground/70 hover:text-foreground transition-colors"
+              className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center p-2 text-foreground/70 hover:text-foreground transition-colors"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
@@ -172,7 +174,7 @@ export function Navigation() {
                       key={item.name}
                       href={item.href}
                       onClick={() => handleNavClick(item.href)}
-                      className={`block w-full text-left px-4 py-2 rounded-lg transition-colors ${isActive
+                      className={`block w-full text-left px-4 py-2 min-h-[44px] flex items-center rounded-lg transition-colors ${isActive
                         ? "bg-primary/20 text-primary border border-primary/30"
                         : "text-foreground/70 hover:text-foreground hover:bg-foreground/5"
                         }`}

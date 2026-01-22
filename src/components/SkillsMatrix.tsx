@@ -128,15 +128,15 @@ function SkillNode({ skill }: { skill: Skill }) {
 
                 <div className="relative z-10 flex justify-between items-start">
                     <Cpu className={`w-5 h-5 ${isExpert ? 'text-primary' : 'text-foreground/40'} group-hover:rotate-90 transition-transform duration-700`} />
-                    <span className={`text-[10px] uppercase tracking-wider font-mono ${isExpert ? 'text-primary/70' : 'text-foreground/30'}`}>
+                    <span className={`text-base md:text-[10px] uppercase tracking-wider font-mono ${isExpert ? 'text-primary/70' : 'text-foreground/30'}`}>
                         {skill.level}
                     </span>
                 </div>
 
                 <div className="relative z-10 mt-4">
-                    <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                    <div className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
                         {skill.name}
-                    </h3>
+                    </div>
                     <div className="mt-2 h-1 w-full bg-foreground/5 rounded-full overflow-hidden">
                         <motion.div
                             className={`h-full ${isExpert ? 'bg-primary' : 'bg-foreground/40'}`}

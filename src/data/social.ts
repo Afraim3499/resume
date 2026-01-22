@@ -48,6 +48,12 @@ export const socialProfiles: SocialProfile[] = [
     username: "afraim_privateer",
     icon: "instagram",
   },
+  {
+    platform: "YouTube",
+    url: "https://www.youtube.com/@rizwanul_afraim",
+    username: "rizwanul_afraim",
+    icon: "youtube",
+  },
 ];
 
 export const socialProof = {

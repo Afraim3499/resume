@@ -93,7 +93,14 @@ export function ParticleSystem({ count = 24 }: { count?: number }) {
         return;
       }
 
-      initializeCanvas(canvas);
+      // Hybrid Idle Pattern for Main-Thread Deferral
+      const initTask = () => initializeCanvas(canvas);
+
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(initTask, { timeout: 2000 });
+      } else {
+        setTimeout(initTask, 200);
+      }
     };
 
     const initializeCanvas = (canvas: HTMLCanvasElement) => {

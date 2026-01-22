@@ -102,9 +102,9 @@ export function Events() {
                                 {/* Content Section */}
                                 <div className="flex-1 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                                     <div className="flex-1">
-                                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
+                                        <div className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
                                             {event.name}
-                                        </h3>
+                                        </div>
                                         <p className="text-foreground/70 mb-2">{event.role}</p>
                                         {event.description && (
                                             <p className="text-sm text-foreground/60 mb-3 line-clamp-2">

@@ -43,7 +43,7 @@ export function Certifications() {
                   <Award className="w-6 h-6 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-foreground mb-1">{cert.name}</h3>
+                  <div className="text-lg font-bold text-foreground mb-1">{cert.name}</div>
                   {cert.issuerUrl ? (
                     <a
                       href={cert.issuerUrl}

@@ -45,21 +45,38 @@ export function FloatingShapes({ count = 12 }: { count?: number }) {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  const [shapes] = useState<FloatingShape[]>(() => {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: 20 + Math.random() * 60,
-      duration: 15 + Math.random() * 20,
-      delay: Math.random() * 5,
-      shape: ["circle", "triangle", "square", "hexagon"][Math.floor(Math.random() * 4)] as "circle" | "triangle" | "square" | "hexagon",
-      opacity: 0.1 + Math.random() * 0.15,
-      randomOffset: Math.random(),
-      driftX: (Math.random() - 0.5) * 20,
-      driftY: (Math.random() - 0.5) * 20,
-    }));
-  });
+  const [shapes, setShapes] = useState<FloatingShape[]>([]);
+
+  useEffect(() => {
+    const generateShapes = () => {
+      const newShapes = Array.from({ length: count }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: 20 + Math.random() * 60,
+        duration: 15 + Math.random() * 20,
+        delay: Math.random() * 5,
+        shape: ["circle", "triangle", "square", "hexagon"][Math.floor(Math.random() * 4)] as "circle" | "triangle" | "square" | "hexagon",
+        opacity: 0.1 + Math.random() * 0.15,
+        randomOffset: Math.random(),
+        driftX: (Math.random() - 0.5) * 20,
+        driftY: (Math.random() - 0.5) * 20,
+      }));
+      setShapes(newShapes);
+    };
+
+    if (typeof window !== 'undefined') {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const initTask = () => generateShapes();
+
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(initTask, { timeout: 2000 });
+      } else {
+        setTimeout(initTask, 200);
+      }
+    }
+  }, [count]);
 
   // Safe early return
   if (isMobile) return null;

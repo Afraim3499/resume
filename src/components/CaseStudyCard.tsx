@@ -24,9 +24,9 @@ export function CaseStudyCard({ caseStudy, index }: CaseStudyCardProps) {
         className="block p-6 rounded-xl bg-secondary/30 border border-foreground/10 dark:border-white/5 hover:border-primary/50 transition-all hover:bg-secondary/40"
       >
         <div className="flex items-start justify-between gap-4 mb-4">
-          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+          <div className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
             {caseStudy.title}
-          </h3>
+          </div>
           <ArrowRight className="w-5 h-5 text-foreground/70 group-hover:text-primary transition-colors flex-shrink-0" />
         </div>
 

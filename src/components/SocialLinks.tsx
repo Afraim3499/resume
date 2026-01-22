@@ -1,4 +1,4 @@
-import { Linkedin, Github, Facebook, BookOpen, Instagram } from "lucide-react";
+import { Linkedin, Github, Facebook, BookOpen, Instagram, Youtube } from "lucide-react";
 import { socialProfiles } from "@/data/social";
 
 const XIcon = ({ className }: { className?: string }) => (
@@ -33,6 +33,7 @@ const iconMap = {
   book: BookOpen,
   medium: MediumIcon,
   instagram: Instagram,
+  youtube: Youtube,
 };
 
 interface SocialLinksProps {
@@ -57,7 +58,7 @@ export function SocialLinks({ size = "md", className = "" }: SocialLinksProps) {
             href={profile.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${sizeClasses[size]} flex items-center justify-center rounded-full bg-foreground/5 dark:bg-white/5 border border-foreground/10 dark:border-white/10 hover:border-primary/50 hover:bg-primary/10 transition-all group`}
+            className={`${sizeClasses[size]} min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-foreground/5 dark:bg-white/5 border border-foreground/10 dark:border-white/10 hover:border-primary/50 hover:bg-primary/10 transition-all group`}
             aria-label={`Visit ${profile.platform} profile`}
           >
             <Icon className={`${size === "sm" ? "w-4 h-4" : size === "md" ? "w-5 h-5" : "w-6 h-6"} text-foreground/70 group-hover:text-primary transition-colors`} />

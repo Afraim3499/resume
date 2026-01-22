@@ -126,9 +126,9 @@ function TimelineCard({ exp }: { exp: typeof experience[0] }) {
                         )}
                     </div>
 
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
+                    <div className="text-xl md:text-2xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
                         {exp.role}
-                    </h3>
+                    </div>
 
                     <div className="flex items-center gap-1.5 text-sm text-foreground/70 font-medium mt-1">
                         {exp.company}

@@ -69,7 +69,7 @@ export function MagneticButton({
       }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className={`relative inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium transition-colors overflow-hidden group ${baseStyles[variant]} ${className}`}
+      className={`relative min-w-[44px] min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-medium transition-colors overflow-hidden group ${baseStyles[variant]} ${className}`}
     >
       <span className="relative z-10 flex items-center gap-2">
         {children}

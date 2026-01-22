@@ -49,8 +49,8 @@ export function SchemaData({ faqItems }: SchemaDataProps) {
     "@type": "SoftwareApplication",
     name: project.title,
     description: project.description,
-    applicationCategory: "WebApplication",
-    operatingSystem: "Web, iOS, Android",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web, Windows, macOS, Linux",
     url: project.link,
     offers: {
       "@type": "Offer",

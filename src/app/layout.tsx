@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
@@ -32,6 +32,14 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export const metadata: Metadata = {
   icons: {
     icon: [
@@ -40,10 +48,10 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   title: {
-    default: "Rizwanul Islam (Afraim) | Advanced Venture Architect & Expert",
+    default: "Rizwanul Islam | Advanced Venture Architect",
     template: "%s | Rizwanul Islam (Afraim)",
   },
-  description: "Official portfolio of Rizwanul Islam (Afraim). Advanced Venture Architect & Operations Expert. Building intelligent data platforms and technical systems.",
+  description: "Advanced Venture Architect and Operations Expert specializing in intelligent data platforms and technical systems.",
   keywords: [
     "Rizwanul Islam",
     "Afraim",
@@ -63,7 +71,10 @@ export const metadata: Metadata = {
   publisher: "Rizwanul Islam (Afraim)",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-rizwanul.vercel.app"),
   alternates: {
-    canonical: "./",
+    canonical: 'https://portfolio-rizwanul.vercel.app',
+    languages: {
+      'en-US': '/en-US',
+    },
   },
   openGraph: {
     type: "website",
