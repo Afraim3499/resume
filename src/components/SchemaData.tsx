@@ -68,7 +68,7 @@ export function SchemaData({ faqItems }: SchemaDataProps) {
       "@id": `${baseUrl}/#person`
     },
     datePublished: `${project.year}-01-01`,
-    programmingLanguage: project.techStack,
+    featureList: Array.isArray(project.techStack) ? project.techStack.join(", ") : project.techStack,
   }));
 
   // Dynamic Breadcrumb Generation

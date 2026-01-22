@@ -47,25 +47,37 @@ export function GlobalSchema() {
                 ],
                 "worksFor": [
                     {
-                        "@type": "Organization",
-                        "name": "PrimeSync",
-                        "roleName": "Operations Associate",
+                        "@type": "OrganizationRole",
+                        "worksFor": {
+                            "@type": "Organization",
+                            "name": "PrimeSync"
+                        },
+                        "roleName": "Operations Associate"
                     },
                     {
-                        "@type": "Organization",
-                        "name": "Gaari",
-                        "url": "https://gaari.com",
-                        "roleName": "Founder & CEO",
+                        "@type": "OrganizationRole",
+                        "worksFor": {
+                            "@type": "Organization",
+                            "name": "Gaari",
+                            "url": "https://gaari.com"
+                        },
+                        "roleName": "Founder & CEO"
                     },
                     {
-                        "@type": "Organization",
-                        "name": "The Trail",
-                        "roleName": "Co-Founder",
+                        "@type": "OrganizationRole",
+                        "worksFor": {
+                            "@type": "Organization",
+                            "name": "The Trail"
+                        },
+                        "roleName": "Co-Founder"
                     },
                     {
-                        "@type": "Organization",
-                        "name": "Yagacalls",
-                        "roleName": "Lead Developer",
+                        "@type": "OrganizationRole",
+                        "worksFor": {
+                            "@type": "Organization",
+                            "name": "Yagacalls"
+                        },
+                        "roleName": "Lead Developer"
                     }
                 ],
                 "knowsAbout": Object.entries(topicUris).map(([name, url]) => ({
@@ -125,7 +137,16 @@ export function GlobalSchema() {
                     "https://dev.to/rizwanul_islam_afraim",
                     "https://www.instagram.com/afraim_privateer/",
                 ],
-                "serviceType": ["Venture Building", "System Architecture", "AI Solutions", "Startup Consulting"],
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Services",
+                    "itemListElement": [
+                        { "@type": "Service", "name": "Venture Building" },
+                        { "@type": "Service", "name": "System Architecture" },
+                        { "@type": "Service", "name": "AI Solutions" },
+                        { "@type": "Service", "name": "Startup Consulting" }
+                    ]
+                },
             },
             {
                 "@type": "WebSite",
