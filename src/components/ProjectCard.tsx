@@ -46,6 +46,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                         src={project.image || project.screenshots?.[0] || ""}
                         alt={`${project.title} - Strategic Web Application developed by Rizwanul Islam (Afraim)`}
                         className="w-full h-full"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent pointer-events-none" />
                 </div>
@@ -54,9 +55,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             <div className="p-4 sm:p-5 md:p-6 lg:p-8 overflow-hidden">
                 <div className="mb-4">
                     <div className="flex items-start justify-between gap-3 md:gap-4">
-                        <div className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
                             {project.title}
-                        </div>
+                        </h3>
                         {project.status === "production" && (
                             <span className="px-2 py-1 text-xs font-medium rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                                 Live
@@ -72,11 +73,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
                 {/* Metrics */}
                 {metrics.length > 0 && (
-                    <div className="grid grid-cols-2 gap-3 mb-4">
+                    <ul className="grid grid-cols-2 gap-3 mb-4">
                         {metrics.map((metric, idx) => {
                             const Icon = metric.icon;
                             return (
-                                <div
+                                <li
                                     key={idx}
                                     className="flex items-center gap-2 p-2 rounded-lg bg-foreground/5 border border-foreground/10"
                                 >
@@ -85,42 +86,42 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                                         <div className="text-xs text-foreground/50">{metric.label}</div>
                                         <div className="text-sm font-semibold text-foreground">{metric.value}</div>
                                     </div>
-                                </div>
+                                </li>
                             );
                         })}
-                    </div>
+                    </ul>
                 )}
 
                 {/* Tech Stack Preview */}
                 {project.techStack && project.techStack.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <ul className="flex flex-wrap gap-2 mb-4">
                         {project.techStack.slice(0, 4).map((tech) => (
-                            <span
+                            <li
                                 key={tech}
                                 className="px-2 py-1 text-xs font-medium rounded bg-foreground/5 text-foreground/80 border border-foreground/10"
                             >
                                 {tech}
-                            </span>
+                            </li>
                         ))}
                         {project.techStack.length > 4 && (
-                            <span className="px-2 py-1 text-xs font-medium rounded bg-foreground/5 text-foreground/60 border border-foreground/10">
+                            <li className="px-2 py-1 text-xs font-medium rounded bg-foreground/5 text-foreground/60 border border-foreground/10">
                                 +{project.techStack.length - 4} more
-                            </span>
+                            </li>
                         )}
-                    </div>
+                    </ul>
                 )}
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <ul className="flex flex-wrap gap-2 mb-6">
                     {project.tags.map((tag) => (
-                        <span
+                        <li
                             key={tag}
                             className="px-3 py-1 text-xs font-medium rounded-full bg-foreground/5 text-foreground/80 border border-foreground/10"
                         >
                             {tag}
-                        </span>
+                        </li>
                     ))}
-                </div>
+                </ul>
 
                 {/* Expandable Details */}
                 {project.longDescription && (

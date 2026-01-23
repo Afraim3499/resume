@@ -61,7 +61,7 @@ export function ResumeView() {
                         {/* Profile Photo */}
                         <div className="relative w-24 h-24 flex-shrink-0">
                             <Image
-                                src="/resume-photo.jpg"
+                                src="/assets/rizwanul-islam-afraim.webp"
                                 alt="Rizwanul Islam Afraim"
                                 width={96}
                                 height={96}

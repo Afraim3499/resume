@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     default: "Rizwanul Islam | Advanced Venture Architect",
     template: "%s | Rizwanul Islam (Afraim)",
   },
-  description: "Advanced Venture Architect and Operations Expert specializing in intelligent data platforms and technical systems.",
+  description: "Advanced Venture Architect and Operations Expert specializing in building intelligent data platforms, scalable technical systems, and modern digital ventures. View the portfolio of Rizwanul Islam.",
   keywords: [
     "Rizwanul Islam",
     "Afraim",
@@ -141,8 +141,8 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/assets/rizwanul-islam-afraim.jpg"
-          imageSrcSet="/assets/rizwanul-islam-afraim.jpg 320w, /assets/rizwanul-islam-afraim.jpg 640w"
+          href="/assets/rizwanul-islam-afraim.webp"
+          imageSrcSet="/assets/rizwanul-islam-afraim.webp 320w, /assets/rizwanul-islam-afraim.webp 640w"
           imageSizes="(max-width: 768px) 256px, (max-width: 1200px) 320px, 320px"
           fetchPriority="high"
         />

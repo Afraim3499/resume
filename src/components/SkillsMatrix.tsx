@@ -5,48 +5,14 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motio
 import { skills, skillCategories, type Skill } from "@/data/skills";
 import { Cpu } from "lucide-react";
 
-// Helper for magnetic effect
-function MagneticKey({ children, className }: { children: React.ReactNode; className?: string }) {
-    const ref = useRef<HTMLDivElement>(null);
-
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseX = useSpring(x, { stiffness: 150, damping: 15 });
-    const mouseY = useSpring(y, { stiffness: 150, damping: 15 });
-
-    function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
-        const { clientX, clientY } = e;
-        const { height, width, left, top } = ref.current!.getBoundingClientRect();
-        const middleX = clientX - (left + width / 2);
-        const middleY = clientY - (top + height / 2);
-        x.set(middleX * 0.1); // Sensitivity
-        y.set(middleY * 0.1);
-    }
-
-    function handleMouseLeave() {
-        x.set(0);
-        y.set(0);
-    }
-
-    return (
-        <motion.div
-            ref={ref}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ x: mouseX, y: mouseY }}
-            className={className}
-        >
-            {children}
-        </motion.div>
-    );
-}
 
 
+
+
+import { TechRadar } from "@/components/TechRadar";
 
 export function SkillsMatrix() {
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
-
 
     const allSkills = Object.values(skills).flat();
     const displaySkills = activeCategory
@@ -55,6 +21,11 @@ export function SkillsMatrix() {
 
     return (
         <div className="w-full">
+            {/* Tech Radar DNA Visual */}
+            <div className="mb-12">
+                <TechRadar onCategoryHighlight={(cat) => setActiveCategory(cat === activeCategory ? null : cat)} />
+            </div>
+
             {/* HUD Controls / Filters */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
                 {["all", ...skillCategories].map((cat) => (
@@ -100,53 +71,78 @@ export function SkillsMatrix() {
     );
 }
 
+// Simplified SkillNode to reduce DOM depth
 function SkillNode({ skill }: { skill: Skill }) {
     const isExpert = skill.level === 'expert';
 
+    // Magnetic effect logic integrated to reduce wrapper
+    const ref = useRef<HTMLDivElement>(null);
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+    const mouseX = useSpring(x, { stiffness: 150, damping: 15 });
+    const mouseY = useSpring(y, { stiffness: 150, damping: 15 });
+
+    function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
+        const { clientX, clientY } = e;
+        const rect = ref.current?.getBoundingClientRect();
+        if (rect) {
+            const { height, width, left, top } = rect;
+            const middleX = clientX - (left + width / 2);
+            const middleY = clientY - (top + height / 2);
+            x.set(middleX * 0.1);
+            y.set(middleY * 0.1);
+        }
+    }
+
+    function handleMouseLeave() {
+        x.set(0);
+        y.set(0);
+    }
+
     return (
-        <MagneticKey className="h-full">
-            <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ type: "spring", duration: 0.5 }}
-                className={`
-          group relative h-full min-h-[120px] p-6 rounded-xl border transition-all duration-300
-          flex flex-col justify-between overflow-hidden cursor-crosshair
-          ${isExpert
-                        ? "bg-primary/5 border-primary/20 hover:border-primary/60 hover:shadow-[0_0_30px_-10px_rgba(var(--primary-rgb),0.3)]"
-                        : "bg-secondary/10 border-foreground/5 hover:border-foreground/20 hover:bg-secondary/20"}
-        `}
-            >
-                {/* Background Grid Effect */}
-                <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:10px_10px]" />
+        <motion.div
+            layout
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ x: mouseX, y: mouseY }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ type: "spring", duration: 0.5 }}
+            className={`
+              group relative h-full min-h-[120px] p-6 rounded-xl border transition-all duration-300
+              flex flex-col justify-between overflow-hidden cursor-crosshair
+              ${isExpert
+                    ? "bg-primary/5 border-primary/20 hover:border-primary/60 hover:shadow-[0_0_30px_-10px_rgba(var(--primary-rgb),0.3)]"
+                    : "bg-secondary/10 border-foreground/5 hover:border-foreground/20 hover:bg-secondary/20"}
+              before:absolute before:inset-0 before:opacity-[0.03] before:pointer-events-none before:bg-[size:10px_10px] 
+              before:bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)]
+            `}
+        >
+            {/* Corner spans removed for DOM optimization - relying on border/hover effects */}
 
-                {/* Corner Accents */}
-                <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-foreground/20 transition-all group-hover:w-full group-hover:h-full group-hover:border-primary/30" />
-                <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-foreground/20 transition-all group-hover:w-full group-hover:h-full group-hover:border-primary/30" />
+            <div className="relative z-10 flex justify-between items-start">
+                <Cpu className={`w-5 h-5 ${isExpert ? 'text-primary' : 'text-foreground/40'} group-hover:rotate-90 transition-transform duration-700`} />
+                <span className={`text-[10px] uppercase tracking-wider font-mono ${isExpert ? 'text-primary/70' : 'text-foreground/30'}`}>
+                    {skill.level}
+                </span>
+            </div>
 
-                <div className="relative z-10 flex justify-between items-start">
-                    <Cpu className={`w-5 h-5 ${isExpert ? 'text-primary' : 'text-foreground/40'} group-hover:rotate-90 transition-transform duration-700`} />
-                    <span className={`text-base md:text-[10px] uppercase tracking-wider font-mono ${isExpert ? 'text-primary/70' : 'text-foreground/30'}`}>
-                        {skill.level}
-                    </span>
+            <div className="relative z-10 mt-4">
+                <div className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                    {skill.name}
                 </div>
-
-                <div className="relative z-10 mt-4">
-                    <div className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
-                        {skill.name}
-                    </div>
-                    <div className="mt-2 h-1 w-full bg-foreground/5 rounded-full overflow-hidden">
-                        <motion.div
-                            className={`h-full ${isExpert ? 'bg-primary' : 'bg-foreground/40'}`}
-                            initial={{ width: 0 }}
-                            whileInView={{ width: isExpert ? '95%' : '60%' }}
-                            transition={{ duration: 1, delay: 0.2 }}
-                        />
-                    </div>
+                {/* Simplified bar */}
+                <div className="mt-2 h-1 w-full bg-foreground/5 rounded-full overflow-hidden">
+                    <motion.div
+                        className={`h-full ${isExpert ? 'bg-primary' : 'bg-foreground/40'}`}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: isExpert ? '95%' : '60%' }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                    />
                 </div>
-            </motion.div>
-        </MagneticKey>
+            </div>
+        </motion.div>
     );
 }

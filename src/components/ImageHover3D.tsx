@@ -8,12 +8,14 @@ interface ImageHover3DProps {
   src: string;
   alt: string;
   className?: string;
+  sizes?: string;
 }
 
 export function ImageHover3D({
   src,
   alt,
   className = "",
+  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
 }: ImageHover3DProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [rotateX, setRotateX] = useState(0);
@@ -65,7 +67,7 @@ export function ImageHover3D({
             alt={alt}
             fill
             loading="lazy"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes={sizes}
             className="object-cover"
             style={{
               transform: "translateZ(20px)",

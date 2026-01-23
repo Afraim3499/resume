@@ -37,12 +37,12 @@ export const projects: Project[] = [
     longDescription: "A comprehensive car rental and travel platform serving Bangladesh. Features include multi-service booking engine (Car Rental, Travel Packages, Activities), advanced search with location, date, time, and car type filters, dynamic pricing algorithms, AI-powered chatbot (Gaariwala), geographic services with 500+ landmarks, real-time availability management, payment integration (Stripe & Bkash), and PWA capabilities. Built with Next.js 14, TypeScript, Supabase, and Redis caching.",
     tags: ["Next.js", "Travel", "E-commerce", "Performance", "AI", "PWA"],
     link: "https://gaaribd.com",
-    image: "/assets/gaari-1.jpg",
+    image: "/assets/gaari-1.webp",
     screenshots: [
-      "/assets/gaari-1.jpg",
-      "/assets/gaari-2.jpg",
-      "/assets/gaari-3.jpg",
-      "/assets/gaari-4.jpg",
+      "/assets/gaari-1.webp",
+      "/assets/gaari-2.webp",
+      "/assets/gaari-3.webp",
+      "/assets/gaari-4.webp",
     ],
     metrics: {
       components: 80,
@@ -93,10 +93,10 @@ export const projects: Project[] = [
     longDescription: "A production-ready news platform with custom CMS, analytics system, and comprehensive admin dashboard. Features include advanced filtering system (Latest, Most Popular, Trending, Hot), category navigation (Politics, Tech, Culture, Business, etc.), trending articles with view counts, breaking news banner system, date-based filtering, rich text editor (Tiptap), content workflow (Draft → Review → Approved → Published), custom analytics with charts, SEO optimization with structured data, newsletter system, comments moderation, and Docker deployment.",
     tags: ["Next.js", "News Aggregator", "Automation", "High Traffic", "CMS"],
     link: "https://trailheadlines.com",
-    image: "/assets/the-trail.jpg",
+    image: "/assets/the-trail.webp",
     screenshots: [
-      "/assets/the-trail.jpg",
-      "/assets/the-trail-2.jpg",
+      "/assets/the-trail.webp",
+      "/assets/the-trail-2.webp",
     ],
     metrics: {
       components: 150,
@@ -148,10 +148,10 @@ export const projects: Project[] = [
     longDescription: "Working as Product & Market Researcher and Business Development Executive at PrimeSync Solutions, an AI company specializing in creating AI voice agents for businesses. Conducting comprehensive market research, identifying high-potential lead generation strategies, and developing business development frameworks for AI solutions across sectors like HVAC, Plumbing, and Car Dealerships.",
     tags: ["AI", "Voice Agents", "Market Research", "Business Development", "Product Research"],
     link: "https://primesyncsolutions.com",
-    image: "/assets/primesync-1.jpg",
+    image: "/assets/primesync-1.webp",
     screenshots: [
-      "/assets/primesync-1.jpg",
-      "/assets/primesync-2.jpg",
+      "/assets/primesync-1.webp",
+      "/assets/primesync-2.webp",
     ],
     techStack: [
       "Market Research",
@@ -181,9 +181,9 @@ export const projects: Project[] = [
     description: "Online clothing business co-founded, specializing in unique designs, particularly known for doodle hoodies. Built brand recognition in the online fashion market.",
     longDescription: "Co-founded an online clothing business that gained recognition for unique designs, especially doodle hoodies. Led product development, marketing strategy, and e-commerce operations. Built a strong brand presence in the online fashion market with innovative designs and customer engagement.",
     tags: ["E-commerce", "Fashion", "Brand Strategy", "Product Development"],
-    image: "/assets/vibrance.png",
+    image: "/assets/vibrance.webp",
     screenshots: [
-      "/assets/vibrance.png",
+      "/assets/vibrance.webp",
     ],
     techStack: [
       "E-commerce",
@@ -213,11 +213,11 @@ export const projects: Project[] = [
     description: "Cloud kitchen management and operations. Partnered with major food delivery platforms (Foodpanda, Pathao) to optimize delivery logistics and customer satisfaction.",
     longDescription: "Co-founded and served as CEO of a cloud kitchen business. Managed operations, logistics, and strategic partnerships with major food delivery platforms (Foodpanda, Pathao). Optimized delivery logistics and customer satisfaction across multiple platforms.",
     tags: ["Operations", "Management", "Logistics"],
-    image: "/assets/carnival-of-crust.jpg",
+    image: "/assets/carnival-of-crust.webp",
     screenshots: [
-      "/assets/carnival-of-crust.jpg",
-      "/assets/carnival-of-crust-2.jpg",
-      "/assets/carnival-of-crust-3.jpg",
+      "/assets/carnival-of-crust.webp",
+      "/assets/carnival-of-crust-2.webp",
+      "/assets/carnival-of-crust-3.webp",
     ],
     techStack: [
       "Operations Management",
@@ -234,9 +234,9 @@ export const projects: Project[] = [
     description: "Expert trading calls and market analysis platform. Features a custom CMS, AI-powered content generation, community features (3,500+ investors), performance tracking, and advanced SEO.",
     longDescription: "A platform providing expert trading calls and market analysis. Features include custom-built CMS, AI-powered content generation, community engagement with 3,500+ investors, performance tracking and signal showcase, blog and academy sections, pricing tiers, live price updates, and advanced 4-layer SEO framework (SXO, AIO, GEO, AEO). Built with PHP, HTML5, CSS3, JavaScript, and JSON-based database.",
     tags: ["PHP", "CMS", "SEO", "AI", "Fintech", "Community", "Analytics"],
-    image: "/assets/yagacalls.jpg",
+    image: "/assets/yagacalls.webp",
     screenshots: [
-      "/assets/yagacalls.jpg",
+      "/assets/yagacalls.webp",
     ],
     metrics: {
       components: 15,

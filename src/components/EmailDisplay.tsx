@@ -2,15 +2,23 @@
 
 import { useEffect, useState } from "react";
 
-export function EmailDisplay({ email = "afraim.afraim99@gmail.com", className = "" }: { email?: string, className?: string }) {
+export function EmailDisplay({ className = "" }: { className?: string }) {
     const [isMounted, setIsMounted] = useState(false);
+    const [email, setEmail] = useState("");
 
     useEffect(() => {
-        setIsMounted(true); // eslint-disable-line react-hooks/set-state-in-effect
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setIsMounted(true);
+        // Base64 encoded "afraim.afraim99" and "gmail.com"
+        // Encoded to prevent any string scraping
+        const u = atob("YWZyYWltLmFmcmFpbTk5");
+        const d = atob("Z21haWwuY29t");
+        setEmail(`${u}@${d}`);
     }, []);
 
     if (!isMounted) {
-        return <span className={className}>Click to reveal email</span>;
+        // Render a placeholder that doesn't look like an email to bots
+        return <span className={className}>Click to contact</span>;
     }
 
     return (

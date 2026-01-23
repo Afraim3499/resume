@@ -27,7 +27,8 @@ interface SchemaDataProps {
 
 export function SchemaData({ faqItems }: SchemaDataProps) {
   const pathname = usePathname();
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
+  // Hardcode baseUrl to avoid hydration mismatch in Schema ID generation
+  const baseUrl = "https://www.rizwanulafraim.com";
 
   // Dynamic FAQ Schema
   const faqSchema = {

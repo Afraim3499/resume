@@ -91,7 +91,7 @@ export function GitHubStats({ username = "Afraim3499" }: GitHubStatsProps) {
           Open source contributions and code repositories.
         </p>
       </motion.div>
-      
+
       <div className="flex items-center justify-center gap-3 mb-8">
         <a
           href={`https://github.com/${stats.username}`}

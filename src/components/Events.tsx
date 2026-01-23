@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
@@ -10,14 +11,14 @@ const events = [
         role: "Artist Management Support",
         year: "2024",
         location: "Dhaka",
-        image: "/assets/atif.jpg",
+        image: "/assets/atif.webp",
     },
     {
         name: "KING Live in Bangladesh",
         role: "Logistics",
         year: "2023",
         location: "Dhaka",
-        image: "/assets/king.jpg",
+        image: "/assets/king.webp",
     },
     {
         name: "UNPLUGGED 24",
@@ -25,10 +26,10 @@ const events = [
         year: "2024",
         location: "NSU",
         images: [
-            "/assets/unplugged-1.jpg",
-            "/assets/unplugged-2.jpg",
-            "/assets/unplugged-3.jpg",
-            "/assets/unplugged-4.jpg",
+            "/assets/unplugged-1.webp",
+            "/assets/unplugged-2.webp",
+            "/assets/unplugged-3.webp",
+            "/assets/unplugged-4.webp",
         ],
     },
     {
@@ -37,12 +38,12 @@ const events = [
         year: "2023-2024",
         location: "NSU",
         images: [
-            "/assets/ace-1.jpg",
-            "/assets/ace-2.jpg",
-            "/assets/ace-3.jpg",
-            "/assets/ace-4.jpg",
-            "/assets/ace-5.jpg",
-            "/assets/ace-6.jpg",
+            "/assets/ace-1.webp",
+            "/assets/ace-2.webp",
+            "/assets/ace-3.webp",
+            "/assets/ace-4.webp",
+            "/assets/ace-5.webp",
+            "/assets/ace-6.webp",
         ],
     },
     {
@@ -50,7 +51,7 @@ const events = [
         role: "Event Management & Coordination",
         year: "2023",
         location: "Chittagong",
-        image: "/assets/english-olympiad.jpg",
+        image: "/assets/english-olympiad.webp",
         description: "International English Language Olympiad (IELO) - A global platform inspiring leadership through English language excellence. Participated and managed event coordination for one of the world's largest English language competitions in Chittagong, reaching 190+ million people across 100+ countries.",
     },
     {
@@ -58,12 +59,15 @@ const events = [
         role: "Event Coordination & Social Impact",
         year: "2023",
         location: "Chittagong",
-        image: "/assets/woc.png",
+        image: "/assets/woc.webp",
         description: "World Orphans Center (WOC) - Participated and coordinated events and initiatives supporting orphaned children globally in Chittagong. Organized awareness campaigns and fundraising activities as part of the World Orphans Day movement.",
     },
 ];
 
 export function Events() {
+    const [showAll, setShowAll] = useState(false);
+    const displayedEvents = showAll ? events : events.slice(0, 2);
+
     return (
         <section className="py-20 bg-secondary/10">
             <div className="container px-4 mx-auto max-w-4xl">
@@ -77,7 +81,7 @@ export function Events() {
                 </div>
 
                 <div className="space-y-6">
-                    {events.map((event, index) => (
+                    {displayedEvents.map((event, index) => (
                         <motion.div
                             key={event.name}
                             initial={{ opacity: 0, y: 20 }}
@@ -134,6 +138,17 @@ export function Events() {
                         </motion.div>
                     ))}
                 </div>
+
+                {!showAll && events.length > 2 && (
+                    <div className="text-center mt-12">
+                        <button
+                            onClick={() => setShowAll(true)}
+                            className="px-8 py-3 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-medium text-sm border border-primary/20"
+                        >
+                            Show More Events
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
     );

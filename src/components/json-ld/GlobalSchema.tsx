@@ -29,8 +29,8 @@ export function GlobalSchema() {
                 "image": {
                     "@type": "ImageObject",
                     "@id": `${baseUrl}/#image`,
-                    "url": `${baseUrl}/assets/rizwanul-islam-afraim.jpg`,
-                    "contentUrl": `${baseUrl}/assets/rizwanul-islam-afraim.jpg`,
+                    "url": `${baseUrl}/assets/rizwanul-islam-afraim.webp`,
+                    "contentUrl": `${baseUrl}/assets/rizwanul-islam-afraim.webp`,
                     "caption": "Rizwanul Islam (Afraim)"
                 },
                 "jobTitle": ["Founder", "Venture Architect", "Operations Associate", "Systems Orchestrator"],
@@ -109,7 +109,7 @@ export function GlobalSchema() {
                 "url": baseUrl,
                 "logo": {
                     "@type": "ImageObject",
-                    "url": `${baseUrl}/assets/rizwanul-islam-afraim.jpg`,
+                    "url": `${baseUrl}/assets/rizwanul-islam-afraim.webp`,
                 },
                 "founder": {
                     "@id": `${baseUrl}/#person`

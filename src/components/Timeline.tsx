@@ -1,175 +1,274 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useRef, useState } from "react";
 import { experience } from "@/data/experience";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Building2 } from "lucide-react";
+
+import { AnimatePresence } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
+
+// Helper to extract metrics from achievements
+function extractMetrics(achievements: string[]) {
+    const metrics: { value: string; label: string }[] = [];
+    const numberPattern = /([\d,]+(?:\.\d+)?(?:\+|%|\/100)?)\s+([\w\s]+)/;
+
+    for (const ach of achievements) {
+        const match = ach.match(numberPattern);
+        if (match && metrics.length < 3) {
+            // Keep label short
+            const label = match[2].trim().split(' ').slice(0, 3).join(' ');
+            metrics.push({ value: match[1], label });
+        }
+    }
+    return metrics;
+}
 
 export function Timeline() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [showAll, setShowAll] = useState(false);
 
-    // Reverse to show chronological order (oldest first)
+    // Chronological order (Oldest -> Newest) as per user choice
     const chronologicalExperience = [...experience].reverse();
+
+    const INITIAL_COUNT = 4;
+    const displayedExperience = showAll ? chronologicalExperience : chronologicalExperience.slice(0, INITIAL_COUNT);
+    const remainingCount = chronologicalExperience.length - INITIAL_COUNT;
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
-        offset: ["start start", "end end"]
+        offset: ["start center", "end center"]
     });
 
-    // Smooth spring for better feel
-    const smoothProgress = useSpring(scrollYProgress, {
+    const scaleY = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
         restDelta: 0.001
     });
 
-    // Calculate total cards width for proper transform
-    // Title (40vw) + Start marker (200px) + Cards (500px each * count) + End marker (20vw)
-    const cardCount = chronologicalExperience.length;
-    const totalWidth = `${-((cardCount * 520) + 400)}px`;
-
-    const x = useTransform(smoothProgress, [0, 1], ["0px", totalWidth]);
-
     return (
-        <section id="experience" className="relative bg-background">
-            {/* Scroll container - height determines scroll duration */}
-            <div ref={containerRef} className="relative h-[500vh]">
+        <section id="experience" className="py-24 md:py-32 bg-background relative overflow-hidden">
+            <div className="container px-4 mx-auto max-w-4xl" ref={containerRef}>
 
-                {/* Sticky viewport */}
-                <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+                {/* Section Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-16 md:mb-24 text-center md:text-left pl-0 md:pl-12"
+                >
+                    <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+                        Experience
+                    </span>
+                    <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
+                        Professional <span className="text-gradient">Journey</span>
+                    </h2>
+                    <p className="text-foreground/60 text-lg max-w-lg">
+                        From rapid execution to strategic architecture.
+                    </p>
+                </motion.div>
 
+                <div className="relative pl-4 md:pl-12">
+                    {/* The Track Line (Background) */}
+                    <div className="absolute left-4 md:left-12 top-0 bottom-0 w-0.5 bg-foreground/10" />
+
+                    {/* The Progress Line (Foreground) */}
                     <motion.div
-                        style={{ x }}
-                        className="flex items-center gap-8 md:gap-12 pl-8 md:pl-20"
-                    >
-                        {/* Title Card */}
-                        <div className="min-w-[90vw] md:min-w-[45vw] h-[70vh] flex flex-col justify-center shrink-0">
-                            <div className="max-w-lg">
-                                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-                                    Experience
-                                </span>
-                                <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight">
-                                    Professional <br /> <span className="text-gradient">Journey</span>
-                                </h2>
-                                <p className="text-foreground/60 text-base md:text-lg max-w-md leading-relaxed mb-8">
-                                    A curated timeline of roles and ventures that shaped my path.
-                                </p>
+                        style={{ scaleY, transformOrigin: "top" }}
+                        className="absolute left-4 md:left-12 top-0 bottom-0 w-0.5 bg-primary origin-top"
+                    />
 
-                                <div className="flex items-center gap-3 text-sm font-medium text-foreground/60">
-                                    <div className="w-8 h-[1px] bg-foreground/30" />
-                                    <span className="uppercase tracking-wider text-xs">Scroll to explore</span>
-                                    <motion.div
-                                        animate={{ x: [0, 8, 0] }}
-                                        transition={{ duration: 1.5, repeat: Infinity }}
-                                        className="text-primary"
-                                    >
-                                        →
-                                    </motion.div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Timeline Start Marker */}
-                        <div className="flex flex-col items-center justify-center min-w-[100px] shrink-0">
-                            <div className="w-3 h-3 rounded-full bg-primary/50 mb-4" />
-                            <span className="text-xs uppercase tracking-widest text-foreground/70 font-mono">Start</span>
-                        </div>
-
-                        {/* Timeline Cards */}
-                        {chronologicalExperience.map((exp) => (
-                            <TimelineCard key={exp.id} exp={exp} />
+                    {/* Timeline Items */}
+                    <div className="space-y-8">
+                        {displayedExperience.map((exp, index) => (
+                            <TimelineItem key={exp.id} exp={exp} index={index} />
                         ))}
+                    </div>
 
-                        {/* Timeline End Marker */}
-                        <div className="flex flex-col items-center justify-center min-w-[200px] md:min-w-[300px] shrink-0">
-                            <div className="w-12 h-[2px] bg-gradient-to-r from-primary to-transparent mb-4" />
-                            <span className="text-2xl md:text-3xl font-serif text-foreground/80">Present</span>
-                            <span className="text-xs text-foreground/70 uppercase tracking-widest mt-2">& Beyond</span>
-                        </div>
+                    {/* Show More Button */}
+                    {!showAll && remainingCount > 0 && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            className="relative mt-12 pl-12"
+                        >
+                            <div className="absolute left-[-1px] md:left-[-1px] top-6 w-3 h-3 rounded-full bg-primary/20 border border-primary animate-pulse" />
+                            <div className="bg-gradient-to-b from-transparent to-background/50 pt-8 flex justify-center md:justify-start">
+                                <button
+                                    onClick={() => setShowAll(true)}
+                                    className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-secondary/30 border border-foreground/10 hover:border-primary/30 hover:bg-secondary/50 transition-all duration-300"
+                                >
+                                    <span className="text-base font-medium text-foreground/80 group-hover:text-primary">
+                                        View Full History
+                                    </span>
+                                    <span className="px-2 py-0.5 rounded-md bg-background/50 text-xs font-mono text-foreground/60">
+                                        +{remainingCount} Roles
+                                    </span>
+                                </button>
+                            </div>
+                        </motion.div>
+                    )}
 
-                    </motion.div>
+                    {/* End Marker */}
+                    {showAll && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="relative mt-16 pl-8"
+                        >
+                            <div className="absolute left-[-5px] top-2 w-4 h-4 rounded-full bg-primary border-4 border-background" />
+                            <span className="text-lg font-serif font-bold text-foreground/80">Present & Beyond</span>
+                        </motion.div>
+                    )}
                 </div>
             </div>
         </section>
     );
 }
 
-function TimelineCard({ exp }: { exp: typeof experience[0] }) {
+function TimelineItem({ exp, index }: { exp: typeof experience[0], index: number }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const metrics = extractMetrics(exp.achievements);
+    const hasMetris = metrics.length > 0;
+
     return (
-        <div className="relative group shrink-0">
-            {/* Connector Line */}
-            <div className="absolute top-1/2 -left-6 md:-left-12 w-6 md:w-12 h-[2px] bg-foreground/10 group-hover:bg-primary/30 transition-colors" />
+        <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: index * 0.1, duration: 0.4 }}
+            className="relative pl-12 md:pl-16 group"
+        >
+            {/* Connector Dot */}
+            <div className={`absolute left-[-5px] md:left-[-5px] top-8 w-3 h-3 rounded-full border-2 transition-all duration-300 z-10 ${isExpanded ? 'bg-primary border-primary scale-125' : 'bg-background border-foreground/30 group-hover:border-primary'}`} />
 
-            {/* Card */}
-            <div className="
-                w-[80vw] md:w-[420px]
-                h-[65vh] min-h-[450px] max-h-[550px]
-                p-6 md:p-8
-                rounded-2xl
-                bg-secondary/20 backdrop-blur-sm
-                border border-foreground/10
-                hover:border-primary/40 hover:bg-secondary/30
-                transition-all duration-300
-                flex flex-col
-                overflow-hidden
-            ">
-                {/* Header */}
-                <div className="mb-4">
-                    <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-mono text-primary font-medium uppercase">
-                            {exp.startDate} — {exp.endDate}
-                        </span>
-                        {exp.type === "founder" && (
-                            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-[9px] uppercase font-bold">
-                                Founder
-                            </span>
+            <div
+                className={`
+                    relative rounded-2xl border transition-all duration-300 overflow-hidden
+                    ${isExpanded
+                        ? 'bg-secondary/10 border-primary/30 shadow-lg shadow-primary/5'
+                        : 'bg-secondary/5 border-foreground/5 hover:border-primary/20 hover:bg-secondary/10 cursor-pointer'
+                    }
+                `}
+                onClick={() => !isExpanded && setIsExpanded(true)}
+            >
+                {/* Header Section (Always Visible) */}
+                <div className="p-6 md:p-8">
+                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                        <div className="flex-1">
+                            <div className="flex flex-wrap items-center gap-3 mb-2">
+                                {exp.type === "founder" && (
+                                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-[10px] uppercase font-bold tracking-wider">
+                                        Founder
+                                    </span>
+                                )}
+                                <span className="text-xs font-mono text-primary font-medium uppercase tracking-wider">
+                                    {exp.startDate} — {exp.endDate}
+                                </span>
+                            </div>
+                            <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                                {exp.role}
+                            </h3>
+                            <div className="flex items-center gap-2 text-foreground/70 mt-1 font-medium bg-transparent">
+                                <Building2 className="w-4 h-4 opacity-70" />
+                                {exp.company}
+                                {exp.companyUrl && (
+                                    <a
+                                        href={exp.companyUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="ml-1 opacity-50 hover:opacity-100 transition-opacity p-1"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <ExternalLink className="w-3 h-3" />
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Impact Grid (Visible when not expanded, or if extracted) */}
+                        {hasMetris && !isExpanded && (
+                            <div className="flex gap-4 md:gap-6 mt-4 md:mt-0">
+                                {metrics.map((m, i) => (
+                                    <div key={i} className="text-left md:text-right">
+                                        <div className="text-lg md:text-xl font-bold text-primary">{m.value}</div>
+                                        <div className="text-[10px] uppercase tracking-wider text-foreground/50 font-medium">{m.label}</div>
+                                    </div>
+                                ))}
+                            </div>
                         )}
                     </div>
 
-                    <div className="text-xl md:text-2xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
-                        {exp.role}
-                    </div>
-
-                    <div className="flex items-center gap-1.5 text-sm text-foreground/70 font-medium mt-1">
-                        {exp.company}
-                        {exp.companyUrl && <ExternalLink className="w-3 h-3 opacity-50" />}
-                    </div>
+                    {/* Summary (Visible when NOT expanded) */}
+                    {!isExpanded && (
+                        <div className="mt-4 flex items-end justify-between">
+                            <p className="text-foreground/60 text-sm line-clamp-2 max-w-2xl">
+                                {exp.description}
+                            </p>
+                            <button
+                                onClick={(e) => { e.stopPropagation(); setIsExpanded(true); }}
+                                className="text-xs font-medium text-primary flex items-center gap-1 hover:underline pl-4 shrink-0"
+                            >
+                                Details <ChevronDown className="w-3 h-3" />
+                            </button>
+                        </div>
+                    )}
                 </div>
 
-                {/* Description */}
-                <p className="text-foreground/80 text-sm leading-relaxed mb-4 line-clamp-3">
-                    {exp.description}
-                </p>
+                {/* Expanded Details */}
+                <AnimatePresence>
+                    {isExpanded && (
+                        <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <div className="px-6 md:px-8 pb-8 pt-0 border-t border-foreground/5 mt-2">
+                                {/* Full Impact Grid when Expanded */}
+                                {hasMetris && (
+                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-6">
+                                        {metrics.map((m, i) => (
+                                            <div key={i} className="p-3 rounded-lg bg-background/50 border border-foreground/5">
+                                                <div className="text-2xl font-bold text-primary">{m.value}</div>
+                                                <div className="text-xs text-foreground/60 font-medium">{m.label}</div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
 
-                {/* Achievements */}
-                <div className="flex-1 overflow-y-auto pr-2 mb-4">
-                    <ul className="space-y-2">
-                        {exp.achievements.slice(0, 4).map((ach, i) => (
-                            <li key={i} className="flex items-start gap-2 text-foreground/70 text-xs leading-relaxed">
-                                <div className="w-1 h-1 rounded-full bg-primary/70 mt-1.5 shrink-0" />
-                                <span className="line-clamp-2">{ach}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                                <p className="text-foreground/80 leading-relaxed mb-6 text-base">
+                                    {exp.description}
+                                </p>
 
-                {/* Tech Tags */}
-                <div className="pt-4 border-t border-foreground/5 mt-auto">
-                    <div className="flex flex-wrap gap-1.5">
-                        {exp.technologies.slice(0, 4).map(tech => (
-                            <span key={tech} className="bg-background/50 px-2 py-1 rounded text-[10px] text-foreground/70 border border-foreground/10">
-                                {tech}
-                            </span>
-                        ))}
-                        {exp.technologies.length > 4 && (
-                            <span className="text-[10px] text-foreground/60 px-1">+{exp.technologies.length - 4}</span>
-                        )}
-                    </div>
-                </div>
+                                <ul className="space-y-2 mb-8">
+                                    {exp.achievements.map((ach, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-sm text-foreground/70">
+                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/60 shrink-0" />
+                                            <span>{ach}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <div className="flex flex-wrap gap-2 mb-6">
+                                    {exp.technologies.map(tech => (
+                                        <span key={tech} className="px-2.5 py-1 rounded-md bg-primary/5 text-primary text-xs font-medium border border-primary/10">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); setIsExpanded(false); }}
+                                    className="w-full py-2 flex items-center justify-center gap-2 text-sm text-foreground/40 hover:text-primary transition-colors border-t border-foreground/5 mt-4"
+                                >
+                                    Show Less <ChevronUp className="w-4 h-4" />
+                                </button>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-
-            {/* Timeline Node */}
-            <div className="absolute top-1/2 -left-[5px] -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-background border-2 border-primary/60 z-10 group-hover:scale-150 group-hover:border-primary transition-all" />
-        </div>
+        </motion.div>
     );
 }

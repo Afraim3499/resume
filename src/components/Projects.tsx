@@ -10,6 +10,8 @@ import { fadeUp, staggerContainer } from "@/lib/animations";
 
 export function Projects() {
     const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
+    const [showAll, setShowAll] = useState(false);
+    const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 4);
 
     return (
         <section id="projects" className="py-32 md:py-40 bg-background/85 relative overflow-hidden">
@@ -44,20 +46,33 @@ export function Projects() {
 
                 <ProjectFilters projects={projects} onFilterChange={setFilteredProjects} />
 
-                {filteredProjects.length > 0 ? (
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={staggerContainer}
-                        className="grid md:grid-cols-2 gap-6 lg:gap-8"
-                    >
-                        {filteredProjects.map((project, index) => (
-                            <motion.div key={project.slug} variants={fadeUp}>
-                                <ProjectCard project={project} index={index} />
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                {displayedProjects.length > 0 ? (
+                    <>
+                        <motion.ul
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={staggerContainer}
+                            className="grid md:grid-cols-2 gap-6 lg:gap-8"
+                        >
+                            {displayedProjects.map((project, index) => (
+                                <motion.li key={project.slug} variants={fadeUp} className="h-full">
+                                    <ProjectCard project={project} index={index} />
+                                </motion.li>
+                            ))}
+                        </motion.ul>
+
+                        {!showAll && filteredProjects.length > 4 && (
+                            <div className="text-center mt-12">
+                                <button
+                                    onClick={() => setShowAll(true)}
+                                    className="px-8 py-3 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-medium text-sm border border-primary/20"
+                                >
+                                    View All Projects
+                                </button>
+                            </div>
+                        )}
+                    </>
                 ) : (
                     <motion.div
                         initial={{ opacity: 0 }}

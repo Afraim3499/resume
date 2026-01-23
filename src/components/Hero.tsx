@@ -1,7 +1,6 @@
 "use client";
 
 
-import Download from "lucide-react/dist/esm/icons/download";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 
@@ -20,7 +19,7 @@ export function Hero() {
                 <div className="mb-8">
                     <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto mb-8 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl">
                         <Image
-                            src="/assets/rizwanul-islam-afraim.jpg"
+                            src="/assets/rizwanul-islam-afraim.webp"
                             alt="Rizwanul Islam Afraim - Legendary Digital Strategist and Developer"
                             fill
                             className="object-cover object-top"
@@ -34,33 +33,35 @@ export function Hero() {
 
                 {/* Heading */}
                 <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-                    Orchestrator of <span className="text-gradient">Intelligent Futures</span>.
+                    Your Vision Is <span className="text-red-500/90 dark:text-red-400">Chaos</span>.
+                    <br />
+                    I Architect It Into <span className="text-emerald-600 dark:text-emerald-400">Profit</span>.
                 </h1>
 
                 {/* Subtitle */}
                 <p className="text-foreground/70 max-w-2xl mx-auto text-sm sm:text-lg md:text-xl mb-8 leading-relaxed px-2">
-                    The <span className="text-foreground font-medium">Advanced Venture Architect</span> & <span className="text-foreground font-medium">Operations Expert</span> for visionary businesses.
+                    From strategy to deployment, I build robust tech platforms out of messy ideas.
                     <br className="hidden sm:block" />
-                    I orchestrate precision, intelligence, and scale for those who demand unshakeable reliability.
+                    Get <span className="text-foreground font-medium">twice the product quality</span>, at <span className="text-foreground font-medium">half the expense</span>, with <span className="text-foreground font-medium">zero struggle</span> on your end.
                 </p>
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Button
-                        variant="outline"
+                        variant="primary"
                         size="lg"
-                        className="rounded-full px-8 border-foreground/20 text-foreground hover:bg-foreground/5"
-                        onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="rounded-full px-8 bg-primary text-primary-foreground hover:bg-primary/90"
+                        onClick={() => window.open('https://cal.com/afraim', '_blank')} // Assuming user adds cal link, or scrolls to contact
                     >
-                        Explore Ventures
+                        Book a Free Consultation
                     </Button>
                     <Button
                         variant="outline"
                         size="lg"
-                        className="rounded-full"
-                        onClick={() => window.open('/resume', '_blank')}
+                        className="rounded-full px-8"
+                        onClick={() => document.getElementById('signature-work')?.scrollIntoView({ behavior: 'smooth' })}
                     >
-                        <Download className="w-4 h-4 mr-2" /> Resume
+                        See The Proof
                     </Button>
                 </div>
             </div>

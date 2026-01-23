@@ -17,7 +17,7 @@ interface FloatingShape {
   driftY: number;
 }
 
-export function FloatingShapes({ count = 12 }: { count?: number }) {
+export function FloatingShapes({ count = 8 }: { count?: number }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window !== "undefined") {
