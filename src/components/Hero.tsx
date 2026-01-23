@@ -50,7 +50,7 @@ export function Hero() {
                     <Button
                         variant="primary"
                         size="lg"
-                        className="rounded-full px-8 bg-primary text-primary-foreground hover:bg-primary/90"
+                        className="rounded-full px-8 bg-primary text-white hover:bg-primary/90 font-medium"
                         onClick={() => window.open('https://cal.com/afraim', '_blank')} // Assuming user adds cal link, or scrolls to contact
                     >
                         Book a Free Consultation

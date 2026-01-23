@@ -87,9 +87,10 @@ export function SignatureWork() {
                 <button
                   key={project.slug}
                   onClick={() => setSelectedProject(project)}
+                  aria-label={`Select project: ${project.title}`}
                   className={`px-6 py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 border ${isSelected
                     ? "bg-primary text-white border-primary shadow-lg shadow-primary/25 scale-105"
-                    : "bg-secondary/50 text-foreground/70 border-foreground/10 hover:bg-secondary hover:text-foreground hover:border-foreground/20"
+                    : "bg-secondary/50 text-foreground/80 border-foreground/10 hover:bg-secondary hover:text-foreground hover:border-foreground/20"
                     }`}
                 >
                   {project.title}
@@ -186,6 +187,7 @@ export function SignatureWork() {
                       href={selectedProject.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Visit ${selectedProject.title} Live Site`}
                       className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors font-medium"
                     >
                       Visit Live Site <ExternalLink className="w-4 h-4" />

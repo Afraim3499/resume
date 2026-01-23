@@ -177,6 +177,7 @@ function TimelineItem({ exp, index }: { exp: typeof experience[0], index: number
                                         href={exp.companyUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        aria-label={`Visit ${exp.company} website`}
                                         className="ml-1 opacity-50 hover:opacity-100 transition-opacity p-1"
                                         onClick={(e) => e.stopPropagation()}
                                     >

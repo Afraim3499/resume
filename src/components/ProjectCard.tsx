@@ -171,6 +171,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Visit ${project.title} live site`}
                             className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
                         >
                             Visit Project <ExternalLink className="ml-2 w-4 h-4" />
@@ -181,6 +182,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`View ${project.title} source code on GitHub`}
                             className="inline-flex items-center text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
                         >
                             <Github className="w-4 h-4 mr-2" />
@@ -189,6 +191,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                     )}
                     <Link
                         href={`/projects/${project.slug}`}
+                        aria-label={`View details for ${project.title}`}
                         className="inline-flex items-center text-sm font-medium text-foreground/70 hover:text-primary transition-colors sm:ml-auto"
                     >
                         View Details →

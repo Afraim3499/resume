@@ -48,10 +48,12 @@ export function ROICalculator() {
                                     max="1000"
                                     step="10"
                                     value={projectHours}
+                                    id="project-hours"
+                                    aria-label="Project Hours (Estimate)"
                                     onChange={(e) => setProjectHours(Number(e.target.value))}
                                     className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
                                 />
-                                <div className="flex justify-between text-xs text-foreground/40 mt-1">
+                                <div className="flex justify-between text-xs text-foreground/60 mt-1 font-medium">
                                     <span>MVP (40h)</span>
                                     <span>Enterprise (1000h)</span>
                                 </div>
@@ -68,10 +70,12 @@ export function ROICalculator() {
                                     max="150"
                                     step="5"
                                     value={marketRate}
+                                    id="market-rate"
+                                    aria-label="Agency Hourly Rate"
                                     onChange={(e) => setMarketRate(Number(e.target.value))}
                                     className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-foreground/50"
                                 />
-                                <div className="flex justify-between text-xs text-foreground/40 mt-1">
+                                <div className="flex justify-between text-xs text-foreground/60 mt-1 font-medium">
                                     <span>Junior ($25)</span>
                                     <span>Premium Agency ($150)</span>
                                 </div>

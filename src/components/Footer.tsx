@@ -96,13 +96,13 @@ export function Footer() {
                         <h3 className="text-sm font-semibold text-foreground mb-4">Contact</h3>
                         <ul className="space-y-4">
                             <li className="flex flex-col">
-                                <span className="text-xs text-foreground/40 uppercase tracking-wider mb-1">Phone</span>
+                                <span className="text-xs text-foreground/60 uppercase tracking-wider mb-1">Phone</span>
                                 <a href="tel:+8801751299259" className="text-sm text-foreground/80 hover:text-primary transition-colors">
                                     +880 1751-299259
                                 </a>
                             </li>
                             <li className="flex flex-col">
-                                <span className="text-xs text-foreground/40 uppercase tracking-wider mb-1">WhatsApp</span>
+                                <span className="text-xs text-foreground/60 uppercase tracking-wider mb-1">WhatsApp</span>
                                 <a
                                     href="https://wa.me/8801751299259?text=Hi%20Rizwanul%2C%20I%20saw%20your%20website%20and%20wanted%20to%20discuss%20a%20work%20with%20You."
                                     target="_blank"
@@ -113,7 +113,7 @@ export function Footer() {
                                 </a>
                             </li>
                             <li className="flex flex-col">
-                                <span className="text-xs text-foreground/40 uppercase tracking-wider mb-1">Address</span>
+                                <span className="text-xs text-foreground/60 uppercase tracking-wider mb-1">Address</span>
                                 <span className="text-sm text-foreground/80">
                                     Bashundhara R/A, Dhaka<br />
                                     Bangladesh

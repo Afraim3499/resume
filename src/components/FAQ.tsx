@@ -16,25 +16,10 @@ export function FAQ({ items }: FAQProps) {
     // Group FAQs by category for better UX
     const categories = Array.from(new Set(items.map((item) => item.category)));
 
-    const schema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": items.map(faq => ({
-            "@type": "Question",
-            "name": faq.question,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
-    };
-
     return (
         <section className="py-24 bg-background relative overflow-hidden" id="faq">
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            />
+
+
             <div className="container px-4 mx-auto max-w-4xl">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
@@ -121,6 +106,6 @@ export function FAQ({ items }: FAQProps) {
                     ))}
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
