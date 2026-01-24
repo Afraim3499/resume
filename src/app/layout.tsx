@@ -42,12 +42,6 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    apple: "/favicon.svg",
-  },
   title: {
     default: "Rizwanul Islam | Advanced Venture Architect",
     template: "%s | Rizwanul Islam (Afraim)",
