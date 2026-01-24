@@ -15,6 +15,8 @@ export function GlobalSchema() {
         "Supabase": "https://www.wikidata.org/wiki/Q105658661", // Software 
         "RAG Pipelines": "https://www.wikidata.org/wiki/Q11660", // AI
         "SEO Strategy": "https://www.wikidata.org/wiki/Q180716", // SEO
+        "CRM Architecture": "https://www.wikidata.org/wiki/Q327572", // Operations/CRM
+        "SaaS Strategy": "https://www.wikidata.org/wiki/Q1121081", // Business Strategy
     };
 
     const graph = {
@@ -99,7 +101,29 @@ export function GlobalSchema() {
                 "nationality": {
                     "@type": "Country",
                     "name": "Bangladesh",
-                }
+                },
+                "hasPart": [
+                    {
+                        "@type": "SoftwareSourceCode",
+                        "name": "Leads and Sales CRM",
+                        "description": "A high-performance CRM designed for outbound sales teams with automated lead tracking and visual pipelines.",
+                        "programmingLanguage": "TypeScript",
+                        "codeRepository": "https://github.com/Afraim3499/primesync-crm",
+                        "author": {
+                            "@id": `${baseUrl}/#person`
+                        }
+                    },
+                    {
+                        "@type": "SoftwareSourceCode",
+                        "name": "The Trail",
+                        "description": "High-performance, information-dense news aggregator with custom CMS and editor workflows.",
+                        "programmingLanguage": "TypeScript",
+                        "url": "https://trailheadlines.com",
+                        "author": {
+                            "@id": `${baseUrl}/#person`
+                        }
+                    }
+                ]
             },
             {
                 "@type": "ProfessionalService",

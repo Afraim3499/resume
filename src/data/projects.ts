@@ -266,6 +266,30 @@ export const projects: Project[] = [
     year: 2024,
     status: "production",
   },
+  {
+    slug: "leads-sales-crm",
+    title: "Leads and Sales CRM",
+    description: "A high-performance CRM designed for outbound sales teams. Features automated lead tracking, visual pipelines, and real-time conversion analytics.",
+    tags: ["Next.js", "Supabase", "Tailwind", "Shadcn UI"],
+    link: "#",
+    githubUrl: "https://github.com/Afraim3499/primesync-crm",
+    techStack: [
+      "Next.js",
+      "Supabase",
+      "Tailwind CSS",
+      "Shadcn UI",
+    ],
+    image: "/assets/crm-homepage.jpg",
+    screenshots: [
+      "/assets/crm-homepage.jpg",
+      "/assets/CRM-firstlook.jpg",
+      "/assets/crm-login.jpg",
+      "/assets/first-load.jpg",
+    ],
+    category: "operations",
+    year: 2024,
+    status: "development",
+  },
 ];
 
 export const getProjectBySlug = (slug: string): Project | undefined => {
