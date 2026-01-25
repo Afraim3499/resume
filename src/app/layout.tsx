@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     default: "Rizwanul Islam | Advanced Venture Architect",
     template: "%s | Rizwanul Islam (Afraim)",
   },
-  description: "Advanced Venture Architect and Operations Expert specializing in building intelligent data platforms, scalable technical systems, and modern digital ventures. View the portfolio of Rizwanul Islam.",
+  description: "Advanced Venture Architect building intelligent data platforms, scalable systems, and modern digital ventures. View the portfolio of Rizwanul Islam.",
   keywords: [
     "Rizwanul Islam",
     "Afraim",
