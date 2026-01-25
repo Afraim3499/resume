@@ -72,19 +72,20 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Rizwanul Afraim - Full Stack Developer',
-    description: 'Building high-performance SaaS and AI solutions.',
-    url: 'https://rizwanulafraim.com',
-    siteName: 'Rizwanul Islam Afraim',
+    type: "website",
+    locale: "en_US",
+    url: "https://www.rizwanulafraim.com",
+    title: "Rizwanul Islam (Afraim) | Venture Architect",
+    description: "Architecting Intelligent Futures through scalable ventures and robust code. The portfolio of Rizwanul Islam (Afraim).",
+    siteName: "Rizwanul Islam (Afraim) Portfolio",
     images: [
       {
-        url: 'https://rizwanulafraim.com/og-image.jpg',
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
+        alt: "Rizwanul Islam (Afraim) - The Orchestrator",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
   },
   twitter: {
     card: "summary_large_image",
@@ -109,6 +110,15 @@ export const metadata: Metadata = {
     other: {
       "msvalidate.01": "D856AACF6C5D5003C81D9CF9ED47668C",
       "p:domain_verify": "09fdfc9215d7eeefb6030ff991b9c026",
+    },
+  },
+  icons: {
+    icon: '/icon-192.png',
+    shortcut: '/icon-192.png',
+    apple: '/icon-192.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/icon-192.png',
     },
   },
   appleWebApp: {

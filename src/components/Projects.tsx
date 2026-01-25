@@ -49,6 +49,7 @@ export function Projects() {
                 {displayedProjects.length > 0 ? (
                     <>
                         <motion.ul
+                            key={showAll ? "all" : "limited"}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true }}
