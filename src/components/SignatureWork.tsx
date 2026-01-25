@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, FileText, BookOpen, Layers, Zap } from "lucide-react";
 import { projects } from "@/data/projects";
 import { getBlogSlugForProject, getCaseStudySlugForProject } from "@/lib/project-blog-mapper";
 import { fadeUp } from "@/lib/animations";
-import { ImageHover3D } from "./ImageHover3D";
 import { ParticleSystem } from "./ParticleSystem";
 import type { Project } from "@/data/projects";
 
@@ -66,10 +66,12 @@ export function SignatureWork() {
               >
                 {selectedProject.image && (
                   <div className="relative w-full h-full">
-                    <ImageHover3D
+                    <Image
                       src={selectedProject.image}
                       alt={selectedProject.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      quality={100}
                     />
                     {/* Gradient Overlay for Text Readability if needed, though mostly decorative here */}
                     <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />

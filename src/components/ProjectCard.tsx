@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ExternalLink from "lucide-react/dist/esm/icons/external-link";
@@ -12,7 +14,6 @@ import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
 import ChevronUp from "lucide-react/dist/esm/icons/chevron-up";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
-import { ImageHover3D } from "./ImageHover3D";
 import { hoverScale } from "@/lib/animations";
 
 interface ProjectCardProps {
@@ -39,16 +40,21 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             viewport={{ once: true }}
             className="group relative rounded-xl bg-secondary/30 border border-foreground/10 overflow-hidden hover:border-primary/50 transition-all max-w-full box-border"
         >
-            {/* Project Image/Screenshot with 3D Hover */}
+            {/* Project Image/Screenshot - Static High Quality */}
             {(project.image || (project.screenshots && project.screenshots.length > 0)) && (
-                <div className="relative h-48 w-full overflow-hidden">
-                    <ImageHover3D
-                        src={project.image || project.screenshots?.[0] || ""}
-                        alt={`${project.title} - Strategic Web Application developed by Rizwanul Islam (Afraim)`}
-                        className="w-full h-full"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent pointer-events-none" />
+                <div className="relative w-[85%] aspect-[2.1/1] mx-auto mt-6 overflow-visible">
+                    <div className="absolute inset-0 rounded-2xl shadow-xl overflow-hidden bg-background/50">
+                        <Image
+                            src={project.image || project.screenshots?.[0] || ""}
+                            alt={`${project.title} - Strategic Web Application developed by Rizwanul Islam (Afraim)`}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            sizes="(max-width: 768px) 90vw, (max-width: 1200px) 40vw, 30vw"
+                            quality={100}
+                            priority={index < 2}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent pointer-events-none" />
+                    </div>
                 </div>
             )}
 
