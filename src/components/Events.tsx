@@ -11,14 +11,14 @@ const events = [
         role: "Artist Management Support",
         year: "2024",
         location: "Dhaka",
-        image: "/assets/atif.webp",
+        image: "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/atif.jpg",
     },
     {
         name: "KING Live in Bangladesh",
         role: "Logistics",
         year: "2023",
         location: "Dhaka",
-        image: "/assets/king.webp",
+        image: "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/king.jpg",
     },
     {
         name: "UNPLUGGED 24",
@@ -26,10 +26,10 @@ const events = [
         year: "2024",
         location: "NSU",
         images: [
-            "/assets/unplugged-1.webp",
-            "/assets/unplugged-2.webp",
-            "/assets/unplugged-3.webp",
-            "/assets/unplugged-4.webp",
+            "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/unplugged-1.jpg",
+            "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/unplugged-2.jpg",
+            "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/unplugged-3.jpg",
+            "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/unplugged-4.jpg",
         ],
     },
     {
@@ -38,12 +38,12 @@ const events = [
         year: "2023-2024",
         location: "NSU",
         images: [
-            "/assets/ace-1.webp",
-            "/assets/ace-2.webp",
-            "/assets/ace-3.webp",
-            "/assets/ace-4.webp",
-            "/assets/ace-5.webp",
-            "/assets/ace-6.webp",
+            "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/ace-1.jpg",
+            "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/ace-2.jpg",
+            "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/ace-3.jpg",
+            "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/ace-4.jpg",
+            "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/ace-5.jpg",
+            "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/ace-6.webp",
         ],
     },
     {
@@ -51,7 +51,7 @@ const events = [
         role: "Event Management & Coordination",
         year: "2023",
         location: "Chittagong",
-        image: "/assets/english-olympiad.webp",
+        image: "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/english-olympiad.webp",
         description: "International English Language Olympiad (IELO) - A global platform inspiring leadership through English language excellence. Participated and managed event coordination for one of the world's largest English language competitions in Chittagong, reaching 190+ million people across 100+ countries.",
     },
     {
@@ -59,7 +59,7 @@ const events = [
         role: "Event Coordination & Social Impact",
         year: "2023",
         location: "Chittagong",
-        image: "/assets/woc.webp",
+        image: "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/woc.webp",
         description: "World Orphans Center (WOC) - Participated and coordinated events and initiatives supporting orphaned children globally in Chittagong. Organized awareness campaigns and fundraising activities as part of the World Orphans Day movement.",
     },
 ];
