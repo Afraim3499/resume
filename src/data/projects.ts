@@ -24,6 +24,11 @@ export interface Project {
     lighthouse?: number;
     loadTime?: string;
   };
+  articles?: {
+    title: string;
+    url: string;
+    publisher: string;
+  }[];
   category: "ecommerce" | "cms" | "ai" | "operations" | "news";
   year: number;
   status: "production" | "development" | "completed";
@@ -137,6 +142,13 @@ export const projects: Project[] = [
       lighthouse: 95,
       loadTime: "0.4s",
     },
+    articles: [
+      {
+        title: "The Industrial Revolution of Information",
+        url: "https://open.substack.com/pub/rizwanulafraim/p/the-industrial-revolution-of-information?r=7awufv&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true",
+        publisher: "Substack",
+      },
+    ],
     category: "news",
     year: 2024,
     status: "production",

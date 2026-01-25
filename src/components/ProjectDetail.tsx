@@ -216,6 +216,40 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
         </motion.div>
       )}
 
+      {/* Articles about */}
+      {project.articles && project.articles.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="space-y-4"
+        >
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <BookOpen className="w-6 h-6" />
+            Articles about
+          </h2>
+          <div className="grid gap-4">
+            {project.articles.map((article, index) => (
+              <a
+                key={index}
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-6 rounded-lg bg-secondary/30 border border-white/5 hover:border-primary/50 transition-colors flex items-center justify-between"
+              >
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors mb-1">
+                    {article.title}
+                  </h3>
+                  <div className="text-sm text-foreground/60">Published on {article.publisher}</div>
+                </div>
+                <ExternalLink className="w-5 h-5 text-foreground/40 group-hover:text-primary transition-colors" />
+              </a>
+            ))}
+          </div>
+        </motion.div>
+      )}
+
       {/* Tech Stack */}
       {project.techStack && project.techStack.length > 0 && (
         <motion.div
