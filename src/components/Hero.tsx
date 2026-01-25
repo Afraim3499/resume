@@ -51,7 +51,7 @@ export function Hero() {
                         variant="primary"
                         size="lg"
                         className="rounded-full px-8 bg-primary text-white hover:bg-primary/90 font-medium"
-                        onClick={() => window.open('https://cal.com/afraim', '_blank')} // Assuming user adds cal link, or scrolls to contact
+                        onClick={() => window.open('https://calendar.google.com/calendar/embed?src=afraim.afraim99%40gmail.com&ctz=Asia%2FDhaka', '_blank')}
                     >
                         Book a Free Consultation
                     </Button>
