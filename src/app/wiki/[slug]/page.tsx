@@ -52,12 +52,17 @@ export default async function WikiPage({ params }: { params: Promise<{ slug: str
     // Bidirectional Intelligence: Find blog posts that might mention this term or be related
     // For now, checking if term ID is in blog tags or category (simple matching)
     // In a real "God Mode", we would fuzzy search the content.
-    const relatedPosts = getAllBlogPosts().filter(
-        (post) =>
-            post.tags.map(t => t.toLowerCase().replace(/\s+/g, '-')).includes(term.id) ||
-            post.category.toLowerCase().replace(/\s+/g, '-') === term.id ||
-            term.relatedTo.some(rel => post.tags.map(t => t.toLowerCase()).includes(rel.replace('-', ' ')))
-    );
+    const relatedPosts = getAllBlogPosts().filter((post) => {
+        const safeTags = post.tags || [];
+        const safeCategory = post.category || "";
+        const safeRelatedTo = term.relatedTo || [];
+
+        const hasTag = safeTags.some(t => t && t.toLowerCase().replace(/\s+/g, '-') === term.id);
+        const hasCategory = safeCategory.toLowerCase().replace(/\s+/g, '-') === term.id;
+        const hasRelated = safeRelatedTo.some(rel => safeTags.some(t => t && t.toLowerCase() === rel.replace('-', ' ')));
+
+        return hasTag || hasCategory || hasRelated;
+    });
 
     const termSchema = {
         "@context": "https://schema.org",
