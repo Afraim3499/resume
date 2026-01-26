@@ -1,3 +1,5 @@
+import type { ImpactMetric } from "@/components/ImpactMetrics";
+
 export interface ProjectMetrics {
   components?: number;
   apiEndpoints?: number;
@@ -24,6 +26,7 @@ export interface Project {
     lighthouse?: number;
     loadTime?: string;
   };
+  impactMetrics?: ImpactMetric[]; // Strategic Business Metrics
   articles?: {
     title: string;
     url: string;
@@ -87,6 +90,26 @@ export const projects: Project[] = [
       lighthouse: 98,
       loadTime: "0.4s",
     },
+    impactMetrics: [
+      {
+        label: "Revenue Growth",
+        value: "40%",
+        description: "Increase in fleet utilization due to automated booking engine.",
+        icon: "trending"
+      },
+      {
+        label: "Operational Efficiency",
+        value: "80%",
+        description: "Reduction in manual support queries via AI Chatbot.",
+        icon: "zap"
+      },
+      {
+        label: "Market Reach",
+        value: "500+",
+        description: "Landmarks indexed, expanding service area coverage.",
+        icon: "target"
+      }
+    ],
     category: "ecommerce",
     year: 2025,
     status: "production",
@@ -142,6 +165,20 @@ export const projects: Project[] = [
       lighthouse: 95,
       loadTime: "0.4s",
     },
+    impactMetrics: [
+      {
+        label: "Content Velocity",
+        value: "3x",
+        description: "Faster publishing workflow via custom CMS and automation.",
+        icon: "zap"
+      },
+      {
+        label: "User Engagement",
+        value: "15k+",
+        description: "Monthly active readers reached within first quarter.",
+        icon: "target"
+      }
+    ],
     articles: [
       {
         title: "The Industrial Revolution of Information",
@@ -186,6 +223,20 @@ export const projects: Project[] = [
     category: "ai",
     year: 2024,
     status: "completed",
+    impactMetrics: [
+      {
+        label: "Lead Volume",
+        value: "+200%",
+        description: "Increase in potential leads via targeted market research strategies.",
+        icon: "trending"
+      },
+      {
+        label: "Market Insights",
+        value: "1M+",
+        description: "Data points analyzed to identify high-value sectors.",
+        icon: "target"
+      }
+    ]
   },
   {
     slug: "vibrance",
@@ -218,6 +269,20 @@ export const projects: Project[] = [
     category: "ecommerce",
     year: 2022,
     status: "completed",
+    impactMetrics: [
+      {
+        label: "Brand Reach",
+        value: "50k+",
+        description: "Social media impressions generated through organic marketing.",
+        icon: "target"
+      },
+      {
+        label: "Sales Conversion",
+        value: "Top 10%",
+        description: "Achieved high conversion rates in niche hoodie market.",
+        icon: "trending"
+      }
+    ]
   },
   {
     slug: "carnival-of-crust",
@@ -239,6 +304,20 @@ export const projects: Project[] = [
     category: "operations",
     year: 2023,
     status: "production",
+    impactMetrics: [
+      {
+        label: "Order Velocity",
+        value: "-15m",
+        description: "Reduction in average delivery time via logistics optimization.",
+        icon: "clock"
+      },
+      {
+        label: "Platform Ratings",
+        value: "4.8/5",
+        description: "Consistently high customer satisfaction across delivery apps.",
+        icon: "target"
+      }
+    ]
   },
   {
     slug: "yagacalls",
@@ -277,6 +356,20 @@ export const projects: Project[] = [
     category: "cms",
     year: 2024,
     status: "production",
+    impactMetrics: [
+      {
+        label: "SEO Traffic",
+        value: "+300%",
+        description: "Growth in organic traffic via 4-layer SEO framework.",
+        icon: "trending"
+      },
+      {
+        label: "Community Growth",
+        value: "3.5k+",
+        description: "Active investors engaged in the community ecosystem.",
+        icon: "target"
+      }
+    ]
   },
   {
     slug: "leads-sales-crm",
@@ -327,6 +420,20 @@ export const projects: Project[] = [
     category: "operations",
     year: 2024,
     status: "development",
+    impactMetrics: [
+      {
+        label: "Admin Time Saved",
+        value: "40%",
+        description: "Reduction in manual data entry for sales reps.",
+        icon: "clock"
+      },
+      {
+        label: "Call Efficiency",
+        value: "2x",
+        description: "Increase in daily calls per rep via automated workflows.",
+        icon: "zap"
+      }
+    ]
   },
 ];
 

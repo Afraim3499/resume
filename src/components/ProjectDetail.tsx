@@ -7,6 +7,7 @@ import { ExternalLink, Github, Calendar, Code, Database, Layers, Zap, Tag, FileT
 import type { Project } from "@/data/projects";
 import { projects } from "@/data/projects";
 import { getBlogSlugForProject, getCaseStudySlugForProject } from "@/lib/project-blog-mapper";
+import { ImpactMetrics } from "@/components/ImpactMetrics";
 
 interface ProjectDetailProps {
   project: Project;
@@ -144,6 +145,11 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           </motion.div>
         )}
       </motion.div>
+
+      {/* Strategic Impact Metrics - Business Logic Layer */}
+      {project.impactMetrics && (
+        <ImpactMetrics metrics={project.impactMetrics} />
+      )}
 
       {/* Screenshots */}
       {project.screenshots && project.screenshots.length > 0 && (
