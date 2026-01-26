@@ -15,6 +15,7 @@ const navItems = [
   { name: "Manifesto", href: "/manifesto" },
   { name: "Services", href: "/services" },
   { name: "Wiki", href: "/wiki" },
+  { name: "Resume", href: "/resume" },
   { name: "My Story", href: "/#story" },
   { name: "Skills", href: "/#skills" },
   { name: "Experience", href: "/#experience" },

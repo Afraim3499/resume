@@ -67,6 +67,14 @@ export function Footer() {
                             </li>
                             <li>
                                 <Link
+                                    href="/resume"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    Interactive Resume
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     href="/blog"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
