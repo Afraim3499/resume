@@ -216,7 +216,7 @@ export function ResumeView() {
                         <h3 className="text-sm font-bold text-gray-900 uppercase tracking-widest border-b border-gray-200 pb-1 mb-4">
                             Education & Skills
                         </h3>
-                        <div className="grid grid-cols-2 gap-8 text-sm">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-sm">
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Education</h4>
                                 <div className="mb-3">
@@ -231,7 +231,7 @@ export function ResumeView() {
                             </div>
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Skills</h4>
-                                <div className="grid grid-cols-2 gap-x-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
                                     <ul className="space-y-1 text-gray-700">
                                         <li>• Strategic Marketing</li>
                                         <li>• Market Research</li>
