@@ -75,6 +75,11 @@ export default async function WikiPage({ params }: { params: Promise<{ slug: str
             "@id": "https://www.rizwanulafraim.com/wiki",
             name: "The Orchestrator's Knowledge Graph",
         },
+        author: {
+            "@type": "Person",
+            "@id": "https://www.rizwanulafraim.com/#person",
+            name: "Rizwanul Islam (Afraim)"
+        }
     };
 
     return (

@@ -10,8 +10,25 @@ export const metadata: Metadata = {
 
 export default function CaseStudiesPage() {
   const caseStudies = getAllCaseStudies();
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Case Studies | Engineering Scalable Platforms",
+    "description": "Deep dive case studies on building Advanced Systems and Data Operations strategies.",
+    "hasPart": caseStudies.map(study => ({
+      "@type": "CreativeWork",
+      "headline": study.title,
+      "description": study.problem,
+      "url": `https://www.rizwanulafraim.com/case-studies/${study.slug}`
+    }))
+  };
+
   return (
     <main className="bg-background min-h-screen text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
       <div className="container px-4 mx-auto max-w-6xl py-20">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4">

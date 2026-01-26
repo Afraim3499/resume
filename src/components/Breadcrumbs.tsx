@@ -23,7 +23,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
       <ol className="flex items-center gap-2 text-sm text-foreground/60">
         {allItems.map((item, index) => {
           const isLast = index === allItems.length - 1;
-          
+
           return (
             <li key={index} className="flex items-center gap-2">
               {index === 0 ? (

@@ -55,19 +55,32 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const url = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
 
   // SoftwareApplication Schema for SEO
+  // SoftwareApplication Schema for SEO (Amazon Protocol Upgrade)
   const projectSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: project.title,
     description: project.longDescription || project.description,
-    applicationCategory: "WebApplication",
-    operatingSystem: "Any",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web, Cloud, Cross-Platform",
+    softwareRequirements: project.techStack.join(", "),
+    // featureList: project.features ? project.features.join(", ") : undefined,
+    url: project.link || `${url}/projects/${project.slug}`,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/OnlineOnly"
+    },
     author: {
       "@type": "Person",
       name: "Rizwanul Islam (Afraim)",
       url: "https://www.rizwanulafraim.com",
     },
-    url: project.link || `${url}/projects/${project.slug}`,
+    maintainer: {
+      "@type": "Person",
+      name: "Rizwanul Islam (Afraim)"
+    }
   };
 
   return (

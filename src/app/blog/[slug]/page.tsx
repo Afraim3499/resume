@@ -80,13 +80,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const project = projectSlug ? projects.find((p) => p.slug === projectSlug) : undefined;
   const caseStudy = projectSlug ? getCaseStudyByProject(projectSlug) : undefined;
 
-  // Generate Article Schema
-  const articleSchema = {
+  const headings = getPostHeadings(post.content);
+
+  // Determine Schema Type (AEO Strategy)
+  const isGuide = post.title.startsWith("How to") || post.title.startsWith("Building") || post.category === "Tutorial";
+  const schemaType = isGuide ? "HowTo" : "TechArticle";
+
+  // Base Schema
+  const articleSchema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": schemaType,
     headline: post.title,
     description: post.excerpt,
-    image: post.image ? [post.image] : [`${url}/assets/rizwanul-islam-afraim.jpg`],
+    image: post.image ? [post.image] : [`${url}/assets/rizwanul-islam-afraim.webp`],
     datePublished: post.date,
     dateModified: post.updatedAt || post.date,
     author: {
@@ -99,16 +105,39 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       name: "Rizwanul Islam (Afraim)",
       logo: {
         "@type": "ImageObject",
-        url: `${url}/assets/rizwanul-islam-afraim.jpg`,
+        url: `${url}/assets/rizwanul-islam-afraim.webp`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": postUrl,
     },
+    // AEO Enhancements
+    keywords: post.tags?.join(", "),
+    wordCount: post.content.split(/\s+/).length,
+    articleSection: post.category,
+    inLanguage: "en-US",
   };
 
-  const headings = getPostHeadings(post.content);
+  // TechArticle Specifics
+  if (schemaType === "TechArticle") {
+    articleSchema.proficiencyLevel = "Expert";
+    articleSchema.dependencies = post.tags?.join(", "); // Linking Tech Stack
+  }
+
+  // HowTo Specifics (Simplified for blog structure)
+  if (schemaType === "HowTo") {
+    articleSchema.totalTime = "PT15M"; // Estimated 15 mins
+    articleSchema.tool = post.tags?.map(tag => ({ "@type": "HowToTool", name: tag }));
+    articleSchema.step = headings.map(h => ({
+      "@type": "HowToStep",
+      "name": h.text,
+      "text": h.text,
+      "url": `${postUrl}#${h.id}`
+    }));
+  }
+
+
 
   return (
     <main className="bg-background min-h-screen text-foreground">

@@ -13,8 +13,25 @@ export const metadata: Metadata = {
 
 export default function ManifestoPage() {
     const faqItems = getAllFAQs();
+    const manifestoSchema = {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "mainEntity": {
+            "@type": "Person",
+            "name": "Rizwanul Islam (Afraim)",
+            "jobTitle": "Venture Architect",
+            "url": "https://www.rizwanulafraim.com"
+        },
+        "name": "Manifesto | The Operations Expert's Protocol",
+        "description": "The operating philosophy of Rizwanul Islam (Afraim). Founder Mode, Advanced Systems Thinking, and the rejection of the manager/maker binary."
+    };
+
     return (
         <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-24">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(manifestoSchema) }}
+            />
             <article className="container px-4 mx-auto max-w-3xl py-12 md:py-24">
                 {/* Header */}
                 <header className="mb-16 text-center">

@@ -1,5 +1,6 @@
 "use client";
 
+
 import { projects } from "@/data/projects";
 import { usePathname } from "next/navigation";
 import type { FAQItem } from "@/lib/faq-loader";
@@ -31,7 +32,11 @@ export function SchemaData({ faqItems }: SchemaDataProps) {
   const baseUrl = "https://www.rizwanulafraim.com";
 
   // Dynamic FAQ Schema
-  const faqSchema = {
+  // Dynamic FAQ Schema - Only render on pages where FAQs are actually visible
+  // Google Policy: "Limit the use of FAQPage markup to pages that contain a list of questions and answers."
+  const shouldRenderFAQ = pathname === "/";
+
+  const faqSchema = shouldRenderFAQ ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqItems.map((item): FAQSchemaItem => ({
@@ -42,35 +47,9 @@ export function SchemaData({ faqItems }: SchemaDataProps) {
         text: item.answer,
       },
     })),
-  };
+  } : null;
 
-  // Dynamic Project Schemas
-  const projectSchemas = projects.map((project) => ({
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: project.title,
-    description: project.description,
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web, Windows, macOS, Linux",
-    url: project.link,
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-    aggregateRating: project.performance?.lighthouse ? {
-      "@type": "AggregateRating",
-      ratingValue: (project.performance.lighthouse / 20).toFixed(1),
-      ratingCount: "1",
-      bestRating: "5",
-      worstRating: "1"
-    } : undefined,
-    author: {
-      "@id": `${baseUrl}/#person`
-    },
-    datePublished: `${project.year}-01-01`,
-    featureList: Array.isArray(project.techStack) ? project.techStack.join(", ") : project.techStack,
-  }));
+
 
   // Dynamic Breadcrumb Generation
   const breadcrumbItems: BreadcrumbItem[] = [
@@ -139,17 +118,13 @@ export function SchemaData({ faqItems }: SchemaDataProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      {projectSchemas.map((schema, index) => (
+      {faqSchema && (
         <script
-          key={index}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
-      ))}
+      )}
+
     </>
   );
 }
