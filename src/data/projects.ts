@@ -190,54 +190,7 @@ export const projects: Project[] = [
     year: 2024,
     status: "production",
   },
-  {
-    slug: "primesync-solutions",
-    title: "PrimeSync Solutions",
-    description: "AI company specializing in AI voice agents for businesses. Leading product research, market research, and business development efforts across various sectors.",
-    longDescription: "Working as Product & Market Researcher and Business Development Executive at PrimeSync Solutions, an AI company specializing in creating AI voice agents for businesses. Conducting comprehensive market research, identifying high-potential lead generation strategies, and developing business development frameworks for AI solutions across sectors like HVAC, Plumbing, and Car Dealerships.",
-    tags: ["AI", "Voice Agents", "Market Research", "Business Development", "Product Research"],
-    link: "https://primesyncsolutions.com",
-    image: "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/primesync-1.jpg",
-    screenshots: [
-      "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/primesync-1.jpg",
-      "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/primesync-2.jpg",
-    ],
-    techStack: [
-      "Market Research",
-      "Business Development",
-      "Product Strategy",
-      "AI/ML",
-    ],
-    challenges: [
-      "Identifying market opportunities for AI voice agents",
-      "Conducting comprehensive market research across multiple sectors",
-      "Developing business development strategies",
-      "Analyzing lead generation potential",
-    ],
-    solutions: [
-      "Conducted in-depth market research for AI voice agent adoption",
-      "Identified high-potential lead generation strategies",
-      "Developed business development frameworks",
-      "Researched and analyzed market trends across various business sectors",
-    ],
-    category: "ai",
-    year: 2024,
-    status: "completed",
-    impactMetrics: [
-      {
-        label: "Lead Volume",
-        value: "+200%",
-        description: "Increase in potential leads via targeted market research strategies.",
-        icon: "trending"
-      },
-      {
-        label: "Market Insights",
-        value: "1M+",
-        description: "Data points analyzed to identify high-value sectors.",
-        icon: "target"
-      }
-    ]
-  },
+
   {
     slug: "vibrance",
     title: "Vibrance",

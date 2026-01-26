@@ -22,7 +22,6 @@ const provenProjects = [
     { name: "Gaari", desc: "Automated fleet management system.", slug: "gaari" },
     { name: "The Trail", desc: "Autonomous news aggregation engine.", slug: "the-trail" },
     { name: "Leads & Sales CRM", desc: "Unified outbound sales command center.", slug: "leads-sales-crm" },
-    { name: "PrimeSync", desc: "AI voice agent market strategy.", slug: "primesync-solutions" },
 ];
 
 const services = [
