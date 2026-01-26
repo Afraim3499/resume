@@ -8,6 +8,7 @@ import X from "lucide-react/dist/esm/icons/x";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
+import { NavbarLight } from "./NavbarLight";
 
 const navItems = [
   { name: "Home", href: "/#hero" },
@@ -79,7 +80,8 @@ export function Navigation() {
   };
 
   if (pathname !== "/") {
-    return null; // Don't show navigation on project detail pages
+    // Show light navbar on subpages
+    return <NavbarLight />;
   }
 
   return (
