@@ -149,7 +149,7 @@ export function ROICalculator() {
                                 </div>
 
                                 <Button
-                                    onClick={() => window.open('https://cal.com/afraim', '_blank')}
+                                    onClick={() => window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3aVNuTsw49Uehfeyw_nD3lBDQjpAxmzL2sFLTkR4cxxPARTjQFvAHTXU4ORZTa8A3h3QtCAa37', '_blank')}
                                     className="w-full mt-4"
                                     size="lg"
                                 >

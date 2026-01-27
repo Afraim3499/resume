@@ -35,7 +35,7 @@ export function formatContactEmail(data: {
 }): EmailData {
   return {
     to: process.env.CONTACT_EMAIL || "afraim.afraim99@gmail.com",
-    from: "Portfolio Contact <noreply@yourdomain.com>",
+    from: "Rizwanul Islam Portfolio <afraim.afraim99@gmail.com>",
     subject: `Portfolio Contact: ${data.subject}`,
     html: `
       <!DOCTYPE html>

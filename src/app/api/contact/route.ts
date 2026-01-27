@@ -32,8 +32,8 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     
     await resend.emails.send({
-      from: "Portfolio <contact@yourdomain.com>",
-      to: process.env.CONTACT_EMAIL || "your-email@example.com",
+      from: "Rizwanul Islam Portfolio <afraim.afraim99@gmail.com>",
+      to: process.env.CONTACT_EMAIL || "afraim.afraim99@gmail.com",
       subject: `Portfolio Contact: ${validatedData.subject}`,
       html: `
         <h2>New Contact Form Submission</h2>

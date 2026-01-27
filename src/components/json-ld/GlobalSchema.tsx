@@ -37,7 +37,7 @@ export function GlobalSchema() {
                 },
                 "jobTitle": ["Founder", "Venture Architect", "Operations Associate", "Systems Orchestrator"],
                 "description": "Legendary Digital Strategist and Architect of Intelligent Futures. Rizwanul Islam (Afraim) combines high-level business strategy with low-level technical execution.",
-                "email": "contact@rizwanulafraim.com",
+                "email": "afraim.afraim99@gmail.com",
                 "telephone": "+8801751299259",
                 "sameAs": [
                     "https://www.linkedin.com/in/rizwanul-islam-afraim99/",
