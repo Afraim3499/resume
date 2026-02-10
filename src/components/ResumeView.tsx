@@ -122,7 +122,7 @@ export function ResumeView() {
                             </div>
                             <div className="flex justify-between items-baseline mb-1">
                                 <span className="text-sm font-medium text-gray-700">PrimeSync Solutions</span>
-                                <span className="text-xs text-gray-500">Remote</span>
+                                <span className="text-xs text-gray-500">Dhaka, Bangladesh</span>
                             </div>
                             <p className="text-xs text-gray-500 mb-1 italic">Company Overview: PrimeSync Solutions provides outsourcing services including AI voice agents to save costs and enhance productivity.</p>
                             <ul className="list-disc list-outside ml-4 space-y-0.5 text-gray-700 text-sm">

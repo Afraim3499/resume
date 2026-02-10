@@ -18,7 +18,7 @@ export const experience: Experience[] = [
     role: "Operations Associate & Data Strategy Analyst",
     company: "PrimeSync Solutions",
     companyUrl: "https://primesyncsolutions.com",
-    location: "Remote",
+    location: "Dhaka, Bangladesh",
     startDate: "May 2024",
     endDate: "Present",
     description: "Operations Associate at PrimeSync Solutions, providing advanced AI voice agents for cost optimization. Focused on strategic lead generation, market research, and sales operations optimization.",
