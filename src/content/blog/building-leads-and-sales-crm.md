@@ -2,7 +2,7 @@
 title: "Engineering Velocity: Architecting a Real-Time Sales Engine"
 excerpt: "Why off-the-shelf CRMs fail at scale, and how I built a custom pipeline architecture using Next.js 14 and Supabase Realtime."
 date: "2024-03-15"
-coverImage: "https://slbrenzwhdxtnokwmoxy.supabase.co/storage/v1/object/public/portfolio-images/crm-homepage.jpg"
+coverImage: "https://brshoodoihexflrolqvu.supabase.co/storage/v1/object/public/portfolio-images/crm-homepage.jpg"
 tags: ["System Design", "SaaS Architecture", "Performance"]
 author:
   name: "Rizwanul Islam (Afraim)"
