@@ -48,6 +48,7 @@ export function GlobalSchema() {
                     "https://www.facebook.com/Rizwan.Afraim",
                     "https://dev.to/rizwanul_islam_afraim",
                     "https://www.instagram.com/afraim_privateer/",
+                    "https://www.researchgate.net/profile/Rizwanul-Islam-Afraim",
                 ],
                 "worksFor": [
                     {
@@ -211,7 +212,8 @@ export function GlobalSchema() {
                 "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6070429",
                 "sameAs": [
                     "https://doi.org/10.2139/ssrn.6070429",
-                    "https://ssrn.com/abstract=6070429"
+                    "https://ssrn.com/abstract=6070429",
+                    "https://www.researchgate.net/publication/400654023_Beyond_Syntax_The_Paradigm_Shift_to_System_Architecture_in_Large_Language_Model_LLM_Driven_Development"
                 ],
                 "abstract": "The advent of Large Language Models (LLMs) with advanced code generation capabilities marks a distinct inflection point in software engineering. This paper argues that the traditional role of the coder is rapidly becoming obsolete. In its place, a new paradigm is emerging: System Architecture as the primary unit of engineering value.",
                 "keywords": ["Software Engineering", "System Architecture", "Large Language Models", "Generative AI", "Distributed Systems", "Future of Work"],
