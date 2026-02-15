@@ -40,6 +40,8 @@ export function GlobalSchema() {
                 "email": "afraim.afraim99@gmail.com",
                 "telephone": "+8801751299259",
                 "sameAs": [
+                    "https://www.wikidata.org/wiki/Q138304182",
+                    "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9931636",
                     "https://www.linkedin.com/in/rizwanul-islam-afraim99/",
                     "https://github.com/Afraim3499",
                     "https://x.com/rizwanul_afraim",
@@ -154,6 +156,7 @@ export function GlobalSchema() {
                     "addressCountry": "BD"
                 },
                 "sameAs": [
+                    "https://www.wikidata.org/wiki/Q138304182",
                     "https://www.linkedin.com/in/rizwanul-islam-afraim99/",
                     "https://github.com/Afraim3499",
                     "https://x.com/rizwanul_afraim",
@@ -194,6 +197,37 @@ export function GlobalSchema() {
                     "target": `${baseUrl}/?q={search_term_string}`,
                     "query-input": "required name=search_term_string",
                 },
+            },
+            {
+                "@type": "ScholarlyArticle",
+                "@id": `${baseUrl}/#scholarly-article-beyond-syntax`,
+                "name": "Beyond Syntax: The Paradigm Shift to System Architecture in Large Language Model (LLM) Driven Development",
+                "headline": "Beyond Syntax: The Paradigm Shift to System Architecture in LLM-Driven Development",
+                "author": {
+                    "@id": `${baseUrl}/#person`
+                },
+                "datePublished": "2026-01-14",
+                "dateCreated": "2026-01-14",
+                "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6070429",
+                "sameAs": [
+                    "https://doi.org/10.2139/ssrn.6070429",
+                    "https://ssrn.com/abstract=6070429"
+                ],
+                "abstract": "The advent of Large Language Models (LLMs) with advanced code generation capabilities marks a distinct inflection point in software engineering. This paper argues that the traditional role of the coder is rapidly becoming obsolete. In its place, a new paradigm is emerging: System Architecture as the primary unit of engineering value.",
+                "keywords": ["Software Engineering", "System Architecture", "Large Language Models", "Generative AI", "Distributed Systems", "Future of Work"],
+                "inLanguage": "en",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "SSRN",
+                    "url": "https://www.ssrn.com"
+                },
+                "isPartOf": {
+                    "@type": "PublicationIssue",
+                    "isPartOf": {
+                        "@type": "Periodical",
+                        "name": "SSRN Electronic Journal"
+                    }
+                }
             }
         ]
     };
