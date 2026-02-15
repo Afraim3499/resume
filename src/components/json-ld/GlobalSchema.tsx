@@ -49,6 +49,9 @@ export function GlobalSchema() {
                     "https://dev.to/rizwanul_islam_afraim",
                     "https://www.instagram.com/afraim_privateer/",
                     "https://www.researchgate.net/profile/Rizwanul-Islam-Afraim",
+                    "https://peerlist.io/rizwanul_afraim",
+                    "https://www.pinterest.com/rizwanulafraim/",
+                    "https://huggingface.co/RizwanulAfraim",
                 ],
                 "worksFor": [
                     {

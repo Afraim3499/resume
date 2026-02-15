@@ -1,0 +1,17 @@
+{
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "redirects": [
+        {
+            "source": "/:path*",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "portfolio-rizwanul.vercel.app"
+                }
+            ],
+            "destination": "https://www.rizwanulafraim.com/:path*",
+            "permanent": true
+        }
+    ]
+}
