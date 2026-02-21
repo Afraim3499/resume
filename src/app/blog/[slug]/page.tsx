@@ -146,7 +146,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <ReadingProgress />
-      <article className="container px-4 mx-auto max-w-4xl py-12">
+      <article className="container px-4 mx-auto max-w-4xl pt-32 pb-12">
         <Breadcrumbs
           items={[
             { label: "Blog", href: "/blog" },

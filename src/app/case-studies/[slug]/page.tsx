@@ -80,7 +80,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }}
       />
-      <article className="container px-4 mx-auto max-w-4xl py-12">
+      <article className="container px-4 mx-auto max-w-4xl pt-32 pb-12">
         <Breadcrumbs
           items={[
             { label: "Case Studies", href: "/case-studies" },
