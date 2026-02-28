@@ -7,7 +7,9 @@ tags: ["SEO", "Content Strategy", "Performance", "Analytics"]
 featured: false
 readingTime: 6
 author: "Rizwanul Islam"
----# 4-Layer SEO Framework: How I Optimized Yagacalls
+---
+
+# 4-Layer SEO Framework: How I Optimized Yagacalls
 
 When I took on the lead developer role at Yagacalls, a platform serving 3,500+ investors with trading calls and market analysis, SEO wasn't just important—it was critical for growth. I developed a 4-layer SEO framework that transformed our organic visibility.
 

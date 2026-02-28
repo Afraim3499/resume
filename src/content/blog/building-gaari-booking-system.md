@@ -7,7 +7,9 @@ tags: ["Next.js", "TypeScript", "E-commerce", "Supabase", "Payment Integration"]
 featured: true
 readingTime: 8
 author: "Rizwanul Islam"
----# Building Gaari's Multi-Service Booking System
+---
+
+# Building Gaari's Multi-Service Booking System
 
 When I set out to build Gaari, Bangladesh's premium car rental and travel platform, I knew the booking system would be the heart of the entire platform. The challenge wasn't just building a booking system—it was creating a unified engine that could handle multiple service types (Car Rental, Travel Packages, Activities) while maintaining real-time availability, dynamic pricing, and seamless user experience.
 

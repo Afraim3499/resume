@@ -7,7 +7,9 @@ tags: ["Next.js", "CMS", "TypeScript", "PostgreSQL", "Performance"]
 featured: true
 readingTime: 7
 author: "Rizwanul Islam"
----# From Idea to Production: Launching The Trail News Platform
+---
+
+# From Idea to Production: Launching The Trail News Platform
 
 Launching The Trail wasn't just about building another news website—it was about creating a platform that could handle high traffic, provide rich editorial tools, and deliver content at lightning speed. Here's how we went from concept to production in record time.
 
