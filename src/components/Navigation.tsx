@@ -15,7 +15,6 @@ const navItems = [
   { name: "Case Studies", href: "/case-studies" },
   { name: "Services", href: "/services" },
   { name: "Resume", href: "/resume" },
-  { name: "বাংলা", href: "/bn" },
 ];
 
 export function Navigation() {
