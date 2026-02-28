@@ -12,7 +12,7 @@ import { ParticleSystem } from "./ParticleSystem";
 import type { Project } from "@/data/projects";
 
 // Get signature projects (production projects)
-const preferredOrder = ["gaari", "the-trail", "yagacalls"];
+const preferredOrder = ["the-trail", "inshortbd", "arrivals-cave"];
 const signatureProjects = projects
   .filter((p) => p.status === "production" && preferredOrder.includes(p.slug))
   .sort((a, b) => preferredOrder.indexOf(a.slug) - preferredOrder.indexOf(b.slug));

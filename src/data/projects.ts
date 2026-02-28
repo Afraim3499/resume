@@ -32,12 +32,425 @@ export interface Project {
     url: string;
     publisher: string;
   }[];
-  category: "ecommerce" | "cms" | "ai" | "operations" | "news";
+  category: "ecommerce" | "cms" | "ai" | "operations" | "news" | "portfolio";
   year: number;
   status: "production" | "development" | "completed";
 }
 
 export const projects: Project[] = [
+  // ─── Featured first 3 on homepage ───────────────────────────────
+  {
+    slug: "the-trail",
+    title: "The Trailheadline",
+    description: "High-performance, information-dense news aggregator and editorial platform. Automatically curated content with 'Editor's Picks' and high-speed delivery. Designed for the modern reader.",
+    longDescription: "A production-ready news platform with custom CMS, analytics system, and comprehensive admin dashboard. Features include advanced filtering system (Latest, Most Popular, Trending, Hot), category navigation (Politics, Tech, Culture, Business, etc.), trending articles with view counts, breaking news banner system, date-based filtering, rich text editor (Tiptap), content workflow (Draft → Review → Approved → Published), custom analytics with charts, SEO optimization with structured data, newsletter system, comments moderation, and Docker deployment.",
+    tags: ["Next.js", "News Aggregator", "Automation", "High Traffic", "CMS"],
+    link: "https://trailheadlines.com",
+    image: "https://brshoodoihexflrolqvu.supabase.co/storage/v1/object/public/portfolio-images/the-trail.jpg",
+    screenshots: [
+      "https://brshoodoihexflrolqvu.supabase.co/storage/v1/object/public/portfolio-images/the-trail.jpg",
+      "https://brshoodoihexflrolqvu.supabase.co/storage/v1/object/public/portfolio-images/the-trail-2.jpg",
+    ],
+    metrics: {
+      components: 150,
+      apiEndpoints: 25,
+      databaseTables: 30,
+      linesOfCode: 10000,
+    },
+    techStack: [
+      "Next.js 14+",
+      "React 19",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Tiptap",
+      "TanStack Query",
+      "Docker",
+      "Nginx",
+    ],
+    challenges: [
+      "Building custom CMS from scratch with rich text editor",
+      "Implementing advanced filtering system (Latest, Most Popular, Trending, Hot)",
+      "Creating category-based navigation and organization",
+      "Tracking and displaying article view counts",
+      "Building breaking news banner system",
+      "Handling 30+ database tables with complex relationships",
+      "Implementing content workflow system",
+      "Creating custom analytics dashboard",
+      "SEO optimization with structured data",
+    ],
+    solutions: [
+      "Built modular CMS with Tiptap rich text editor",
+      "Designed normalized database schema with RLS policies",
+      "Created multi-stage approval workflow",
+      "Developed custom analytics with Recharts",
+      "Implemented comprehensive SEO with Schema.org markup",
+    ],
+    performance: {
+      lighthouse: 95,
+      loadTime: "0.4s",
+    },
+    impactMetrics: [
+      {
+        label: "Content Velocity",
+        value: "3x",
+        description: "Faster publishing workflow via custom CMS and automation.",
+        icon: "zap"
+      },
+      {
+        label: "User Engagement",
+        value: "15k+",
+        description: "Monthly active readers reached within first quarter.",
+        icon: "target"
+      }
+    ],
+    articles: [
+      {
+        title: "The Industrial Revolution of Information",
+        url: "https://open.substack.com/pub/rizwanulafraim/p/the-industrial-revolution-of-information?r=7awufv&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true",
+        publisher: "Substack",
+      },
+    ],
+    category: "news",
+    year: 2024,
+    status: "production",
+  },
+  {
+    slug: "inshortbd",
+    title: "InshortBD",
+    description: "Bangla-language digital media platform with a full editorial CMS, AWS S3 media pipeline, Playwright E2E tests, GitHub Actions CI/CD, Twitter API integration, and a newsletter system.",
+    longDescription: "InshortBD is a production-grade Bangla digital news platform inspired by the short-form news format. The platform has a full editorial CMS with content workflow (Draft → Review → Approved → Published), rich Tiptap editor supporting tables, YouTube embeds, Twitter/X tweet embeds, image management, bubble menus, and floating menus. Media is stored on AWS S3, not just Supabase. The system integrates the Twitter API v2 for social embeds and syndication. Analytics dashboards are built with Recharts and TanStack Table. It's the only project in the portfolio with a Playwright end-to-end test suite and GitHub Actions CI/CD workflows. A Resend-powered email newsletter handles subscriber management. The site uses a custom Tiro Bangla Unicode font and was designed to WCAG 2.1 AA accessibility standards with a magazine-inspired editorial layout. Article collections (multi-part series) give readers a curated, sequential reading experience.",
+    tags: ["Next.js", "Bangla", "News Media", "AWS S3", "Playwright", "CI/CD", "CMS", "Editorial"],
+    link: "https://www.inshortbd.com",
+    githubUrl: "https://github.com/Afraim3499/inshortbd",
+    image: "/inshortbd-1.jpg",
+    screenshots: [
+      "/inshortbd-1.jpg",
+      "/inshortbd-2.jpg",
+    ],
+    metrics: {
+      components: 120,
+      apiEndpoints: 30,
+      databaseTables: 20,
+      pages: 25,
+    },
+    techStack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "TailwindCSS v4",
+      "Supabase",
+      "PostgreSQL",
+      "AWS S3",
+      "Tiptap",
+      "TanStack Query",
+      "TanStack Table",
+      "Framer Motion",
+      "Recharts",
+      "Playwright",
+      "GitHub Actions",
+      "Twitter API v2",
+      "Resend",
+      "Lenis",
+    ],
+    challenges: [
+      "Building a full Bangla-language editorial platform with correct Unicode typography (Tiro Bangla font) and bidirectional text handling",
+      "Designing a multi-stage content workflow (Draft → Review → Approved → Published) for a distributed editorial team",
+      "Setting up AWS S3 as the primary media pipeline instead of a simpler hosted solution",
+      "Integrating Twitter API v2 for social embeds while handling rate limits and auth flows",
+      "Writing Playwright E2E tests that work reliably across CI/CD pipelines (GitHub Actions)",
+      "Implementing article series/collections that group multi-part content into a sequential reading experience",
+    ],
+    solutions: [
+      "Integrated Tiro Bangla Unicode font with Next.js font optimization for performant Bangla text rendering",
+      "Built multi-stage approval workflow with role-based gates and status transitions stored in Supabase",
+      "Implemented AWS S3 upload pipeline with presigned URLs for secure, scalable media management",
+      "Designed WCAG 2.1 AA compliant magazine-inspired layout with proper heading hierarchy and contrast ratios",
+      "Set up GitHub Actions CI/CD to run Playwright E2E tests on every push, blocking merges on test failure",
+      "Built article collections feature with ordered episode indexing and series navigation components",
+    ],
+    performance: {
+      lighthouse: 95,
+      loadTime: "0.5s",
+    },
+    impactMetrics: [
+      {
+        label: "Infrastructure",
+        value: "Enterprise",
+        description: "AWS S3 + Supabase + GitHub Actions — production-grade media and deployment pipeline.",
+        icon: "zap",
+      },
+      {
+        label: "Test Coverage",
+        value: "E2E",
+        description: "Playwright automated browser tests running in CI/CD on every push.",
+        icon: "target",
+      },
+      {
+        label: "Audience",
+        value: "170M+",
+        description: "Targeting Bengali speakers globally with Bangla-first editorial design.",
+        icon: "trending",
+      },
+    ],
+    articles: [
+      {
+        title: "Homepage — Breaking News",
+        url: "https://www.inshortbd.com",
+        publisher: "inshortbd.com",
+      },
+      {
+        title: "Category — Politics (রাজনীতি)",
+        url: "https://www.inshortbd.com/category/politics",
+        publisher: "inshortbd.com",
+      },
+      {
+        title: "Category — Tech (প্রযুক্তি)",
+        url: "https://www.inshortbd.com/category/tech",
+        publisher: "inshortbd.com",
+      },
+      {
+        title: "Category — World (বিশ্ব)",
+        url: "https://www.inshortbd.com/category/world",
+        publisher: "inshortbd.com",
+      },
+      {
+        title: "Category — Business (ব্যবসা)",
+        url: "https://www.inshortbd.com/category/business",
+        publisher: "inshortbd.com",
+      },
+      {
+        title: "Newsletter Subscribe",
+        url: "https://www.inshortbd.com/newsletter",
+        publisher: "inshortbd.com",
+      },
+      {
+        title: "Article — Dhaka Parliamentary Seats 2026",
+        url: "https://www.inshortbd.com/news/dhaka-parliamentary-seats-2026-election-analysis",
+        publisher: "inshortbd.com",
+      },
+    ],
+    category: "news",
+    year: 2026,
+    status: "production",
+  },
+  {
+    slug: "arrivals-cave",
+    title: "Arrivals Cave",
+    description: "Full-stack e-commerce for premium Bangladeshi panjabi & traditional wear. Eid 2026 collection live. Features Meta CAPI, Google Merchant Feed, CRO-optimized UX, and a Supabase-powered backend.",
+    longDescription: "A production e-commerce store for Arrivals Cave, a premium panjabi and traditional menswear brand based in Bangladesh. The platform handles the full commerce lifecycle — product catalog, cart, checkout, order management — backed by Supabase. Marketing integrations include server-side Facebook Conversions API (CAPI) with client-side Meta Pixel deduplication, and a Google Merchant Center product feed for Shopping ads. CRO features include a sticky mobile add-to-cart bar, urgency/scarcity indicators, announcement bar with cashback offer logic, and Facebook testimonials integration. Collections are managed via a Tiptap-powered CMS. The Eid 2026 seasonal collection (Basarah, Heer, Muraqsh, Zameen, Shahzad, Gulrukh) was launched successfully through this platform.",
+    tags: ["Next.js", "E-commerce", "Supabase", "Meta CAPI", "Google Merchant", "CRO", "Bangladesh"],
+    link: "https://www.arrivalscavebd.com",
+    githubUrl: "https://github.com/Afraim3499/arrivals-cave",
+    image: "/arrivals-cave-1.jpg",
+    screenshots: [
+      "/arrivals-cave-1.jpg",
+      "/arrivals-cave-2.jpg",
+      "/arrivals-cave-3.jpg",
+      "/arrivals-cave-4.jpg",
+    ],
+    metrics: {
+      components: 60,
+      apiEndpoints: 20,
+      databaseTables: 15,
+      pages: 18,
+    },
+    techStack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "TailwindCSS v4",
+      "Supabase",
+      "PostgreSQL",
+      "Zustand",
+      "Tiptap",
+      "ShadcnUI",
+      "Meta CAPI",
+      "next-intl",
+    ],
+    challenges: [
+      "Implementing server-side Facebook Conversions API with client-side Pixel deduplication to avoid double-counting",
+      "Building a Google Merchant Center XML product feed with size variants as separate rows linked by item_group_id",
+      "Designing a Tiptap CMS so non-technical staff can manage product descriptions and seasonal collections",
+      "Building CRO features (sticky mobile ATC, urgency/scarcity indicators, cashback announcement bar) without bloating the bundle",
+      "Launching a full Eid 2026 seasonal collection with multiple sub-collections from a cold start",
+    ],
+    solutions: [
+      "Implemented CAPI via server action with event deduplication IDs, ensuring accurate ad attribution",
+      "Built a dynamic merchant feed generator that expands size variants into separate product rows with shared item_group_id",
+      "Integrated Tiptap rich-text editor in the CMS portal with Supabase row-level security for safe content management",
+      "Developed CRO components as island-style client components to isolate interactivity and keep core pages server-rendered",
+      "Shipped Eid Collection 2026 live with 6 named sub-collections and product photography",
+    ],
+    performance: {
+      lighthouse: 94,
+      loadTime: "0.6s",
+    },
+    impactMetrics: [
+      {
+        label: "Eid 2026",
+        value: "Live",
+        description: "Launched Eid Collection 2026 with 6 named sub-collections revenue-generating from day one.",
+        icon: "trending",
+      },
+      {
+        label: "Ad Attribution",
+        value: "Full Stack",
+        description: "Meta CAPI + Google Merchant = complete server-side ad attribution pipeline.",
+        icon: "zap",
+      },
+      {
+        label: "CRO Features",
+        value: "7+",
+        description: "Sticky ATC, urgency badges, cashback bar, testimonials, scarcity indicators and more.",
+        icon: "target",
+      },
+    ],
+    articles: [
+      {
+        title: "Shop — Eid Collection 2026",
+        url: "https://www.arrivalscavebd.com/en/eid-panjabi-collection",
+        publisher: "arrivalscavebd.com",
+      },
+      {
+        title: "Shop — Premium Panjabi",
+        url: "https://www.arrivalscavebd.com/en/premium-panjabi",
+        publisher: "arrivalscavebd.com",
+      },
+      {
+        title: "Shop — Embroidered Panjabi",
+        url: "https://www.arrivalscavebd.com/en/embroidered-panjabi",
+        publisher: "arrivalscavebd.com",
+      },
+      {
+        title: "Shop — Silk Panjabi",
+        url: "https://www.arrivalscavebd.com/en/silk-panjabi",
+        publisher: "arrivalscavebd.com",
+      },
+      {
+        title: "Shop — Cotton Panjabi",
+        url: "https://www.arrivalscavebd.com/en/cotton-panjabi",
+        publisher: "arrivalscavebd.com",
+      },
+      {
+        title: "Blog",
+        url: "https://www.arrivalscavebd.com/en/blog",
+        publisher: "arrivalscavebd.com",
+      },
+    ],
+    category: "ecommerce",
+    year: 2026,
+    status: "production",
+  },
+  {
+    slug: "shahriar-kabir",
+    title: "Shahriar Kabir Portfolio",
+    description: "Premium personal brand website for an AI company executive. A full thought-leadership platform with editorial content, career narrative, schema structured data, and a curated design system.",
+    longDescription: "Built a premium personal brand website for Shahriar Kabir, Head of Operations at PrimeSync AI. The site goes far beyond a typical portfolio — it's a thought-leadership engine. Features include an MDX-powered editorial blog with published BPO and AI industry articles, dynamic OG image generation per post via @vercel/og, a triple-font editorial system (Inter + Fraunces + JetBrains Mono), Schema.org JSON-LD structured data for rich search results, cookie consent, Vercel Analytics, Framer Motion animations, Instagram embeds, and QR code generation. The design follows a 'Paper, Ink & Forest' color palette with Lenis smooth scrolling. The career timeline is designed as a visual story arc, not just a list of jobs.",
+    tags: ["Next.js", "Personal Brand", "MDX", "Framer Motion", "Editorial", "SEO"],
+    link: "https://www.shahriar-kabir.com",
+    githubUrl: "https://github.com/Afraim3499/shahriar-portfolio",
+    image: "/shahriar-kabir-1.jpg",
+    screenshots: [
+      "/shahriar-kabir-1.jpg",
+      "/shahriar-kabir-2.jpg",
+      "/shahriar-kabir-3.jpg",
+      "/shahriar-kabir-4.jpg",
+    ],
+    metrics: {
+      components: 30,
+      pages: 7,
+    },
+    techStack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "TailwindCSS v4",
+      "Framer Motion",
+      "MDX",
+      "Lenis",
+      "Vercel Analytics",
+      "@vercel/og",
+    ],
+    challenges: [
+      "Translating a complex personal brand identity ('The Architect & The Explorer') into a cohesive digital experience",
+      "Building an editorial system that handles MDX blog articles with dynamic OG image generation per post",
+      "Designing a triple-font typographic system that balances Inter, Fraunces, and JetBrains Mono effectively",
+      "Implementing Schema.org JSON-LD structured data for rich search results via a dedicated component",
+      "Creating a career timeline as a visual narrative story arc rather than a plain job list",
+    ],
+    solutions: [
+      "Designed 'Paper, Ink & Forest' editorial color palette with bespoke typography for a premium curator feel",
+      "Built MDX pipeline with @vercel/og for auto-generated social share images per article",
+      "Implemented <SchemaData /> component for clean JSON-LD injection without coupling to page components",
+      "Used Framer Motion for staggered reveal animations and Lenis for buttery smooth scrolling",
+      "Integrated Instagram embeds, YouTube player, and QR code generator for rich media presence",
+    ],
+    performance: {
+      lighthouse: 97,
+      loadTime: "0.5s",
+    },
+    impactMetrics: [
+      {
+        label: "Client Type",
+        value: "AI Exec",
+        description: "Built for a Head of Operations at a leading AI company (PrimeSync AI).",
+        icon: "target",
+      },
+      {
+        label: "Content at Launch",
+        value: "5+ Articles",
+        description: "Published BPO/AI industry thought-leadership pieces live from day one.",
+        icon: "zap",
+      },
+      {
+        label: "SEO Ready",
+        value: "Day One",
+        description: "Schema.org JSON-LD, OG images, and sitemap configured at launch.",
+        icon: "trending",
+      },
+    ],
+    articles: [
+      {
+        title: "Homepage — Overview",
+        url: "https://www.shahriar-kabir.com",
+        publisher: "shahriar-kabir.com",
+      },
+      {
+        title: "Insights — Thinking",
+        url: "https://www.shahriar-kabir.com/thinking",
+        publisher: "shahriar-kabir.com",
+      },
+      {
+        title: "Career — Strategic Road",
+        url: "https://www.shahriar-kabir.com/career",
+        publisher: "shahriar-kabir.com",
+      },
+      {
+        title: "Dossier — Professional Credentials",
+        url: "https://www.shahriar-kabir.com/dossier",
+        publisher: "shahriar-kabir.com",
+      },
+      {
+        title: "Life & Motion — Visual Chronicles",
+        url: "https://www.shahriar-kabir.com/life-motion",
+        publisher: "shahriar-kabir.com",
+      },
+      {
+        title: "Article: Mobile Auto-Repair & AI",
+        url: "https://www.shahriar-kabir.com/thinking/mobile-auto-repair-ai",
+        publisher: "shahriar-kabir.com",
+      },
+      {
+        title: "Article: BPO CX Strategy",
+        url: "https://www.shahriar-kabir.com/thinking/bpo-cx-strategy",
+        publisher: "shahriar-kabir.com",
+      },
+    ],
+    category: "portfolio",
+    year: 2026,
+    status: "production",
+  },
   {
     slug: "gaari",
     title: "Gaari",
@@ -114,82 +527,7 @@ export const projects: Project[] = [
     year: 2025,
     status: "production",
   },
-  {
-    slug: "the-trail",
-    title: "The Trail",
-    description: "High-performance, information-dense news aggregator. Automatically curated content with 'Editor's Picks' and high-speed delivery. Designed for the modern reader.",
-    longDescription: "A production-ready news platform with custom CMS, analytics system, and comprehensive admin dashboard. Features include advanced filtering system (Latest, Most Popular, Trending, Hot), category navigation (Politics, Tech, Culture, Business, etc.), trending articles with view counts, breaking news banner system, date-based filtering, rich text editor (Tiptap), content workflow (Draft → Review → Approved → Published), custom analytics with charts, SEO optimization with structured data, newsletter system, comments moderation, and Docker deployment.",
-    tags: ["Next.js", "News Aggregator", "Automation", "High Traffic", "CMS"],
-    link: "https://trailheadlines.com",
-    image: "https://brshoodoihexflrolqvu.supabase.co/storage/v1/object/public/portfolio-images/the-trail.jpg",
-    screenshots: [
-      "https://brshoodoihexflrolqvu.supabase.co/storage/v1/object/public/portfolio-images/the-trail.jpg",
-      "https://brshoodoihexflrolqvu.supabase.co/storage/v1/object/public/portfolio-images/the-trail-2.jpg",
-    ],
-    metrics: {
-      components: 150,
-      apiEndpoints: 25,
-      databaseTables: 30,
-      linesOfCode: 10000,
-    },
-    techStack: [
-      "Next.js 14+",
-      "React 19",
-      "TypeScript",
-      "Supabase",
-      "PostgreSQL",
-      "Tiptap",
-      "TanStack Query",
-      "Docker",
-      "Nginx",
-    ],
-    challenges: [
-      "Building custom CMS from scratch with rich text editor",
-      "Implementing advanced filtering system (Latest, Most Popular, Trending, Hot)",
-      "Creating category-based navigation and organization",
-      "Tracking and displaying article view counts",
-      "Building breaking news banner system",
-      "Handling 30+ database tables with complex relationships",
-      "Implementing content workflow system",
-      "Creating custom analytics dashboard",
-      "SEO optimization with structured data",
-    ],
-    solutions: [
-      "Built modular CMS with Tiptap rich text editor",
-      "Designed normalized database schema with RLS policies",
-      "Created multi-stage approval workflow",
-      "Developed custom analytics with Recharts",
-      "Implemented comprehensive SEO with Schema.org markup",
-    ],
-    performance: {
-      lighthouse: 95,
-      loadTime: "0.4s",
-    },
-    impactMetrics: [
-      {
-        label: "Content Velocity",
-        value: "3x",
-        description: "Faster publishing workflow via custom CMS and automation.",
-        icon: "zap"
-      },
-      {
-        label: "User Engagement",
-        value: "15k+",
-        description: "Monthly active readers reached within first quarter.",
-        icon: "target"
-      }
-    ],
-    articles: [
-      {
-        title: "The Industrial Revolution of Information",
-        url: "https://open.substack.com/pub/rizwanulafraim/p/the-industrial-revolution-of-information?r=7awufv&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true",
-        publisher: "Substack",
-      },
-    ],
-    category: "news",
-    year: 2024,
-    status: "production",
-  },
+
 
   {
     slug: "vibrance",

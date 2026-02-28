@@ -89,7 +89,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
       />
-      <div className="container px-4 mx-auto max-w-5xl py-12">
+      <div className="container px-4 mx-auto max-w-5xl pt-24 pb-12">
         <Breadcrumbs
           items={[
             { label: "Projects", href: "/#projects" },
