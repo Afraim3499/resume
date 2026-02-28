@@ -62,3 +62,41 @@ beforeAfter:
   after: "A 98/100 Lighthouse platform processing bookings in real-time across three service verticals with dynamic pricing and dual-gateway payments."
 ---
 
+## The Founding Problem
+
+Bangladesh had no unified digital platform for car rentals or travel booking. The entire industry ran on phone calls, WhatsApp messages, and physical offices — a completely offline workflow with zero inventory visibility and wildly inconsistent pricing. Gaari was built to fix this from the ground up.
+
+The technical challenge was not building a *booking form*. It was building three distinct booking engines — for Car Rentals, Travel Packages, and Activity bookings — each with fundamentally different parameters, pricing models, and availability windows, all unified behind a single coherent interface.
+
+## Architecture Decisions That Mattered
+
+### The Availability Layer
+
+Double bookings are a death sentence for a rental platform. Every booking must be an atomic operation — claim the inventory, confirm the user, charge the card, and mark the slot unavailable with zero race conditions. We solved this with **Supabase Realtime + PostgreSQL triggers**: when a booking is initiated, a trigger fires immediately to lock the resource row, and the frontend subscribes to the state change. Optimistic UI updates give the user instant feedback; the database is the source of truth.
+
+### The Pricing Engine
+
+Dynamic pricing was the core competitive differentiator. We built a server-side pricing calculator that evaluates:
+- **Base rate** from the database
+- **Duration multipliers** (hourly, daily, weekly)
+- **Demand-based surge factors**
+- **Seasonal adjustments** (Eid, summer holiday peaks)
+- **Last-minute premiums**
+
+All calculations are cached in **Redis** with short TTLs to ensure freshness without hammering the database on every search query.
+
+### Dual Payment Gateway Integration
+
+Integrating both **Stripe** (international cards) and **Bkash** (Bangladesh mobile payments) required building a unified abstraction layer. Each gateway has different webhook shapes, authentication flows, and failure modes. We implemented idempotency keys on every webhook handler to prevent duplicate charges — a critical safety mechanism when money is involved.
+
+## The 98/100 Lighthouse Score
+
+Performance was non-negotiable for a market where many users are on mid-range Android devices and 4G networks. We achieved 98/100 through:
+- **Next.js Server Components** for zero-JavaScript on the critical path
+- **Cloudinary image optimization** with automatic WebP conversion
+- **Route-based code splitting** so booking pages only load what they need
+- **Connection pooling** via Supabase's built-in PgBouncer to handle concurrent bookings during peak periods
+
+## What Gaari Proved
+
+The platform demonstrated that even in a market with no existing digital infrastructure, a well-engineered product can leapfrog the status quo entirely. The key insight: **solve the coordination problem first, let the revenue follow**.

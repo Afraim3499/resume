@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Github, Calendar, Code, Database, Layers, Zap, Tag, FileText, BookOpen, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, Calendar, Code, Database, Layers, Zap, Tag, FileText, BookOpen, ArrowRight, Lock } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { projects } from "@/data/projects";
 import { getBlogSlugForProject, getCaseStudySlugForProject } from "@/lib/project-blog-mapper";
@@ -101,7 +101,12 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
               Visit Project <ExternalLink className="w-4 h-4" />
             </a>
           )}
-          {project.githubUrl && (
+          {project.privateRepo ? (
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground/5 text-foreground/50 border border-foreground/10 text-sm cursor-default select-none">
+              <Lock className="w-4 h-4" />
+              Private Repository
+            </span>
+          ) : project.githubUrl && (
             <a
               href={project.githubUrl}
               target="_blank"

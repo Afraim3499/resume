@@ -35,6 +35,7 @@ export interface Project {
   category: "ecommerce" | "cms" | "ai" | "operations" | "news" | "portfolio";
   year: number;
   status: "production" | "development" | "completed";
+  privateRepo?: boolean; // marks commercial/client repos as private
 }
 
 export const projects: Project[] = [
@@ -114,6 +115,7 @@ export const projects: Project[] = [
     category: "news",
     year: 2024,
     status: "production",
+    privateRepo: true,
   },
   {
     slug: "inshortbd",
@@ -122,7 +124,6 @@ export const projects: Project[] = [
     longDescription: "**The Problem:** Serving premium, authentic Bangla media required flawless Unicode typography, a scalable media pipeline, and zero-downtime reliability to target an audience of 170M+ Bengali speakers.\n\n**The Solution Architecture:** We built a cloud-native platform utilizing Next.js 16 with AWS S3 for enterprise-grade media storage. The system integrates the Twitter API v2 for seamless social syndication. Crucially, we established an ironclad CI/CD pipeline using GitHub Actions and Playwright for rigorous end-to-end browser testing to automatically block regressions before they hit production.\n\n**Measurable Results:** Delivered a highly accessible (WCAG 2.1 AA), magazine-grade editorial experience backed by enterprise-level test coverage, allowing editors to publish multi-part article series with total confidence.",
     tags: ["Next.js", "Bangla", "News Media", "AWS S3", "Playwright", "CI/CD", "CMS", "Editorial"],
     link: "https://www.inshortbd.com",
-    githubUrl: "https://github.com/Afraim3499/inshortbd",
     image: "/inshortbd-1.jpg",
     screenshots: [
       "/inshortbd-1.jpg",
@@ -233,6 +234,7 @@ export const projects: Project[] = [
     category: "news",
     year: 2026,
     status: "production",
+    privateRepo: true,
   },
   {
     slug: "arrivals-cave",
@@ -241,7 +243,6 @@ export const projects: Project[] = [
     longDescription: "**The Problem:** A premium traditional menswear brand needed to deploy its flagship Eid 2026 collection with exact ad tracking to maximize ROAS and a purchase flow heavily optimized for mobile conversions.\n\n**The Solution Architecture:** We constructed a headless commerce engine on Next.js 16 and Supabase. To guarantee 100% accurate attribution for marketing campaigns, we implemented the server-side Meta Conversions API (CAPI) alongside robust client-side Pixel deduplication and an automated Google Merchant XML Feed. The storefront UX features dynamic conversion rate optimization (CRO) elements, including a sticky mobile add-to-cart bar, intelligent cashback announcement logic, and real-time urgency/scarcity badges.\n\n**Measurable Results:** Successfully launched the Eid 2026 collection with a complete, full-stack ad attribution pipeline, generating immediate revenue and providing a frictionless mobile checkout experience.",
     tags: ["Next.js", "E-commerce", "Supabase", "Meta CAPI", "Google Merchant", "CRO", "Bangladesh"],
     link: "https://www.arrivalscavebd.com",
-    githubUrl: "https://github.com/Afraim3499/arrivals-cave",
     image: "/arrivals-cave-1.jpg",
     screenshots: [
       "/arrivals-cave-1.jpg",
@@ -341,6 +342,7 @@ export const projects: Project[] = [
     category: "ecommerce",
     year: 2026,
     status: "production",
+    privateRepo: true,
   },
   {
     slug: "shahriar-kabir",
@@ -526,6 +528,7 @@ export const projects: Project[] = [
     category: "ecommerce",
     year: 2025,
     status: "production",
+    privateRepo: true,
   },
 
 

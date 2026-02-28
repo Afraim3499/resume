@@ -65,3 +65,49 @@ beforeAfter:
   after: "95/100 Lighthouse score, 0.4s average load times, 150+ production components, and a full editorial workflow CMS used by non-technical journalists."
 ---
 
+## The Editorial Problem No One Talks About
+
+Most news platforms fail their journalists. WordPress is overcomplicated for most editors; Google Docs offers no structure; email chains destroy version history. The Trail was built on a single premise: **the publishing tool should be invisible**.
+
+Editors needed to write, review, approve, and publish without technical knowledge. The CMS had to enforce discipline (multi-stage workflow) while staying completely frictionless.
+
+## The CMS Architecture
+
+### The Tiptap Foundation
+
+We built the editor layer on **Tiptap** — a ProseMirror-based rich text editor — with custom extensions for breaking news callouts, photo galleries, pull quotes, and embedded article cards. Every paragraph type maps to a structured block in the database rather than raw HTML, which means the frontend can render each content type with optimized components rather than dangerous `dangerouslySetInnerHTML`.
+
+### The Workflow Engine
+
+Content moves through four stages:
+1. **Draft** — Writer creates and saves
+2. **In Review** — Submitted for editorial review
+3. **Approved** — Editor has signed off, ready to publish
+4. **Published** — Live on the site
+
+Each transition is a database state change with row-level security policies ensuring only the appropriate role can execute each transition. A junior writer cannot approve their own content. The database enforces this, not application logic — which means it cannot be bypassed.
+
+### The N+1 Problem and Its Solution
+
+The "Trending" and "Hot" sections required aggregating view counts, recency scores, and engagement signals across thousands of articles simultaneously. A naive ORM implementation would execute hundreds of sequential queries — an N+1 disaster.
+
+The solution was a **Gravity/Velocity algorithm running as an async CRON job**. Every 5 minutes, a background process calculates hot scores for all articles using an exponential time-decay function (similar to Hacker News's algorithm) and writes the pre-computed `hot_score` integer into each article row. The frontend query is then a trivially simple `ORDER BY hot_score DESC` — a single, indexed lookup.
+
+## Performance at Scale
+
+The 95/100 Lighthouse score wasn't achieved by accident. Every architectural decision was made with performance in mind:
+
+- **Zero-JavaScript Server Components** for all article list pages
+- **Cloudinary transformation pipeline** for automatic WebP conversion and responsive srcsets
+- **Redis caching** at two levels: CDN edge and application layer
+- **Full-text search via PostgreSQL** `tsvector` and `tsquery` — no external search service needed
+
+## The SEO Infrastructure
+
+News aggregators live or die by SEO. We implemented:
+- **JSON-LD Article schema** auto-generated from content metadata
+- **Dynamic XML sitemap** refreshing every hour as new articles publish
+- **RSS feed** at `/feed.xml` for content syndication
+- **Open Graph images** auto-generated from article headlines and categories
+
+The result: strong organic discovery for breaking news queries within days of a story going live, not weeks.
