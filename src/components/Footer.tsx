@@ -12,6 +12,22 @@ export function Footer() {
                         <ul className="space-y-2">
                             <li>
                                 <Link
+                                    href="/#hero"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    Home
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/#about"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    About
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     href="/blog"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
@@ -120,12 +136,12 @@ export function Footer() {
                             <li className="flex flex-col">
                                 <span className="text-xs text-foreground/60 uppercase tracking-wider mb-1">WhatsApp</span>
                                 <a
-                                    href="https://wa.me/8801751299259?text=Hi%20Rizwanul%2C%20I%20saw%20your%20website%20and%20wanted%20to%20discuss%20a%20work%20with%20You."
+                                    href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors border border-primary/20"
                                 >
-                                    Send me a message
+                                    Estimate Your Project Savings
                                 </a>
                             </li>
                             <li className="flex flex-col">

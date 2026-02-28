@@ -135,7 +135,7 @@ export function GlobalSchema() {
                 "@type": "ProfessionalService",
                 "@id": `${baseUrl}/#organization`,
                 "name": "Rizwanul Islam (Afraim) - Venture Architect",
-                "description": "Full-stack development, digital strategy, and venture orchestration services.",
+                "description": "Architecting profit out of chaos. Get twice the product quality at half the expense (~$18/hr, a 55% savings).",
                 "url": baseUrl,
                 "logo": {
                     "@type": "ImageObject",

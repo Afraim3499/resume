@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     default: "Rizwanul Islam | Advanced Venture Architect",
     template: "%s | Rizwanul Islam (Afraim)",
   },
-  description: "Advanced Venture Architect building intelligent data platforms, scalable systems, and modern digital ventures. View the portfolio of Rizwanul Islam.",
+  description: "Architecting profit out of chaos. Get twice the product quality at half the expense (~$18/hr, a 55% savings) with zero struggle. The portfolio of Rizwanul Islam (Afraim), Venture Architect.",
   keywords: [
     "Rizwanul Islam",
     "Afraim",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.rizwanulafraim.com",
     title: "Rizwanul Islam (Afraim) | Venture Architect",
-    description: "Architecting Intelligent Futures through scalable ventures and robust code. The portfolio of Rizwanul Islam (Afraim).",
+    description: "Architecting profit out of chaos. Get twice the product quality at half the expense (~$18/hr, a 55% savings). The portfolio of Rizwanul Islam (Afraim).",
     siteName: "Rizwanul Islam (Afraim) Portfolio",
     images: [
       {
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Rizwanul Islam (Afraim) | Venture Architect",
-    description: "Architecting Intelligent Futures. The digital HQ of Rizwanul Islam (Afraim).",
+    description: "Architecting profit out of chaos. The digital HQ of Rizwanul Islam (Afraim).",
     images: ["/og-image.jpg"],
     creator: "@rizwanul_afraim",
   },

@@ -42,7 +42,7 @@ export function Hero() {
                 <p className="text-foreground/70 max-w-2xl mx-auto text-sm sm:text-lg md:text-xl mb-8 leading-relaxed px-2">
                     From strategy to deployment, I build robust tech platforms out of messy ideas.
                     <br className="hidden sm:block" />
-                    Get <span className="text-foreground font-medium">twice the product quality</span>, at <span className="text-foreground font-medium">half the expense</span>, with <span className="text-foreground font-medium">zero struggle</span> on your end.
+                    Get <span className="text-foreground font-medium">twice the product quality</span>, at <span className="text-foreground font-medium">half the expense</span> (~$18/hr, a 55% savings), with <span className="text-foreground font-medium">zero struggle</span> on your end.
                 </p>
 
                 {/* CTA Buttons */}
@@ -53,7 +53,7 @@ export function Hero() {
                         className="rounded-full px-8 bg-primary text-white hover:bg-primary/90 font-medium"
                         onClick={() => window.open('https://calendar.app.google/GYA3R9Ct4Aq5Qu74A', '_blank')}
                     >
-                        Book a Free Consultation
+                        Estimate Your Project Savings
                     </Button>
                     <Button
                         variant="outline"
@@ -61,7 +61,7 @@ export function Hero() {
                         className="rounded-full px-8"
                         onClick={() => document.getElementById('signature-work')?.scrollIntoView({ behavior: 'smooth' })}
                     >
-                        See The Proof
+                        View Signature Work
                     </Button>
                 </div>
             </div>

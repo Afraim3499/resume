@@ -11,17 +11,11 @@ import { ThemeToggle } from "./ThemeToggle";
 import { NavbarLight } from "./NavbarLight";
 
 const navItems = [
-  { name: "Home", href: "/#hero" },
-  { name: "About", href: "/#about" },
-  { name: "Manifesto", href: "/manifesto" },
+  { name: "Blog", href: "/blog" },
+  { name: "Case Studies", href: "/case-studies" },
   { name: "Services", href: "/services" },
-  { name: "Wiki", href: "/wiki" },
   { name: "Resume", href: "/resume" },
-  { name: "My Story", href: "/#story" },
-  { name: "Skills", href: "/#skills" },
-  { name: "Experience", href: "/#experience" },
-  { name: "Projects", href: "/#projects" },
-  { name: "Contact", href: "/#contact" },
+  { name: "বাংলা", href: "/bn" },
 ];
 
 export function Navigation() {
@@ -130,6 +124,16 @@ export function Navigation() {
                   </Link>
                 );
               })}
+              <div className="hidden lg:flex items-center ml-2 mr-4">
+                <a
+                  href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm shadow-primary/20"
+                >
+                  Book a Consultation
+                </a>
+              </div>
               <div className="min-h-[44px] min-w-[44px] flex items-center justify-center">
                 <ThemeToggle />
               </div>

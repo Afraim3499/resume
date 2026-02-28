@@ -7,8 +7,8 @@ import { socialProof } from "@/data/social";
 const proofItems = [
   {
     icon: Users,
-    value: socialProof.communitySize,
-    label: socialProof.communityLabel,
+    value: "25,000+",
+    label: "Event Attendees (NSUSS)",
     color: "text-blue-400",
   },
   {
@@ -19,8 +19,8 @@ const proofItems = [
   },
   {
     icon: TrendingUp,
-    value: socialProof.experience,
-    label: `${socialProof.experienceLabel} Experience`,
+    value: "200+",
+    label: "Team Members Led",
     color: "text-purple-400",
   },
   {

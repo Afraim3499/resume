@@ -33,9 +33,9 @@ export default function Home() {
     <main id="main-content" className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
       <Hero />
       <SectionDivider variant="wave" />
-      <SignatureWork />
-      <SectionDivider variant="gradient" />
       <ROICalculator />
+      <SectionDivider variant="gradient" />
+      <SignatureWork />
       <SectionDivider variant="wave" />
       <ParallaxSection speed={0.3}>
         <About />
