@@ -1,11 +1,11 @@
 "use client";
 
-import { Timeline } from "@/components/Timeline";
+import { StrategicRoad } from "@/components/StrategicRoad";
 
 export function Experience() {
   return (
     <section id="experience">
-      <Timeline />
+      <StrategicRoad />
     </section>
   );
 }
