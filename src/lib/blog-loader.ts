@@ -63,8 +63,11 @@ export function getAllTags(): string[] {
 // Map project slugs to blog post slugs
 const projectToBlogMap: Record<string, string> = {
     "gaari": "building-gaari-booking-system",
-    "the-trail": "launching-trail-news-platform",
+    "the-trail": "news-aggregator-architecture",
     "yagacalls": "4-layer-seo-framework-yagacalls",
+    "shahriar-kabir": "deterministic-motion-editorial-ux",
+    "inshortbd": "playwright-cicd",
+    "arrivals-cave": "meta-capi-nextjs",
 };
 
 export function getBlogPostByProjectSlug(projectSlug: string): BlogPost | undefined {
