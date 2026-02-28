@@ -1,7 +1,7 @@
 ---
 slug: "gaari"
 projectSlug: "gaari" 
-title: ""
+title: "Gaari: Architecting Bangladesh's First Multi-Service Travel Platform"
 problem: |
   Building Bangladesh's first comprehensive car rental and travel platform required solving multiple complex challenges simultaneously. The platform needed to handle three distinct service types (Car Rental, Travel Packages, Activities) with different booking parameters, pricing models, and availability constraints. 
   
@@ -46,7 +46,7 @@ lessonsLearned:
   - "Multi-step flows with clear progress indicators significantly reduce abandonment rates"
   - "Redis caching is essential for dynamic pricing calculations at scale"
   - "Geographic services require careful API rate limit management"
-technologies:
+technologies: ["Next.js 14", "TypeScript", "Supabase", "Redis", "Stripe", "Bkash", "Cloudinary", "PostgreSQL"]
 
 timeline: "2023 - Present"
 challenges:
@@ -58,7 +58,7 @@ challenges:
   - "Geographic services with 500+ landmarks and route optimization"
   - "Building intuitive UI for complex booking flows"
 beforeAfter:
-  before: ""
-  after: ""
+  before: "No unified platform existed for car rentals or travel in Bangladesh. Manual bookings via phone/WhatsApp, zero availability visibility, zero pricing consistency."
+  after: "A 98/100 Lighthouse platform processing bookings in real-time across three service verticals with dynamic pricing and dual-gateway payments."
 ---
 

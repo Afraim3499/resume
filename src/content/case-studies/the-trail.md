@@ -1,7 +1,7 @@
 ---
 slug: "the-trail"
 projectSlug: "the-trail" 
-title: ""
+title: "The Trail: Engineering a Custom CMS and News Delivery Platform"
 problem: |
   Building a production-ready news platform required creating a custom CMS from scratch that could handle high traffic, provide rich editorial tools, and deliver content at lightning speed. The challenge wasn't just building a news site—it was creating a comprehensive content management system that non-technical editors could use effectively while maintaining performance standards.
   
@@ -47,7 +47,7 @@ lessonsLearned:
   - "Scalability planning from the start prevents architectural limitations"
   - "Database normalization and indexing are critical for query performance"
   - "SEO implementation requires comprehensive structured data markup"
-technologies:
+technologies: ["Next.js 14", "TypeScript", "Tiptap CMS", "PostgreSQL", "Supabase", "Redis", "Recharts", "Cloudinary", "Docker", "Nginx"]
 
 timeline: "2024 - Present"
 challenges:
@@ -61,7 +61,7 @@ challenges:
   - "Creating custom analytics dashboard"
   - "SEO optimization with structured data"
 beforeAfter:
-  before: ""
-  after: ""
+  before: "No publishing platform, zero SEO infrastructure, manual editorial workflows with no visibility into content performance or analytics."
+  after: "95/100 Lighthouse score, 0.4s average load times, 150+ production components, and a full editorial workflow CMS used by non-technical journalists."
 ---
 

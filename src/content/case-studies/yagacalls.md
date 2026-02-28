@@ -1,7 +1,7 @@
 ---
 slug: "yagacalls"
 projectSlug: "yagacalls" 
-title: ""
+title: "Yagacalls: 4-Layer SEO Domination for a 3,500+ Investor Platform"
 problem: |
   Yagacalls needed to establish strong organic visibility to serve its growing community of 3,500+ investors effectively. The platform required ranking for trading signal keywords, market analysis terms, financial education content, and platform-specific searches. Traditional SEO approaches weren't sufficient—we needed a comprehensive framework that could compete with established financial platforms.
   
@@ -49,7 +49,7 @@ lessonsLearned:
   - "SEO is an ongoing process requiring continuous optimization"
   - "Answer engine optimization captures valuable featured snippets"
   - "Geographic optimization expands reach to local audiences"
-technologies:
+technologies: ["Next.js", "TypeScript", "Custom CMS", "Schema.org", "Google Search Console", "PostgreSQL", "Supabase"]
 
 timeline: "2024 - Present"
 challenges:
@@ -60,7 +60,7 @@ challenges:
   - "Structured data markup implementation"
   - "Answer engine optimization"
 beforeAfter:
-  before: ""
-  after: ""
+  before: "Zero organic visibility, no structured data, fragmented SEO approach with no measurable ranking strategy."
+  after: "300% organic traffic growth, Top-3 rankings for target trading keywords, 50+ featured snippets captured."
 ---
 

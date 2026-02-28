@@ -41,30 +41,38 @@ export function getAllCaseStudies(): CaseStudy[] {
 }
 
 export function getCaseStudyBySlug(slug: string): CaseStudy | undefined {
-    // Check if file exists to save perf
-    const fullPath = path.join(contentDirectory, `${slug}.md`);
-    if (!fs.existsSync(fullPath)) return undefined;
+    if (!fs.existsSync(contentDirectory)) return undefined;
 
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data } = matter(fileContents);
+    // Scan all files and match by frontmatter slug (not filename)
+    const files = fs.readdirSync(contentDirectory).filter(file => file.endsWith('.md'));
 
-    return {
-        slug: data.slug,
-        projectSlug: data.projectSlug,
-        title: data.title,
-        problem: data.problem,
-        solution: data.solution,
-        results: {
-            metrics: data.results?.metrics || [],
-            impact: data.results?.impact || '',
-            improvements: data.results?.improvements || []
-        },
-        lessonsLearned: data.lessonsLearned || [],
-        technologies: data.technologies || [],
-        timeline: data.timeline,
-        challenges: data.challenges || [],
-        beforeAfter: data.beforeAfter || undefined
-    } as CaseStudy;
+    for (const filename of files) {
+        const filePath = path.join(contentDirectory, filename);
+        const fileContents = fs.readFileSync(filePath, 'utf8');
+        const { data } = matter(fileContents);
+
+        if (data.slug === slug) {
+            return {
+                slug: data.slug,
+                projectSlug: data.projectSlug,
+                title: data.title,
+                problem: data.problem,
+                solution: data.solution,
+                results: {
+                    metrics: data.results?.metrics || [],
+                    impact: data.results?.impact || '',
+                    improvements: data.results?.improvements || []
+                },
+                lessonsLearned: data.lessonsLearned || [],
+                technologies: data.technologies || [],
+                timeline: data.timeline,
+                challenges: data.challenges || [],
+                beforeAfter: data.beforeAfter || undefined
+            } as CaseStudy;
+        }
+    }
+
+    return undefined;
 }
 
 export function getCaseStudyByProject(projectSlug: string): CaseStudy | undefined {
