@@ -19,7 +19,6 @@ const ContentSection = dynamic(() => import("@/components/ContentSection").then(
 const Contact = dynamic(() => import("@/components/Contact").then((mod) => mod.Contact), { loading: () => <LoadingSpinner /> });
 const FAQ = dynamic(() => import("@/components/FAQ").then((mod) => mod.FAQ), { loading: () => <LoadingSpinner /> });
 
-import { SystemLog } from "@/components/SystemLog";
 import { getAllBlogPosts } from "@/lib/blog-loader";
 import { getAllCaseStudies } from "@/lib/case-study-loader";
 import { getAllFAQs } from "@/lib/faq-loader";
@@ -60,7 +59,6 @@ export default function Home() {
       <FAQ items={faqs} />
       <SectionDivider variant="gradient" />
       <Contact />
-      <SystemLog />
       <Footer />
     </main>
   );
