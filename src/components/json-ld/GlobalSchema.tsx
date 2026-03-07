@@ -1,3 +1,6 @@
+import { solutions } from "@/data/solutions";
+import { projects } from "@/data/projects";
+
 export function GlobalSchema() {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
 
@@ -170,13 +173,17 @@ export function GlobalSchema() {
                 ],
                 "hasOfferCatalog": {
                     "@type": "OfferCatalog",
-                    "name": "Services",
-                    "itemListElement": [
-                        { "@type": "Service", "name": "Venture Building" },
-                        { "@type": "Service", "name": "System Architecture" },
-                        { "@type": "Service", "name": "AI Solutions" },
-                        { "@type": "Service", "name": "Startup Consulting" }
-                    ]
+                    "name": "Solutions & Services",
+                    "itemListElement": solutions.map((sol, i) => ({
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": sol.title,
+                            "description": sol.subtitle,
+                            "url": `${baseUrl}/solutions/${sol.slug}`,
+                        },
+                        "position": i + 1,
+                    }))
                 },
             },
             {
@@ -233,6 +240,74 @@ export function GlobalSchema() {
                         "name": "SSRN Electronic Journal"
                     }
                 }
+            },
+            // ─── SiteNavigationElement — drives Google Sitelinks ───
+            {
+                "@type": "SiteNavigationElement",
+                "@id": `${baseUrl}/#navigation`,
+                "name": "Main Navigation",
+                "hasPart": [
+                    {
+                        "@type": "SiteNavigationElement",
+                        "name": "Solutions",
+                        "description": "Custom-built systems for e-commerce, news platforms, booking, CRM, personal branding, and SEO.",
+                        "url": `${baseUrl}/services`,
+                    },
+                    {
+                        "@type": "SiteNavigationElement",
+                        "name": "Blog",
+                        "description": "Technical articles on Next.js, AI, SEO, CRM architecture, and full-stack development.",
+                        "url": `${baseUrl}/blog`,
+                    },
+                    {
+                        "@type": "SiteNavigationElement",
+                        "name": "Case Studies",
+                        "description": "Detailed case studies of production systems built for real businesses.",
+                        "url": `${baseUrl}/case-studies`,
+                    },
+                    {
+                        "@type": "SiteNavigationElement",
+                        "name": "Resume",
+                        "description": "Professional background, skills, experience, and certifications.",
+                        "url": `${baseUrl}/resume`,
+                    },
+                    {
+                        "@type": "SiteNavigationElement",
+                        "name": "Contact",
+                        "description": "Get in touch for project inquiries and consultations.",
+                        "url": `${baseUrl}/#contact`,
+                    },
+                ],
+            },
+            // ─── ItemList: Solutions — structured collection for rich results ───
+            {
+                "@type": "ItemList",
+                "@id": `${baseUrl}/#solutions-list`,
+                "name": "Solutions",
+                "description": "Custom-built systems and services available for hire.",
+                "numberOfItems": solutions.length,
+                "itemListElement": solutions.map((sol, i) => ({
+                    "@type": "ListItem",
+                    "position": i + 1,
+                    "name": sol.title,
+                    "url": `${baseUrl}/solutions/${sol.slug}`,
+                    "description": sol.subtitle,
+                })),
+            },
+            // ─── ItemList: Projects — structured collection for portfolio ───
+            {
+                "@type": "ItemList",
+                "@id": `${baseUrl}/#projects-list`,
+                "name": "Projects",
+                "description": "Production systems and platforms built by Rizwanul Islam (Afraim).",
+                "numberOfItems": projects.length,
+                "itemListElement": projects.map((proj, i) => ({
+                    "@type": "ListItem",
+                    "position": i + 1,
+                    "name": proj.title,
+                    "url": `${baseUrl}/projects/${proj.slug}`,
+                    "description": proj.description,
+                })),
             }
         ]
     };

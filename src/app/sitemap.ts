@@ -3,6 +3,7 @@ import { projects } from "@/data/projects";
 import { getAllBlogPosts } from "@/lib/blog-loader";
 import { getAllCaseStudies } from "@/lib/case-study-loader";
 import { getAllTerms } from "@/data/knowledge-graph";
+import { solutions } from "@/data/solutions";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   /* Absolute URL Verification: Hardcoded for production SEO stability */
@@ -89,5 +90,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...routes, ...projectRoutes, ...blogRoutes, ...caseStudyRoutes, ...wikiRoutes];
+  // Dynamic Solution Routes - Priority 0.9
+  const solutionRoutes = solutions.map((solution) => ({
+    url: `${baseUrl}/solutions/${solution.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }));
+
+  return [...routes, ...projectRoutes, ...blogRoutes, ...caseStudyRoutes, ...wikiRoutes, ...solutionRoutes];
 }

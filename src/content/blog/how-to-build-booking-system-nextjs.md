@@ -7,7 +7,9 @@ tags: ["Next.js", "TypeScript", "Supabase", "Stripe", "Tutorial", "Booking Syste
 featured: true
 readingTime: 15
 author: "Rizwanul Islam"
----# How to Build a Complete Booking System with Next.js 15 (2026 Guide)
+---
+
+# How to Build a Complete Booking System with Next.js 15 (2026 Guide)
 
 Building a booking system is one of the most common yet challenging projects for developers. Whether you're creating a car rental platform, hotel reservation system, or appointment scheduler, the core concepts remain the same.
 

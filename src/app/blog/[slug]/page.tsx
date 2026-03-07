@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Calendar, Clock, Tag, ExternalLink, FileText, RefreshCw, List } from "lucide-react";
 import type { Metadata } from "next";
-import { getBlogPostBySlug, getAllBlogPosts } from "@/lib/blog-loader";
+import { getBlogPostBySlug, getAllBlogPosts, getAllBlogPostPreviews } from "@/lib/blog-loader";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { formatPostDate, getRelatedPosts, getPostHeadings } from "@/lib/blog";
 import { SocialShare } from "@/components/SocialShare";
@@ -10,6 +10,8 @@ import { ReadingProgress } from "@/components/ReadingProgress";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { getCaseStudyByProject } from "@/lib/case-study-loader";
 import { projects } from "@/data/projects";
+import { solutions } from "@/data/solutions";
+import { SolutionInlineCTA } from "@/components/SolutionInlineCTA";
 
 export async function generateStaticParams() {
   const posts = getAllBlogPosts();
@@ -66,7 +68,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
-  const relatedPosts = getRelatedPosts(post, getAllBlogPosts());
+  const relatedPosts = getRelatedPosts(post, getAllBlogPostPreviews());
   const url = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
   const postUrl = `${url}/blog/${post.slug}`;
 
@@ -231,6 +233,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="mb-12">
           <MarkdownContent content={post.content} />
         </div>
+
+        {/* Dynamic Solution CTA Injection */}
+        {(() => {
+          const solutionMatch = solutions.find(s => s.relatedBlogSlugs.includes(post.slug));
+          if (solutionMatch) {
+            return <SolutionInlineCTA solution={solutionMatch} />;
+          }
+          return null;
+        })()}
 
         {/* Related Project & Case Study Links */}
         {(project || caseStudy) && (

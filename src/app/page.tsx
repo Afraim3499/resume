@@ -19,12 +19,12 @@ const ContentSection = dynamic(() => import("@/components/ContentSection").then(
 const Contact = dynamic(() => import("@/components/Contact").then((mod) => mod.Contact), { loading: () => <LoadingSpinner /> });
 const FAQ = dynamic(() => import("@/components/FAQ").then((mod) => mod.FAQ), { loading: () => <LoadingSpinner /> });
 
-import { getAllBlogPosts } from "@/lib/blog-loader";
+import { getAllBlogPostPreviews } from "@/lib/blog-loader";
 import { getAllCaseStudies } from "@/lib/case-study-loader";
 import { getAllFAQs } from "@/lib/faq-loader";
 
 export default function Home() {
-  const blogCount = getAllBlogPosts().length;
+  const blogCount = getAllBlogPostPreviews().length;
   const caseStudyCount = getAllCaseStudies().length;
   const faqs = getAllFAQs();
 

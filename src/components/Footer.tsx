@@ -6,9 +6,64 @@ export function Footer() {
         <footer className="py-12 border-t border-foreground/10 dark:border-white/5 bg-background">
             <div className="container px-4 mx-auto max-w-7xl">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                    {/* Solutions */}
+                    <div>
+                        <h3 className="text-sm font-semibold text-foreground mb-4">Solutions</h3>
+                        <ul className="space-y-2">
+                            <li>
+                                <Link
+                                    href="/solutions/ecommerce-platform"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    E-Commerce Platform
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/solutions/news-media-platform"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    News & Media Hub
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/solutions/booking-system"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    Booking & Fleet
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/solutions/crm-sales-system"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    Sales & CRM
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/solutions/personal-brand-website"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    Personal Brand
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/solutions/seo-lead-generation"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    SEO & Lead Gen
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-sm font-semibold text-foreground mb-4">Quick Links</h3>
+                        <h3 className="text-sm font-semibold text-foreground mb-4">Navigation</h3>
                         <ul className="space-y-2">
                             <li>
                                 <Link
@@ -31,7 +86,7 @@ export function Footer() {
                                     href="/blog"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
-                                    Blog & Articles
+                                    Blog
                                 </Link>
                             </li>
                             <li>
@@ -39,7 +94,7 @@ export function Footer() {
                                     href="/services"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
-                                    Services
+                                    Solutions Hub
                                 </Link>
                             </li>
                             <li>
@@ -48,14 +103,6 @@ export function Footer() {
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
                                     Case Studies
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/#projects"
-                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
-                                >
-                                    Projects
                                 </Link>
                             </li>
                             <li>

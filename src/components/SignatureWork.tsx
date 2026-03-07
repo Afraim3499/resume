@@ -184,6 +184,30 @@ export function SignatureWork() {
 
                 {/* Actions */}
                 <div className="flex flex-wrap gap-3 pt-4 border-t border-foreground/10">
+                  {(() => {
+                    const solutionMap: Record<string, string> = {
+                      "arrivals-cave": "ecommerce-platform",
+                      "vibrance": "ecommerce-platform",
+                      "the-trail": "news-media-platform",
+                      "inshortbd": "news-media-platform",
+                      "gaari": "booking-system",
+                      "yagacalls": "seo-lead-generation",
+                      "leads-sales-crm": "crm-sales-system",
+                      "shahriar-kabir": "personal-brand-website",
+                    };
+                    const solutionSlug = solutionMap[selectedProject.slug];
+                    if (solutionSlug) {
+                      return (
+                        <Link
+                          href={`/solutions/${solutionSlug}`}
+                          className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-colors font-medium mb-1"
+                        >
+                          <Zap className="w-4 h-4" /> View Solution Details
+                        </Link>
+                      );
+                    }
+                    return null;
+                  })()}
                   {selectedProject.link && (
                     <a
                       href={selectedProject.link}

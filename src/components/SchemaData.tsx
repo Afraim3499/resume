@@ -2,6 +2,7 @@
 
 
 import { projects } from "@/data/projects";
+import { solutions } from "@/data/solutions"; // Added to map solution-specific FAQs
 import { usePathname } from "next/navigation";
 import type { FAQItem } from "@/lib/faq-loader";
 
@@ -23,7 +24,7 @@ interface BreadcrumbItem {
 }
 
 interface SchemaDataProps {
-  faqItems: FAQItem[];
+  faqItems: FAQItem[]; // These are the global homepage FAQs
 }
 
 export function SchemaData({ faqItems }: SchemaDataProps) {
@@ -31,20 +32,32 @@ export function SchemaData({ faqItems }: SchemaDataProps) {
   // Hardcode baseUrl to avoid hydration mismatch in Schema ID generation
   const baseUrl = "https://www.rizwanulafraim.com";
 
-  // Dynamic FAQ Schema
-  // Dynamic FAQ Schema - Only render on pages where FAQs are actually visible
-  // Google Policy: "Limit the use of FAQPage markup to pages that contain a list of questions and answers."
-  const shouldRenderFAQ = pathname === "/";
+  // Dynamic FAQ Mapping for AEO/AIO Optimization
+  // Logic: Use solution-specific FAQs on solution pages, global FAQs on home
+  let displayFAQs: FAQItem[] = [];
+  let shouldRenderFAQ = false;
+
+  if (pathname === "/") {
+    displayFAQs = faqItems;
+    shouldRenderFAQ = true;
+  } else if (pathname?.startsWith("/solutions/")) {
+    const slug = pathname.split("/").pop();
+    const solution = solutions.find(s => s.slug === slug);
+    if (solution && solution.faqs) {
+      displayFAQs = solution.faqs;
+      shouldRenderFAQ = true;
+    }
+  }
 
   const faqSchema = shouldRenderFAQ ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqItems.map((item): FAQSchemaItem => ({
+    "mainEntity": displayFAQs.map((item): FAQSchemaItem => ({
       "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
+      "name": item.question,
+      "acceptedAnswer": {
         "@type": "Answer",
-        text: item.answer,
+        "text": item.answer,
       },
     })),
   } : null;
@@ -103,6 +116,55 @@ export function SchemaData({ faqItems }: SchemaDataProps) {
       position: 2,
       name: "Manifesto",
       item: `${baseUrl}/manifesto`,
+    });
+  } else if (pathname?.startsWith("/solutions/")) {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 2,
+      name: "Solutions",
+      item: `${baseUrl}/services`,
+    });
+    const slug = pathname.split("/").pop();
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 3,
+      name: slug ? slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : "Solution",
+      item: `${baseUrl}${pathname}`,
+    });
+  } else if (pathname?.startsWith("/case-studies/")) {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 2,
+      name: "Case Studies",
+      item: `${baseUrl}/case-studies`,
+    });
+    const slug = pathname.split("/").pop();
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 3,
+      name: slug ? slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : "Case Study",
+      item: `${baseUrl}${pathname}`,
+    });
+  } else if (pathname === "/case-studies") {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 2,
+      name: "Case Studies",
+      item: `${baseUrl}/case-studies`,
+    });
+  } else if (pathname === "/services") {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 2,
+      name: "Solutions & Services",
+      item: `${baseUrl}/services`,
+    });
+  } else if (pathname === "/resume") {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 2,
+      name: "Resume",
+      item: `${baseUrl}/resume`,
     });
   }
 

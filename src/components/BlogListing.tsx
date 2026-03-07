@@ -4,14 +4,14 @@ import { useState } from "react";
 import { BlogCard } from "@/components/BlogCard";
 import { BlogSearch } from "@/components/BlogSearch";
 import { BlogFilters } from "@/components/BlogFilters";
-import type { BlogPost } from "@/lib/blog";
+import type { BlogPostPreview } from "@/lib/blog";
 
 interface BlogListingProps {
-    initialPosts: BlogPost[];
+    initialPosts: BlogPostPreview[];
 }
 
 export function BlogListing({ initialPosts }: BlogListingProps) {
-    const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(initialPosts);
+    const [filteredPosts, setFilteredPosts] = useState<BlogPostPreview[]>(initialPosts);
 
     return (
         <div className="container px-4 mx-auto max-w-6xl pt-32 pb-20">

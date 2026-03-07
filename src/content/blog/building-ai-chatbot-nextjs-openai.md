@@ -8,7 +8,9 @@ tags: ["AI", "ChatBot", "Next.js", "OpenAI", "Tutorial", "Machine Learning"]
 featured: true
 readingTime: 12
 author: "Rizwanul Islam"
----## The 3 AM Problem
+---
+
+## The 3 AM Problem
 
 
 It was 3 AM when I received the notification: another customer had abandoned their booking on Gaari.

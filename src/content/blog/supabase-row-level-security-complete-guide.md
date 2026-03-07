@@ -7,7 +7,9 @@ tags: ["Supabase", "PostgreSQL", "Security", "RLS", "Tutorial", "Database"]
 featured: true
 readingTime: 14
 author: "Rizwanul Islam"
----Row Level Security (RLS) is one of Supabase's most powerful features, yet it's often misunderstood or underutilized. In this comprehensive guide, I'll show you how to implement bulletproof security policies that protect your data at the database level.
+---
+
+Row Level Security (RLS) is one of Supabase's most powerful features, yet it's often misunderstood or underutilized. In this comprehensive guide, I'll show you how to implement bulletproof security policies that protect your data at the database level.
 
 
 This tutorial is based on my experience building [The Trail](https://www.rizwanulafraim.com/projects/the-trail) (a news platform with 30+ database tables) and [Gaari](https://www.rizwanulafraim.com/projects/gaari) (a booking platform), where RLS was critical for multi-user security.

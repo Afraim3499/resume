@@ -38,12 +38,22 @@ export function getAllBlogPosts(): BlogPost[] {
     });
 
     // Sort by date desc
-    return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    const sorted = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    // Exclude future-dated posts (scheduled but not yet published)
+    const now = new Date();
+    return sorted.filter(post => new Date(post.date) <= now);
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
     const posts = getAllBlogPosts();
     return posts.find(post => post.slug === slug);
+}
+
+/** Returns posts without content — for index/listing pages only. */
+export function getAllBlogPostPreviews(): import('./blog').BlogPostPreview[] {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    return getAllBlogPosts().map(({ content, ...preview }) => preview);
 }
 
 export function getFeaturedPosts(): BlogPost[] {

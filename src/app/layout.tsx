@@ -67,9 +67,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com"),
   alternates: {
     canonical: 'https://www.rizwanulafraim.com',
-    languages: {
-      'en-US': '/en-US',
-    },
   },
   openGraph: {
     type: "website",

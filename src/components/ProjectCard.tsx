@@ -195,6 +195,30 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                             Code
                         </a>
                     )}
+                    {(() => {
+                        const solutionMap: Record<string, string> = {
+                            "arrivals-cave": "ecommerce-platform",
+                            "vibrance": "ecommerce-platform",
+                            "the-trail": "news-media-platform",
+                            "inshortbd": "news-media-platform",
+                            "gaari": "booking-system",
+                            "yagacalls": "seo-lead-generation",
+                            "leads-sales-crm": "crm-sales-system",
+                            "shahriar-kabir": "personal-brand-website",
+                        };
+                        const solutionSlug = solutionMap[project.slug];
+                        if (solutionSlug) {
+                            return (
+                                <Link
+                                    href={`/solutions/${solutionSlug}`}
+                                    className="inline-flex items-center text-sm font-medium text-emerald-500 hover:text-emerald-600 transition-colors"
+                                >
+                                    View Solution <Zap className="ml-1 w-3 h-3" />
+                                </Link>
+                            );
+                        }
+                        return null;
+                    })()}
                     <Link
                         href={`/projects/${project.slug}`}
                         aria-label={`View details for ${project.title}`}

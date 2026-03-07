@@ -7,7 +7,9 @@ tags: ["Leadership", "Event Management", "Team Management", "Strategy"]
 featured: false
 readingTime: 7
 author: "Rizwanul Islam"
----# Leading 200+ People: Event Management at Scale (NSUSS)
+---
+
+# Leading 200+ People: Event Management at Scale (NSUSS)
 
 As Vice President of Programs at North South University Shangskritik Shangathan (NSUSS), I led teams of approximately 200 people to organize, plan, and execute large-scale cultural events. This role taught me invaluable lessons about leadership, strategic planning, and execution at scale.
 

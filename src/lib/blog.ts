@@ -20,6 +20,9 @@ export interface BlogPost {
   };
 }
 
+/** Lightweight type for listing/index pages — no `content` field. */
+export type BlogPostPreview = Omit<BlogPost, 'content'>;
+
 export function calculatePostReadingTime(content: string): number {
   return calculateReadingTime(content);
 }
@@ -41,10 +44,10 @@ export function getPostHeadings(content: string) {
 }
 
 export function getRelatedPosts(
-  currentPost: BlogPost,
-  allPosts: BlogPost[],
+  currentPost: BlogPostPreview,
+  allPosts: BlogPostPreview[],
   limit: number = 3
-): BlogPost[] {
+): BlogPostPreview[] {
   return allPosts
     .filter(
       (post) =>

@@ -2,11 +2,11 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { Flame, TrendingUp, Clock, Star } from "lucide-react";
-import type { BlogPost } from "@/lib/blog";
+import type { BlogPostPreview } from "@/lib/blog";
 
 interface BlogFiltersProps {
-  posts: BlogPost[];
-  onFilterChange: (filteredPosts: BlogPost[]) => void;
+  posts: BlogPostPreview[];
+  onFilterChange: (filteredPosts: BlogPostPreview[]) => void;
 }
 
 type SortOption = "latest" | "popular" | "trending" | "hot";

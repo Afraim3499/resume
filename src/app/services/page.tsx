@@ -18,34 +18,61 @@ const strategicStack = [
     "HubSpot", "Salesforce", "Close", "Apollo", "Seamless", "LinkedIn Sales Navigator", "ZoomInfo", "NeverBounce", "ZeroBounce", "Cursor AI", "Antigravity"
 ];
 
+const colorMap: Record<string, { bg: string; text: string; ghost: string }> = {
+    blue: { bg: "bg-blue-500/10", text: "text-blue-500", ghost: "text-blue-500/20" },
+    emerald: { bg: "bg-emerald-500/10", text: "text-emerald-500", ghost: "text-emerald-500/20" },
+    purple: { bg: "bg-purple-500/10", text: "text-purple-500", ghost: "text-purple-500/20" },
+    orange: { bg: "bg-orange-500/10", text: "text-orange-500", ghost: "text-orange-500/20" },
+};
+
 const productizedSystems = [
     {
-        name: "Gaari",
-        desc: "Complete Fleet Management & Booking System",
-        slug: "gaari",
+        name: "E-Commerce Platform",
+        desc: "Custom storefronts with payment integration, ad tracking, and CMS",
+        slug: "ecommerce-platform",
         icon: Globe,
-        color: "blue"
+        color: "blue",
+        isExternal: true,
     },
     {
-        name: "Trailheadlines",
-        desc: "Autonomous AI News Aggregation Engine",
-        slug: "the-trail",
+        name: "News & Media Platform",
+        desc: "Editorial CMS with workflows, automation, and SEO",
+        slug: "news-media-platform",
         icon: Bot,
-        color: "emerald"
+        color: "emerald",
+        isExternal: true,
     },
     {
-        name: "Yagacalls",
-        desc: "4-Layer SEO & Lead Generation Framework",
-        slug: "yagacalls",
-        icon: BarChart3,
-        color: "purple"
+        name: "Booking System",
+        desc: "Multi-service reservations with dynamic pricing and AI chatbot",
+        slug: "booking-system",
+        icon: Globe,
+        color: "purple",
+        isExternal: true,
     },
     {
-        name: "Lead Gen CRM",
-        desc: "Unified Outbound Sales Command Center",
-        slug: "leads-sales-crm",
+        name: "CRM & Sales System",
+        desc: "Real-time sales command center with visual pipelines",
+        slug: "crm-sales-system",
         icon: Database,
-        color: "orange"
+        color: "orange",
+        isExternal: true,
+    },
+    {
+        name: "Personal Brand Website",
+        desc: "Premium personal brand with editorial blog and SEO",
+        slug: "personal-brand-website",
+        icon: Layers,
+        color: "blue",
+        isExternal: true,
+    },
+    {
+        name: "SEO & Lead Generation",
+        desc: "4-Layer SEO framework that generates real leads",
+        slug: "seo-lead-generation",
+        icon: BarChart3,
+        color: "emerald",
+        isExternal: true,
     },
 ];
 
@@ -222,14 +249,14 @@ export default function ServicesPage() {
                         return (
                             <Link
                                 key={sys.slug}
-                                href={`/projects/${sys.slug}`}
+                                href={`/solutions/${sys.slug}`}
                                 className="group relative overflow-hidden p-8 rounded-3xl bg-secondary/30 border border-foreground/5 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5"
                             >
                                 <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity duration-500 transform group-hover:rotate-12 group-hover:scale-110">
-                                    <Icon className={`w-32 h-32 text-${sys.color}-500/20`} />
+                                    <Icon className={`w-32 h-32 ${colorMap[sys.color].ghost}`} />
                                 </div>
                                 <div className="relative z-10 flex flex-col h-full">
-                                    <div className={`w-12 h-12 rounded-xl bg-${sys.color}-500/10 text-${sys.color}-500 flex items-center justify-center mb-6`}>
+                                    <div className={`w-12 h-12 rounded-xl ${colorMap[sys.color].bg} ${colorMap[sys.color].text} flex items-center justify-center mb-6`}>
                                         <Icon className="w-6 h-6" />
                                     </div>
                                     <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{sys.name}</h3>

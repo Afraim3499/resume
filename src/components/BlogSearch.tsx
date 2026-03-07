@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { Search, X } from "lucide-react";
-import type { BlogPost } from "@/lib/blog";
+import type { BlogPostPreview } from "@/lib/blog";
 
 interface BlogSearchProps {
-  posts: BlogPost[];
-  onSearchChange: (filteredPosts: BlogPost[]) => void;
+  posts: BlogPostPreview[];
+  onSearchChange: (filteredPosts: BlogPostPreview[]) => void;
 }
 
 export function BlogSearch({ posts, onSearchChange }: BlogSearchProps) {
@@ -25,7 +25,6 @@ export function BlogSearch({ posts, onSearchChange }: BlogSearchProps) {
       return (
         post.title.toLowerCase().includes(searchLower) ||
         post.excerpt.toLowerCase().includes(searchLower) ||
-        post.content.toLowerCase().includes(searchLower) ||
         post.tags.some((tag) => tag.toLowerCase().includes(searchLower)) ||
         post.category.toLowerCase().includes(searchLower)
       );

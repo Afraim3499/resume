@@ -7,6 +7,9 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
+    "test": "vitest",
+    "test:ci": "vitest run",
+    "smoke": "node scripts/smoke-check.js",
     "prepare": "husky",
     "indexnow": "node scripts/submit-urls.js indexnow",
     "ping:google": "node scripts/submit-urls.js google",
@@ -51,12 +54,14 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^5.1.4",
     "dotenv": "^17.2.3",
     "eslint": "^9",
     "eslint-config-next": "16.1.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.11",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.0.18"
   }
 }
