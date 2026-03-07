@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 
 export function Hero() {
     return (
-        <section id="hero" className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-background pt-28 md:pt-32">
+        <section id="hero" className="relative min-h-[95vh] flex flex-col items-center justify-center overflow-hidden bg-background pt-20 md:pt-24 pb-12">
             {/* Simple gradient background - Hidden on mobile for performance */}
             <div className="absolute inset-0 z-0 overflow-hidden hidden md:block">
                 <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
@@ -16,14 +16,14 @@ export function Hero() {
             {/* Content */}
             <div className="container relative z-10 px-4 max-w-4xl mx-auto text-center">
                 {/* Profile Image */}
-                <div className="mb-8">
-                    <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto mb-8 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl">
+                <div className="mb-6">
+                    <div className="relative w-48 h-48 md:w-56 md:h-56 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl">
                         <Image
                             src="/assets/rizwanul-islam-afraim.webp"
                             alt="Rizwanul Islam Afraim - Legendary Digital Strategist and Developer"
                             fill
                             className="object-cover object-top"
-                            sizes="(max-width: 768px) 256px, 320px"
+                            sizes="(max-width: 768px) 192px, 224px"
                             priority={true}
                             loading="eager"
                             fetchPriority="high"
@@ -32,17 +32,17 @@ export function Hero() {
                 </div>
 
                 {/* Heading */}
-                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight leading-tight">
                     Your Vision Is <span className="text-red-500/90 dark:text-red-400">Chaos</span>.
                     <br />
                     I Architect It Into <span className="text-emerald-600 dark:text-emerald-400">Profit</span>.
                 </h1>
 
                 {/* Subtitle */}
-                <p className="text-foreground/70 max-w-2xl mx-auto text-sm sm:text-lg md:text-xl mb-8 leading-relaxed px-2">
+                <p className="text-foreground/70 max-w-2xl mx-auto text-sm sm:text-base md:text-lg mb-8 leading-relaxed px-2">
                     From strategy to deployment, I build robust tech platforms out of messy ideas.
                     <br className="hidden sm:block" />
-                    Get <span className="text-foreground font-medium">twice the product quality</span>, at <span className="text-foreground font-medium">half the expense</span> (~$18/hr, a 55% savings), with <span className="text-foreground font-medium">zero struggle</span> on your end.
+                    Get <span className="text-foreground font-medium">twice the product quality</span>, at <span className="text-foreground font-medium">half the expense</span> (~$18/hr, a 55% savings).
                 </p>
 
                 {/* CTA Buttons */}
