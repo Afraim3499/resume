@@ -72,7 +72,8 @@ const stats: Stat[] = [
 ];
 
 function AnimatedCounter({ value, suffix, color }: { value: number; suffix: string; color: string }) {
-  const [count, setCount] = useState(0);
+  // Start at a fraction of the value to avoid "0" look on load
+  const [count, setCount] = useState(Math.floor(value * 0.1));
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 

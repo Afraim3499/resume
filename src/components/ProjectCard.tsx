@@ -74,7 +74,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 </div>
 
                 <p className="text-foreground/70 mb-4 line-clamp-3 break-words">
-                    {project.description}
+                    {project.summary || project.description}
                 </p>
 
                 {/* Metrics */}

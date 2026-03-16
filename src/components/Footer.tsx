@@ -146,6 +146,14 @@ export function Footer() {
                             </li>
                             <li>
                                 <Link
+                                    href="/wiki"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    Knowledge Wiki
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     href="/case-studies"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >

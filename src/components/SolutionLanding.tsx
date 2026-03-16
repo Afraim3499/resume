@@ -15,6 +15,8 @@ import { getProjectBySlug } from "@/data/projects";
 import { getBlogPostBySlug } from "@/lib/blog-loader";
 import { FAQ } from "@/components/FAQ";
 import { HollowGraphic3D } from "@/components/3D/HollowGraphic3D";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { getAllTerms, KnowledgeNode } from "@/data/knowledge-graph";
 
 interface SolutionLandingProps {
     solution: Solution;
@@ -46,6 +48,10 @@ export function SolutionLanding({ solution }: SolutionLandingProps) {
             <section className="pt-32 pb-20 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10" />
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px] -z-10" />
+
+                <div className="container px-4 mx-auto max-w-6xl mb-8">
+                    <Breadcrumbs />
+                </div>
 
                 <div className="container px-4 mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
@@ -239,10 +245,10 @@ export function SolutionLanding({ solution }: SolutionLandingProps) {
                 </section>
             )}
 
-            {/* ─── 7. Tech Stack ────────────────────────────────────── */}
+            {/* ─── 7. Tech Stack & Methodology ───────────────────────── */}
             <section className="py-16">
                 <div className="container px-4 mx-auto max-w-4xl">
-                    <div className="flex flex-col md:flex-row items-center gap-8">
+                    <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
                         <div className="shrink-0 flex items-center gap-3 px-4 py-2 rounded-lg bg-secondary/30 border border-foreground/10">
                             <Layers className="w-5 h-5 text-primary" />
                             <span className="font-bold text-sm uppercase tracking-wider">Built With</span>
@@ -258,6 +264,42 @@ export function SolutionLanding({ solution }: SolutionLandingProps) {
                             ))}
                         </div>
                     </div>
+
+                    {(() => {
+                        const terms = getAllTerms();
+                        const relatedTerms = terms.filter((term: KnowledgeNode) => 
+                            solution.techStack.some(tech => tech.toLowerCase().includes(term.term.toLowerCase())) ||
+                            solution.title.toLowerCase().includes(term.term.toLowerCase()) ||
+                            solution.subtitle.toLowerCase().includes(term.term.toLowerCase())
+                        );
+
+                        if (relatedTerms.length > 0) {
+                            return (
+                                <div className="p-8 rounded-2xl bg-secondary/10 border border-primary/10">
+                                    <div className="flex items-center gap-3 mb-6">
+                                        <BookOpen className="w-6 h-6 text-primary" />
+                                        <h3 className="text-xl font-serif font-bold">Methodological Deep Dive</h3>
+                                    </div>
+                                    <p className="text-foreground/60 mb-6">
+                                        This solution is architected using advanced concepts from the Knowledge Graph. Explore the theoretical foundation:
+                                    </p>
+                                    <div className="grid sm:grid-cols-2 gap-4">
+                                        {relatedTerms.map((term: KnowledgeNode) => (
+                                            <Link 
+                                                key={term.id} 
+                                                href={`/wiki/${term.id}`}
+                                                className="group p-4 rounded-xl bg-background border border-foreground/5 hover:border-primary/30 transition-all"
+                                            >
+                                                <h4 className="font-bold group-hover:text-primary transition-colors mb-1">{term.term}</h4>
+                                                <p className="text-xs text-foreground/60 line-clamp-2">{term.definition}</p>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            );
+                        }
+                        return null;
+                    })()}
                 </div>
             </section>
 

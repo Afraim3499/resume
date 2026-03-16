@@ -28,7 +28,7 @@ export async function generateMetadata({
     title: `${project.title} | Advanced Platform Project`,
     description: `${project.longDescription || project.description} Built with production-grade architecture by Rizwanul Islam (Afraim).`,
     alternates: {
-      canonical: `/projects/${project.slug}`,
+      canonical: `https://www.rizwanulafraim.com/projects/${project.slug}`,
     },
     openGraph: {
       title: `${project.title} | Rizwanul Islam - Systems Architect`,

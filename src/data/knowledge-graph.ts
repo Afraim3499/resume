@@ -23,6 +23,9 @@ export const knowledgeGraph: KnowledgeNode[] = [
 2. **Scalability**: Systems are designed for 100x scale from Day 1.
 3. **Automation**: If a process happens twice, it is scripted.
 
+## Commercial Implementations
+I have applied these principles to build high-performance travel systems like [Gaari](/projects/gaari) and news media infrastructures like [The TrailHeadline](/projects/the-trail).
+
 ## The Role of the Architect
 The Venture Architect is not a CEO in the traditional sense. They are the "Systems Orchestrator", ensuring that the human and digital components of the venture interact seamlessly.
         `,
@@ -61,6 +64,9 @@ In the era of AI Agents, **System Orchestration** replaces traditional managemen
 *   Human Operators (for judgment and creativity)
 
 The goal is a "Self-Healing Organization" where the system detects and corrects its own inefficiencies.
+
+## Demonstrations
+[InshortBD](/projects/inshortbd) utilizes advanced orchestration for multi-stage content verification and media pipelines.
         `,
         relatedTo: ["venture-architecture", "agentic-systems"],
         category: "System"
@@ -79,7 +85,7 @@ The goal is a "Self-Healing Organization" where the system detects and corrects 
 2.  **The Executor**: Uses tools (APIs, Browsers) to act.
 3.  **The Verifier**: Checks the output against success criteria.
 
-I build Agentic Systems using Next.js and LangChain to automate complex workflows like Market Research (Yagacalls) and Customer Support (Gaari).
+I build Agentic Systems using Next.js and LangChain to automate complex workflows like Market Research in [Yagacalls](/projects/yagacalls) and Customer Support in [Gaari](/projects/gaari).
         `,
         relatedTo: ["system-orchestration", "rag-pipelines"],
         category: "Technical"

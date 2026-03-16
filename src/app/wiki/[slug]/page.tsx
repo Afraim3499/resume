@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, BookOpen, GitBranch } from "lucide-react";
+import { BookOpen, GitBranch } from "lucide-react";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 import { getTerm, getAllTerms } from "@/data/knowledge-graph";
 import { MarkdownContent } from "@/components/MarkdownContent";
@@ -91,13 +92,12 @@ export default async function WikiPage({ params }: { params: Promise<{ slug: str
 
             <article className="container px-4 mx-auto max-w-4xl">
                 {/* Navigation */}
-                <Link
-                    href="/wiki"
-                    className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8 transition-colors"
-                >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to Knowledge Graph
-                </Link>
+                <Breadcrumbs
+                    items={[
+                        { label: "Knowledge Graph", href: "/wiki" },
+                        { label: term.term },
+                    ]}
+                />
 
                 {/* Header */}
                 <header className="mb-12 border-b border-border/40 pb-8">

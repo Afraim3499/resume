@@ -36,6 +36,7 @@ export interface Project {
   year: number;
   status: "production" | "development" | "completed";
   privateRepo?: boolean; // marks commercial/client repos as private
+  summary?: string; // Short unique summary for homepage/listing
 }
 
 export const projects: Project[] = [
@@ -44,6 +45,7 @@ export const projects: Project[] = [
     slug: "the-trail",
     title: "The Trailheadline",
     description: "High-performance, information-dense news aggregator and editorial platform. Automatically curated content with 'Editor's Picks' and high-speed delivery. Designed for the modern reader.",
+    summary: "Engineered a custom Next.js CMS with multi-stage approval workflow and sub-second delivery for 15k+ monthly readers.",
     longDescription: "**The Problem:** Scaling a high-traffic news curation platform required an editorial team to manage hundreds of daily posts without bottlenecks or workflow chaos.\n\n**The Solution Architecture:** We engineered a custom Next.js CMS featuring a multi-stage approval workflow (Draft → Review → Approved → Published) and a robust Tiptap rich-text editor. The data tier leverages a normalized PostgreSQL schema on Supabase, heavily cached for sub-second delivery, along with automated categorization and trending analytics.\n\n**Measurable Results:** Achieved a 3x increase in content velocity via automation and successfully scaled to handle 15k+ monthly active readers within the first quarter.",
     tags: ["Next.js", "News Aggregator", "Automation", "High Traffic", "CMS"],
     link: "https://trailheadlines.com",
@@ -121,6 +123,7 @@ export const projects: Project[] = [
     slug: "inshortbd",
     title: "InshortBD",
     description: "Bangla-language digital media platform with a full editorial CMS, AWS S3 media pipeline, Playwright E2E tests, GitHub Actions CI/CD, Twitter API integration, and a newsletter system.",
+    summary: "Built a cloud-native Bangla media platform with enterprise-grade media pipeline and ironclad CI/CD testing.",
     longDescription: "**The Problem:** Serving premium, authentic Bangla media required flawless Unicode typography, a scalable media pipeline, and zero-downtime reliability to target an audience of 170M+ Bengali speakers.\n\n**The Solution Architecture:** We built a cloud-native platform utilizing Next.js 16 with AWS S3 for enterprise-grade media storage. The system integrates the Twitter API v2 for seamless social syndication. Crucially, we established an ironclad CI/CD pipeline using GitHub Actions and Playwright for rigorous end-to-end browser testing to automatically block regressions before they hit production.\n\n**Measurable Results:** Delivered a highly accessible (WCAG 2.1 AA), magazine-grade editorial experience backed by enterprise-level test coverage, allowing editors to publish multi-part article series with total confidence.",
     tags: ["Next.js", "Bangla", "News Media", "AWS S3", "Playwright", "CI/CD", "CMS", "Editorial"],
     link: "https://www.inshortbd.com",
@@ -240,6 +243,7 @@ export const projects: Project[] = [
     slug: "arrivals-cave",
     title: "Arrivals Cave",
     description: "Full-stack e-commerce for premium Bangladeshi panjabi & traditional wear. Eid 2026 collection live. Features Meta CAPI, Google Merchant Feed, CRO-optimized UX, and a Supabase-powered backend.",
+    summary: "Architected a headless commerce engine with full-stack ad attribution and CRO-optimized mobile checkout.",
     longDescription: "**The Problem:** A premium traditional menswear brand needed to deploy its flagship Eid 2026 collection with exact ad tracking to maximize ROAS and a purchase flow heavily optimized for mobile conversions.\n\n**The Solution Architecture:** We constructed a headless commerce engine on Next.js 16 and Supabase. To guarantee 100% accurate attribution for marketing campaigns, we implemented the server-side Meta Conversions API (CAPI) alongside robust client-side Pixel deduplication and an automated Google Merchant XML Feed. The storefront UX features dynamic conversion rate optimization (CRO) elements, including a sticky mobile add-to-cart bar, intelligent cashback announcement logic, and real-time urgency/scarcity badges.\n\n**Measurable Results:** Successfully launched the Eid 2026 collection with a complete, full-stack ad attribution pipeline, generating immediate revenue and providing a frictionless mobile checkout experience.",
     tags: ["Next.js", "E-commerce", "Supabase", "Meta CAPI", "Google Merchant", "CRO", "Bangladesh"],
     link: "https://www.arrivalscavebd.com",
@@ -348,6 +352,7 @@ export const projects: Project[] = [
     slug: "shahriar-kabir",
     title: "Shahriar Kabir Portfolio",
     description: "Premium personal brand website for an AI company executive. A full thought-leadership platform with editorial content, career narrative, schema structured data, and a curated design system.",
+    summary: "Designed a premium editorial platform for an AI executive, featuring dynamic OG generation and Schema-rich SEO.",
     longDescription: "Built a premium personal brand website for Shahriar Kabir, Head of Operations at PrimeSync AI. The site goes far beyond a typical portfolio — it's a thought-leadership engine. Features include an MDX-powered editorial blog with published BPO and AI industry articles, dynamic OG image generation per post via @vercel/og, a triple-font editorial system (Inter + Fraunces + JetBrains Mono), Schema.org JSON-LD structured data for rich search results, cookie consent, Vercel Analytics, Framer Motion animations, Instagram embeds, and QR code generation. The design follows a 'Paper, Ink & Forest' color palette with Lenis smooth scrolling. The career timeline is designed as a visual story arc, not just a list of jobs.",
     tags: ["Next.js", "Personal Brand", "MDX", "Framer Motion", "Editorial", "SEO"],
     link: "https://www.shahriar-kabir.com",
@@ -457,6 +462,7 @@ export const projects: Project[] = [
     slug: "gaari",
     title: "Gaari",
     description: "Bangladesh's premium car rental and travel platform. Featuring a robust booking system, dynamic pricing, and rich travel guides. Built for performance and reliability.",
+    summary: "Built a high-performance travel booking engine with dynamic pricing, PWA support, and real-time fleet management.",
     longDescription: "A comprehensive car rental and travel platform serving Bangladesh. Features include multi-service booking engine (Car Rental, Travel Packages, Activities), advanced search with location, date, time, and car type filters, dynamic pricing algorithms, AI-powered chatbot (Gaariwala), geographic services with 500+ landmarks, real-time availability management, payment integration (Stripe & Bkash), and PWA capabilities. Built with Next.js 14, TypeScript, Supabase, and Redis caching.",
     tags: ["Next.js", "Travel", "E-commerce", "Performance", "AI", "PWA"],
     link: "https://gaaribd.com",
@@ -617,6 +623,7 @@ export const projects: Project[] = [
     slug: "yagacalls",
     title: "Yagacalls",
     description: "Expert trading calls and market analysis platform. Features a custom CMS, AI-powered content generation, community features (3,500+ investors), performance tracking, and advanced SEO.",
+    summary: "Implemented a 4-layer SEO framework and AI content engine for a high-traffic fintech community of 3,500+ investors.",
     longDescription: "A platform providing expert trading calls and market analysis. Features include custom-built CMS, AI-powered content generation, community engagement with 3,500+ investors, performance tracking and signal showcase, blog and academy sections, pricing tiers, live price updates, and advanced 4-layer SEO framework (SXO, AIO, GEO, AEO). Built with PHP, HTML5, CSS3, JavaScript, and JSON-based database.",
     tags: ["PHP", "CMS", "SEO", "AI", "Fintech", "Community", "Analytics"],
     image: "https://brshoodoihexflrolqvu.supabase.co/storage/v1/object/public/portfolio-images/yagacalls.jpg",

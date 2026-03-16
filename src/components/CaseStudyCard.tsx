@@ -42,9 +42,9 @@ export function CaseStudyCard({ caseStudy, index }: CaseStudyCardProps) {
           <div>
             <div className="flex items-center gap-2 text-sm text-foreground/60 mb-1">
               <CheckCircle className="w-4 h-4" />
-              Solution
+              Impact
             </div>
-            <p className="text-sm text-foreground/70 line-clamp-2">{caseStudy.solution}</p>
+            <p className="text-sm text-foreground/70 line-clamp-2">{caseStudy.results.impact}</p>
           </div>
         </div>
 

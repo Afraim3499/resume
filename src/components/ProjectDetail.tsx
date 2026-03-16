@@ -8,6 +8,8 @@ import type { Project } from "@/data/projects";
 import { projects } from "@/data/projects";
 import { getBlogSlugForProject, getCaseStudySlugForProject } from "@/lib/project-blog-mapper";
 import { ImpactMetrics } from "@/components/ImpactMetrics";
+import { getAllTerms, KnowledgeNode } from "@/data/knowledge-graph";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 interface ProjectDetailProps {
   project: Project;
@@ -62,6 +64,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 
   return (
     <div className="space-y-12">
+      <Breadcrumbs />
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -147,6 +150,32 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 <ArrowRight className="w-4 h-4" />
               </Link>
             )}
+            {(() => {
+              const solutionMap: Record<string, string> = {
+                "arrivals-cave": "ecommerce-platform",
+                "the-trail": "news-media-platform",
+                "inshortbd": "news-media-platform",
+                "gaari": "booking-system",
+                "yagacalls": "seo-lead-generation",
+                "leads-sales-crm": "crm-sales-system",
+                "shahriar-kabir": "personal-brand-website",
+                "vibrance": "ecommerce-platform",
+              };
+              const solutionSlug = solutionMap[project.slug];
+              if (solutionSlug) {
+                return (
+                  <Link
+                    href={`/solutions/${solutionSlug}`}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 transition-colors"
+                  >
+                    <Zap className="w-4 h-4" />
+                    View Implementation Solution
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                );
+              }
+              return null;
+            })()}
           </motion.div>
         )}
       </motion.div>
@@ -282,6 +311,47 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           </div>
         </motion.div>
       )}
+
+      {/* Technical Foundation - Deep Link to Wiki */}
+      {(() => {
+        const terms = getAllTerms();
+        const relatedTerms = terms.filter((term: KnowledgeNode) => 
+          project.tags.some(tag => tag.toLowerCase().includes(term.term.toLowerCase())) ||
+          project.techStack?.some(tech => tech.toLowerCase().includes(term.term.toLowerCase()))
+        );
+
+        if (relatedTerms.length > 0) {
+          return (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="space-y-4"
+            >
+              <h2 className="text-2xl font-bold flex items-center gap-2">
+                <BookOpen className="w-6 h-6" />
+                Technical Foundation
+              </h2>
+              <p className="text-foreground/60 mb-4 max-w-2xl">
+                This project implements several advanced systems engineering concepts. Deep dive into the methodology:
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {relatedTerms.map((term: KnowledgeNode) => (
+                  <Link 
+                    key={term.id} 
+                    href={`/wiki/${term.id}`}
+                    className="group p-4 rounded-xl bg-primary/5 border border-primary/10 hover:border-primary/50 transition-all"
+                  >
+                    <h3 className="font-bold text-primary group-hover:text-primary transition-colors mb-1">{term.term}</h3>
+                    <p className="text-xs text-foreground/60 line-clamp-2">{term.definition}</p>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          );
+        }
+        return null;
+      })()}
 
       {/* Challenges & Solutions */}
       {(project.challenges || project.solutions) && (

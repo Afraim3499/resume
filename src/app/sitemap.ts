@@ -9,6 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* Absolute URL Verification: Hardcoded for production SEO stability */
   const baseUrl = "https://www.rizwanulafraim.com";
 
+  const cleanUrl = (url: string) => url.replace(/\/$/, "");
+
   // Core Routes - Priority 1.0 for Home, 0.9 for key pages
   const routes = [
     {
@@ -98,5 +100,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...routes, ...projectRoutes, ...blogRoutes, ...caseStudyRoutes, ...wikiRoutes, ...solutionRoutes];
+  const allRoutes = [...routes, ...projectRoutes, ...blogRoutes, ...caseStudyRoutes, ...wikiRoutes, ...solutionRoutes];
+
+  const lastModified = new Date();
+
+  return allRoutes.map(route => ({
+    ...route,
+    url: cleanUrl(route.url),
+    lastModified: route.lastModified || lastModified
+  }));
 }
