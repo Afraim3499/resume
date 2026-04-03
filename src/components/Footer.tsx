@@ -130,6 +130,14 @@ export function Footer() {
                             </li>
                             <li>
                                 <Link
+                                    href="/research/agentic-ai-coordination-infrastructure"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    Published Research
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     href="/resume"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >

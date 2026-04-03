@@ -4,6 +4,7 @@ import { SectionDivider } from "@/components/SectionDivider";
 import { ParallaxSection } from "@/components/ParallaxSection";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import dynamic from "next/dynamic";
+import { ResearchStrip } from "@/components/ResearchStrip";
 
 // Lazy load heavy sections
 const About = dynamic(() => import("@/components/About").then((mod) => mod.About), { loading: () => <LoadingSpinner /> });
@@ -32,6 +33,8 @@ export default function Home() {
     <main id="main-content" className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
       <Hero />
       <SectionDivider variant="wave" />
+      <ResearchStrip />
+      <SectionDivider variant="gradient" />
       <ROICalculator />
       <SectionDivider variant="gradient" />
       <SignatureWork />

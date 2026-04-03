@@ -1,6 +1,7 @@
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getAllFAQs } from "@/lib/faq-loader";
 
 export const metadata: Metadata = {
@@ -60,6 +61,9 @@ export default function ManifestoPage() {
                     </p>
                     <p>
                         I am Rizwanul Islam (Afraim), and I am an <strong>Advanced Orchestrator</strong> and <strong>Operations Expert</strong>.
+                    </p>
+                    <p>
+                        Rizwanul Islam Afraim is an <Link href="/research/agentic-ai-coordination-infrastructure" className="text-primary hover:underline">SSRN published researcher</Link> focusing on agentic AI, coordination infrastructure, and the structural economics of intelligent systems.
                     </p>
 
                     <hr className="my-12 border-border" />
