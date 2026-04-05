@@ -56,6 +56,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/research`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/research/agentic-ai-coordination-infrastructure`,
       lastModified: new Date("2026-04-02"),
       changeFrequency: "monthly" as const,
