@@ -81,4 +81,9 @@ The difference between stagnation and transformation lies in sequencing and exec
 
 The point is not that Bangladesh must build everything from scratch. The point is that it cannot stay structurally downstream forever without paying for that dependency in margin, sovereignty, and long-run competitiveness.
 
-The full structural analysis, including the Coordination Compression Hypothesis, the Data Advantage Coefficient, scenario modeling through 2045, and a phased national AI strategy, is available in my published research on [agentic AI and economic divergence](/research/agentic-ai-coordination-infrastructure).
+***
+
+### References & National Strategy
+*   **Research Paper**: [Agentic AI as Coordination Infrastructure Technology: Structural Implications for Firms, Growth, and Economic Divergence](https://www.rizwanulafraim.com/research/agentic-ai-coordination-infrastructure)
+*   **SSRN Publication**: [Download the full PDF on SSRN](https://ssrn.com/abstract=6223930)
+*   **Author Profile**: [Explore all research by Rizwanul Islam Afraim on SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9931636)

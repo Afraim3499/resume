@@ -5,14 +5,14 @@ import { allSkills } from "@/data/skills";
 import { getWikidataUri } from "@/lib/wikidata-mapping";
 
 export const metadata: Metadata = {
-    title: "Resume | Rizwanul Islam - Advanced Venture Architect & Operations Expert",
-    description: "Professional resume of Rizwanul Islam (Afraim). Advanced Venture Architect managing 1M+ data points and building scalable platform unicorns like Gaari.",
+    title: "Resume | Rizwanul Islam Afraim - Lead Systems Architect & Tech Strategist",
+    description: "Professional resume of Rizwanul Islam Afraim. Systems Architect mapping advanced tech trends and building production-grade platform ventures.",
     alternates: {
         canonical: "/resume",
     },
     openGraph: {
-        title: "Resume | Rizwanul Islam - Advanced Venture Architect",
-        description: "Professional resume of Rizwanul Islam (Afraim). Operations Expert building scalable platform unicorns.",
+        title: "Resume | Rizwanul Islam Afraim - Lead Systems Architect",
+        description: "Professional resume of Rizwanul Islam Afraim. Lead Systems Architect building autonomous infrastructure.",
     }
 };
 

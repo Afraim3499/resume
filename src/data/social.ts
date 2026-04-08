@@ -54,6 +54,12 @@ export const socialProfiles: SocialProfile[] = [
     username: "rizwanul_afraim",
     icon: "youtube",
   },
+  {
+    platform: "SSRN",
+    url: "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9931636",
+    username: "rizwanul-islam-afraim",
+    icon: "ssrn",
+  },
 ];
 
 export const socialProof = {

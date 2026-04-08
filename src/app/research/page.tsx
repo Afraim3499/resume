@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ArrowRight, BookOpen, ExternalLink, Database, Brain, Network } from "lucide-react";
+import { ArrowRight, BookOpen, ExternalLink, Database, Brain, Network, BarChart3 } from "lucide-react";
 import { ResearchStrip } from "@/components/ResearchStrip";
 
 export const metadata: Metadata = {
   title: "Research | Rizwanul Islam Afraim",
-  description: "Exploring the structural economics of agentic AI, coordination infrastructure technology, and the future of firm boundaries.",
+  description: "Exploring the structural economics of agentic AI, coordination infrastructure technology, and the future of enterprise decision intelligence systems.",
   alternates: {
     canonical: "https://www.rizwanulafraim.com/research",
   },
@@ -30,10 +30,26 @@ const researchAreas = [
     title: "Labor Stratification",
     description: "Investigating the non-linear productivity gradient between AI designers, users, and routine executors.",
     color: "violet"
+  },
+  {
+    icon: BarChart3,
+    title: "Decision Intelligence",
+    description: "Analyzing the convergence of BI interfaces and AI-driven logic in enterprise decision systems.",
+    color: "amber"
   }
 ];
 
 const relatedPosts = [
+  {
+    title: "The 9-Hour Efficiency Gap: Power BI vs Python Dashboards in 2026",
+    slug: "the-9-hour-efficiency-gap-power-bi-vs-python-dashboards-in-2026",
+    date: "2026-04-08"
+  },
+  {
+    title: "Enterprise Intelligence Architecture: Why 97% of Fortune 500 Trust Power BI",
+    slug: "why-97-percent-fortune-500-trust-power-bi",
+    date: "2026-04-05"
+  },
   {
     title: "The Real Economic Shift Behind AI is Coordination",
     slug: "the-real-economic-shift-behind-ai-is-coordination-not-just-productivity",
@@ -43,11 +59,6 @@ const relatedPosts = [
     title: "Why Bangladesh Risks Becoming an AI-Consuming Economy",
     slug: "why-bangladesh-risks-becoming-an-ai-consuming-economy",
     date: "2026-03-18"
-  },
-  {
-    title: "Why Agentic AI is Not Just Automation",
-    slug: "why-agentic-ai-is-not-just-automation",
-    date: "2026-03-12"
   }
 ];
 
@@ -58,7 +69,7 @@ export default function ResearchIndexPage() {
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
         {/* Ambient background effects */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.06),transparent_70%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(59,130,246,0.04),transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(245,158,11,0.04),transparent_60%)] pointer-events-none" />
 
         <div className="container px-4 mx-auto max-w-5xl relative z-10">
           <Breadcrumbs
@@ -73,7 +84,7 @@ export default function ResearchIndexPage() {
               The Pursuit of <span className="text-primary italic">Structural Clarity</span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 leading-relaxed mb-8">
-              My research focuses on the intersection of agentic AI and institutional economics—exploring how coordination technology redefines firm boundaries, capital allocation, and national competitiveness.
+              My research focuses on the intersection of agentic AI, enterprise intelligence, and institutional economics—exploring how technology redefines firm boundaries and decision-making at scale.
             </p>
           </div>
         </div>
@@ -83,7 +94,7 @@ export default function ResearchIndexPage() {
       <section className="py-8 relative">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="mb-4 flex items-center gap-4">
-            <h2 className="text-2xl md:text-3xl font-serif font-bold">Featured Publication</h2>
+            <h2 className="text-2xl md:text-3xl font-serif font-bold">Featured Publications</h2>
             <div className="h-px flex-grow bg-foreground/10" />
           </div>
         </div>
@@ -100,17 +111,17 @@ export default function ResearchIndexPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {researchAreas.map((area) => (
               <div 
                 key={area.title}
-                className="p-8 rounded-2xl bg-background border border-foreground/5 hover:border-primary/20 transition-all group"
+                className="p-6 rounded-2xl bg-background border border-foreground/5 hover:border-primary/20 transition-all group"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-secondary/50 text-foreground/70 group-hover:bg-primary/10 group-hover:text-primary transition-colors`}>
-                  <area.icon className="w-6 h-6" />
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-secondary/50 text-foreground/70 group-hover:bg-primary/10 group-hover:text-primary transition-colors`}>
+                  <area.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{area.title}</h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">
+                <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">{area.title}</h3>
+                <p className="text-xs text-foreground/70 leading-relaxed">
                   {area.description}
                 </p>
               </div>
@@ -185,15 +196,13 @@ export default function ResearchIndexPage() {
                 >
                   Contact for Research
                 </a>
-                <a 
-                  href="https://ssrn.com/abstract=6236898"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link 
+                  href="/research"
                   className="px-8 py-4 rounded-full bg-white/10 border border-white/20 text-white font-bold hover:bg-white/20 transition-colors inline-flex items-center justify-center gap-2"
                 >
-                  Read on SSRN
+                  Explore Portfolio
                   <ExternalLink className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

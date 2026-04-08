@@ -66,4 +66,9 @@ The productivity framing is comfortable but shallow. It leads to incremental ado
 
 Agentic AI is not just automation. It is a coordination-layer technology that can reshape firms, capital allocation, labor stratification, and national economic divergence.
 
-The full argument, including the Coordination Compression Hypothesis, the Dynamic Agentic Productivity Gradient, and the implications for emerging economies, is developed in my [published SSRN research on agentic AI](/research/agentic-ai-coordination-infrastructure).
+***
+
+### References & Structural Analysis
+*   **Research Paper**: [Agentic AI as Coordination Infrastructure Technology: Structural Implications for Firms, Growth, and Economic Divergence](https://www.rizwanulafraim.com/research/agentic-ai-coordination-infrastructure)
+*   **SSRN Publication**: [Download the full PDF on SSRN](https://ssrn.com/abstract=6223930)
+*   **Author Profile**: [Explore all research by Rizwanul Islam Afraim on SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9931636)

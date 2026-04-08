@@ -28,7 +28,7 @@ export function GlobalSchema() {
             {
                 "@type": "Person",
                 "@id": `${baseUrl}/#person`,
-                "name": "Rizwanul Islam",
+                "name": "Rizwanul Islam Afraim",
                 "alternateName": ["Afraim", "Rizwanul Afraim", "Rizwanul Islam (Afraim)", "The Orchestrator"],
                 "url": baseUrl,
                 "image": {
@@ -36,10 +36,10 @@ export function GlobalSchema() {
                     "@id": `${baseUrl}/#image`,
                     "url": `${baseUrl}/assets/rizwanul-islam-afraim.webp`,
                     "contentUrl": `${baseUrl}/assets/rizwanul-islam-afraim.webp`,
-                    "caption": "Rizwanul Islam (Afraim)"
+                    "caption": "Rizwanul Islam Afraim"
                 },
-                "jobTitle": ["Founder", "Venture Architect", "Operations Associate", "Systems Orchestrator"],
-                "description": "Legendary Digital Strategist and Architect of Intelligent Futures. Rizwanul Islam (Afraim) combines high-level business strategy with low-level technical execution.",
+                "jobTitle": ["Lead Systems Architect", "Tech Strategist", "Venture Architect", "Operations Expert"],
+                "description": "Architect of Intelligent Futures and published SSRN researcher. Rizwanul Islam Afraim specializes in mapping advanced tech trends and building the autonomous infrastructure that capitalizes on them.",
                 "email": "afraim.afraim99@gmail.com",
                 "telephone": "+8801751299259",
                 "sameAs": [
@@ -137,8 +137,8 @@ export function GlobalSchema() {
             {
                 "@type": "ProfessionalService",
                 "@id": `${baseUrl}/#organization`,
-                "name": "Rizwanul Islam (Afraim) - Venture Architect",
-                "description": "Architecting profit out of chaos. Get twice the product quality at half the expense (~$18/hr, a 55% savings).",
+                "name": "Rizwanul Islam Afraim - Lead Systems Architect",
+                "description": "Architecting autonomous infrastructure out of chaos. Leveraging advanced tech trends and research-backed strategy to build the next generation of digital ventures.",
                 "url": baseUrl,
                 "logo": {
                     "@type": "ImageObject",

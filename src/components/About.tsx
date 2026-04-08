@@ -11,11 +11,11 @@ import { fadeUp, staggerContainer } from "@/lib/animations";
 const stats = [
     {
         icon: Target,
-        title: "Visionary Market Operations",
-        subtitle: "Not Just Discovery",
-        description: "I don't just find leads; I engineered the market for The Trailheadline and PrimeSync. My strategies don't just compete—they define the playing field.",
-        highlight: "engineered the market",
-        companies: ["The Trailheadline", "PrimeSync"],
+        title: "Market Orchestration",
+        subtitle: "Mapping Tech Trends",
+        description: "I don't just find leads; I architected the market for The Trail and PrimeSync. By mapping high-velocity tech trends, my strategies define the playing field before competitors arrive.",
+        highlight: "architected the market",
+        companies: ["The Trail", "PrimeSync"],
         gradient: "from-emerald-500/20 via-emerald-500/10 to-transparent",
         borderColor: "border-emerald-500/30",
         iconColor: "text-emerald-400",
@@ -23,11 +23,11 @@ const stats = [
     },
     {
         icon: Database,
-        title: "Advanced Data Intelligence",
-        subtitle: "1M+ Data Points",
-        description: "Processed over 1 million data points for Quantanite with legendary accuracy. I turn raw chaos into intelligent, actionable business logic and data strategy.",
-        highlight: "legendary accuracy",
-        companies: ["Quantanite"],
+        title: "Decision Intelligence",
+        subtitle: "Unified Logic Layers",
+        description: "Leveraging my research on Power BI effectiveness, I build unified logic layers that turn raw data into autonomous insight. I architect truth systems, not just dashboards.",
+        highlight: "unified logic layers",
+        companies: ["Quantanite", "SSRN"],
         gradient: "from-purple-500/20 via-purple-500/10 to-transparent",
         borderColor: "border-purple-500/30",
         iconColor: "text-purple-400",
@@ -35,11 +35,11 @@ const stats = [
     },
     {
         icon: Users,
-        title: "Unshakeable System Reliability",
-        subtitle: "Leadership at Scale",
-        description: "As VP at NSUSS, I led 200+ people to execute events for 25,000+ attendees. When I build a system, it holds the weight of thousands without cracking.",
-        highlight: "200+ people",
-        companies: ["NSUSS"],
+        title: "Coordination Compression",
+        subtitle: "Systems Over Management",
+        description: "Applying the Coordination Compression Hypothesis to eliminate managerial friction. I build the agentic systems that allow leaner firms to hold the weight of enterprise scale.",
+        highlight: "eliminate managerial friction",
+        companies: ["NSUSS", "Gaari"],
         gradient: "from-blue-500/20 via-blue-500/10 to-transparent",
         borderColor: "border-blue-500/30",
         iconColor: "text-blue-400",
@@ -47,11 +47,11 @@ const stats = [
     },
     {
         icon: Rocket,
-        title: "Enduring Platform Ventures",
-        subtitle: "Strategic Orchestration",
-        description: "I don't just launch; I architect legacy. From InshortBD to Arrivals Cave, I design production-grade platform ventures meant to scale into unicorns.",
-        highlight: "scale into unicorns",
-        companies: ["InshortBD", "The Trailheadline", "Arrivals Cave"],
+        title: "Autonomous Infrastructure",
+        subtitle: "Venture Architecture",
+        description: "I design production-grade platform ventures meant to scale without traditional overhead. From InshortBD to Gaari, I architect legacy systems using the 'Founder Mode' protocol.",
+        highlight: "architect legacy systems",
+        companies: ["InshortBD", "The Trail", "Gaari"],
         gradient: "from-emerald-500/20 via-cyan-500/10 to-transparent",
         borderColor: "border-emerald-500/30",
         iconColor: "text-emerald-400",
@@ -80,16 +80,16 @@ export function About() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="inline-block px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6"
+                        className="inline-block px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6 uppercase tracking-widest"
                     >
-                        The Approach
+                        The Architecture of Intelligence
                     </motion.span>
                     <h2 className="text-5xl md:text-7xl lg:text-8xl heading-text mb-6">
-                        Engineering <span className="text-gradient">Advanced Trust</span> & <span className="text-gradient">Operational Intelligence</span>
+                        Mapping <span className="text-gradient">Trends</span>. <br />Engineering <span className="text-gradient">Infrastructure</span>.
                     </h2>
-                    <p className="text-foreground/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                        A 360-degree perspective that transforms complexity into clear, scalable outcomes.
-                        I combine high-velocity execution with unshakeable reliability to build systems that win.
+                    <p className="text-foreground/70 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed font-serif">
+                        Leading 25,000-person operations at NSUSS wasn&apos;t just a leadership role—it was a field study in the bottlenecks of human coordination. 
+                        I now use those insights to map advanced tech trends and build a new generation of **autonomous infrastructure** that eliminates managerial friction.
                     </p>
                 </motion.div>
 

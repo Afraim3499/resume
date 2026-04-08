@@ -75,4 +75,9 @@ If the real shift is coordination, not just productivity, then:
 - **Workers** should not just learn to use AI. They should learn to design systems that use AI.
 - **Policymakers** should not just track productivity gains. They should measure coordination cost compression, institutional translation capacity, and digital rent flows.
 
-The full framework, including the Dynamic Agentic Productivity Gradient, the Data Advantage Coefficient, and scenario modeling through 2045, is available in my [research on coordination infrastructure](/research/agentic-ai-coordination-infrastructure).
+***
+
+### References & Technical Framework
+*   **Research Paper**: [Agentic AI as Coordination Infrastructure Technology: Structural Implications for Firms, Growth, and Economic Divergence](https://www.rizwanulafraim.com/research/agentic-ai-coordination-infrastructure)
+*   **SSRN Publication**: [Download the full PDF on SSRN](https://ssrn.com/abstract=6223930)
+*   **Author Profile**: [Explore all research by Rizwanul Islam Afraim on SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9931636)

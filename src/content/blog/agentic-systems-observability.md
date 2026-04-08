@@ -231,3 +231,10 @@ For teams starting with agentic observability:
 6. **Audit regularly** — Periodic review of agent decisions catches drift before it becomes a crisis
 
 The promise of agentic AI is enormous. But promise without observability is hope without evidence. Build the monitoring first, then trust the agent with your production traffic.
+
+***
+
+### References & Theoretical Foundation
+*   **Research Paper**: [Agentic AI as Coordination Infrastructure Technology: Structural Implications for Firms, Growth, and Economic Divergence](https://www.rizwanulafraim.com/research/agentic-ai-coordination-infrastructure)
+*   **SSRN Publication**: [Download the full PDF on SSRN](https://ssrn.com/abstract=6223930)
+*   **Author Profile**: [Explore all research by Rizwanul Islam Afraim on SSRN](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=9931636)

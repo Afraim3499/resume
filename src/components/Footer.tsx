@@ -130,10 +130,26 @@ export function Footer() {
                             </li>
                             <li>
                                 <Link
+                                    href="/research"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors font-medium border-b border-primary/20"
+                                >
+                                    Research Hub
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     href="/research/agentic-ai-coordination-infrastructure"
                                     className="text-sm text-foreground/60 hover:text-primary transition-colors"
                                 >
-                                    Published Research
+                                    Agentic AI Research
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/research/power-bi-ai-era-2026-effectiveness"
+                                    className="text-sm text-foreground/60 hover:text-primary transition-colors"
+                                >
+                                    Power BI & AI Paper
                                 </Link>
                             </li>
                             <li>
@@ -197,14 +213,14 @@ export function Footer() {
                                 </a>
                             </li>
                             <li className="flex flex-col">
-                                <span className="text-xs text-foreground/60 uppercase tracking-wider mb-1">WhatsApp</span>
+                                <span className="text-xs text-foreground/60 uppercase tracking-wider mb-1">WhatsApp & Consult</span>
                                 <a
                                     href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors border border-primary/20"
                                 >
-                                    Estimate Your Project Savings
+                                    Book a Strategic Consult
                                 </a>
                             </li>
                             <li className="flex flex-col">

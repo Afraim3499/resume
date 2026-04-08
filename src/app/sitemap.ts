@@ -67,6 +67,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/research/power-bi-ai-era-2026-effectiveness`,
+      lastModified: new Date("2026-04-08"),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
   ];
 
   // Dynamic Project Routes - Priority 0.8

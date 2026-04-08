@@ -25,6 +25,19 @@ const MediumIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const SSRNIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    className={className}
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 2L1 7l11 5 11-5-11-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+    <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="1.5" />
+  </svg>
+);
+
 const iconMap = {
   linkedin: Linkedin,
   github: Github,
@@ -34,6 +47,7 @@ const iconMap = {
   medium: MediumIcon,
   instagram: Instagram,
   youtube: Youtube,
+  ssrn: SSRNIcon,
 };
 
 interface SocialLinksProps {

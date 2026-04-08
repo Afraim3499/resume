@@ -6,7 +6,7 @@ import { getAllFAQs } from "@/lib/faq-loader";
 
 export const metadata: Metadata = {
     title: "Manifesto | The Operations Expert's Protocol",
-    description: "The operating philosophy of Rizwanul Islam (Afraim). Founder Mode, Advanced Systems Thinking, Data Strategy, and the rejection of the manager/maker binary.",
+    description: "The operating philosophy of Rizwanul Islam Afraim. Founder Mode, Advanced Systems Thinking, and the rejection of the manager/maker binary.",
     alternates: {
         canonical: "/manifesto",
     },
@@ -19,12 +19,12 @@ export default function ManifestoPage() {
         "@type": "AboutPage",
         "mainEntity": {
             "@type": "Person",
-            "name": "Rizwanul Islam (Afraim)",
-            "jobTitle": "Venture Architect",
+            "name": "Rizwanul Islam Afraim",
+            "jobTitle": "Lead Systems Architect",
             "url": "https://www.rizwanulafraim.com"
         },
-        "name": "Manifesto | The Operations Expert's Protocol",
-        "description": "The operating philosophy of Rizwanul Islam (Afraim). Founder Mode, Advanced Systems Thinking, and the rejection of the manager/maker binary."
+        "name": "Manifesto | Rizwanul Islam Afraim",
+        "description": "The operating philosophy of Rizwanul Islam Afraim. Founder Mode, Systems Thinking, and the rejection of the manager/maker binary."
     };
 
     return (
