@@ -64,6 +64,29 @@ const CATEGORY_CONFIG: Record<string, {
   },
 };
 
+const SKILL_SHORT_NAMES: Record<string, string> = {
+  "Timezone-Aware Lead Routing": "Lead Routing",
+  "Meta Conversions API (CAPI)": "Meta CAPI",
+  "Google Merchant XML Feeds": "Merchant Feeds",
+  "Voice Agents & CRM Integration": "Voice CRM",
+  "Large-Scale Event Operations": "Event Ops",
+  "Competitor Marketing Audit": "Competitor Audit",
+  "Organic Acquisition Campaigns": "Organic Brand",
+  "Team & Vendor Coordination": "Team & Vendor",
+  "SEO/AEO System Framework": "SEO Framework",
+  "Next.js Hybrid Pre-rendering": "Next.js",
+  "Multi-Stage CMS Workflows": "CMS Flow",
+  "Chatbot RAG Architectures": "RAG Chatbot",
+  "Playwright E2E Testing": "Playwright",
+  "Dynamic Platform Integration": "Dynamic Platform",
+  "AWS/Vercel Serverless": "AWS/Vercel",
+  "Database Schema Design": "DB Schema",
+  "Supabase RLS Security": "Supabase RLS",
+  "API Architecture Design": "API Arch",
+  "Deterministic State Locking": "State Locking",
+  "Redis Availability Caching": "Redis Cache",
+};
+
 /* Helper: get a node's category key */
 function getNodeCategory(node: SimNode): string | null {
   if (node.type === "category") return node.data?.cat ?? null;
@@ -119,8 +142,8 @@ export function ResumeGraph() {
   const centerX = dimensions.width / 2;
   const centerY = dimensions.height / 2;
   const isMobile = dimensions.width < 768;
-  const categoryRadius = isMobile ? 115 : 210;
-  const skillRadius = isMobile ? 55 : 85;
+  const categoryRadius = isMobile ? 120 : 230;
+  const skillRadius = isMobile ? 65 : 100;
 
   /* ─── Search/Filter Matching ─── */
   const matchedNodeIds = useMemo(() => {
@@ -163,7 +186,7 @@ export function ResumeGraph() {
     nodes.push({
       id: "me", type: "center",
       x: centerX, y: centerY, vx: 0, vy: 0,
-      size: isMobile ? 68 : 92,
+      size: isMobile ? 70 : 96,
       label: "ORCHESTRATOR",
       targetX: centerX,
       targetY: centerY,
@@ -179,7 +202,7 @@ export function ResumeGraph() {
         x: cx,
         y: cy,
         vx: 0, vy: 0,
-        size: isMobile ? 42 : 54,
+        size: isMobile ? 46 : 58,
         label: CATEGORY_CONFIG[cat]?.label || cat,
         data: { cat },
         targetX: cx,
@@ -197,7 +220,7 @@ export function ResumeGraph() {
           x: sx,
           y: sy,
           vx: 0, vy: 0,
-          size: isMobile ? 30 : 38,
+          size: isMobile ? 40 : 50,
           label: skill.name,
           data: skill,
           parent: cat,
@@ -327,116 +350,95 @@ export function ResumeGraph() {
 
   /* ═══════════════════════════════════════════════════
      VISUAL STATE RESOLVER
-     Determines the visual state for every node:
-     
-     "resting"  → Muted. Calm. No glow. Readable labels.
-     "lit"      → Bright glow halo. Connected to an active node.
-     "dragging" → Intense pulsing glow. This is the node being dragged.
-     "dimmed"   → Almost invisible. Unrelated to current interaction.
      ═══════════════════════════════════════════════════ */
   type VisualState = "resting" | "lit" | "dragging" | "dimmed";
 
   const getNodeVisualState = useCallback((node: SimNode): VisualState => {
-    // If search/filter is active, override with matched/dimmed
     if (matchedNodeIds) {
       if (!matchedNodeIds.has(node.id)) return "dimmed";
-      return "lit"; // matched nodes light up
+      return "lit";
     }
 
-    // Dragging state: the dragged node itself
-    if (draggedNode === node.id) return "dragging";
-
-    // If something is being dragged, light up its constellation
-    if (draggedNode) {
-      const dragNode = simNodes.find((n) => n.id === draggedNode);
-      if (dragNode) {
-        // Dragged node's parent or children light up
-        if (node.id === dragNode.parent) return "lit";
-        if (node.parent === draggedNode) return "lit";
-        if (node.id === "me" && (dragNode.type === "category" || dragNode.type === "center")) return "lit";
-        if (node.type === "category" && dragNode.parent === node.id) return "lit";
-        // Center lights up when any category is dragged
-        if (node.id === "me" && dragNode.type !== "center") return "lit";
+    if (selectedNode) {
+      if (selectedNode.id === "me" || selectedNode.type === "center") return "lit";
+      if (selectedNode.id === node.id) return "lit";
+      if (selectedNode.type === "category") {
+        if (node.id === "me" || node.parent === selectedNode.id) return "lit";
+      }
+      if (selectedNode.type === "skill") {
+        if (node.id === selectedNode.parent || node.id === "me") return "lit";
       }
       return "dimmed";
     }
 
-    // If something is hovered, light up its constellation
+    if (draggedNode === node.id) return "dragging";
+    if (draggedNode) {
+      const dragNode = simNodes.find((n) => n.id === draggedNode);
+      if (dragNode) {
+        if (node.id === dragNode.parent || node.parent === draggedNode || (node.id === "me" && (dragNode.type === "category" || dragNode.type === "center"))) return "lit";
+        if (node.type === "category" && dragNode.parent === node.id) return "lit";
+      }
+      return "dimmed";
+    }
+
     if (hoveredNode) {
       if (hoveredNode === node.id) return "lit";
       const hoverNode = simNodes.find((n) => n.id === hoveredNode);
       if (hoverNode) {
-        // Hover parent/children
-        if (node.id === hoverNode.parent) return "lit";
-        if (node.parent === hoveredNode) return "lit";
-        if (node.id === "me" && hoverNode.type === "category") return "lit";
-        if (node.type === "category" && hoverNode.parent === node.id) return "lit";
-        if (node.id === "me" && hoverNode.type === "skill") return "lit";
+        if (node.id === hoverNode.parent || node.parent === hoveredNode || (node.id === "me" && (hoverNode.type === "category" || hoverNode.type === "skill")) || (node.type === "category" && hoverNode.parent === node.id)) return "lit";
       }
       return "dimmed";
     }
-
-    // If something is selected
-    if (selectedNode) {
-      // 1. If central node is clicked, light up every node!
-      if (selectedNode.type === "center") {
-        return "lit";
-      }
-
-      // 2. Otherwise, light up ONLY direct connections:
-      if (selectedNode.id === node.id) return "lit";
-      if (selectedNode.type === "category") {
-        if (node.id === "me") return "lit";
-        if (node.parent === selectedNode.id) return "lit";
-      }
-      if (selectedNode.type === "skill") {
-        if (node.id === selectedNode.parent) return "lit";
-      }
-
-      return "dimmed";
-    }
-
     return "resting";
   }, [matchedNodeIds, draggedNode, hoveredNode, selectedNode, simNodes]);
 
-  /* Determine if a link should be "lit" */
   const getLinkVisualState = useCallback((source: string, target: string): VisualState => {
     if (matchedNodeIds) {
       return (matchedNodeIds.has(source) && matchedNodeIds.has(target)) ? "lit" : "dimmed";
     }
 
     // 1. If central node is clicked, light up every ribbon!
-    if (selectedNode && selectedNode.type === "center") {
+    if (selectedNode && (selectedNode.id === "me" || selectedNode.type === "center")) {
       return "lit";
     }
 
-    // 2. If another node is clicked, light up only direct connections
-    if (selectedNode) {
-      if (selectedNode.type === "category") {
-        const catId = selectedNode.id;
-        if ((source === "me" && target === catId) || (source === catId && target === "me")) return "lit";
-        if (source === catId || target === catId) return "lit";
-      }
-      if (selectedNode.type === "skill") {
-        if (source === selectedNode.id || target === selectedNode.id) return "lit";
+    // 2. If a category node is clicked/selected
+    if (selectedNode && selectedNode.type === "category") {
+      if (source === selectedNode.id || target === selectedNode.id) {
+        return "lit";
       }
       return "dimmed";
     }
 
-    const active = draggedNode || hoveredNode;
-    if (!active) return "resting";
-    if (source === active || target === active) return "lit";
-    // If dragging a skill, light up its chain to center
+    // 3. If a skill node is clicked/selected
+    if (selectedNode && selectedNode.type === "skill") {
+      if (target === selectedNode.id || (source === "me" && target === selectedNode.parent)) {
+        return "lit";
+      }
+      return "dimmed";
+    }
+
+    // 4. Dragging state path
     if (draggedNode) {
+      if (source === draggedNode || target === draggedNode) return "lit";
       const dragNode = simNodes.find((n) => n.id === draggedNode);
-      if (dragNode?.parent === source || dragNode?.parent === target) return "lit";
-      if (source === "me" && dragNode?.type === "category") return "lit";
+      if (dragNode && dragNode.type === "skill" && source === "me" && target === dragNode.parent) {
+        return "lit";
+      }
+      return "dimmed";
     }
+
+    // 5. Hover state path
     if (hoveredNode) {
+      if (source === hoveredNode || target === hoveredNode) return "lit";
       const hoverNode = simNodes.find((n) => n.id === hoveredNode);
-      if (hoverNode?.parent === source || hoverNode?.parent === target) return "lit";
+      if (hoverNode && hoverNode.type === "skill" && source === "me" && target === hoverNode.parent) {
+        return "lit";
+      }
+      return "dimmed";
     }
-    return "dimmed";
+
+    return "resting";
   }, [matchedNodeIds, draggedNode, hoveredNode, selectedNode, simNodes]);
 
   const categories = useMemo(() => Array.from(new Set(allSkills.map((s) => s.category))), []);
@@ -608,7 +610,7 @@ export function ResumeGraph() {
                 onMouseEnter={() => setHoveredNode(node.id)}
                 onMouseLeave={() => setHoveredNode(null)}
                 onClick={() => setSelectedNode(node)}
-                className="absolute flex items-center justify-center rounded-full cursor-grab active:cursor-grabbing"
+                className="absolute flex items-center justify-center rounded-full cursor-grab active:cursor-grabbing select-none"
                 style={{
                   width: node.size,
                   height: node.size,
@@ -627,18 +629,20 @@ export function ResumeGraph() {
                 }}
               >
                 {isCenter ? (
-                  <div className="text-center leading-none select-none">
+                  <div className="text-center leading-none">
                     <span className="block text-[7px] md:text-[8px] font-bold tracking-wider opacity-70">THE</span>
                     <span className="block text-[9px] md:text-[11px] font-black tracking-tight mt-0.5">ORCHESTRATOR</span>
                   </div>
                 ) : isCategory ? (
-                  <div className="flex flex-col items-center gap-0.5 select-none">
+                  <div className="flex flex-col items-center gap-0.5">
                     {cfg?.icon && <cfg.icon className="w-4 h-4 md:w-5 md:h-5" />}
-                    <span className="text-[6px] md:text-[7px] font-extrabold uppercase tracking-widest leading-none">{node.label}</span>
+                    <span className="text-[6px] md:text-[7px] font-extrabold uppercase tracking-widest leading-none text-center px-1">
+                      {node.label}
+                    </span>
                   </div>
                 ) : (
-                  <span className="text-[7px] md:text-[8px] whitespace-nowrap px-1 max-w-full overflow-hidden text-ellipsis text-center font-semibold select-none">
-                    {node.label}
+                  <span className="text-[7.5px] md:text-[8.5px] leading-tight text-center px-1 font-extrabold whitespace-normal break-words max-w-[90%]">
+                    {SKILL_SHORT_NAMES[node.label] || node.label}
                   </span>
                 )}
               </div>
