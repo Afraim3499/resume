@@ -207,7 +207,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </header>
 
         {headings.length > 0 && (
-          <nav aria-label="Table of Contents" className="mb-8 p-6 bg-secondary/20 rounded-lg border border-white/5">
+          <nav aria-label="Table of Contents" className="mb-8 p-6 bg-[#FFFDF8] rounded-lg border border-[#0F5132]/14">
             <div className="flex items-center gap-2 mb-4 text-lg font-semibold text-foreground/90">
               <List className="w-5 h-5" />
               <h2>Table of Contents</h2>
@@ -245,35 +245,35 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Related Project & Case Study Links */}
         {(project || caseStudy) && (
-          <div className="mt-12 pt-8 border-t border-white/5">
+          <div className="mt-12 pt-8 border-t border-[#0F5132]/10">
             <h2 className="text-2xl font-bold mb-6">Related Content</h2>
             <div className="flex flex-col sm:flex-row gap-4">
               {project && (
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="flex-1 p-6 rounded-lg bg-secondary/30 border border-white/5 hover:border-primary/50 transition-colors group"
+                  className="flex-1 p-6 rounded-lg bg-[#FFFDF8] border border-[#0F5132]/14 hover:border-[#0F5132]/40 transition-colors group"
                 >
                   <div className="flex items-center gap-3 mb-2">
                     <ExternalLink className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-                    <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors">
+                    <h3 className="text-lg font-bold text-[#171717] group-hover:text-[#0F5132] transition-colors">
                       View Project
                     </h3>
                   </div>
-                  <p className="text-gray-400 text-sm">{project.title}</p>
+                  <p className="text-[#5F655F] text-sm">{project.title}</p>
                 </Link>
               )}
               {caseStudy && (
                 <Link
                   href={`/case-studies/${caseStudy.slug}`}
-                  className="flex-1 p-6 rounded-lg bg-secondary/30 border border-white/5 hover:border-primary/50 transition-colors group"
+                  className="flex-1 p-6 rounded-lg bg-[#FFFDF8] border border-[#0F5132]/14 hover:border-[#0F5132]/40 transition-colors group"
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <FileText className="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform" />
-                    <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors">
+                    <FileText className="w-5 h-5 text-[#0F5132] group-hover:translate-x-1 transition-transform" />
+                    <h3 className="text-lg font-bold text-[#171717] group-hover:text-primary transition-colors">
                       Read Case Study
                     </h3>
                   </div>
-                  <p className="text-gray-400 text-sm">Detailed project analysis</p>
+                  <p className="text-[#5F655F] text-sm">Detailed project analysis</p>
                 </Link>
               )}
             </div>
@@ -281,16 +281,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         )}
 
         {relatedPosts.length > 0 && (
-          <div className="mt-12 pt-8 border-t border-white/5">
+          <div className="mt-12 pt-8 border-t border-[#0F5132]/10">
             <h2 className="text-2xl font-bold mb-6">Related Articles</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {relatedPosts.map((relatedPost) => (
                 <Link
                   key={relatedPost.slug}
                   href={`/blog/${relatedPost.slug}`}
-                  className="p-4 rounded-lg bg-secondary/30 border border-foreground/10 hover:border-primary/50 transition-colors"
+                  className="p-4 rounded-lg bg-[#FFFDF8] border border-[#0F5132]/14 hover:border-[#0F5132]/40 transition-colors"
                 >
-                  <h3 className="text-lg font-bold text-white hover:text-primary transition-colors mb-2">
+                  <h3 className="text-lg font-bold text-[#171717] hover:text-[#0F5132] transition-colors mb-2">
                     {relatedPost.title}
                   </h3>
                   <p className="text-foreground/70 text-sm line-clamp-2">{relatedPost.excerpt}</p>

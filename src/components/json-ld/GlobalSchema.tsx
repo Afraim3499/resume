@@ -38,7 +38,7 @@ export function GlobalSchema() {
                     "contentUrl": `${baseUrl}/assets/rizwanul-islam-afraim.webp`,
                     "caption": "Rizwanul Islam Afraim"
                 },
-                "jobTitle": ["Lead Systems Architect", "Tech Strategist", "Venture Architect", "Operations Expert"],
+                "jobTitle": ["Systems Architect", "Marketing & Sales Operations Specialist", "Product Systems Builder"],
                 "description": "Architect of Intelligent Futures and published SSRN researcher. Rizwanul Islam Afraim specializes in mapping advanced tech trends and building the autonomous infrastructure that capitalizes on them.",
                 "email": "afraim.afraim99@gmail.com",
                 "telephone": "+8801751299259",
@@ -191,7 +191,7 @@ export function GlobalSchema() {
                 "@id": `${baseUrl}/#website`,
                 "name": "Rizwanul Islam (Afraim) Portfolio",
                 "alternateName": ["Afraim Portfolio", "The Orchestrator Portfolio"],
-                "description": "Official digital presence of Rizwanul Islam (Afraim) - Venture Architect and Full-Stack Strategist.",
+                "description": "Official digital presence of Rizwanul Islam (Afraim) - Systems Architect, Marketing & Sales Operations Specialist, and Product Systems Builder.",
                 "url": baseUrl,
                 "inLanguage": "en-US",
                 "author": {

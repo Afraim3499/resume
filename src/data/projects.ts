@@ -37,6 +37,7 @@ export interface Project {
   status: "production" | "development" | "completed";
   privateRepo?: boolean; // marks commercial/client repos as private
   summary?: string; // Short unique summary for homepage/listing
+  technicalSpecs?: { parameter: string; value: string }[];
 }
 
 export const projects: Project[] = [
@@ -118,6 +119,13 @@ export const projects: Project[] = [
     year: 2024,
     status: "production",
     privateRepo: true,
+    technicalSpecs: [
+      { parameter: "Core Framework", value: "Next.js 14+ (App Router) / React 19 / TypeScript" },
+      { parameter: "Content Workflow", value: "Custom CMS / Tiptap Rich-Text Editor" },
+      { parameter: "Editorial Pipeline", value: "Multi-stage Approval Loop (Draft → Review → Approved → Published)" },
+      { parameter: "Database Layer", value: "PostgreSQL on Supabase / Row-Level Security" },
+      { parameter: "Deployment Standard", value: "Docker Containerized / Nginx Proxy / VPS Hosting" },
+    ],
   },
   {
     slug: "inshortbd",
@@ -238,6 +246,13 @@ export const projects: Project[] = [
     year: 2026,
     status: "production",
     privateRepo: true,
+    technicalSpecs: [
+      { parameter: "Core Framework", value: "Next.js 16 (App Router) / React 19 / TypeScript" },
+      { parameter: "Media Ingestion", value: "AWS S3 Bucket / Presigned URLs / Dynamic Compression" },
+      { parameter: "Syndication API", value: "Twitter API v2 Integration for Social Media Auto-sharing" },
+      { parameter: "Quality Standards", value: "Playwright E2E browser testing / GitHub Actions CI/CD pipeline" },
+      { parameter: "Typography Engine", value: "Tiro Bangla Unicode Font / Custom CSS text-balance" },
+    ],
   },
   {
     slug: "arrivals-cave",
@@ -347,6 +362,13 @@ export const projects: Project[] = [
     year: 2026,
     status: "production",
     privateRepo: true,
+    technicalSpecs: [
+      { parameter: "Core Framework", value: "Next.js 16 (App Router) / React 19 / TypeScript" },
+      { parameter: "Database Layer", value: "Supabase PostgreSQL / Client-side Zustand State Store" },
+      { parameter: "Ad Attribution Pipeline", value: "Meta Conversions API (CAPI) / Client-side Facebook Pixel / Deduplication ID mapping" },
+      { parameter: "Merchant Feeds", value: "Automated Google Merchant XML Product Feed Generator" },
+      { parameter: "Localization Layer", value: "next-intl / Multi-language routing support" },
+    ],
   },
   {
     slug: "shahriar-kabir",
@@ -457,6 +479,13 @@ export const projects: Project[] = [
     category: "portfolio",
     year: 2026,
     status: "production",
+    technicalSpecs: [
+      { parameter: "Core Framework", value: "Next.js 16 (App Router) / React 19 / TypeScript" },
+      { parameter: "Content Ingestion", value: "MDX Parsing / Static-rendered Blog Pipeline" },
+      { parameter: "Dynamic Asset Gen", value: "@vercel/og dynamic SVG-to-PNG social card engine" },
+      { parameter: "Scrolling Engine", value: "Lenis Smooth Scrolling / Framer Motion Animations" },
+      { parameter: "Metadata Strategy", value: "Schema.org structured JSON-LD data injection" },
+    ],
   },
   {
     slug: "gaari",
@@ -535,6 +564,13 @@ export const projects: Project[] = [
     year: 2025,
     status: "production",
     privateRepo: true,
+    technicalSpecs: [
+      { parameter: "Core Framework", value: "Next.js 14 / React 18 / TypeScript" },
+      { parameter: "Caching Layer", value: "Redis Cache Store for real-time booking availability calculation" },
+      { parameter: "Database Layer", value: "PostgreSQL on Supabase / Dynamic Relational Integrity" },
+      { parameter: "Payment Gateway", value: "Stripe API Integration / bKash merchant integration" },
+      { parameter: "Support Engine", value: "OpenAI API / Custom RAG Chatbot Integration" },
+    ],
   },
 
 
@@ -734,7 +770,14 @@ export const projects: Project[] = [
         description: "Increase in daily calls per rep via automated workflows.",
         icon: "zap"
       }
-    ]
+    ],
+    technicalSpecs: [
+      { parameter: "Core Framework", value: "Next.js 14 / React 18 / TypeScript" },
+      { parameter: "Realtime Engine", value: "Supabase Realtime (WebSockets) / Presence state indicators" },
+      { parameter: "Collision Detection", value: "Lead locking via WebSocket presence event loops" },
+      { parameter: "UI Latency", value: "0ms Optimistic state updates / Framer Motion micro-animations" },
+      { parameter: "Telephony Optimization", value: "Smart area-code timezone tracking & automated lead sorting" },
+    ],
   },
 ];
 

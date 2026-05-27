@@ -24,6 +24,15 @@ export function ResearchStrip() {
       accent: "rgba(251,191,36,0.04)",
       borderColor: "hover:border-amber-500/20",
       tag: "Business Intelligence & ML"
+    },
+    {
+      title: "Skill Mismatch and Managerial Shortages in Bangladesh's RMG Industry Research",
+      description: "Investigating the paradox of high graduate unemployment and critical managerial talent shortages filled by expensive expatriate premiums inside Bangladesh's garment exports.",
+      href: "/research/skill-mismatch-managerial-shortages-rmg",
+      color: "text-blue-400",
+      accent: "rgba(59,130,246,0.04)",
+      borderColor: "hover:border-blue-500/20",
+      tag: "Labor Economics & RMG"
     }
   ];
 
@@ -33,7 +42,7 @@ export function ResearchStrip() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(16,185,129,0.02),transparent_60%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(251,191,36,0.02),transparent_60%)] pointer-events-none" />
 
-      <div className="container px-4 mx-auto max-w-6xl relative z-10">
+      <div className="container px-4 mx-auto max-w-7xl relative z-10">
         <div className="mb-8 flex flex-col items-center text-center">
           <span className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium uppercase tracking-wider mb-4">
             Published SSRN Research
@@ -41,7 +50,7 @@ export function ResearchStrip() {
           <h2 className="text-2xl md:text-4xl font-serif font-bold tracking-tight">Academic Foundations</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {researchLinks.map((research, index) => (
             <motion.div
               key={research.href}
@@ -57,12 +66,12 @@ export function ResearchStrip() {
                 <span className={`text-[10px] uppercase tracking-widest font-bold ${research.color} opacity-80`}>
                   {research.tag}
                 </span>
-                <h3 className="text-xl md:text-2xl font-serif font-bold mt-2 mb-3 tracking-tight leading-tight group-hover:text-primary transition-colors">
+                <h3 className="text-lg md:text-xl font-serif font-bold mt-2 mb-3 tracking-tight leading-tight group-hover:text-primary transition-colors">
                   {research.title}
                 </h3>
               </div>
 
-              <p className="text-sm md:text-base text-foreground/70 leading-relaxed mb-8 flex-grow">
+              <p className="text-xs md:text-sm text-foreground/70 leading-relaxed mb-8 flex-grow">
                 {research.description}
               </p>
 
@@ -85,3 +94,4 @@ export function ResearchStrip() {
     </section>
   );
 }
+

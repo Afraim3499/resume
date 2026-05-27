@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Resume | Rizwanul Islam Afraim - Lead Systems Architect & Tech Strategist",
     description: "Professional resume of Rizwanul Islam Afraim. Systems Architect mapping advanced tech trends and building production-grade platform ventures.",
     alternates: {
-        canonical: "/resume",
+        canonical: "https://www.rizwanulafraim.com/resume",
     },
     openGraph: {
         title: "Resume | Rizwanul Islam Afraim - Lead Systems Architect",
@@ -27,12 +27,11 @@ export default function ResumePage() {
             "@id": `${baseUrl}/#person`,
             "name": "Rizwanul Islam (Afraim)",
             "jobTitle": [
-                "Venture Architect",
-                "Fractional CTO",
-                "Operations Strategist",
-                "Full-Stack Engineer"
+                "Systems Architect",
+                "Marketing & Sales Operations Specialist",
+                "Product Systems Builder"
             ],
-            "description": "Advanced Venture Architect bridging the gap between high-level business strategy and low-level technical execution.",
+            "description": "Dhaka-based systems architect, marketing & sales operations strategist, and product systems builder.",
             "knowsAbout": allSkills.map(skill => ({
                 "@type": "DefinedTerm",
                 "name": skill.name,
@@ -63,12 +62,12 @@ export default function ResumePage() {
 
             <main className="bg-background min-h-screen text-foreground pt-32 pb-12">
                 <div className="container px-4 mx-auto max-w-7xl">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-16 print:hidden">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 border border-primary/20 animate-fade-in-up">
                             <span>Interactive Knowledge Graph</span>
                         </div>
-                        <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">
-                            The Architecture of <span className="text-gradient">Experience</span>
+                        <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-[#171717]">
+                            The Architecture of <span className="text-[#0F5132] italic">Experience</span>
                         </h1>
                         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                             I don&apos;t just list tools. I build connected systems. Explore my technical neural network below.
@@ -76,7 +75,7 @@ export default function ResumePage() {
                     </div>
 
                     {/* The Graph */}
-                    <div className="mb-24">
+                    <div className="mb-24 print:hidden">
                         <ResumeGraph />
                     </div>
 

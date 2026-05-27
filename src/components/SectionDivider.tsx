@@ -14,7 +14,7 @@ export function SectionDivider({ variant = "wave", className = "" }: SectionDivi
 
   if (variant === "wave") {
     return (
-      <div ref={ref} className={`relative w-full overflow-hidden ${className}`}>
+      <div ref={ref} className={`relative w-full overflow-hidden ${className || "text-background"}`}>
         <svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
@@ -23,7 +23,6 @@ export function SectionDivider({ variant = "wave", className = "" }: SectionDivi
           {isInView && (
             <motion.path
               fill="currentColor"
-              className="text-background"
               initial={{ d: "M0,60 C300,20 600,100 900,60 C1050,40 1200,80 1200,60 L1200,120 L0,120 Z" }}
               animate={{
                 d: [

@@ -239,6 +239,24 @@ export default function PowerBIResearchPage() {
               JEL: C88, M15, D83, O33
             </p>
           </div>
+
+          {/* Keywords block */}
+          <div className="mt-6 flex flex-wrap gap-2 max-w-xl">
+            {[
+              "Business Intelligence",
+              "Power BI",
+              "Artificial Intelligence Analytics",
+              "Data Visualization",
+              "Python Analytics",
+              "Machine Learning Systems",
+              "Decision Intelligence",
+              "AI-driven Analytics"
+            ].map((keyword) => (
+              <span key={keyword} className="px-3 py-1 rounded-full bg-secondary/40 border border-foreground/5 text-xs text-foreground/60 font-medium">
+                {keyword}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -430,9 +448,10 @@ export default function PowerBIResearchPage() {
             <section id="integrity" className="mb-20 scroll-mt-24">
               <h2 className="text-2xl md:text-3xl font-serif font-bold mb-6 text-foreground/60">Research Integrity</h2>
               <div className="space-y-4 text-sm text-foreground/40 leading-relaxed max-w-xl">
-                <p><strong>Declaration:</strong> No financial, professional, or personal relationships influenced this independent study.</p>
-                <p><strong>Ethics:</strong> No human participants or personal data were used; methodology was strictly analytical and public-source based.</p>
-                <p><strong>Funder Statement:</strong> This research received no external funding from any organizations.</p>
+                <p><strong>Declaration of Interest:</strong> The author declares that there are no known financial, professional, or personal relationships that could have appeared to influence the work reported in this paper. The research was conducted independently, and all analyses and conclusions were developed solely based on publicly available information, logical evaluation, and independent research methodology.</p>
+                <p><strong>Ethics Approval:</strong> This study did not involve human participants, personal data collection, clinical procedures, or experimental subjects. Therefore, institutional ethics approval was not required. All information used in this research was obtained from publicly available sources and analytical evaluation.</p>
+                <p><strong>Funder Statement:</strong> This research received no external funding from any public, commercial, or non-profit organizations. The study was conducted independently by the author.</p>
+                <p><strong>JEL Classification:</strong> C88, M15, D83, O33</p>
               </div>
             </section>
 

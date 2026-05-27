@@ -18,12 +18,12 @@ export function BlogFilters({ posts, onFilterChange }: BlogFiltersProps) {
   const [dateFilter, setDateFilter] = useState<string>("all");
 
   const categories = useMemo(() => {
-    const cats = new Set(posts.map(post => post.category));
+    const cats = new Set(posts.map(post => post.category).filter(Boolean));
     return ["all", ...Array.from(cats).sort()];
   }, [posts]);
 
   const tags = useMemo(() => {
-    const t = new Set(posts.flatMap(post => post.tags));
+    const t = new Set(posts.flatMap(post => post.tags).filter(Boolean));
     return ["all", ...Array.from(t).sort()];
   }, [posts]);
 

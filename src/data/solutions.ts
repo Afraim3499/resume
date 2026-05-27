@@ -42,6 +42,8 @@ export interface Solution {
 
     // FAQ
     faqs: SolutionFAQ[];
+    categoryGroup: "gtm-operations" | "dynamic-platforms" | "executive-brand";
+    technicalSpecs: { parameter: string; value: string }[];
 }
 
 export const solutions: Solution[] = [
@@ -92,6 +94,15 @@ export const solutions: Solution[] = [
 
         relatedBlogSlugs: ["meta-capi-nextjs", "stop-wasting-money-email-verification"],
         techStack: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Stripe", "Meta CAPI", "Google Merchant", "TailwindCSS v4", "Tiptap"],
+        categoryGroup: "gtm-operations",
+        technicalSpecs: [
+            { parameter: "Core Framework", value: "Next.js 16 (App Router) / React 19 / TypeScript" },
+            { parameter: "Database Tier", value: "Supabase (PostgreSQL) / Row-Level Security (RLS) Enabled" },
+            { parameter: "Data Sync Protocol", value: "Supabase Realtime / WebSockets / Redis Caching" },
+            { parameter: "API Architecture", value: "RESTful APIs / Server Actions / TanStack Query" },
+            { parameter: "Deployment Standard", value: "Docker Containerized / Vercel Edge / VPS Hosting" },
+            { parameter: "Attribution Tracking", value: "Meta Conversions API (CAPI) / Google Merchant XML Feed" },
+        ],
 
         faqs: [
             {
@@ -160,6 +171,14 @@ export const solutions: Solution[] = [
 
         relatedBlogSlugs: ["news-aggregator-architecture", "launching-trail-news-platform", "playwright-cicd"],
         techStack: ["Next.js 16", "React 19", "TypeScript", "Supabase", "PostgreSQL", "AWS S3", "Tiptap", "TanStack Query", "Playwright", "GitHub Actions"],
+        categoryGroup: "dynamic-platforms",
+        technicalSpecs: [
+            { parameter: "Core Framework", value: "Next.js 16 (App Router) / React 19 / TypeScript" },
+            { parameter: "Content Engine", value: "MDX Pipeline / Custom Tiptap Rich-Text Editor" },
+            { parameter: "Media Ingestion", value: "AWS S3 / Presigned URLs / Image Optimization" },
+            { parameter: "Testing Infrastructure", value: "Playwright E2E Browser Testing / GitHub Actions CI/CD" },
+            { parameter: "Database Tier", value: "Supabase (PostgreSQL) / Cache Control Headers" },
+        ],
 
         faqs: [
             {
@@ -227,6 +246,14 @@ export const solutions: Solution[] = [
 
         relatedBlogSlugs: ["how-to-build-booking-system-nextjs", "building-gaari-booking-system", "building-ai-chatbot-nextjs-openai"],
         techStack: ["Next.js 14", "React 18", "TypeScript", "Supabase", "PostgreSQL", "Redis", "Stripe", "Bkash", "Cloudinary", "OpenAI"],
+        categoryGroup: "dynamic-platforms",
+        technicalSpecs: [
+            { parameter: "Core Framework", value: "Next.js 14 / React 18 / TypeScript" },
+            { parameter: "Caching Layer", value: "Redis Cache / Memory Store for Booking States" },
+            { parameter: "Database Tier", value: "Supabase (PostgreSQL) / Relational Schema" },
+            { parameter: "Payment Gateways", value: "Stripe API / Bkash Merchant Gateway Integration" },
+            { parameter: "Support Architecture", value: "OpenAI API / Custom RAG Chatbot Integration" },
+        ],
 
         faqs: [
             {
@@ -294,6 +321,14 @@ export const solutions: Solution[] = [
 
         relatedBlogSlugs: ["deterministic-motion-editorial-ux", "cursor-vs-antigravity-ai-coding"],
         techStack: ["Next.js 16", "React 19", "TypeScript", "TailwindCSS v4", "MDX", "Framer Motion", "Lenis", "@vercel/og", "Vercel Analytics"],
+        categoryGroup: "executive-brand",
+        technicalSpecs: [
+            { parameter: "Core Framework", value: "Next.js 16 (App Router) / React 19 / TypeScript" },
+            { parameter: "Content Engine", value: "MDX (Markdown + React Component Embedding)" },
+            { parameter: "OG Image Generation", value: "@vercel/og Dynamic SVG-to-PNG Engine" },
+            { parameter: "Animation Engine", value: "Framer Motion / Lenis Smooth Scroll" },
+            { parameter: "SEO Metadata", value: "Schema.org JSON-LD / Breadcrumb / Organization Schema" },
+        ],
 
         faqs: [
             {
@@ -361,6 +396,14 @@ export const solutions: Solution[] = [
 
         relatedBlogSlugs: ["building-leads-and-sales-crm", "high-velocity-sales-engines-crm", "crm-downgrade-strategy-salesforce-to-close", "lead-gen-stack-apollo-salesnav"],
         techStack: ["Next.js 14", "Supabase Realtime", "PostgreSQL", "Shadcn UI", "Tailwind CSS", "Framer Motion", "WebRTC"],
+        categoryGroup: "gtm-operations",
+        technicalSpecs: [
+            { parameter: "Core Framework", value: "Next.js 14 / React 18 / TypeScript" },
+            { parameter: "Realtime Engine", value: "Supabase Realtime (WebSockets) / Presence Tracking" },
+            { parameter: "Collision Detection", value: "Deterministic State Locking via WebSocket Sync" },
+            { parameter: "UI Latency", value: "0ms Optimistic UI Updates / Framer Motion Transition" },
+            { parameter: "Database Tier", value: "PostgreSQL / Realtime Channels Enabled" },
+        ],
 
         faqs: [
             {
@@ -428,6 +471,13 @@ export const solutions: Solution[] = [
 
         relatedBlogSlugs: ["4-layer-seo-framework-yagacalls", "data-harvest-zoominfo-rocketreach", "stop-wasting-money-email-verification"],
         techStack: ["Schema.org", "JSON-LD", "Google Search Console", "AI Content Generation", "Core Web Vitals", "Structured Data"],
+        categoryGroup: "gtm-operations",
+        technicalSpecs: [
+            { parameter: "SEO Architecture", value: "4-Layer Framework: SXO + AIO + GEO + AEO" },
+            { parameter: "Structured Data", value: "JSON-LD / Custom Schema Injection Hooks" },
+            { parameter: "Performance Target", value: "Core Web Vitals Optimizations (100/100 Lighthouse)" },
+            { parameter: "Attribution Setup", value: "Google Search Console / Meta Pixel / Custom Event Tracking" },
+        ],
 
         faqs: [
             {

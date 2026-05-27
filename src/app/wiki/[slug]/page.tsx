@@ -37,7 +37,7 @@ export async function generateMetadata({
             description: term.definition,
         },
         alternates: {
-            canonical: `/wiki/${term.id}`,
+            canonical: `https://www.rizwanulafraim.com/wiki/${term.id}`,
         },
     };
 }

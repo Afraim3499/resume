@@ -4,38 +4,26 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Menu from "lucide-react/dist/esm/icons/menu";
 import X from "lucide-react/dist/esm/icons/x";
-import ChevronDown from "lucide-react/dist/esm/icons/chevron-down";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
-  { name: "Blog", href: "/blog" },
-  { name: "Case Studies", href: "/case-studies" },
-  { name: "Solutions", href: "/services", isDropdown: true },
+  { name: "Solutions", href: "/solutions" },
+  { name: "Work", href: "/case-studies" },
+  { name: "Research", href: "/research" },
+  { name: "Writing", href: "/blog" },
   { name: "Resume", href: "/resume" },
-];
-
-const solutionLinks = [
-  { name: "E-Commerce Platform", href: "/solutions/ecommerce-platform" },
-  { name: "News & Media Hub", href: "/solutions/news-media-platform" },
-  { name: "Booking & Fleet", href: "/solutions/booking-system" },
-  { name: "Sales & CRM", href: "/solutions/crm-sales-system" },
-  { name: "Personal Brand", href: "/solutions/personal-brand-website" },
-  { name: "SEO & Lead Gen", href: "/solutions/seo-lead-generation" },
-  { name: "View All Solutions →", href: "/services", isMain: true }
+  { name: "About", href: "/about" },
 ];
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [isSolutionsHovered, setIsSolutionsHovered] = useState(false);
-  const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pathname = usePathname();
   const rafRef = useRef<number | null>(null);
-  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +32,7 @@ export function Navigation() {
       }
 
       rafRef.current = requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > 50);
+        setIsScrolled(window.scrollY > 30);
 
         const sections = navItems.map((item) => item.href.replace("/#", ""));
         const currentSection = sections.find((section) => {
@@ -72,7 +60,6 @@ export function Navigation() {
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    setIsMobileSolutionsOpen(false);
     if (href.startsWith("/#")) {
       const id = href.replace("/#", "");
       const element = document.getElementById(id);
@@ -82,95 +69,103 @@ export function Navigation() {
     }
   };
 
-  const handleMouseEnter = () => {
-    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
-    setIsSolutionsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    hoverTimeoutRef.current = setTimeout(() => {
-      setIsSolutionsHovered(false);
-    }, 150); // slight delay to make it forgiving
-  };
-
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-white/5"
-          : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 theme-copper ${isScrolled
+          ? "bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#E6D8C8] shadow-sm h-16 md:h-18"
+          : "bg-[#FDFBF7]/85 backdrop-blur-sm border-b border-[#E6D8C8]/30 h-16 md:h-18"
           }`}
       >
-        <div className="container px-4 mx-auto max-w-7xl">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
-            <Link
-              href="/"
-              className="text-xl font-serif font-bold text-foreground hover:text-primary transition-colors"
-            >
-              Rizwanul Islam
-            </Link>
+        <div className="container px-4 mx-auto max-w-7xl h-full">
+          <div className="flex items-center justify-between h-full">
+            {/* Left: Branding */}
+            <div className="flex flex-col select-none">
+              <Link
+                href="/"
+                className="text-base md:text-lg font-serif font-bold text-[#1F2022] hover:text-primary transition-colors leading-tight"
+              >
+                Rizwanul Islam Afraim
+              </Link>
+              <span className="text-[9px] md:text-[10px] text-[#5F5A52] font-sans font-medium max-w-[200px] sm:max-w-[280px] md:max-w-none leading-none mt-0.5">
+                Systems for growth, operations, and product execution
+              </span>
+            </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            {/* Center/Desktop Navigation links */}
+            <div className="hidden md:flex items-center gap-5 lg:gap-7">
               {navItems.map((item) => {
                 const sectionId = item.href.replace("/#", "");
-                const isActive = 
-                  activeSection === sectionId || 
-                  pathname === item.href ||
-                  (item.isDropdown && pathname.startsWith('/solutions'));
+                const isActive = activeSection === sectionId || pathname.startsWith(item.href);
 
-                if (item.isDropdown) {
+                if (item.name === "Solutions") {
                   return (
                     <div
                       key={item.name}
                       className="relative"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
+                      onMouseEnter={() => setIsDropdownOpen(true)}
+                      onMouseLeave={() => setIsDropdownOpen(false)}
                     >
-                      <button
-                        className={`relative min-h-[44px] flex items-center gap-1 px-1 text-sm font-medium transition-colors ${isActive || isSolutionsHovered
-                          ? "text-primary"
-                          : "text-foreground/70 hover:text-foreground"
-                          }`}
+                      <Link
+                        href={item.href}
                         onClick={() => handleNavClick(item.href)}
+                        className={`relative min-h-[44px] flex items-center px-1 text-xs lg:text-sm font-medium transition-colors ${isActive
+                          ? "text-primary font-semibold"
+                          : "text-[#1F2022]/70 hover:text-primary"
+                          }`}
                       >
                         {item.name}
-                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isSolutionsHovered ? "rotate-180" : ""}`} />
-                        {isActive && !isSolutionsHovered && (
+                        {isActive && (
                           <motion.div
                             layoutId="activeSection"
                             className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
                           />
                         )}
-                      </button>
+                      </Link>
 
-                      {/* Dropdown Menu */}
                       <AnimatePresence>
-                        {isSolutionsHovered && (
+                        {isDropdownOpen && (
                           <motion.div
-                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                            transition={{ duration: 0.15, ease: "easeOut" }}
-                            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-background border border-foreground/10 rounded-xl shadow-2xl overflow-hidden py-2"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                            className="absolute left-0 mt-0 w-64 bg-[#FFFDF8] border border-[#0F5132]/12 rounded-xl shadow-lg p-4 z-50 flex flex-col gap-2"
                           >
-                            {solutionLinks.map((link) => (
-                              <Link
-                                key={link.href}
-                                href={link.href}
-                                onClick={() => setIsSolutionsHovered(false)}
-                                className={`block px-4 py-2.5 text-sm transition-colors ${link.isMain
-                                  ? "text-primary font-semibold hover:bg-primary/10 mt-2 border-t border-foreground/5 pt-3"
-                                  : "text-foreground/80 hover:text-primary hover:bg-secondary/50"
-                                  }`}
-                              >
-                                {link.name}
-                              </Link>
-                            ))}
+                            <Link
+                              href="/solutions/gtm-operations"
+                              className="p-2.5 rounded-lg hover:bg-[#EAF7EF] transition-colors text-left group"
+                              onClick={() => setIsDropdownOpen(false)}
+                            >
+                              <div className="text-xs font-bold text-[#171717] group-hover:text-[#0F5132]">GTM &amp; Operations</div>
+                              <div className="text-[10px] text-[#5F655F]">CRM, e-commerce, and lead-gen systems.</div>
+                            </Link>
+                            <Link
+                              href="/solutions/dynamic-platforms"
+                              className="p-2.5 rounded-lg hover:bg-[#EAF7EF] transition-colors text-left group"
+                              onClick={() => setIsDropdownOpen(false)}
+                            >
+                              <div className="text-xs font-bold text-[#171717] group-hover:text-[#0F5132]">Dynamic Platforms</div>
+                              <div className="text-[10px] text-[#5F655F]">CMS and reservation architectures.</div>
+                            </Link>
+                            <Link
+                              href="/solutions/executive-brand"
+                              className="p-2.5 rounded-lg hover:bg-[#EAF7EF] transition-colors text-left group"
+                              onClick={() => setIsDropdownOpen(false)}
+                            >
+                              <div className="text-xs font-bold text-[#171717] group-hover:text-[#0F5132]">Executive Brand</div>
+                              <div className="text-[10px] text-[#5F655F]">Thought leadership brand sites.</div>
+                            </Link>
+                            <div className="h-px bg-[#0F5132]/6 my-1" />
+                            <Link
+                              href="/solutions"
+                              className="p-2 text-center text-xs font-bold text-[#0F5132] hover:underline"
+                              onClick={() => setIsDropdownOpen(false)}
+                            >
+                              Browse All Solutions
+                            </Link>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -183,9 +178,9 @@ export function Navigation() {
                     key={item.name}
                     href={item.href}
                     onClick={() => handleNavClick(item.href)}
-                    className={`relative min-h-[44px] min-w-[44px] flex items-center justify-center px-1 text-sm font-medium transition-colors ${isActive
-                      ? "text-primary"
-                      : "text-foreground/70 hover:text-foreground"
+                    className={`relative min-h-[44px] flex items-center px-1 text-xs lg:text-sm font-medium transition-colors ${isActive
+                      ? "text-primary font-semibold"
+                      : "text-[#1F2022]/70 hover:text-primary"
                       }`}
                   >
                     {item.name}
@@ -198,38 +193,45 @@ export function Navigation() {
                   </Link>
                 );
               })}
-              <div className="hidden lg:flex items-center ml-2 mr-4">
-                <a
-                  href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm shadow-primary/20"
-                >
-                  Book a Consultation
-                </a>
-              </div>
-              <div className="min-h-[44px] min-w-[44px] flex items-center justify-center">
-                <ThemeToggle />
-              </div>
+            </div>
+
+            {/* Right: CTAs */}
+            <div className="hidden md:flex items-center gap-3">
+              <a
+                href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-lg bg-[#0F5132] text-white text-xs lg:text-sm font-medium hover:bg-[#168A4A] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm"
+              >
+                Start a Project
+              </a>
+              <Link
+                href="/about"
+                className="px-4 py-2 rounded-lg border border-[#0F5132]/20 bg-[#FFFDF8] text-[#1F2022] text-xs lg:text-sm font-medium hover:bg-[#EAF7EF] transition-colors"
+              >
+                About
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center p-2 text-foreground/70 hover:text-foreground transition-colors"
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+            <div className="flex md:hidden items-center gap-2">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 text-[#1F2022]/70 hover:text-primary transition-colors"
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
@@ -238,83 +240,106 @@ export function Navigation() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
             />
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-72 bg-background border-l border-foreground/10 z-50 md:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-72 bg-[#FDFBF7] border-l border-[#E6D8C8] z-50 md:hidden overflow-y-auto theme-copper"
             >
-              <div className="p-6 space-y-2">
-                {navItems.map((item) => {
-                  const sectionId = item.href.replace("/#", "");
-                  const isActive = 
-                    activeSection === sectionId || 
-                    pathname === item.href ||
-                    (item.isDropdown && pathname.startsWith('/solutions'));
+              <div className="p-6 space-y-6 pt-24">
+                <div className="flex flex-col gap-2">
+                  {navItems.map((item) => {
+                    const sectionId = item.href.replace("/#", "");
+                    const isActive = activeSection === sectionId || pathname.startsWith(item.href);
 
-                  if (item.isDropdown) {
-                    return (
-                      <div key={item.name} className="py-1">
-                        <button
-                          onClick={() => setIsMobileSolutionsOpen(!isMobileSolutionsOpen)}
-                          className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors font-medium ${isActive
-                            ? "bg-primary/10 text-primary"
-                            : "text-foreground hover:bg-foreground/5"
-                            }`}
-                        >
-                          {item.name}
-                          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMobileSolutionsOpen ? "rotate-180" : ""}`} />
-                        </button>
-                        <AnimatePresence>
-                          {isMobileSolutionsOpen && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              className="overflow-hidden"
+                    if (item.name === "Solutions") {
+                      return (
+                        <div key={item.name} className="flex flex-col">
+                          <Link
+                            href={item.href}
+                            onClick={() => handleNavClick(item.href)}
+                            className={`block w-full text-left px-4 py-3 rounded-lg transition-colors font-medium ${isActive
+                              ? "bg-primary/10 text-primary font-semibold"
+                              : "text-[#1F2022] hover:bg-[#FFFDF8] hover:text-primary"
+                              }`}
+                          >
+                            {item.name}
+                          </Link>
+                          <div className="pl-6 border-l border-[#0F5132]/12 flex flex-col gap-1.5 mt-1.5 mb-3">
+                            <Link
+                              href="/solutions/gtm-operations"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className={`text-xs font-medium py-2 px-3 rounded-md transition-colors ${
+                                pathname === "/solutions/gtm-operations"
+                                  ? "bg-[#EAF7EF] text-[#0F5132] font-semibold"
+                                  : "text-[#5F5A52] hover:text-[#0F5132] hover:bg-[#EAF7EF]/30"
+                              }`}
                             >
-                              <div className="pl-4 pr-2 py-2 flex flex-col gap-1 border-l-2 border-foreground/5 ml-4 mt-1">
-                                {solutionLinks.map((link) => (
-                                  <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    onClick={() => handleNavClick(link.href)}
-                                    className={`block px-4 py-2.5 rounded-md text-sm transition-colors ${link.isMain
-                                      ? "font-semibold text-primary mt-1"
-                                      : "text-foreground/70 hover:text-foreground hover:bg-secondary/50"
-                                      }`}
-                                  >
-                                    {link.name}
-                                  </Link>
-                                ))}
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    );
-                  }
+                              GTM &amp; Operations
+                            </Link>
+                            <Link
+                              href="/solutions/dynamic-platforms"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className={`text-xs font-medium py-2 px-3 rounded-md transition-colors ${
+                                pathname === "/solutions/dynamic-platforms"
+                                  ? "bg-[#EAF7EF] text-[#0F5132] font-semibold"
+                                  : "text-[#5F5A52] hover:text-[#0F5132] hover:bg-[#EAF7EF]/30"
+                              }`}
+                            >
+                              Dynamic Platforms
+                            </Link>
+                            <Link
+                              href="/solutions/executive-brand"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className={`text-xs font-medium py-2 px-3 rounded-md transition-colors ${
+                                pathname === "/solutions/executive-brand"
+                                  ? "bg-[#EAF7EF] text-[#0F5132] font-semibold"
+                                  : "text-[#5F5A52] hover:text-[#0F5132] hover:bg-[#EAF7EF]/30"
+                              }`}
+                            >
+                              Executive Brand
+                            </Link>
+                          </div>
+                        </div>
+                      );
+                    }
 
-                  return (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => handleNavClick(item.href)}
-                      className={`block w-full text-left px-4 py-3 flex items-center rounded-lg transition-colors font-medium ${isActive
-                        ? "bg-primary/10 text-primary"
-                        : "text-foreground hover:bg-foreground/5"
-                        }`}
-                    >
-                      {item.name}
-                    </Link>
-                  );
-                })}
-                <div className="pt-6 mt-4 border-t border-foreground/10 flex justify-between items-center">
-                  <span className="text-sm font-medium text-foreground/60">Theme</span>
-                  <ThemeToggle />
+                    return (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={() => handleNavClick(item.href)}
+                        className={`block w-full text-left px-4 py-3 rounded-lg transition-colors font-medium ${isActive
+                          ? "bg-primary/10 text-primary font-semibold"
+                          : "text-[#1F2022] hover:bg-[#FFFDF8] hover:text-primary"
+                          }`}
+                      >
+                        {item.name}
+                      </Link>
+                    );
+                  })}
+                </div>
+
+                <div className="border-t border-[#E6D8C8] pt-6 flex flex-col gap-3">
+                  <a
+                    href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="w-full py-3 rounded-lg bg-[#0F5132] text-white text-center font-medium hover:bg-[#168A4A] transition-colors shadow-sm block text-sm"
+                  >
+                    Start a Project
+                  </a>
+                  <Link
+                    href="/about"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="w-full py-3 rounded-lg border border-[#0F5132]/20 bg-[#FFFDF8] text-[#1F2022] text-center font-medium hover:bg-[#EAF7EF] transition-colors block text-sm"
+                  >
+                    About
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -324,4 +349,3 @@ export function Navigation() {
     </>
   );
 }
-

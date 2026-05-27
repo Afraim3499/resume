@@ -13,6 +13,9 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
             smoothWheel: true,
         });
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).lenis = lenis;
+
         function raf(time: number) {
             lenis.raf(time);
             requestAnimationFrame(raf);
@@ -22,6 +25,8 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
         return () => {
             lenis.destroy();
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            delete (window as any).lenis;
         };
     }, []);
 

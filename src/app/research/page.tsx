@@ -67,9 +67,8 @@ export default function ResearchIndexPage() {
     <main className="bg-background min-h-screen text-foreground pb-20">
       {/* ===== HERO ===== */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
-        {/* Ambient background effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.06),transparent_70%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(245,158,11,0.04),transparent_60%)] pointer-events-none" />
+        {/* Subtle green ambient */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(15,81,50,0.04),transparent_70%)] pointer-events-none" />
 
         <div className="container px-4 mx-auto max-w-5xl relative z-10">
           <Breadcrumbs
@@ -102,7 +101,7 @@ export default function ResearchIndexPage() {
       </section>
 
       {/* ===== RESEARCH PILLARS ===== */}
-      <section className="py-16 bg-secondary/10 border-y border-foreground/5">
+      <section className="py-16 bg-[#FFFDF8] border-y border-[#0F5132]/10">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="mb-12 text-center max-w-3xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-serif font-bold mb-4">Core Research Pillars</h2>

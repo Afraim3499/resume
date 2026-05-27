@@ -32,6 +32,9 @@ export async function generateMetadata({
   return {
     title: `${caseStudy.title} | Advanced Platform Case Study`,
     description: `Deep dive case study: ${caseStudy.problem.substring(0, 100)}... Engineering scalable solutions with ${caseStudy.technologies.slice(0, 3).join(", ")}.`,
+    alternates: {
+      canonical: `https://www.rizwanulafraim.com/case-studies/${caseStudy.slug}`,
+    },
     openGraph: {
       title: `${caseStudy.title} | Rizwanul Islam - Operations Expert`,
       description: caseStudy.problem,

@@ -14,6 +14,7 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { GlobalSchema } from "@/components/json-ld/GlobalSchema";
+import { FooterWrapper } from "@/components/FooterWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,10 +44,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Rizwanul Islam Afraim | Lead Systems Architect",
+    default: "Rizwanul Islam Afraim | Systems for Growth, Operations & Product Execution",
     template: "%s | Rizwanul Islam Afraim",
   },
-  description: "Lead Systems Architect & Tech Strategist specializing in agentic AI and autonomous infrastructure. Mapping the future of tech trends to build production-grade digital ventures.",
+  description: "Rizwanul Islam Afraim helps teams organize market research, sales operations, product workflows, SEO systems, automation, and reporting into scalable execution systems.",
   keywords: [
     "Rizwanul Islam Afraim",
     "Afraim",
@@ -72,22 +73,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.rizwanulafraim.com",
-    title: "Rizwanul Islam Afraim | Lead Systems Architect",
-    description: "Architecting autonomous infrastructure out of chaos. The professional HQ of Rizwanul Islam Afraim, Systems Architect & Strategist.",
+    title: "Rizwanul Islam Afraim | Systems for Growth, Operations & Product Execution",
+    description: "Rizwanul Islam Afraim helps teams organize market research, sales operations, product workflows, SEO systems, automation, and reporting into scalable execution systems.",
     siteName: "Rizwanul Islam Afraim Portfolio",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Rizwanul Islam Afraim - Lead Systems Architect",
+        alt: "Rizwanul Islam Afraim - Systems for Growth, Operations & Product Execution",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rizwanul Islam Afraim | Lead Systems Architect",
-    description: "Architecting autonomous infrastructure. mapping shifts in agentic AI and tech trends.",
+    title: "Rizwanul Islam Afraim | Systems for Growth, Operations & Product Execution",
+    description: "Rizwanul Islam Afraim helps teams organize market research, sales operations, product workflows, SEO systems, automation, and reporting into scalable execution systems.",
     images: ["/og-image.jpg"],
     creator: "@rizwanul_afraim",
   },
@@ -118,6 +119,15 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -133,8 +143,8 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/assets/rizwanul-islam-afraim.webp"
-          imageSrcSet="/assets/rizwanul-islam-afraim.webp 320w, /assets/rizwanul-islam-afraim.webp 640w"
+          href="/assets/afraim-logo.png"
+          imageSrcSet="/assets/afraim-logo.png 320w, /assets/afraim-logo.png 640w"
           imageSizes="(max-width: 768px) 256px, (max-width: 1200px) 320px, 320px"
           fetchPriority="high"
         />
@@ -144,7 +154,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://d2fltix0v2e0sb.cloudfront.net" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml" />
-        <meta name="theme-color" content="#10b981" />
+        <meta name="theme-color" content="#0F5132" />
       </head>
       <body
         className={clsx(
@@ -173,6 +183,7 @@ export default function RootLayout({
           <SmoothScroll>
             <EntryWrapper>{children}</EntryWrapper>
           </SmoothScroll>
+          <FooterWrapper />
         </ThemeProvider>
       </body>
     </html>

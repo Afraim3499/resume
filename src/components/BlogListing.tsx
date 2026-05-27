@@ -16,9 +16,9 @@ export function BlogListing({ initialPosts }: BlogListingProps) {
     return (
         <div className="container px-4 mx-auto max-w-6xl pt-32 pb-20">
             <div className="text-center mb-16">
-                <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4">
-                    Advanced Technical <span className="text-gradient">Insights</span>
-                </h1>
+                <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4 text-[#171717]">
+                Research &amp; <span className="text-[#0F5132] italic">Insights</span>
+            </h1>
                 <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
                     Expert deep dives into AI/ML, Next.js architecture, RAG pipelines, and operational data strategy.
                 </p>

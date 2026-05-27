@@ -8,8 +8,8 @@ export const metadata: Metadata = {
     title: "Strategic Services | Business Development & Workflow Optimization",
     description: "Partner with an Execution Strategist who bridges the gap between chaos and profit. Specialized in Workflow Optimization, Market Intelligence, and Digital Product Strategy.",
     openGraph: {
-        title: "Startups need Execution, Not Just Code.",
-        description: "I turn complex manual messes into automated, one-click systems. Optimize your business logic with Rizwanul Islam.",
+        title: "Built to Scale. Not Just to Launch.",
+        description: "Production-grade systems for growth, operations, and product execution. Work with Rizwanul Islam Afraim.",
         type: "website",
     },
 };
@@ -18,61 +18,42 @@ const strategicStack = [
     "HubSpot", "Salesforce", "Close", "Apollo", "Seamless", "LinkedIn Sales Navigator", "ZoomInfo", "NeverBounce", "ZeroBounce", "Cursor AI", "Antigravity"
 ];
 
-const colorMap: Record<string, { bg: string; text: string; ghost: string }> = {
-    blue: { bg: "bg-blue-500/10", text: "text-blue-500", ghost: "text-blue-500/20" },
-    emerald: { bg: "bg-emerald-500/10", text: "text-emerald-500", ghost: "text-emerald-500/20" },
-    purple: { bg: "bg-purple-500/10", text: "text-purple-500", ghost: "text-purple-500/20" },
-    orange: { bg: "bg-orange-500/10", text: "text-orange-500", ghost: "text-orange-500/20" },
-};
-
 const productizedSystems = [
     {
         name: "E-Commerce Platform",
         desc: "Custom storefronts with payment integration, ad tracking, and CMS",
         slug: "ecommerce-platform",
         icon: Globe,
-        color: "blue",
-        isExternal: true,
     },
     {
         name: "News & Media Platform",
         desc: "Editorial CMS with workflows, automation, and SEO",
         slug: "news-media-platform",
         icon: Bot,
-        color: "emerald",
-        isExternal: true,
     },
     {
         name: "Booking System",
         desc: "Multi-service reservations with dynamic pricing and AI chatbot",
         slug: "booking-system",
         icon: Globe,
-        color: "purple",
-        isExternal: true,
     },
     {
         name: "CRM & Sales System",
         desc: "Real-time sales command center with visual pipelines",
         slug: "crm-sales-system",
         icon: Database,
-        color: "orange",
-        isExternal: true,
     },
     {
         name: "Personal Brand Website",
         desc: "Premium personal brand with editorial blog and SEO",
         slug: "personal-brand-website",
         icon: Layers,
-        color: "blue",
-        isExternal: true,
     },
     {
         name: "SEO & Lead Generation",
         desc: "4-Layer SEO framework that generates real leads",
         slug: "seo-lead-generation",
         icon: BarChart3,
-        color: "emerald",
-        isExternal: true,
     },
 ];
 
@@ -82,21 +63,18 @@ const services = [
         title: "Workflow Optimization",
         description: "I audit your manual processes and architect automated systems to replace them. Stop paying humans to do robot work.",
         features: ["Process Audits", "Automation Architecture", "CRM Integration", "No-Code/Low-Code Solutions"],
-        color: "emerald"
     },
     {
         icon: BarChart3,
         title: "Market Intelligence",
         description: "Data-driven strategy to identify open lanes in your industry. I don't guess; I scrape, analyze, and report.",
         features: ["Competitor Analysis", "Lead Gen Strategy", "Data Mining", "Pricing Strategy"],
-        color: "blue"
     },
     {
         icon: Bot,
         title: "Digital Product Strategy",
         description: "Translating your business goals into technical requirements. I bridge the gap between 'I have an idea' and 'It's live'.",
         features: ["MVP Planning", "Tech Stack Selection", "User Flow Optimization", "Feature Prioritization"],
-        color: "purple"
     },
 ];
 
@@ -128,7 +106,7 @@ export default function ServicesPage() {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "serviceType": "Venture Architecture & Systems",
-        "name": "Rizwanul Islam (Afraim) - Venture Architect",
+        "name": "Rizwanul Islam (Afraim) - Execution Strategist",
         "url": "https://www.rizwanulafraim.com/services",
         "image": "https://www.rizwanulafraim.com/assets/rizwanul-islam-afraim.webp",
         "priceRange": "$$$",
@@ -174,7 +152,7 @@ export default function ServicesPage() {
     };
 
     return (
-        <main className="bg-background min-h-screen text-foreground pt-32 pb-12 overflow-hidden">
+        <main className="bg-[#F7F4EC] min-h-screen text-[#171717] pt-32 pb-12 overflow-hidden">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -194,75 +172,68 @@ export default function ServicesPage() {
             />
 
             {/* Ambient Background */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px] -z-10" />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0F5132]/4 rounded-full blur-[120px] -z-10" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#EAF7EF]/60 rounded-full blur-[80px] -z-10" />
 
             {/* Hero Section */}
             <section className="container px-4 mx-auto max-w-5xl mb-24 text-center relative z-10">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 border border-primary/20 animate-fade-in-up">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EAF7EF] text-[#0F5132] text-sm font-medium mb-8 border border-[#0F5132]/20">
                     <Zap className="w-4 h-4" />
-                    <span>Hybrid Authority Protocol</span>
+                    <span>Execution Strategist · Systems Architect</span>
                 </div>
-                <h1 className="text-5xl md:text-8xl font-serif font-bold mb-8 leading-tight tracking-tight">
-                    Ideas are Cheap. <br />
-                    <span className="text-gradient">Execution is Everything.</span>
+                <h1 className="text-5xl md:text-7xl font-serif font-bold mb-8 leading-tight tracking-tight text-[#171717]">
+                    Built to Scale.<br />
+                    <span className="text-[#0F5132] italic">Not Just to Launch.</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed mb-12">
-                    I don&apos;t just build software. I build the <strong className="text-foreground">Productized Systems</strong> that make business scale.
-                    Stop hiring hourly coders; start deploying <span className="text-primary font-semibold">Assets</span>.
+                <p className="text-xl md:text-2xl text-[#5F655F] max-w-3xl mx-auto leading-relaxed mb-12">
+                    I design and build <strong className="text-[#171717]">production-grade systems</strong> that serve the full arc of a business — from market intelligence to automated operations to scalable platforms.
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                    <Link
-                        href="/#contact"
-                        className="px-8 py-4 rounded-full bg-primary text-white font-bold hover:bg-primary/90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20 hover:scale-105 transform duration-200"
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a
+                        href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-8 py-4 rounded-full bg-[#0F5132] text-white font-semibold hover:bg-[#168A4A] transition-all flex items-center gap-2 shadow-sm hover:scale-[1.02] transform duration-200"
                     >
-                        Negotiate Your Offer <ArrowRight className="w-4 h-4" />
-                    </Link>
+                        Start a Conversation <ArrowRight className="w-4 h-4" />
+                    </a>
                     <Link
                         href="#systems"
-                        className="px-8 py-4 rounded-full bg-secondary/50 text-foreground font-medium hover:bg-secondary transition-all border border-foreground/10 hover:border-foreground/20 backdrop-blur-sm"
+                        className="px-8 py-4 rounded-full bg-[#FFFDF8] text-[#171717] font-medium hover:bg-[#EAF7EF] transition-all border border-[#0F5132]/14"
                     >
                         View Systems
                     </Link>
                 </div>
             </section>
 
-            {/* Urgency Notice */}
-            <section className="container px-4 mx-auto max-w-2xl mb-24">
-                <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20 text-center animate-pulse">
-                    <p className="text-sm font-medium text-orange-500">
-                        <span className="font-bold">⚠️ High Demand:</span> Currently filtering for <span className="underline decoration-2 underline-offset-2">2 Strategic Partners</span> for Q1 2026.
-                    </p>
-                </div>
-            </section>
-
-            {/* Productized Systems (The Solutions) */}
+            {/* Productized Systems */}
             <section id="systems" className="container px-4 mx-auto max-w-7xl mb-32">
                 <div className="text-center mb-16">
-                    <h2 className="text-sm font-bold uppercase tracking-widest text-foreground/40 mb-2">Proven Architecture</h2>
-                    <p className="text-3xl md:text-5xl font-serif font-bold">Want a System Like One of These?</p>
+                    <p className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0F5132] mb-3">Proven Architecture</p>
+                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#171717]">Productized Systems</h2>
+                    <p className="text-[#5F655F] mt-4 max-w-2xl mx-auto">Finished, deployable platform architectures — each designed around a real business model.</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-5">
                     {productizedSystems.map((sys) => {
                         const Icon = sys.icon;
                         return (
                             <Link
                                 key={sys.slug}
                                 href={`/solutions/${sys.slug}`}
-                                className="group relative overflow-hidden p-8 rounded-3xl bg-secondary/30 border border-foreground/5 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5"
+                                className="group relative overflow-hidden p-8 rounded-2xl bg-[#FFFDF8] border border-[#0F5132]/12 hover:border-[#0F5132]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[#0F5132]/5"
                             >
-                                <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity duration-500 transform group-hover:rotate-12 group-hover:scale-110">
-                                    <Icon className={`w-32 h-32 ${colorMap[sys.color].ghost}`} />
+                                <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-30 transition-opacity duration-500 transform group-hover:scale-110">
+                                    <Icon className="w-28 h-28 text-[#0F5132]" />
                                 </div>
                                 <div className="relative z-10 flex flex-col h-full">
-                                    <div className={`w-12 h-12 rounded-xl ${colorMap[sys.color].bg} ${colorMap[sys.color].text} flex items-center justify-center mb-6`}>
-                                        <Icon className="w-6 h-6" />
+                                    <div className="w-11 h-11 rounded-xl bg-[#EAF7EF] text-[#0F5132] flex items-center justify-center mb-5">
+                                        <Icon className="w-5 h-5" />
                                     </div>
-                                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{sys.name}</h3>
-                                    <p className="text-foreground/70 text-lg mb-6 flex-grow">{sys.desc}</p>
-                                    <div className="flex items-center text-sm font-bold text-primary uppercase tracking-wider">
-                                        View Architecture <ArrowUpRight className="w-4 h-4 ml-1" />
+                                    <h3 className="text-xl font-bold mb-2 text-[#171717] group-hover:text-[#0F5132] transition-colors">{sys.name}</h3>
+                                    <p className="text-[#5F655F] mb-5 flex-grow text-sm leading-relaxed">{sys.desc}</p>
+                                    <div className="flex items-center text-xs font-bold text-[#0F5132] uppercase tracking-wider">
+                                        View Architecture <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
                                     </div>
                                 </div>
                             </Link>
@@ -271,27 +242,27 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* The Workflow Engine (Visual Centerpiece) */}
+            {/* The Workflow Engine */}
             <section className="container px-4 mx-auto max-w-7xl mb-32">
                 <div className="text-center mb-12">
-                    <h2 className="text-sm font-bold uppercase tracking-widest text-foreground/40 mb-2">The Engine</h2>
-                    <p className="text-2xl md:text-4xl font-serif font-bold">Systematizing the Chaos</p>
+                    <p className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0F5132] mb-3">The Engine</p>
+                    <h2 className="text-2xl md:text-4xl font-serif font-bold text-[#171717]">Systematizing Complexity</h2>
                 </div>
                 <WorkflowEngine />
             </section>
 
             {/* Strategic Stack */}
-            <section className="bg-foreground/5 py-12 mb-32 overflow-hidden border-y border-foreground/5">
+            <section className="bg-[#FFFDF8] py-10 mb-32 overflow-hidden border-y border-[#0F5132]/10">
                 <div className="container px-4 mx-auto max-w-7xl">
                     <div className="flex flex-col md:flex-row items-center gap-8">
-                        <div className="shrink-0 flex items-center gap-3 px-4 py-2 rounded-lg bg-background border border-foreground/10">
-                            <Layers className="w-5 h-5 text-primary" />
-                            <span className="font-bold text-sm uppercase tracking-wider">Tech & Data Stack</span>
+                        <div className="shrink-0 flex items-center gap-3 px-4 py-2 rounded-lg bg-[#EAF7EF] border border-[#0F5132]/20">
+                            <Layers className="w-5 h-5 text-[#0F5132]" />
+                            <span className="font-bold text-sm uppercase tracking-wider text-[#0F5132]">Tools &amp; Stack</span>
                         </div>
                         <div className="relative flex-1 w-full overflow-hidden mask-linear-fade">
                             <div className="flex gap-8 items-center animate-scroll whitespace-nowrap">
                                 {[...strategicStack, ...strategicStack].map((tool, index) => (
-                                    <div key={index} className="text-lg font-medium text-foreground/60 hover:text-primary transition-colors cursor-default">
+                                    <div key={index} className="text-base font-medium text-[#5F655F] hover:text-[#0F5132] transition-colors cursor-default">
                                         {tool}
                                     </div>
                                 ))}
@@ -302,32 +273,32 @@ export default function ServicesPage() {
             </section>
 
             {/* Services Grid */}
-            <section className="container px-4 mx-auto max-w-7xl mb-40">
+            <section className="container px-4 mx-auto max-w-7xl mb-32">
                 <div className="text-center mb-16">
-                    <h2 className="text-sm font-bold uppercase tracking-widest text-foreground/40 mb-2">Core Services</h2>
-                    <p className="text-3xl md:text-5xl font-serif font-bold">Orchestration Modes</p>
+                    <p className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0F5132] mb-3">Engagement Modes</p>
+                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#171717]">How I Work</h2>
                 </div>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-6">
                     {services.map((service, index) => {
                         const Icon = service.icon;
                         return (
                             <div
                                 key={index}
-                                className="group relative p-8 rounded-3xl border border-foreground/5 hover:border-primary/30 transition-all duration-500 bg-background/50 backdrop-blur-sm hover:shadow-2xl hover:shadow-primary/5 active:scale-[0.99]"
+                                className="group relative p-8 rounded-2xl border border-[#0F5132]/12 hover:border-[#0F5132]/25 transition-all duration-500 bg-[#FFFDF8] hover:shadow-lg hover:shadow-[#0F5132]/5"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#EAF7EF]/0 to-[#EAF7EF]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
                                 <div className="relative z-10">
-                                    <div className="w-14 h-14 rounded-2xl bg-secondary/50 text-primary flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm border border-foreground/5">
-                                        <Icon className="w-7 h-7" />
+                                    <div className="w-12 h-12 rounded-xl bg-[#EAF7EF] text-[#0F5132] flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#0F5132] group-hover:text-white transition-all duration-300">
+                                        <Icon className="w-6 h-6" />
                                     </div>
-                                    <h3 className="text-2xl font-bold mb-4 font-serif">{service.title}</h3>
-                                    <p className="text-foreground/60 mb-8 leading-relaxed min-h-[80px]">
+                                    <h3 className="text-xl font-bold mb-4 font-serif text-[#171717]">{service.title}</h3>
+                                    <p className="text-[#5F655F] mb-8 leading-relaxed text-sm min-h-[80px]">
                                         {service.description}
                                     </p>
-                                    <ul className="space-y-3 pt-6 border-t border-foreground/5">
+                                    <ul className="space-y-2.5 pt-5 border-t border-[#0F5132]/10">
                                         {service.features.map((feature, i) => (
-                                            <li key={i} className="flex items-center gap-3 text-sm text-foreground/80 font-medium">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                            <li key={i} className="flex items-center gap-2.5 text-sm text-[#5F655F]">
+                                                <span className="w-1 h-1 rounded-full bg-[#0F5132] flex-shrink-0" />
                                                 {feature}
                                             </li>
                                         ))}
@@ -339,61 +310,69 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* Creative Pricing / Engagement Models */}
-            <section className="container px-4 mx-auto max-w-6xl mb-40">
-                <div className="grid md:grid-cols-2 gap-8 items-stretch">
-
-                    {/* The Agency Trap (Contrast) */}
-                    <div className="p-10 rounded-3xl bg-red-500/5 border border-red-500/10 flex flex-col justify-between">
+            {/* How to Engage */}
+            <section className="container px-4 mx-auto max-w-5xl mb-32">
+                <div className="grid md:grid-cols-2 gap-6">
+                    {/* Custom Systems */}
+                    <div className="p-10 rounded-2xl bg-[#FFFDF8] border border-[#0F5132]/12 flex flex-col justify-between">
                         <div>
-                            <div className="inline-block px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-bold uppercase tracking-wider mb-6">
-                                The Old Way
-                            </div>
-                            <h2 className="text-3xl font-serif font-bold mb-4 text-foreground/80">The Agency Trap</h2>
-                            <p className="text-foreground/60 mb-8 text-lg">
-                                Agencies charge <strong className="text-foreground">$1,000–$2,000</strong> just to spin up a template with zero business logic or optimization.
+                            <p className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#0F5132] mb-5">For Founders &amp; Operators</p>
+                            <h3 className="text-2xl font-serif font-bold mb-4 text-[#171717]">Custom Systems</h3>
+                            <p className="text-[#5F655F] mb-6 text-sm leading-relaxed">
+                                A scoped engagement where I audit your operations, identify the highest-leverage gaps, and build a custom execution system — from workflow architecture to deployment.
                             </p>
-                            <ul className="space-y-4 opacity-70">
-                                <li className="flex items-center gap-3"><span className="text-red-500">✕</span> Generic Templates</li>
-                                <li className="flex items-center gap-3"><span className="text-red-500">✕</span> No Operations Strategy</li>
-                                <li className="flex items-center gap-3"><span className="text-red-500">✕</span> Hourly Billing Drag</li>
+                            <ul className="space-y-3 mb-8">
+                                {["Operations Audit", "Custom Platform Build", "Workflow Automation", "Go-to-Market Systems"].map((item) => (
+                                    <li key={item} className="flex items-center gap-2.5 text-sm text-[#5F655F]">
+                                        <span className="w-1 h-1 rounded-full bg-[#0F5132] flex-shrink-0" />
+                                        {item}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
+                        <a
+                            href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#0F5132] text-white font-semibold hover:bg-[#168A4A] transition-all shadow-sm text-sm"
+                        >
+                            <DollarSign className="w-4 h-4" /> Discuss Your Project
+                        </a>
                     </div>
 
-                    {/* The Curator's Offer (Value) */}
-                    <div className="p-10 rounded-3xl bg-foreground text-background shadow-2xl shadow-foreground/20 transform md:-translate-y-4 md:scale-105 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 bg-primary/20 w-64 h-64 rounded-full blur-[100px]" />
-
-                        <div className="relative z-10">
-                            <div className="inline-block px-3 py-1 rounded-full bg-background/20 text-xs font-bold uppercase tracking-wider mb-6 backdrop-blur-md">
-                                The Curator&apos;s Offer
-                            </div>
-                            <h3 className="text-3xl font-serif font-bold mb-4">Curated Systems</h3>
-                            <p className="text-background/80 mb-8 text-lg">
-                                Don&apos;t pay for hours. Pay for a <span className="text-primary font-bold">Finished Asset</span>.
+                    {/* Productized Solutions */}
+                    <div className="p-10 rounded-2xl bg-[#EAF7EF] border border-[#0F5132]/15 flex flex-col justify-between">
+                        <div>
+                            <p className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#0F5132] mb-5">Pre-built &amp; Ready</p>
+                            <h3 className="text-2xl font-serif font-bold mb-4 text-[#171717]">Productized Solutions</h3>
+                            <p className="text-[#5F655F] mb-6 text-sm leading-relaxed">
+                                Six production-grade platform architectures — refined through real deployments — available as a foundation for your business model. Faster start. Lower risk.
                             </p>
-                            <p className="text-background/80 mb-10 leading-relaxed">
-                                Contact me to get a special, curated offer for a system Customized & Optimized for your exact business model.
-                            </p>
-
-                            <Link
-                                href="/#contact"
-                                className="inline-flex w-full items-center justify-center gap-2 py-4 px-6 rounded-xl bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-lg"
-                            >
-                                <DollarSign className="w-4 h-4" /> Get Your Custom Quote
-                            </Link>
+                            <ul className="space-y-3 mb-8">
+                                {["E-Commerce Platform", "CRM & Sales System", "Booking System", "News & Media Platform"].map((item) => (
+                                    <li key={item} className="flex items-center gap-2.5 text-sm text-[#5F655F]">
+                                        <span className="w-1 h-1 rounded-full bg-[#0F5132] flex-shrink-0" />
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
+                        <Link
+                            href="#systems"
+                            className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl border border-[#0F5132]/30 bg-[#FFFDF8] text-[#0F5132] font-semibold hover:bg-[#0F5132] hover:text-white transition-all text-sm"
+                        >
+                            Browse Architectures <ArrowRight className="w-4 h-4" />
+                        </Link>
                     </div>
                 </div>
             </section>
 
-            {/* Founder's FAQ */}
+            {/* FAQ */}
             <section className="container px-4 mx-auto max-w-3xl pb-24">
-                <div className="box-decoration-clone bg-secondary/20 rounded-3xl p-8 md:p-12">
+                <div className="bg-[#FFFDF8] rounded-2xl border border-[#0F5132]/12 p-8 md:p-12">
                     <div className="text-center mb-12">
-                        <h2 className="text-2xl font-serif font-bold mb-2">Questions?</h2>
-                        <p className="text-foreground/60">Clarifying the business value.</p>
+                        <h2 className="text-2xl font-serif font-bold mb-2 text-[#171717]">Common Questions</h2>
+                        <p className="text-[#5F655F] text-sm">Clarifying the approach and business value.</p>
                     </div>
                     <FAQ items={faqs} />
                 </div>

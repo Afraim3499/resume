@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "The Knowledge Graph | Advanced Venture Architecture Lexicon",
     description: "The Orchestrator's comprehensive digital lexicon. Advanced concepts in Venture Architecture, Founder Mode, Agentic Systems, and Operations Expert methodologies.",
     alternates: {
-        canonical: "/wiki",
+        canonical: "https://www.rizwanulafraim.com/wiki",
     },
 };
 
@@ -33,7 +33,7 @@ export default function WikiIndex() {
                         <Link
                             key={term.id}
                             href={`/wiki/${term.id}`}
-                            className="group flex flex-col p-6 rounded-xl bg-secondary/20 border border-white/5 hover:border-primary/50 hover:bg-secondary/30 transition-all duration-300"
+                            className="group flex flex-col p-6 rounded-xl bg-[#FFFDF8] border border-[#0F5132]/12 hover:border-[#0F5132]/40 hover:bg-[#EAF7EF]/30 transition-all duration-300"
                         >
                             <div className="flex items-center justify-between mb-4">
                                 <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors">

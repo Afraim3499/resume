@@ -41,7 +41,7 @@ export function NavbarLight() {
                         href="/"
                         className="text-lg font-serif font-bold text-foreground hover:text-primary transition-colors"
                     >
-                        Rizwanul Islam
+                        Rizwanul Islam Afraim
                     </Link>
 
                     {/* Right: Theme Toggle */}

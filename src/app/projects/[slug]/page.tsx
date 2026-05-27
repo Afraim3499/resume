@@ -92,7 +92,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="container px-4 mx-auto max-w-5xl pt-24 pb-12">
         <Breadcrumbs
           items={[
-            { label: "Projects", href: "/#projects" },
+            { label: "Projects", href: "/projects" },
             { label: project.title },
           ]}
         />

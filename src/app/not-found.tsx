@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
-    <main className="bg-background min-h-screen text-foreground flex items-center justify-center px-4">
+    <main className="bg-[#F7F4EC] min-h-screen text-[#171717] flex items-center justify-center px-4">
       <div className="text-center max-w-2xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-9xl font-serif font-bold text-primary mb-4">404</h1>
+          <h1 className="text-9xl font-serif font-bold text-[#0F5132] mb-4">404</h1>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Page Not Found</h2>
-          <p className="text-gray-400 text-lg mb-8">
+          <p className="text-[#5F655F] text-lg mb-8">
             The page you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
         </div>
@@ -25,7 +25,7 @@ export default function NotFound() {
           </Link>
           <button
             onClick={() => window.history.back()}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#F1EFE7] text-[#5F655F] hover:bg-[#EAF7EF] hover:text-[#0F5132] border border-[#0F5132]/14 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Go Back
@@ -33,17 +33,17 @@ export default function NotFound() {
         </div>
 
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-          <Link href="/#about" className="text-gray-400 hover:text-primary transition-colors">
+          <Link href="/about" className="text-[#5F655F] hover:text-[#0F5132] transition-colors">
             About
           </Link>
-          <Link href="/#projects" className="text-gray-400 hover:text-primary transition-colors">
+          <Link href="/projects" className="text-[#5F655F] hover:text-[#0F5132] transition-colors">
             Projects
           </Link>
-          <Link href="/#experience" className="text-gray-400 hover:text-primary transition-colors">
-            Experience
+          <Link href="/resume" className="text-[#5F655F] hover:text-[#0F5132] transition-colors">
+            Resume
           </Link>
-          <Link href="/#contact" className="text-gray-400 hover:text-primary transition-colors">
-            Contact
+          <Link href="/research" className="text-[#5F655F] hover:text-[#0F5132] transition-colors">
+            Research
           </Link>
         </div>
       </div>

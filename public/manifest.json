@@ -1,21 +1,62 @@
 {
-  "name": "Rizwanul Islam Portfolio",
-  "short_name": "Rizwanul Islam",
-  "description": "Portfolio of Rizwanul Islam (Afraim) - Digital Strategist & Full-Stack Developer",
+  "name": "Rizwanul Islam Afraim",
+  "short_name": "Rizwanul Afraim",
+  "description": "A Marketing & Sales Operations professional, Market Researcher, and Product-minded Technical Operator based in Dhaka, Bangladesh.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#10b981",
-  "orientation": "portrait-primary",
+  "orientation": "any",
+  "background_color": "#f7f5e8",
+  "theme_color": "#0F5132",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/icons/icon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -23,43 +64,42 @@
   ],
   "categories": [
     "portfolio",
-    "developer",
-    "business"
+    "business",
+    "systems"
   ],
-  "screenshots": [],
   "shortcuts": [
     {
       "name": "Projects",
       "short_name": "Projects",
       "description": "View my projects",
-      "url": "/#projects",
+      "url": "/projects",
       "icons": [
         {
-          "src": "/icon-192.png",
+          "src": "/icons/icon-192x192.png",
           "sizes": "192x192"
         }
       ]
     },
     {
-      "name": "Contact",
-      "short_name": "Contact",
-      "description": "Get in touch",
-      "url": "/#contact",
+      "name": "Research Hub",
+      "short_name": "Research",
+      "description": "View my research publications",
+      "url": "/research",
       "icons": [
         {
-          "src": "/icon-192.png",
+          "src": "/icons/icon-192x192.png",
           "sizes": "192x192"
         }
       ]
     },
     {
-      "name": "Budget Calculator",
-      "short_name": "Budget",
-      "description": "Personal Finance Command",
-      "url": "/budget",
+      "name": "About",
+      "short_name": "About",
+      "description": "Learn about me",
+      "url": "/about",
       "icons": [
         {
-          "src": "/icon-192.png",
+          "src": "/icons/icon-192x192.png",
           "sizes": "192x192"
         }
       ]

@@ -17,6 +17,7 @@ import { FAQ } from "@/components/FAQ";
 import { HollowGraphic3D } from "@/components/3D/HollowGraphic3D";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { getAllTerms, KnowledgeNode } from "@/data/knowledge-graph";
+import { TechnicalSpecificationsTable } from "@/components/TechnicalSpecificationsTable";
 
 interface SolutionLandingProps {
     solution: Solution;
@@ -50,7 +51,20 @@ export function SolutionLanding({ solution }: SolutionLandingProps) {
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px] -z-10" />
 
                 <div className="container px-4 mx-auto max-w-6xl mb-8">
-                    <Breadcrumbs />
+                    {(() => {
+                        const categoryMap: Record<string, { label: string; href: string }> = {
+                            "gtm-operations": { label: "GTM & Operations", href: "/solutions/gtm-operations" },
+                            "dynamic-platforms": { label: "Dynamic Platforms", href: "/solutions/dynamic-platforms" },
+                            "executive-brand": { label: "Executive Brand", href: "/solutions/executive-brand" },
+                        };
+                        const cat = categoryMap[solution.categoryGroup];
+                        const breadcrumbItems = [
+                            { label: "Solutions", href: "/solutions" },
+                            ...(cat ? [cat] : []),
+                            { label: solution.heroTagline },
+                        ];
+                        return <Breadcrumbs items={breadcrumbItems} />;
+                    })()}
                 </div>
 
                 <div className="container px-4 mx-auto max-w-6xl">
@@ -263,6 +277,10 @@ export function SolutionLanding({ solution }: SolutionLandingProps) {
                                 </span>
                             ))}
                         </div>
+                    </div>
+
+                    <div className="mb-12">
+                        <TechnicalSpecificationsTable specs={solution.technicalSpecs} />
                     </div>
 
                     {(() => {

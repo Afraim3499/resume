@@ -291,6 +291,24 @@ export default function AgenticAIResearchPage() {
               Posted: April 2, 2026
             </p>
           </div>
+
+          {/* Keywords block */}
+          <div className="mt-6 flex flex-wrap gap-2 max-w-xl">
+            {[
+              "Agentic AI",
+              "Coordination Infrastructure Technology",
+              "Transaction Cost Economics",
+              "Artificial Intelligence and Growth",
+              "Institutional Economics",
+              "Platform Capitalism",
+              "Digital Sovereignty",
+              "Economic Divergence"
+            ].map((keyword) => (
+              <span key={keyword} className="px-3 py-1 rounded-full bg-secondary/40 border border-foreground/5 text-xs text-foreground/60 font-medium">
+                {keyword}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -553,6 +571,12 @@ export default function AgenticAIResearchPage() {
                   </strong>{" "}
                   This research was conducted independently and received no
                   external financial support.
+                </p>
+                <p>
+                  <strong className="text-foreground/80">
+                    JEL Classification:
+                  </strong>{" "}
+                  O33, D23, D24, O14, H11, L86
                 </p>
               </div>
             </section>

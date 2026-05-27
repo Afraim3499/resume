@@ -1,5 +1,4 @@
 import { FAQ } from "@/components/FAQ";
-import { Footer } from "@/components/Footer";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllFAQs } from "@/lib/faq-loader";
@@ -8,7 +7,7 @@ export const metadata: Metadata = {
     title: "Manifesto | The Operations Expert's Protocol",
     description: "The operating philosophy of Rizwanul Islam Afraim. Founder Mode, Advanced Systems Thinking, and the rejection of the manager/maker binary.",
     alternates: {
-        canonical: "/manifesto",
+        canonical: "https://www.rizwanulafraim.com/manifesto",
     },
 };
 
@@ -48,7 +47,7 @@ export default function ManifestoPage() {
                 </header>
 
                 {/* Content Body */}
-                <div className="prose prose-lg prose-invert mx-auto prose-headings:font-serif prose-headings:font-bold prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+                <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:font-bold prose-p:text-[#5F655F] prose-strong:text-[#171717] prose-a:text-[#0F5132] prose-a:no-underline hover:prose-a:underline prose-hr:border-[#0F5132]/10 prose-ul:text-[#5F655F] prose-ol:text-[#5F655F]">
                     <p className="lead text-2xl text-foreground font-medium">
                         In the mid-2020s, the definition of a &quot;Founder&quot; is broken.
                     </p>
@@ -100,11 +99,9 @@ export default function ManifestoPage() {
             </article>
 
             {/* FAQ Section */}
-            <div className="border-t border-border/40">
+            <div className="border-t border-[#0F5132]/10">
                 <FAQ items={faqItems} />
             </div>
-
-            <Footer />
         </main>
     );
 }

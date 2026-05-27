@@ -9,6 +9,9 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--surface);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -28,44 +31,30 @@
 }
 
 :root {
-  --background: #030712;
-  /* Gray 950 */
-  --foreground: #f9fafb;
-  /* Gray 50 */
+  /* ── Warm Ivory / Editorial Light ─────────────────── */
+  --background: #F7F4EC;
+  --surface: #FFFDF8;
+  --surface-muted: #F1EFE7;
 
-  --primary: #10b981;
-  /* Emerald 500 */
+  /* ── Typography ───────────────────────────────────── */
+  --foreground: #171717;
+  --muted-foreground: #5F655F;
+
+  /* ── Border ───────────────────────────────────────── */
+  --border: rgba(15, 81, 50, 0.14);
+
+  /* ── Primary: Deep Forest Green ──────────────────── */
+  --primary: #0F5132;
   --primary-foreground: #ffffff;
+  --primary-hover: #168A4A;
+  --primary-soft: #EAF7EF;
 
-  --secondary: #1f2937;
-  /* Gray 800 */
-  --secondary-foreground: #f3f4f6;
-  /* Gray 100 */
+  /* ── Secondary: Warm muted surface ───────────────── */
+  --secondary: #F1EFE7;
+  --secondary-foreground: #171717;
 
-  --accent: #8b5cf6;
-  /* Violet 500 */
-  --accent-foreground: #ffffff;
-}
-
-/* Light mode styles */
-:root.light,
-.light {
-  --background: #ffffff;
-  /* White */
-  --foreground: #030712;
-  /* Gray 950 */
-
-  --primary: #10b981;
-  /* Emerald 500 */
-  --primary-foreground: #ffffff;
-
-  --secondary: #f3f4f6;
-  /* Gray 100 */
-  --secondary-foreground: #030712;
-  /* Gray 950 */
-
-  --accent: #8b5cf6;
-  /* Violet 500 */
+  /* ── Accent mirrors primary ───────────────────────── */
+  --accent: #0F5132;
   --accent-foreground: #ffffff;
 }
 
@@ -86,7 +75,7 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, var(--primary), var(--accent));
+  background-image: linear-gradient(to right, var(--primary), var(--primary-hover));
 }
 
 .mask-linear-fade {
@@ -108,17 +97,17 @@ body {
   line-height: 1.1;
 }
 
-/* Ambient Background Patterns */
+/* Ambient Background Patterns — subtle green on ivory */
 .ambient-gradient-1 {
-  background: radial-gradient(ellipse at top left, rgba(16, 185, 129, 0.08), transparent 50%);
+  background: radial-gradient(ellipse at top left, rgba(15, 81, 50, 0.03), transparent 50%);
 }
 
 .ambient-gradient-2 {
-  background: radial-gradient(ellipse at bottom right, rgba(168, 85, 247, 0.08), transparent 50%);
+  background: radial-gradient(ellipse at bottom right, rgba(15, 81, 50, 0.02), transparent 50%);
 }
 
 .ambient-gradient-3 {
-  background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.05), transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(15, 81, 50, 0.025), transparent 70%);
 }
 
 /* Premium Hover Effects */
@@ -138,84 +127,57 @@ html {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--surface-muted);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--foreground);
-  opacity: 0.2;
-  border-radius: 5px;
+  background: rgba(15, 81, 50, 0.2);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  opacity: 0.4;
+  background: rgba(15, 81, 50, 0.35);
 }
 
 .glass {
-  background: rgba(31, 41, 55, 0.4);
+  background: rgba(255, 253, 248, 0.80);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.light .glass {
-  background: rgba(243, 244, 246, 0.6);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(15, 81, 50, 0.12);
+  box-shadow: 0 4px 20px -2px rgba(95, 101, 95, 0.06);
 }
 
 /* Select dropdown styling */
 select {
-  background-color: var(--background) !important;
+  background-color: var(--surface) !important;
   color: var(--foreground) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(15, 81, 50, 0.2) !important;
 }
 
 select option {
-  background-color: var(--background) !important;
+  background-color: var(--surface) !important;
   color: var(--foreground) !important;
 }
 
 select:focus {
-  background-color: var(--background) !important;
+  background-color: var(--surface) !important;
   color: var(--foreground) !important;
   border-color: var(--primary) !important;
 }
 
-/* Ensure dropdown options are visible */
 select option:checked {
   background-color: var(--primary) !important;
   color: var(--primary-foreground) !important;
 }
 
 select option:hover {
-  background-color: rgba(16, 185, 129, 0.2) !important;
+  background-color: var(--primary-soft) !important;
 }
 
-/* Light mode specific select styling */
-.light select {
-  background-color: var(--background) !important;
-  color: var(--foreground) !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-.light select option {
-  background-color: var(--background) !important;
-  color: var(--foreground) !important;
-}
-
-.light select option:hover {
-  background-color: var(--secondary) !important;
-}
-
-.light select option:checked {
-  background-color: var(--primary) !important;
-  color: var(--primary-foreground) !important;
-}
-
-/* Prose styles for markdown content */
+/* Prose styles for markdown content (light editorial) */
 .prose {
   color: var(--foreground);
 }
@@ -227,11 +189,11 @@ select option:hover {
 .prose h5,
 .prose h6 {
   color: var(--foreground);
+  font-family: var(--font-serif);
 }
 
 .prose p {
-  color: var(--foreground);
-  opacity: 0.9;
+  color: var(--muted-foreground);
 }
 
 .prose strong {
@@ -240,59 +202,91 @@ select option:hover {
 
 .prose a {
   color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--primary-hover);
 }
 
 .prose code {
-  background-color: var(--secondary);
+  background-color: var(--surface-muted);
   color: var(--foreground);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
+  font-size: 0.875em;
+  border: 1px solid var(--border);
 }
 
 .prose pre {
-  background-color: var(--secondary);
-  color: var(--foreground);
-  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  background-color: #1a2417;
+  color: #e8f5e9;
+  border: 1px solid rgba(15, 81, 50, 0.2);
+  border-radius: 0.75rem;
 }
 
 .prose pre code {
   background-color: transparent;
-  color: var(--foreground);
+  color: inherit;
+  border: none;
+  padding: 0;
 }
 
 .prose blockquote {
   border-left-color: var(--primary);
-  color: var(--foreground);
-  opacity: 0.8;
+  color: var(--muted-foreground);
+  background: var(--primary-soft);
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.75rem 1rem;
 }
 
 .prose ul li::marker,
 .prose ol li::marker {
-  color: var(--foreground);
+  color: var(--primary);
 }
 
 .prose hr {
-  border-color: var(--foreground);
-  opacity: 0.2;
+  border-color: var(--border);
 }
 
-/* Light mode prose adjustments */
-.light .prose {
+.prose table th {
+  background-color: var(--surface-muted);
   color: var(--foreground);
+  font-weight: 600;
 }
 
-.light .prose p {
-  color: var(--foreground);
-  opacity: 0.8;
+.prose table td {
+  color: var(--muted-foreground);
+  border-color: var(--border);
 }
 
-.light .prose code {
-  background-color: var(--secondary);
-  color: var(--foreground);
-}
-
-.light .prose pre {
-  background-color: var(--secondary);
-  border-color: var(--foreground);
-  opacity: 0.1;
+@media print {
+  @page {
+    margin: 0;
+    size: A4;
+  }
+  nav, footer:not(.page-footer), .fixed, .no-print, [role="navigation"], header:not(#resume-cv-content header) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+  main {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  * {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+  }
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
 }

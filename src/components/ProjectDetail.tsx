@@ -10,6 +10,7 @@ import { getBlogSlugForProject, getCaseStudySlugForProject } from "@/lib/project
 import { ImpactMetrics } from "@/components/ImpactMetrics";
 import { getAllTerms, KnowledgeNode } from "@/data/knowledge-graph";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { TechnicalSpecificationsTable } from "@/components/TechnicalSpecificationsTable";
 
 interface ProjectDetailProps {
   project: Project;
@@ -309,6 +310,20 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
               </span>
             ))}
           </div>
+        </motion.div>
+      )}
+
+      {/* Technical Specifications Matrix */}
+      {project.technicalSpecs && project.technicalSpecs.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.42 }}
+        >
+          <TechnicalSpecificationsTable 
+            specs={project.technicalSpecs} 
+            title={`${project.title} Architecture & Technical Specifications Parameters`}
+          />
         </motion.div>
       )}
 
