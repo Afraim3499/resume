@@ -203,7 +203,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
               >
                 <Image
                   src={screenshot}
-                  alt={`${project.title} screenshot ${index + 1}`}
+                  alt={`Screenshot ${index + 1} of ${project.title} - Demonstrating high-performance ${project.category} solutions and robust dashboard interfaces.`}
                   fill
                   className="object-cover"
                 />

@@ -5,7 +5,17 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
 
-const events = [
+interface EventItem {
+    name: string;
+    role: string;
+    year: string;
+    location: string;
+    image?: string;
+    images?: string[];
+    description?: string;
+}
+
+const events: EventItem[] = [
     {
         name: "ATIF ASLAM Live in Bangladesh",
         role: "Artist Management Support",
@@ -96,7 +106,7 @@ export function Events() {
                                     <div className="relative w-full md:w-64 h-48 md:h-auto flex-shrink-0">
                                         <Image
                                             src={event.image || event.images?.[0] || ""}
-                                            alt={event.name}
+                                            alt={event.description ? `${event.name} - ${event.role} in ${event.year} at ${event.location}. ${event.description}` : `${event.name} - Serving as ${event.role} in the year ${event.year} at ${event.location}.`}
                                             fill
                                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                                         />

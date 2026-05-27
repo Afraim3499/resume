@@ -1,7 +1,8 @@
 ---
 title: "The 9-Hour Efficiency Gap: Power BI vs Python Dashboards in 2026"
+excerpt: "An empirical look at build-time velocity, maintenance costs, and the true cost of 'custom' analytics in a high-velocity AI world."
 date: "2026-04-08"
-description: "An empirical look at build-time velocity, maintenance costs, and the true cost of 'custom' analytics in a high-velocity AI world."
+category: "Research"
 tags: ["Business Intelligence", "Python", "Data Strategy", "Power BI"]
 author: "Rizwanul Islam Afraim"
 ---

@@ -430,17 +430,19 @@ const LEVERAGE_AREAS: LeverageArea[] = [
   },
 ];
 
-const completedProjects = LEVERAGE_AREAS.filter((p) => p.id !== "lurnava"); // Helper
-
 /* ─────────────────────── COMPONENT ─────────────────────── */
 
 export function LeverageFinder() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -799,7 +801,7 @@ export function LeverageFinder() {
                 <div className="relative w-6 h-6 rounded-full border-2 border-white overflow-hidden bg-slate-100">
                   <Image
                     src="/shahriar-kabir-1.jpg"
-                    alt="Client avatar"
+                    alt="Shahriar Kabir - Tech Director & Client Reference Portrait 1"
                     fill
                     className="object-cover"
                     sizes="24px"
@@ -808,7 +810,7 @@ export function LeverageFinder() {
                 <div className="relative w-6 h-6 rounded-full border-2 border-white overflow-hidden bg-slate-100">
                   <Image
                     src="/shahriar-kabir-2.jpg"
-                    alt="Client avatar"
+                    alt="Shahriar Kabir - Tech Director & Client Reference Portrait 2"
                     fill
                     className="object-cover"
                     sizes="24px"
@@ -817,7 +819,7 @@ export function LeverageFinder() {
                 <div className="relative w-6 h-6 rounded-full border-2 border-white overflow-hidden bg-slate-100">
                   <Image
                     src="/shahriar-kabir-3.jpg"
-                    alt="Client avatar"
+                    alt="Shahriar Kabir - Tech Director & Client Reference Portrait 3"
                     fill
                     className="object-cover"
                     sizes="24px"

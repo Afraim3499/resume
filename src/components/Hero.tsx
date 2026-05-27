@@ -106,28 +106,7 @@ export function Hero() {
     },
   } as const;
 
-  const portraitVariants = {
-    hidden: { opacity: 0, scale: 0.96 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { type: "spring", stiffness: 85, damping: 18, delay: 0.1 },
-    },
-  } as const;
 
-  const cardVariants = (index: number) => ({
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 85,
-        damping: 18,
-        delay: 0.2 + index * 0.1,
-      },
-    },
-  } as const);
 
   return (
     <section
@@ -270,7 +249,7 @@ export function Hero() {
               <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <Image
                   src="/assets/afraim-logo.png"
-                  alt="Rizwanul Islam Afraim Portrait"
+                  alt="Rizwanul Islam Afraim - Illustrated Portrait Logo representing Systems Builder & Growth Operations"
                   fill
                   className="object-cover"
                   sizes="176px"
@@ -280,7 +259,7 @@ export function Hero() {
             </button>
 
             {/* Orbiting Small Module Cards */}
-            {modules.map((mod, i) => {
+            {modules.map((mod) => {
               const Icon = mod.icon;
               const active = isCardActive(mod.id);
               const muted = isCardMuted(mod.id);
@@ -364,7 +343,7 @@ export function Hero() {
               <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <Image
                   src="/assets/afraim-logo.png"
-                  alt="Rizwanul Islam Afraim Portrait"
+                  alt="Rizwanul Islam Afraim - Illustrated Portrait Logo representing Systems Builder & Growth Operations"
                   fill
                   className="object-cover"
                   sizes="176px"
@@ -375,7 +354,7 @@ export function Hero() {
 
             {/* Module Cards Grid (Compact control buttons) */}
             <div className="grid grid-cols-2 gap-2.5 w-full max-w-sm mb-4">
-              {modules.map((mod, i) => {
+              {modules.map((mod) => {
                 const Icon = mod.icon;
                 const active = isCardActive(mod.id);
                 return (

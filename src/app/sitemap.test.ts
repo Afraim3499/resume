@@ -39,4 +39,30 @@ describe('sitemap', () => {
         expect(urls).toContain('https://www.rizwanulafraim.com/services');
         expect(urls).toContain('https://www.rizwanulafraim.com/resume');
     });
+
+    it('contains valid absolute URLs in images arrays', () => {
+        const entries = sitemap();
+        let imageCount = 0;
+
+        for (const entry of entries) {
+            if (entry.images) {
+                expect(Array.isArray(entry.images)).toBe(true);
+                for (const img of entry.images) {
+                    imageCount++;
+                    expect(img).toMatch(/^https:\/\/(www\.rizwanulafraim\.com|brshoodoihexflrolqvu\.supabase\.co)/);
+                }
+            }
+        }
+        expect(imageCount).toBeGreaterThan(0);
+    });
+
+    it('maps images correctly for specific routes', () => {
+        const entries = sitemap();
+        
+        const homeEntry = entries.find(e => e.url === 'https://www.rizwanulafraim.com');
+        expect(homeEntry?.images).toContain('https://www.rizwanulafraim.com/assets/afraim-logo.png');
+
+        const aboutEntry = entries.find(e => e.url === 'https://www.rizwanulafraim.com/about');
+        expect(aboutEntry?.images).toContain('https://www.rizwanulafraim.com/assets/rizwanul-islam-afraim.webp');
+    });
 });

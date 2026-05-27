@@ -17,18 +17,21 @@ import {
   Target,
   Phone,
   MapPin,
-  Calendar,
   MessageSquare,
   BookOpen
 } from "lucide-react";
 import { EmailDisplay } from "./EmailDisplay";
 
 export function FinalCTASection() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -36,7 +39,7 @@ export function FinalCTASection() {
 
   const slideUp = {
     hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as any } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
   };
 
   const navGroups = [
@@ -126,8 +129,8 @@ export function FinalCTASection() {
         <nav aria-label="Footer Site Directory">
           <h3>Work Portfolio</h3>
           <ul>
-            <li><a href="/projects">Filterable Projects</a></li>
-            <li><a href="/case-studies">Case Studies</a></li>
+            <li><Link href="/projects">Filterable Projects</Link></li>
+            <li><Link href="/case-studies">Case Studies</Link></li>
           </ul>
         </nav>
       </div>
@@ -202,7 +205,7 @@ export function FinalCTASection() {
               <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#0F5132]/25 shadow-xs shrink-0 bg-white">
                 <Image
                   src="/assets/afraim-logo.png"
-                  alt="Rizwanul Islam Afraim Illustrated Portrait"
+                  alt="Rizwanul Islam (Afraim) - Systems Architect Illustrated Portrait Brand Logo for Call to Action Section"
                   fill
                   className="object-cover"
                   sizes="56px"

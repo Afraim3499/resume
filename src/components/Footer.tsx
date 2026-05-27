@@ -19,11 +19,15 @@ import {
 import { EmailDisplay } from "./EmailDisplay";
 
 export function Footer() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -31,7 +35,7 @@ export function Footer() {
 
   const slideUp = {
     hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as any } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
   };
 
   const navGroups = [
@@ -127,7 +131,7 @@ export function Footer() {
               <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#0F5132]/25 shadow-xs shrink-0 bg-white">
                 <Image
                   src="/assets/afraim-logo.png"
-                  alt="Rizwanul Islam Afraim Illustrated Portrait"
+                  alt="Rizwanul Islam (Afraim) - Systems Architect Illustrated Portrait Brand Logo"
                   fill
                   className="object-cover"
                   sizes="56px"

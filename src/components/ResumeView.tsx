@@ -1,7 +1,6 @@
 "use client";
 
-import { Printer, MapPin, Mail, Link as LinkIcon, Phone, Download, Loader2 } from "lucide-react";
-import Link from "next/link";
+import { MapPin, Mail, Link as LinkIcon, Phone, Download, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { EmailDisplay } from "./EmailDisplay";
 import { useState, useCallback } from "react";
@@ -92,7 +91,7 @@ export function ResumeView() {
                             <div className="relative w-16 h-16 flex-shrink-0">
                                 <Image
                                     src="/assets/rizwanul-islam-afraim.webp"
-                                    alt="Rizwanul Islam Afraim"
+                                    alt="Rizwanul Islam (Afraim) - Professional Resume Profile Photo representing Systems Architect & Growth Operations Leader"
                                     width={64}
                                     height={64}
                                     className="object-cover rounded-full border-2 border-gray-100 shadow-sm"

@@ -168,7 +168,7 @@ export function ContentSection({ blogCount = 0, caseStudyCount = 0 }: ContentSec
               <div className="p-3 bg-black rounded-lg text-white">
                 <Image
                   src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
-                  alt="Dev.to"
+                  alt="Dev.to Developer Community Badge - Link to Rizwanul Islam Afraim's Technical Authority Blogging Profile"
                   width={24}
                   height={24}
                   className="invert brightness-0"

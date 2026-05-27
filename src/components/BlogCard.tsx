@@ -39,7 +39,7 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
           <div className="relative aspect-video rounded-lg overflow-hidden mb-4">
             <Image
               src={post.image}
-              alt={post.title}
+              alt={`Cover image for blog post: ${post.title} - ${post.excerpt}. Structured insights on ${post.tags.slice(0, 3).join(', ')}.`}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />

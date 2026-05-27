@@ -68,7 +68,7 @@ export function SignatureWork() {
                   <div className="relative w-full h-full">
                     <Image
                       src={selectedProject.image}
-                      alt={selectedProject.title}
+                      alt={`Preview of "${selectedProject.title}" - A production-grade ${selectedProject.category} venture and high-performance system: ${selectedProject.summary || selectedProject.description}. Built using ${selectedProject.techStack.slice(0, 3).join(', ')}.`}
                       fill
                       className="object-cover"
                       quality={100}

@@ -173,7 +173,7 @@ const transformations: TransformationProject[] = [
     businessImpact: "Currently in active development. Targeting personalized education at scale.",
     tools: ["Next.js", "Supabase", "AI/ML", "PostgreSQL"],
     image: "/assets/lurnava-ongoing.jpg",
-    imageAlt: "Lurnava learning platform — in development",
+    imageAlt: "Lurnava learning platform - Adaptive AI learning dashboard and course builder interface (In Development)",
     metrics: [],
     ongoing: true,
     aspectRatio: 1.646,
@@ -196,7 +196,7 @@ const transformations: TransformationProject[] = [
     businessImpact: "Currently in active development. Targeting B2B sourcing digitization.",
     tools: ["Next.js", "Supabase", "PostgreSQL"],
     image: "/assets/sinha-sourcing-ongoing.jpg",
-    imageAlt: "Sinha Sourcing platform — in development",
+    imageAlt: "Sinha Sourcing platform - B2B global supply chain and verified manufacturer discovery dashboard (In Development)",
     metrics: [],
     ongoing: true,
     aspectRatio: 2.078,
@@ -210,13 +210,17 @@ const ongoingProjects = transformations.filter((p) => p.ongoing);
 
 export function FeaturedTransformations() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+    return false;
+  });
   const [expandedMobileIndex, setExpandedMobileIndex] = useState<number | null>(0);
   const [lightboxProject, setLightboxProject] = useState<TransformationProject | null>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);

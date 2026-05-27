@@ -46,7 +46,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                     <div className="absolute inset-0 rounded-2xl shadow-xl overflow-hidden bg-background/50">
                         <Image
                             src={project.image || project.screenshots?.[0] || ""}
-                            alt={`${project.title} - Strategic Web Application developed by Rizwanul Islam (Afraim)`}
+                            alt={`Preview of "${project.title}" - A production-grade ${project.category} application: ${project.summary || project.description}. Built with ${project.techStack.slice(0, 3).join(', ')}.`}
                             fill
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                             sizes="(max-width: 768px) 90vw, (max-width: 1200px) 40vw, 30vw"

@@ -1,7 +1,8 @@
 ---
 title: "Governing Generative Outcomes: Managing AI Hallucinations in Analytics"
+excerpt: "Why the AI-era of Business Intelligence requires a new 'Check-and-Verify' protocol to maintain data integrity and executive trust."
 date: "2026-04-10"
-description: "Why the AI-era of Business Intelligence requires a new 'Check-and-Verify' protocol to maintain data integrity and executive trust."
+category: "Research"
 tags: ["AI Governance", "Decision Intelligence", "Data Integrity", "Machine Learning"]
 author: "Rizwanul Islam Afraim"
 ---
