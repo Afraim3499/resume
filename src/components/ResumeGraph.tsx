@@ -8,7 +8,6 @@ import {
   Brain, BarChart3, Megaphone, Server, Terminal,
   Zap, X, ArrowUpRight, Search, LucideIcon, Sparkles
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 /* ═══════════════════════════════════════════════════
    CATEGORY VISUAL SYSTEM
@@ -64,27 +63,27 @@ const CATEGORY_CONFIG: Record<string, {
   },
 };
 
-const SKILL_SHORT_NAMES: Record<string, string> = {
-  "Timezone-Aware Lead Routing": "Lead Routing",
-  "Meta Conversions API (CAPI)": "Meta CAPI",
-  "Google Merchant XML Feeds": "Merchant Feeds",
-  "Voice Agents & CRM Integration": "Voice CRM",
-  "Large-Scale Event Operations": "Event Ops",
-  "Competitor Marketing Audit": "Competitor Audit",
-  "Organic Acquisition Campaigns": "Organic Brand",
-  "Team & Vendor Coordination": "Team & Vendor",
-  "SEO/AEO System Framework": "SEO Framework",
-  "Next.js Hybrid Pre-rendering": "Next.js",
-  "Multi-Stage CMS Workflows": "CMS Flow",
-  "Chatbot RAG Architectures": "RAG Chatbot",
-  "Playwright E2E Testing": "Playwright",
-  "Dynamic Platform Integration": "Dynamic Platform",
-  "AWS/Vercel Serverless": "AWS/Vercel",
-  "Database Schema Design": "DB Schema",
-  "Supabase RLS Security": "Supabase RLS",
-  "API Architecture Design": "API Arch",
-  "Deterministic State Locking": "State Locking",
-  "Redis Availability Caching": "Redis Cache",
+const SKILL_DISPLAY: Record<string, { short: string; lines: string[] }> = {
+  "Timezone-Aware Lead Routing": { short: "Lead Routing", lines: ["Lead", "Routing"] },
+  "Meta Conversions API (CAPI)": { short: "Meta CAPI", lines: ["Meta", "CAPI"] },
+  "Google Merchant XML Feeds": { short: "Merchant Feeds", lines: ["Merchant", "Feeds"] },
+  "Voice Agents & CRM Integration": { short: "Voice CRM", lines: ["Voice", "CRM"] },
+  "Large-Scale Event Operations": { short: "Event Ops", lines: ["Event", "Ops"] },
+  "Competitor & Market Research": { short: "Market Research", lines: ["Market", "Research"] },
+  "Organic Brand Execution": { short: "Organic Brand", lines: ["Organic", "Brand"] },
+  "Team & Vendor Coordination": { short: "Team & Vendor", lines: ["Team &", "Vendor"] },
+  "4-Layer SEO Framework": { short: "SEO Framework", lines: ["SEO", "Framework"] },
+  "Next.js Static Pre-Rendering": { short: "Next.js Static", lines: ["Next.js", "Static"] },
+  "Multi-Stage Approval CMS": { short: "Approval CMS", lines: ["Approval", "CMS"] },
+  "OpenAI RAG Chatbots": { short: "RAG Chatbots", lines: ["RAG", "Chatbots"] },
+  "AWS S3 Media Ingestion": { short: "S3 Ingestion", lines: ["S3", "Ingestion"] },
+  "Dynamic OG Image Generation": { short: "OG Images", lines: ["OG Image", "Gen"] },
+  "Playwright E2E Testing": { short: "Playwright E2E", lines: ["Playwright", "E2E"] },
+  "Database Schema Design": { short: "DB Schema", lines: ["DB", "Schema"] },
+  "Supabase RLS Security": { short: "Supabase RLS", lines: ["Supabase", "RLS"] },
+  "API Architecture Design": { short: "API Arch", lines: ["API", "Arch"] },
+  "Deterministic State Locking": { short: "State Locking", lines: ["State", "Locking"] },
+  "Redis Availability Caching": { short: "Redis Cache", lines: ["Redis", "Cache"] },
 };
 
 /* Helper: get a node's category key */
@@ -104,7 +103,7 @@ interface SimNode {
   vy: number;
   size: number;
   label: string;
-  data?: any;
+  data?: { cat?: string } & Partial<Skill>;
   parent?: string;
   targetX: number;
   targetY: number;
@@ -186,7 +185,7 @@ export function ResumeGraph() {
     nodes.push({
       id: "me", type: "center",
       x: centerX, y: centerY, vx: 0, vy: 0,
-      size: isMobile ? 70 : 96,
+      size: isMobile ? 76 : 100,
       label: "ORCHESTRATOR",
       targetX: centerX,
       targetY: centerY,
@@ -202,7 +201,7 @@ export function ResumeGraph() {
         x: cx,
         y: cy,
         vx: 0, vy: 0,
-        size: isMobile ? 46 : 58,
+        size: isMobile ? 52 : 64,
         label: CATEGORY_CONFIG[cat]?.label || cat,
         data: { cat },
         targetX: cx,
@@ -220,7 +219,7 @@ export function ResumeGraph() {
           x: sx,
           y: sy,
           vx: 0, vy: 0,
-          size: isMobile ? 40 : 50,
+          size: isMobile ? 44 : 56,
           label: skill.name,
           data: skill,
           parent: cat,
@@ -353,24 +352,25 @@ export function ResumeGraph() {
      ═══════════════════════════════════════════════════ */
   type VisualState = "resting" | "lit" | "dragging" | "dimmed";
 
-  const getNodeVisualState = useCallback((node: SimNode): VisualState => {
-    if (matchedNodeIds) {
-      if (!matchedNodeIds.has(node.id)) return "dimmed";
-      return "lit";
-    }
-
+  const currentActiveCategory = useMemo(() => {
+    if (activeFilter) return activeFilter;
     if (selectedNode) {
-      if (selectedNode.id === "me" || selectedNode.type === "center") return "lit";
-      if (selectedNode.id === node.id) return "lit";
-      if (selectedNode.type === "category") {
-        if (node.id === "me" || node.parent === selectedNode.id) return "lit";
+      if (selectedNode.type === "category") return selectedNode.id;
+      if (selectedNode.type === "skill") return selectedNode.parent ?? null;
+    }
+    return null;
+  }, [activeFilter, selectedNode]);
+
+  const getNodeVisualState = useCallback((node: SimNode): VisualState => {
+    // 1. Search query active -> prioritize search
+    if (searchQuery.trim()) {
+      if (matchedNodeIds) {
+        if (!matchedNodeIds.has(node.id)) return "dimmed";
+        return "lit";
       }
-      if (selectedNode.type === "skill") {
-        if (node.id === selectedNode.parent || node.id === "me") return "lit";
-      }
-      return "dimmed";
     }
 
+    // 2. Dragged node takes priority
     if (draggedNode === node.id) return "dragging";
     if (draggedNode) {
       const dragNode = simNodes.find((n) => n.id === draggedNode);
@@ -381,6 +381,7 @@ export function ResumeGraph() {
       return "dimmed";
     }
 
+    // 3. Hovered node takes priority
     if (hoveredNode) {
       if (hoveredNode === node.id) return "lit";
       const hoverNode = simNodes.find((n) => n.id === hoveredNode);
@@ -389,30 +390,48 @@ export function ResumeGraph() {
       }
       return "dimmed";
     }
-    return "resting";
-  }, [matchedNodeIds, draggedNode, hoveredNode, selectedNode, simNodes]);
 
-  const getLinkVisualState = useCallback((source: string, target: string): VisualState => {
-    if (matchedNodeIds) {
-      return (matchedNodeIds.has(source) && matchedNodeIds.has(target)) ? "lit" : "dimmed";
-    }
-
-    // 1. If central node is clicked, light up every ribbon!
+    // 4. Central node is selected -> light up everything
     if (selectedNode && (selectedNode.id === "me" || selectedNode.type === "center")) {
       return "lit";
     }
 
-    // 2. If a category node is clicked/selected
-    if (selectedNode && selectedNode.type === "category") {
-      if (source === selectedNode.id || target === selectedNode.id) {
+    // 5. Active category branch highlighted
+    if (currentActiveCategory) {
+      if (node.id === "me" || node.id === currentActiveCategory || node.parent === currentActiveCategory) {
         return "lit";
       }
       return "dimmed";
     }
 
-    // 3. If a skill node is clicked/selected
-    if (selectedNode && selectedNode.type === "skill") {
-      if (target === selectedNode.id || (source === "me" && target === selectedNode.parent)) {
+    // 6. Selected node fallback
+    if (selectedNode) {
+      if (selectedNode.id === node.id) return "lit";
+      return "dimmed";
+    }
+
+    return "resting";
+  }, [searchQuery, matchedNodeIds, draggedNode, hoveredNode, selectedNode, currentActiveCategory, simNodes]);
+
+  const getLinkVisualState = useCallback((source: string, target: string): VisualState => {
+    // 1. Search query active -> prioritize search
+    if (searchQuery.trim()) {
+      if (matchedNodeIds) {
+        return (matchedNodeIds.has(source) && matchedNodeIds.has(target)) ? "lit" : "dimmed";
+      }
+    }
+
+    // 2. If central node is clicked, light up every ribbon/connection!
+    if (selectedNode && (selectedNode.id === "me" || selectedNode.type === "center")) {
+      return "lit";
+    }
+
+    // 3. Active category branch highlighting
+    if (currentActiveCategory) {
+      if (source === "me" && target === currentActiveCategory) {
+        return "lit";
+      }
+      if (source === currentActiveCategory && target.startsWith(`${currentActiveCategory}-`)) {
         return "lit";
       }
       return "dimmed";
@@ -439,7 +458,7 @@ export function ResumeGraph() {
     }
 
     return "resting";
-  }, [matchedNodeIds, draggedNode, hoveredNode, selectedNode, simNodes]);
+  }, [searchQuery, matchedNodeIds, selectedNode, currentActiveCategory, draggedNode, simNodes, hoveredNode]);
 
   const categories = useMemo(() => Array.from(new Set(allSkills.map((s) => s.category))), []);
 
@@ -480,7 +499,19 @@ export function ResumeGraph() {
             return (
               <button
                 key={cat}
-                onClick={() => setActiveFilter(active ? null : cat)}
+                onClick={() => {
+                  const isCurrentlyActive = activeFilter === cat;
+                  const nextFilter = isCurrentlyActive ? null : cat;
+                  setActiveFilter(nextFilter);
+                  if (nextFilter) {
+                    const parentNode = simNodes.find((n) => n.id === cat);
+                    if (parentNode) {
+                      setSelectedNode(parentNode);
+                    }
+                  } else {
+                    setSelectedNode(null);
+                  }
+                }}
                 className="px-2.5 py-1 text-[9px] md:text-[10px] font-bold uppercase tracking-wider rounded-full border transition-all duration-200"
                 style={{
                   background: active ? cfg.hex : "rgba(255,253,248,0.8)",
@@ -574,14 +605,14 @@ export function ResumeGraph() {
               shadow = vs === "lit" || vs === "dragging"
                 ? "0 0 28px 8px rgba(15,81,50,0.45), 0 0 6px 2px rgba(15,81,50,0.6)"
                 : "0 2px 8px rgba(15,81,50,0.15)";
-              opacity = vs === "dimmed" ? 0.15 : 1;
+              opacity = vs === "dimmed" ? 0.25 : 1;
               scale = vs === "lit" || vs === "dragging" ? 1.08 : 1;
             } else if (isCategory && cfg) {
               bg = vs === "lit" || vs === "dragging" ? cfg.hex : "#FFFDF8";
               color = vs === "lit" || vs === "dragging" ? "#fff" : cfg.hex;
               border = cfg.hex;
               shadow = vs === "lit" || vs === "dragging" ? cfg.glow : "none";
-              opacity = vs === "dimmed" ? 0.12 : vs === "resting" ? 0.85 : 1;
+              opacity = vs === "dimmed" ? 0.22 : vs === "resting" ? 0.85 : 1;
               scale = vs === "lit" || vs === "dragging" ? 1.1 : 1;
             } else {
               // Skill node
@@ -599,7 +630,7 @@ export function ResumeGraph() {
               shadow = vs === "lit" || vs === "dragging"
                 ? (cfg?.glow ?? "0 0 12px rgba(15,81,50,0.3)")
                 : "none";
-              opacity = vs === "dimmed" ? 0.08 : vs === "resting" ? (isExpert ? 0.9 : 0.65) : 1;
+              opacity = vs === "dimmed" ? 0.15 : vs === "resting" ? (isExpert ? 0.9 : 0.65) : 1;
               scale = vs === "lit" || vs === "dragging" ? 1.12 : 1;
             }
 
@@ -609,7 +640,19 @@ export function ResumeGraph() {
                 onMouseDown={(e) => handleMouseDown(node.id, e)}
                 onMouseEnter={() => setHoveredNode(node.id)}
                 onMouseLeave={() => setHoveredNode(null)}
-                onClick={() => setSelectedNode(node)}
+                onClick={() => {
+                  if (node.type === "category") {
+                    setSelectedNode(node);
+                    setActiveFilter(node.id);
+                  } else if (node.type === "center") {
+                    setSelectedNode(node);
+                    setActiveFilter(null);
+                  } else {
+                    setSelectedNode(node);
+                  }
+                }}
+                title={node.label}
+                aria-label={node.label}
                 className="absolute flex items-center justify-center rounded-full cursor-grab active:cursor-grabbing select-none"
                 style={{
                   width: node.size,
@@ -641,9 +684,13 @@ export function ResumeGraph() {
                     </span>
                   </div>
                 ) : (
-                  <span className="text-[7.5px] md:text-[8.5px] leading-tight text-center px-1 font-extrabold whitespace-normal break-words max-w-[90%]">
-                    {SKILL_SHORT_NAMES[node.label] || node.label}
-                  </span>
+                  <div className="flex flex-col items-center justify-center text-center px-1 max-w-[92%] leading-[1.1]">
+                    {(SKILL_DISPLAY[node.label]?.lines ?? [node.label]).map((line, idx) => (
+                      <span key={idx} className="block text-[7.5px] md:text-[8.5px] font-extrabold break-words">
+                        {line}
+                      </span>
+                    ))}
+                  </div>
                 )}
               </div>
             );
@@ -662,7 +709,11 @@ export function ResumeGraph() {
             className="absolute bottom-4 left-4 right-4 md:bottom-auto md:left-auto md:right-6 md:top-1/2 md:-translate-y-1/2 w-auto md:w-72 p-4 bg-[#FFFDF8] border border-[#0F5132]/12 rounded-2xl shadow-2xl z-50 flex flex-col gap-3"
           >
             <button
-              onClick={(e) => { e.stopPropagation(); setSelectedNode(null); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedNode(null);
+                setActiveFilter(null);
+              }}
               className="absolute top-3 right-3 p-1 hover:bg-[#EAF7EF] rounded-full text-[#5F655F] hover:text-[#0F5132] transition-colors"
             >
               <X className="w-3.5 h-3.5" />
@@ -694,7 +745,8 @@ export function ResumeGraph() {
 
             {/* Category */}
             {selectedNode.type === "category" && (() => {
-              const c = CATEGORY_CONFIG[selectedNode.data?.cat];
+              const catKey = selectedNode.data?.cat;
+              const c = catKey ? CATEGORY_CONFIG[catKey] : null;
               if (!c) return null;
               return (
                 <>
