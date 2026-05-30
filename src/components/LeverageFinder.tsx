@@ -131,11 +131,11 @@ const LEVERAGE_AREAS: LeverageArea[] = [
       "Visible sales conversions",
     ],
     relatedProof: [
-      { title: "PrimeSync CRM", subtitle: "Sales operations system", icon: "database" },
+      { title: "Operational Workflow CRM", subtitle: "Sales operations system", icon: "database" },
       { title: "Gaari", subtitle: "Travel & booking platform", icon: "car" },
     ],
     relatedProjects: [
-      { name: "PrimeSync CRM", icon: "database" },
+      { name: "Operational Workflow CRM", icon: "database" },
       { name: "Gaari", icon: "car" },
     ],
     ctaLabel: "See sales systems work",
@@ -202,11 +202,11 @@ const LEVERAGE_AREAS: LeverageArea[] = [
     ],
     relatedProof: [
       { title: "The Trailheadline", subtitle: "Custom editorial workflow", icon: "layers" },
-      { title: "PrimeSync CRM", subtitle: "Venture database platform", icon: "database" },
+      { title: "Operational Workflow CRM", subtitle: "Venture database platform", icon: "database" },
     ],
     relatedProjects: [
       { name: "The Trailheadline", icon: "layers" },
-      { name: "PrimeSync CRM", icon: "database" },
+      { name: "Operational Workflow CRM", icon: "database" },
     ],
     ctaLabel: "See operations work",
     ctaHref: "#featured-transformations",
@@ -341,11 +341,11 @@ const LEVERAGE_AREAS: LeverageArea[] = [
       "Fewer operational bottlenecks",
     ],
     relatedProof: [
-      { title: "PrimeSync CRM", subtitle: "Automated sales triggers", icon: "database" },
+      { title: "Operational Workflow CRM", subtitle: "Automated sales triggers", icon: "database" },
       { title: "Yagacalls", subtitle: "Auto lead distribution", icon: "trending" },
     ],
     relatedProjects: [
-      { name: "PrimeSync CRM", icon: "database" },
+      { name: "Operational Workflow CRM", icon: "database" },
       { name: "InshortBD", icon: "layers" },
     ],
     ctaLabel: "See automation work",

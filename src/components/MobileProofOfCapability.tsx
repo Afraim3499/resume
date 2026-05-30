@@ -69,7 +69,7 @@ export function MobileProofOfCapability({ slides, renderArtifact }: MobileProofO
                   </p>
 
                   {/* Visual Artifact (Only when expanded) */}
-                  <div className="h-[250px] w-full bg-[#FAF8F3] border border-[#0F5132]/5 rounded-xl p-3 mb-4 overflow-hidden relative">
+                  <div className="h-[275px] w-full bg-[#FAF8F3] border border-[#0F5132]/5 rounded-xl p-3 mb-4 overflow-hidden relative">
                     {renderArtifact(i)}
                   </div>
 

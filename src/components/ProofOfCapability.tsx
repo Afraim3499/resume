@@ -224,19 +224,19 @@ function ArtifactGrowthContent() {
   ];
 
   return (
-    <div className="w-full h-full flex flex-col justify-center p-4 bg-white rounded-xl border border-[#0F5132]/10 text-[10px] font-sans">
-      <div className="flex flex-col gap-3 relative pl-3">
+    <div className="w-full h-full flex flex-col justify-center p-2.5 sm:p-4 bg-white rounded-xl border border-[#0F5132]/10 text-[10px] font-sans">
+      <div className="flex flex-col gap-2 sm:gap-3 relative pl-1.5 sm:pl-3">
         {/* Draw vertical connecting arrow track */}
-        <div className="absolute left-2.5 top-2.5 bottom-2.5 w-[1px] bg-[#168A4A]/25 pointer-events-none" />
+        <div className="absolute left-1.5 sm:left-2.5 top-2.5 bottom-2.5 w-[1px] bg-[#168A4A]/25 pointer-events-none" />
 
         {steps.map((s, idx) => (
-          <div key={s.label} className="flex items-center gap-4 relative z-10">
+          <div key={s.label} className="flex items-center gap-2 sm:gap-4 relative z-10">
             <div className="w-5.5 h-5.5 rounded-full bg-[#EAF7EF] border border-[#168A4A]/30 flex items-center justify-center font-bold text-[10.5px] text-[#0F5132] shrink-0">
               {idx + 1}
             </div>
-            <div className="flex-1 p-2 rounded bg-[#FAF8F3] border border-[#0F5132]/5 flex justify-between items-center shadow-xs">
-              <span className="font-semibold text-[#0F5132] text-[11px]">{s.label}</span>
-              <span className="text-[9px] text-[#5F655F] italic">{s.desc}</span>
+            <div className="flex-1 p-2 rounded bg-[#FAF8F3] border border-[#0F5132]/5 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-0.5 sm:gap-4 shadow-xs text-left">
+              <span className="font-semibold text-[#0F5132] text-[10.5px] sm:text-[11px] leading-tight">{s.label}</span>
+              <span className="text-[8.5px] sm:text-[9px] text-[#5F655F] italic leading-tight">{s.desc}</span>
             </div>
           </div>
         ))}
@@ -248,24 +248,24 @@ function ArtifactGrowthContent() {
 // Artifact 5: Research & Thinking (Paper preview + Pure SVG concept map)
 function ArtifactResearchThinking() {
   return (
-    <div className="w-full h-full flex gap-3 p-4 bg-white rounded-xl border border-[#0F5132]/10 text-[10px] font-sans">
+    <div className="w-full h-full flex flex-col sm:flex-row gap-3 p-3 sm:p-4 bg-white rounded-xl border border-[#0F5132]/10 text-[10px] font-sans">
       {/* SSRN Paper preview */}
-      <div className="flex-1 p-3 bg-[#FAF8F3] border border-[#0F5132]/10 rounded-lg flex flex-col justify-between text-left shadow-xs">
+      <div className="w-full sm:flex-1 p-3 bg-[#FAF8F3] border border-[#0F5132]/10 rounded-lg flex flex-col justify-between text-left shadow-xs">
         <div>
           <span className="text-[8.5px] uppercase font-bold text-[#168A4A] tracking-wider leading-none">SSRN Research Paper</span>
-          <h5 className="font-serif font-bold text-[#0F5132] text-[11px] mt-1.5 leading-snug">Agentic AI as Coordination Infrastructure</h5>
-          <p className="text-[9.5px] text-[#5F655F] mt-1.5 leading-normal line-clamp-4">
+          <h5 className="font-serif font-bold text-[#0F5132] text-[10.5px] sm:text-[11px] mt-1.5 leading-snug">Agentic AI as Coordination Infrastructure</h5>
+          <p className="text-[9.5px] text-[#5F655F] mt-1.5 leading-normal line-clamp-3 sm:line-clamp-4">
             Analyzing firm coordination costs compression, operational structural shifts, and macroeconomic divergence...
           </p>
         </div>
-        <div className="text-[8px] font-mono text-[#5F655F] pt-1.5 border-t border-[#0F5132]/10 flex justify-between">
+        <div className="text-[8px] font-mono text-[#5F655F] pt-1.5 border-t border-[#0F5132]/10 flex justify-between mt-2">
           <span>SSRN Library</span>
           <span>Rizwanul Islam Afraim</span>
         </div>
       </div>
 
       {/* Concept nodes network */}
-      <svg className="flex-1 h-full max-h-[140px]" viewBox="0 0 160 120" fill="none">
+      <svg className="hidden sm:block flex-1 h-full max-h-[140px]" viewBox="0 0 160 120" fill="none">
         {/* Connector lines from center to outer */}
         <line x1="80" y1="60" x2="30" y2="25" stroke="#168A4A" strokeWidth="0.8" strokeDasharray="2 2" />
         <line x1="80" y1="60" x2="130" y2="25" stroke="#168A4A" strokeWidth="0.8" strokeDasharray="2 2" />

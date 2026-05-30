@@ -1,6 +1,6 @@
 ---
 title: "High-Velocity Sales Engines: Building Real-Time CRM Systems That Scale"
-excerpt: "How to architect a sales engine that combines multi-source lead enrichment, real-time dashboards, and data quality protocols. Lessons from building PrimeSyncCRM with Supabase and Next.js."
+excerpt: "How to architect a sales engine that combines multi-source lead enrichment, real-time dashboards, and data quality protocols. Lessons from building Operational Workflow CRM with Supabase and Next.js."
 date: "2025-12-20"
 category: "Sales Operations"
 tags: ["CRM", "Sales Engineering", "Supabase", "Real-Time Systems", "Lead Generation"]
@@ -13,7 +13,7 @@ author: "Rizwanul Islam"
 
 A CRM is not just a database of contacts. A high-velocity sales engine is a real-time intelligence system that enriches leads, monitors pipeline health, and surfaces opportunities before they expire. Building one requires thinking like both an engineer and a sales strategist.
 
-I built PrimeSyncCRM from the ground up — a Next.js and Supabase-powered CRM designed for high-velocity outbound sales. This is not a theoretical piece. This is what I learned from building, deploying, and iterating on a system that processes real lead data across multiple enrichment sources.
+I built Operational Workflow CRM from the ground up — a Next.js and Supabase-powered CRM designed for high-velocity outbound sales. This is not a theoretical piece. This is what I learned from building, deploying, and iterating on a system that processes real lead data across multiple enrichment sources.
 
 ## Why Resilience is Baseline for Sales Platforms
 
@@ -35,7 +35,7 @@ The quality of your CRM depends on the quality of your data. Single-source enric
 
 ### The Enrichment Pipeline
 
-PrimeSyncCRM's enrichment pipeline combines data from multiple sources:
+Operational Workflow CRM's enrichment pipeline combines data from multiple sources:
 
 ```
 Lead Input → ZoomInfo → Apollo → LinkedIn API → Enriched Lead Profile
@@ -139,7 +139,7 @@ export function usePipelineUpdates(teamId: string) {
 
 ### Dashboard Metrics That Matter
 
-Based on my experience building PrimeSyncCRM, these are the metrics sales teams actually use:
+Based on my experience building Operational Workflow CRM, these are the metrics sales teams actually use:
 
 | Metric | Update Frequency | Source |
 |--------|-----------------|--------|
@@ -153,7 +153,7 @@ Based on my experience building PrimeSyncCRM, these are the metrics sales teams 
 
 Traditional CRM workflows are request-response: a salesperson clicks a button, the system updates a record. Event-driven architecture inverts this: **the system proactively surfaces actions**.
 
-### Core Events in PrimeSyncCRM
+### Core Events in Operational Workflow CRM
 
 ```typescript
 // Event types that drive sales workflows
@@ -200,7 +200,7 @@ async function verifyEmail(email: string): Promise<EmailVerification> {
 
 ### Data Quality Scorecards
 
-Every lead in PrimeSyncCRM has a data quality score:
+Every lead in Operational Workflow CRM has a data quality score:
 
 | Factor | Weight | Description |
 |--------|--------|-------------|
@@ -212,7 +212,7 @@ Every lead in PrimeSyncCRM has a data quality score:
 
 Leads with scores below 50% are flagged for re-enrichment or manual review.
 
-## Lessons from PrimeSyncCRM
+## Lessons from Operational Workflow CRM
 
 ### What Worked
 
