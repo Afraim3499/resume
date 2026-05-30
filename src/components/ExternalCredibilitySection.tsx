@@ -246,6 +246,7 @@ export function ExternalCredibilitySection() {
                           cy="40"
                           r="3"
                           fill="#168A4A"
+                          initial={{ cx: 60, cy: 40 }}
                           animate={{ cx: [60, 240] }}
                           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                         />

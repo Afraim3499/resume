@@ -300,6 +300,7 @@ export function HowISolve() {
                   cy={160}
                   r="3.5"
                   fill="#0F5132"
+                  initial={{ cx: 100, cy: 160 }}
                   animate={{
                     cx: loopCx,
                     cy: loopCy,

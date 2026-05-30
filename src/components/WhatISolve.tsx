@@ -173,6 +173,7 @@ export function WhatISolve() {
                   cy={100}
                   r="2.5"
                   fill="#0F5132"
+                  initial={{ cx: 100, cy: 100 }}
                   animate={{
                     cx: [100, 300, 500, 500, 300, 100, 100],
                     cy: [100, 100, 100, 300, 300, 300, 100],
