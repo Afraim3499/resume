@@ -1,7 +1,50 @@
+import { type Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { SectionDivider } from "@/components/SectionDivider";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import dynamic from "next/dynamic";
+
+/* ─────────────────────────────────────────────────────────────
+   HOMEPAGE METADATA  (overrides layout.tsx defaults for /)
+   ───────────────────────────────────────────────────────────── */
+export const metadata: Metadata = {
+  title: "Rizwanul Islam Afraim — Marketing, Sales & Systems",
+  description: "Dhaka-based systems architect helping teams build sales ops, marketing workflows, product systems, automation, and SEO/AEO/GEO visibility.",
+  alternates: {
+    canonical: "https://www.rizwanulafraim.com/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.rizwanulafraim.com/",
+    title: "Rizwanul Islam Afraim — Marketing, Sales & Systems",
+    description: "Dhaka-based systems architect helping teams build sales ops, marketing workflows, product systems, automation, and SEO/AEO/GEO visibility.",
+    siteName: "Rizwanul Islam Afraim",
+    images: [
+      {
+        url: "https://www.rizwanulafraim.com/og-image.jpg",
+        secureUrl: "https://www.rizwanulafraim.com/og-image.jpg",
+        type: "image/jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Rizwanul Islam Afraim — Marketing, Sales & Systems",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rizwanul Islam Afraim — Marketing, Sales & Systems",
+    description: "Dhaka-based systems architect helping teams build sales ops, marketing workflows, product systems, automation, and SEO/AEO/GEO visibility.",
+    images: [
+      {
+        url: "https://www.rizwanulafraim.com/og-image.jpg",
+        alt: "Rizwanul Islam Afraim — Marketing, Sales & Systems",
+      },
+    ],
+    creator: "@rizwanul_afraim",
+  },
+};
+
 
 // New Phase 2 approved sections
 const WhatISolve = dynamic(() => import("@/components/WhatISolve").then((mod) => mod.WhatISolve), { loading: () => <LoadingSpinner /> });

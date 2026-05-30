@@ -42,6 +42,11 @@ export const viewport: Viewport = {
   maximumScale: 5,
 }
 
+/* ─────────────────────────────────────────────────────────────
+   HOMEPAGE / GLOBAL METADATA
+   OG Image: /og-image.jpg  →  1200 × 630 px  JPEG  106 KB
+   og:logo:  /logo.png       →  portrait mark  PNG
+   ───────────────────────────────────────────────────────────── */
 export const metadata: Metadata = {
   title: {
     default: "Rizwanul Islam Afraim | Systems for Growth, Operations & Product Execution",
@@ -52,12 +57,12 @@ export const metadata: Metadata = {
     "Rizwanul Islam Afraim",
     "Afraim",
     "Systems Architect",
-    "Tech Strategist",
-    "Agentic AI",
+    "Marketing Operations",
+    "Sales Operations",
+    "SEO AEO GEO",
     "Coordination Infrastructure",
     "Venture Architecture",
     "Operations Expert",
-    "Technical Lead",
     "Data Strategy",
     "Gaari Founder",
     "Next.js Expert",
@@ -67,29 +72,36 @@ export const metadata: Metadata = {
   publisher: "Rizwanul Islam Afraim",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com"),
   alternates: {
-    canonical: 'https://www.rizwanulafraim.com',
+    canonical: "https://www.rizwanulafraim.com/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.rizwanulafraim.com",
-    title: "Rizwanul Islam Afraim | Systems for Growth, Operations & Product Execution",
-    description: "Rizwanul Islam Afraim helps teams organize market research, sales operations, product workflows, SEO systems, automation, and reporting into scalable execution systems.",
-    siteName: "Rizwanul Islam Afraim Portfolio",
+    url: "https://www.rizwanulafraim.com/",
+    title: "Rizwanul Islam Afraim — Marketing, Sales & Systems",
+    description: "Dhaka-based systems architect helping teams build sales ops, marketing workflows, product systems, automation, and SEO/AEO/GEO visibility.",
+    siteName: "Rizwanul Islam Afraim",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://www.rizwanulafraim.com/og-image.jpg",
+        secureUrl: "https://www.rizwanulafraim.com/og-image.jpg",
+        type: "image/jpeg",
         width: 1200,
         height: 630,
-        alt: "Rizwanul Islam Afraim - Systems for Growth, Operations & Product Execution",
+        alt: "Rizwanul Islam Afraim — Marketing, Sales & Systems",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rizwanul Islam Afraim | Systems for Growth, Operations & Product Execution",
-    description: "Rizwanul Islam Afraim helps teams organize market research, sales operations, product workflows, SEO systems, automation, and reporting into scalable execution systems.",
-    images: ["/og-image.jpg"],
+    title: "Rizwanul Islam Afraim — Marketing, Sales & Systems",
+    description: "Dhaka-based systems architect helping teams build sales ops, marketing workflows, product systems, automation, and SEO/AEO/GEO visibility.",
+    images: [
+      {
+        url: "https://www.rizwanulafraim.com/og-image.jpg",
+        alt: "Rizwanul Islam Afraim — Marketing, Sales & Systems",
+      },
+    ],
     creator: "@rizwanul_afraim",
   },
   robots: {
@@ -121,11 +133,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "mask-icon", url: "/favicon.ico" },
     ],
   },
 };
@@ -154,7 +170,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://d2fltix0v2e0sb.cloudfront.net" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="theme-color" content="#0F5132" />
+        {/* og:logo — non-standard but required by some validators (LinkedIn, Google Rich Results) */}
+        {/* Not emitted by Next.js Metadata API, so added manually here */}
+        <meta property="og:logo" content="https://www.rizwanulafraim.com/logo.png" />
       </head>
       <body
         className={clsx(
