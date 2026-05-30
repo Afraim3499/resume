@@ -126,36 +126,73 @@ export function Hero() {
         className="container relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
       >
         {/* Left Column: Text & CTAs */}
-        <div className="lg:col-span-7 flex flex-col justify-center">
-          {/* Label */}
-          <motion.div variants={itemVariants} className="flex">
+        <div className="lg:col-span-7 flex flex-col justify-center select-none">
+          {/* 1. Portrait on mobile viewports, hidden on larger screens */}
+          <motion.div
+            variants={itemVariants}
+            className="block sm:hidden order-1 my-3 flex justify-center"
+          >
+            <div className="w-24 h-24 rounded-full overflow-hidden border border-[#0F5132]/25 bg-white p-1 relative shadow-xs">
+              <div className="relative w-full h-full rounded-full overflow-hidden">
+                <Image
+                  src="/assets/afraim-logo.png"
+                  alt="Rizwanul Islam Afraim - Illustrated Portrait Logo"
+                  fill
+                  className="object-cover"
+                  sizes="96px"
+                  priority={true}
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* 2a. Mobile Role Chip */}
+          <motion.div
+            variants={itemVariants}
+            className="block sm:hidden order-2 mb-4 text-center"
+          >
+            <span className="inline-block px-3 py-1 rounded-full bg-[#EAF7EF] border border-[#168A4A]/15 text-[#0F5132] text-[10px] font-mono tracking-widest font-extrabold uppercase leading-none">
+              Systems Architect &bull; GTM Ops
+            </span>
+          </motion.div>
+
+          {/* 2b. Desktop Label */}
+          <motion.div variants={itemVariants} className="hidden sm:flex order-2">
             <span className="inline-block px-3 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-5 leading-none">
               FOR TEAMS WITH MESSY GROWTH, OPERATIONS & PRODUCT WORK
             </span>
           </motion.div>
 
-          {/* Headline */}
+          {/* 3. Headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-serif font-medium leading-[1.12] tracking-tight text-[#1F2022] mb-5 max-w-[680px]"
+            className="order-3 text-center sm:text-left text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-serif font-medium leading-[1.12] tracking-tight text-[#1F2022] mb-5 max-w-[680px]"
           >
             When growth gets messy, <br />
             I turn it into <br />
             <span className="text-primary italic font-serif">a system.</span>
           </motion.h1>
 
-          {/* Subcopy */}
+          {/* 4a. Mobile Subcopy */}
           <motion.p
             variants={itemVariants}
-            className="text-sm sm:text-base md:text-lg text-[#5F5A52] leading-relaxed font-sans max-w-2xl mb-7"
+            className="block sm:hidden order-4 text-xs text-[#5F5A52] leading-relaxed text-center max-w-sm mx-auto mb-6"
+          >
+            I build and operate marketing, sales, and product systems that transform scattered, repetitive manual work into automated growth engines.
+          </motion.p>
+
+          {/* 4b. Desktop Subcopy */}
+          <motion.p
+            variants={itemVariants}
+            className="hidden sm:block order-4 text-sm sm:text-base md:text-lg text-[#5F5A52] leading-relaxed font-sans max-w-2xl mb-7"
           >
             I help teams organize market research, sales operations, product workflows, SEO systems, automation, and reporting into one clear execution engine — so decisions get smarter, teams move faster, and growth compounds.
           </motion.p>
 
-          {/* CTAs */}
+          {/* 5. CTAs */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-8"
+            className="order-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-8"
           >
             <a
               href="#what-i-solve"
@@ -163,38 +200,46 @@ export function Hero() {
                 e.preventDefault();
                 document.getElementById("what-i-solve")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="group px-5 py-3 rounded-lg bg-primary text-white font-medium text-center hover:bg-[#168A4A] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm text-xs sm:text-sm flex items-center justify-center gap-1.5"
+              className="group px-5 py-3.5 rounded-xl bg-primary text-white font-bold text-center hover:bg-[#168A4A] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm text-xs sm:text-sm flex items-center justify-center gap-1.5 min-h-[44px]"
             >
-              Show Me What You Solve
+              <span>Show Me What You Solve</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </a>
             <Link
               href="/case-studies"
-              className="px-5 py-3 rounded-lg border border-[#E6D8C8] bg-[#FFFDF8] text-[#1F2022] font-medium text-center hover:bg-[#EAF7EF] hover:border-primary/30 transition-colors text-xs sm:text-sm"
+              className="px-5 py-3.5 rounded-xl border border-[#E6D8C8] bg-[#FFFDF8] text-[#1F2022] font-bold text-center hover:bg-[#EAF7EF] hover:border-primary/30 transition-colors text-xs sm:text-sm min-h-[44px]"
             >
               See Case Studies
             </Link>
             <Link
               href="/resume"
-              className="px-5 py-3 text-[#1F2022]/85 hover:text-primary font-medium text-center transition-colors text-xs sm:text-sm underline underline-offset-4"
+              className="hidden sm:block px-5 py-3 text-[#1F2022]/85 hover:text-primary font-medium text-center transition-colors text-xs sm:text-sm underline underline-offset-4"
             >
               View Resume
             </Link>
           </motion.div>
 
-          {/* Capabilities Row */}
-          <motion.div variants={itemVariants} className="border-t border-[#E6D8C8]/60 pt-5">
-            <p className="text-[9px] uppercase tracking-widest text-[#5F5A52] font-bold mb-2.5">Key Capabilities</p>
-            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+          {/* 6. Capabilities Row */}
+          <motion.div variants={itemVariants} className="order-6 border-t border-[#E6D8C8]/60 pt-5">
+            <p className="text-[9px] uppercase tracking-widest text-[#5F5A52] font-bold mb-2.5 text-center sm:text-left">Key Capabilities</p>
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-2.5">
               {["Market Research", "Sales Ops", "Product Systems", "SEO / AEO", "Automation"].map((cap) => (
                 <span
                   key={cap}
-                  className="px-3 py-1 rounded-md bg-[#FFFDF8] border border-[#E6D8C8]/70 text-[#1F2022]/80 text-xs font-medium hover:border-primary/50 transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-[#FFFDF8] border border-[#E6D8C8]/70 text-[#1F2022]/80 text-xs font-semibold hover:border-primary/50 transition-colors min-h-[32px] flex items-center"
                 >
                   {cap}
                 </span>
               ))}
             </div>
+          </motion.div>
+
+          {/* 7. Mobile Scroll Cue */}
+          <motion.div
+            variants={itemVariants}
+            className="block sm:hidden order-7 text-center mt-6 text-[#5F5A52]/40 text-[9px] font-mono animate-bounce uppercase tracking-widest"
+          >
+            &darr; scroll to diagnose &darr;
           </motion.div>
         </div>
 
@@ -330,27 +375,7 @@ export function Hero() {
           </div>
 
           {/* Mobile Stacking Visual Layout with Shared Insight Panel */}
-          <div className="flex flex-col items-center w-full sm:hidden">
-            {/* Portrait Trigger Button */}
-            <button
-              onClick={() => setActiveMode(activeMode === "all" ? "idle" : "all")}
-              className={`w-44 h-44 rounded-2xl overflow-hidden border-2 transition-all duration-300 bg-white p-1.5 relative mb-6 focus:outline-none focus:ring-2 focus:ring-primary shadow-md ${
-                activeMode === "all" ? "border-primary scale-[1.02]" : "border-[#E6D8C8]"
-              }`}
-              aria-label="Toggle all systems integration view"
-              aria-pressed={activeMode === "all"}
-            >
-              <div className="relative w-full h-full rounded-xl overflow-hidden">
-                <Image
-                  src="/assets/afraim-logo.png"
-                  alt="Rizwanul Islam Afraim - Illustrated Portrait Logo representing Systems Builder & Growth Operations"
-                  fill
-                  className="object-cover"
-                  sizes="176px"
-                  priority={true}
-                />
-              </div>
-            </button>
+          <div className="flex flex-col items-center w-full sm:hidden mt-6">
 
             {/* Module Cards Grid (Compact control buttons) */}
             <div className="grid grid-cols-2 gap-2.5 w-full max-w-sm mb-4">

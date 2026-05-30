@@ -37,6 +37,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { MobileLeverageFinder } from "./MobileLeverageFinder";
 
 /* ─────────────────────── DATA TYPES ─────────────────────── */
 
@@ -535,8 +536,8 @@ export function LeverageFinder() {
         ))}
       </div>
 
-      {/* ─────────────────────── INTERACTIVE VISUAL LAYER (Humans) ─────────────────────── */}
-      <div className="container mx-auto max-w-7xl px-4 md:px-8">
+      {/* ─────────────────────── INTERACTIVE VISUAL LAYER (Humans - Desktop only) ─────────────────────── */}
+      <div className="hidden lg:block container mx-auto max-w-7xl px-4 md:px-8">
         
         {/* Viewport-Fitted Compact Header Row: Title & Subtitle in one line (Aligned to visual system) */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-3.5">
@@ -836,6 +837,31 @@ export function LeverageFinder() {
           </div>
         </div>
 
+      </div>
+
+      {/* ─────────────────────── INTERACTIVE VISUAL LAYER (Humans - Mobile only) ─────────────────────── */}
+      <div className="lg:hidden container mx-auto max-w-xl px-4">
+        {/* Mobile Header Row */}
+        <div className="mb-4">
+          <span className="inline-block px-3 py-1 rounded-full bg-[#0F5132]/10 border border-[#0F5132]/20 text-[#0F5132] text-[10px] font-semibold tracking-wider uppercase mb-2 leading-none">
+            LEVERAGE FINDER
+          </span>
+          <h2 className="text-xl sm:text-2xl font-serif font-medium tracking-tight text-[#171717] leading-tight mb-2">
+            Where I create <span className="text-[#0F5132] italic">the most leverage.</span>
+          </h2>
+          <p className="text-xs text-[#5F655F] leading-relaxed">
+            Most business problems are not solved by adding more tools. They are solved by finding the constraint and building the right system.
+          </p>
+        </div>
+
+        <MobileLeverageFinder
+          areas={LEVERAGE_AREAS}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          renderProofIcon={renderProofIcon}
+          renderProjectIcon={renderProjectIcon}
+          prefersReducedMotion={prefersReducedMotion}
+        />
       </div>
     </section>
   );

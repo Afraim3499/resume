@@ -16,6 +16,7 @@ import {
   Construction,
 } from "lucide-react";
 import Link from "next/link";
+import { MobileFeaturedTransformations } from "./MobileFeaturedTransformations";
 
 /* ─────────────────────── DATA ─────────────────────── */
 
@@ -216,7 +217,6 @@ export function FeaturedTransformations() {
     }
     return false;
   });
-  const [expandedMobileIndex, setExpandedMobileIndex] = useState<number | null>(0);
   const [lightboxProject, setLightboxProject] = useState<TransformationProject | null>(null);
 
   useEffect(() => {
@@ -531,181 +531,11 @@ export function FeaturedTransformations() {
             </p>
           </div>
 
-          {/* Mobile Accordion Stack */}
-          <div className="flex flex-col gap-3">
-            {completedProjects.map((p, i) => {
-              const isExpanded = expandedMobileIndex === i;
-              return (
-                <div
-                  key={p.slug}
-                  className="bg-[#FFFDF8] border border-[#0F5132]/14 rounded-xl overflow-hidden shadow-xs"
-                >
-                  <button
-                    onClick={() => setExpandedMobileIndex(isExpanded ? null : i)}
-                    className="w-full flex justify-between items-center p-4 text-left focus:outline-hidden cursor-pointer"
-                  >
-                    <div className="flex gap-3 items-center">
-                      <span className="text-[10px] font-mono text-[#168A4A]/85 font-bold">{p.index}</span>
-                      <div>
-                        <h4 className="text-xs font-bold text-[#171717]">{p.title}</h4>
-                        <p className="text-[9px] text-[#5F655F]">{p.subtitle}</p>
-                      </div>
-                    </div>
-                    <ChevronRight
-                      className={`w-4 h-4 text-[#5F655F] transition-transform duration-200 ${
-                        isExpanded ? "rotate-90" : ""
-                      }`}
-                    />
-                  </button>
-
-                  <AnimatePresence initial={false}>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="border-t border-[#0F5132]/10 overflow-hidden"
-                      >
-                        <div className="p-4 flex flex-col gap-4">
-                          {/* Mobile Image */}
-                          {p.image && (
-                            <div
-                              onClick={() => setLightboxProject(p)}
-                              style={{ aspectRatio: p.aspectRatio }}
-                              className="relative w-full rounded-xl overflow-hidden border border-[#0F5132]/10 cursor-zoom-in bg-[#FAF8F3]"
-                            >
-                              <Image
-                                src={p.image}
-                                alt={p.imageAlt}
-                                fill
-                                className="object-cover object-top"
-                                sizes="(max-width: 640px) 100vw, 90vw"
-                              />
-                              {p.link && (
-                                <Link
-                                  href={p.link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[9px] font-semibold text-[#0F5132] border border-[#0F5132]/10"
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  Live <ExternalLink className="w-2.5 h-2.5" />
-                                </Link>
-                              )}
-                            </div>
-                          )}
-
-                          {/* Metrics */}
-                          {p.metrics.length > 0 && (
-                            <div className="grid grid-cols-3 gap-2">
-                              {p.metrics.map((m) => (
-                                <div key={m.label} className="p-2 bg-[#EAF7EF] rounded-lg text-center border border-[#168A4A]/10">
-                                  <div className="text-sm font-serif font-bold text-[#0F5132] leading-none">{m.value}</div>
-                                  <div className="text-[8px] font-mono text-[#5F655F] mt-1">{m.label}</div>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-
-                          {/* Messy Reality */}
-                          <div className="p-3 bg-[#FFFDF8] border border-[#0F5132]/8 rounded-lg">
-                            <div className="flex items-center gap-1.5 mb-1.5">
-                              <AlertTriangle className="w-3 h-3 text-amber-600" />
-                              <span className="text-[8px] font-mono font-bold text-amber-700 uppercase tracking-wider">
-                                Messy Reality
-                              </span>
-                            </div>
-                            <p className="text-[10px] text-[#5F655F] leading-relaxed">{p.messyReality}</p>
-                          </div>
-
-                          {/* What I Built */}
-                          <div className="p-3 bg-[#FFFDF8] border border-[#0F5132]/8 rounded-lg">
-                            <div className="flex items-center gap-1.5 mb-1.5">
-                              <Wrench className="w-3 h-3 text-[#168A4A]" />
-                              <span className="text-[8px] font-mono font-bold text-[#0F5132] uppercase tracking-wider">
-                                What I Built
-                              </span>
-                            </div>
-                            <p className="text-[10px] text-[#5F655F] leading-relaxed">{p.whatIBuilt}</p>
-                          </div>
-
-                          {/* Impact */}
-                          <div className="p-3 bg-[#EAF7EF] border border-[#168A4A]/15 rounded-lg">
-                            <div className="flex items-center gap-1.5 mb-1.5">
-                              <TrendingUp className="w-3 h-3 text-[#168A4A]" />
-                              <span className="text-[8px] font-mono font-bold text-[#0F5132] uppercase tracking-wider">
-                                Impact
-                              </span>
-                            </div>
-                            <p className="text-[10px] text-[#0F5132] font-medium leading-relaxed">{p.businessImpact}</p>
-                          </div>
-
-                          {/* Tools */}
-                          <div className="flex flex-wrap gap-1 pt-2 border-t border-[#0F5132]/8">
-                            {p.tools.map((tool) => (
-                              <span
-                                key={tool}
-                                className="text-[8px] px-2 py-0.5 rounded-full bg-[#F7F4EC] border border-[#0F5132]/10 text-[#5F655F]"
-                              >
-                                {tool}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-
-            {/* Mobile Ongoing */}
-            {ongoingProjects.length > 0 && (
-              <div className="mt-6 pt-6 border-t border-[#0F5132]/10">
-                <div className="flex items-center gap-2 mb-4">
-                  <Construction className="w-3.5 h-3.5 text-[#168A4A]" />
-                  <span className="text-[9px] font-mono font-bold text-[#0F5132] uppercase tracking-wider">
-                    In Development
-                  </span>
-                </div>
-                {ongoingProjects.map((p) => (
-                  <div
-                    key={p.slug}
-                    className="p-4 bg-[#FFFDF8] border border-dashed border-[#0F5132]/15 rounded-xl mb-3 flex flex-col gap-3"
-                  >
-                    <div>
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <h4 className="text-xs font-serif font-bold text-[#171717]">{p.title}</h4>
-                        <span className="text-[7px] font-mono text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-full font-semibold uppercase leading-none">
-                          Building
-                        </span>
-                      </div>
-                      <p className="text-[9px] text-[#0F5132] font-medium">{p.subtitle}</p>
-                    </div>
-
-                    {p.image && (
-                      <div
-                        onClick={() => setLightboxProject(p)}
-                        style={{ aspectRatio: p.aspectRatio }}
-                        className="relative w-full rounded-lg overflow-hidden border border-[#0F5132]/10 bg-[#FAF8F3] cursor-zoom-in"
-                      >
-                        <Image
-                          src={p.image}
-                          alt={p.imageAlt}
-                          fill
-                          className="object-cover object-top"
-                          sizes="(max-width: 640px) 100vw, 90vw"
-                        />
-                      </div>
-                    )}
-
-                    <p className="text-[10px] text-[#5F655F] leading-relaxed">{p.messyReality}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <MobileFeaturedTransformations
+            completedProjects={completedProjects}
+            ongoingProjects={ongoingProjects}
+            setLightboxProject={setLightboxProject}
+          />
         </div>
       </div>
 

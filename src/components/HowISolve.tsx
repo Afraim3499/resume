@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Compass, BarChart3, Repeat, Rocket, Milestone, Wrench, Cpu, AreaChart, HelpCircle } from "lucide-react";
+import { Search, Compass, BarChart3, Repeat, Rocket, Milestone, Wrench, Cpu, AreaChart, HelpCircle, ChevronDown } from "lucide-react";
 
 interface StepCard {
   number: string;
@@ -65,6 +65,7 @@ export function HowISolve() {
   const [isHovered, setIsHovered] = useState(false);
   const [activeStep, setActiveStep] = useState<number | null>(null);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [mobileActiveStep, setMobileActiveStep] = useState<number | null>(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
       return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -295,6 +296,8 @@ export function HowISolve() {
               {/* Moving node head along the path */}
               {!prefersReducedMotion && isHovered && activeStep === null && (
                 <motion.circle
+                  cx={100}
+                  cy={160}
                   r="3.5"
                   fill="#0F5132"
                   animate={{
@@ -362,50 +365,113 @@ export function HowISolve() {
             </div>
           </div>
 
-          {/* TABLET & MOBILE VIEW (Sequential grid, no loop path graphics) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-5">
+          {/* TABLET & MOBILE VIEW (Vertical Process Timeline) */}
+          <div className="flex flex-col gap-4 lg:hidden max-w-xl mx-auto w-full">
             {steps.map((step, index) => {
               const Icon = step.icon;
-              const isSelected = activeStep === index;
-              const isAnySelected = activeStep !== null;
-              const isMuted = isAnySelected && !isSelected;
-
+              const isExpanded = mobileActiveStep === index;
               return (
-                <button
-                  key={step.title}
-                  onClick={() => setActiveStep(isSelected ? null : index)}
-                  aria-pressed={isSelected}
-                  className={`bg-[#FFFDF8] border rounded-xl p-5 text-left flex flex-col justify-between transition-all duration-300 shadow-sm cursor-pointer ${
-                    isSelected ? "border-[#0F5132] shadow-md shadow-[#0F5132]/10" : "border-[#E6DDD0]"
-                  } ${isMuted ? "opacity-60" : ""}`}
-                >
-                  <div>
-                    <div className="flex justify-between items-start mb-3">
-                      <span className="text-[9px] font-mono text-[#5F5A52]/50 font-bold">{step.number}</span>
-                      <div className={`p-1.5 rounded ${
-                        isSelected ? "bg-[#0F5132] text-white" : "bg-[#0F5132]/5 text-[#0F5132]"
-                      }`}>
-                        <Icon className="w-3.5 h-3.5" />
+                <div key={step.title} className="relative pl-6">
+                  {/* Vertical connecting line */}
+                  {index < steps.length - 1 && (
+                    <div className="absolute top-8 bottom-0 left-[11px] w-0.5 border-l border-[#E6DDD0] pointer-events-none" />
+                  )}
+                  
+                  {/* Timeline bullet / icon */}
+                  <div
+                    onClick={() => setMobileActiveStep(isExpanded ? null : index)}
+                    className={`absolute left-0 top-1 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer transition-colors duration-300 z-10 ${
+                      isExpanded
+                        ? "bg-[#0F5132] text-white"
+                        : "bg-[#0F5132]/5 text-[#0F5132] border border-[#0F5132]/10"
+                    }`}
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                  </div>
+
+                  <div
+                    className={`bg-white border rounded-xl overflow-hidden transition-all duration-300 ${
+                      isExpanded ? "border-[#0F5132] shadow-sm scale-[1.01]" : "border-[#E6DDD0] hover:border-[#0F5132]/40"
+                    }`}
+                  >
+                    {/* Header trigger */}
+                    <button
+                      onClick={() => setMobileActiveStep(isExpanded ? null : index)}
+                      className="w-full flex justify-between items-start p-4 text-left focus:outline-none cursor-pointer min-h-[48px]"
+                      aria-expanded={isExpanded}
+                    >
+                      <div className="flex flex-col gap-2 min-w-0 pr-2 select-none">
+                        <div>
+                          <span className="text-[8px] font-mono text-[#5F5A52]/50 font-bold uppercase tracking-wider leading-none">
+                            Step 0{index + 1}
+                          </span>
+                          <h3 className="text-xs font-serif font-bold text-[#1F2022] leading-tight mt-0.5">
+                            {step.title}
+                          </h3>
+                        </div>
+                        <p className="text-[10.5px] text-[#5F5A52] leading-relaxed font-sans">
+                          {step.copy}
+                        </p>
+                        {/* Artifact Chip Statically Visible */}
+                        <div className="flex pt-1">
+                          <span className="text-[8.5px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#EAF7EF] border border-[#168A4A]/15 text-[#0F5132] leading-none">
+                            Artifact: {step.outputs[0]}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                    <h3 className="text-sm font-serif font-medium text-[#1F2022] mb-2 leading-none">{step.title}</h3>
-                    <p className="text-xs text-[#5F5A52] leading-relaxed mb-4 font-sans">{step.copy}</p>
+                      <ChevronDown
+                        className={`w-4 h-4 text-[#5F5A52] transition-transform duration-300 shrink-0 mt-0.5 ${
+                          isExpanded ? "rotate-180 text-[#0F5132]" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {/* Collapsible details */}
+                    <AnimatePresence initial={false}>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="px-4 pb-4 border-t border-[#E6DDD0]/30 pt-3 flex flex-col gap-3.5 text-xs font-sans"
+                        >
+                          <div className="p-3 bg-[#EAF7EF] border border-[#168A4A]/15 rounded-xl">
+                            <span className="block text-[8px] font-mono font-bold text-[#0F5132] uppercase tracking-wider leading-none mb-1">
+                              Why It Matters
+                            </span>
+                            <p className="text-[#0F5132] font-semibold leading-relaxed italic">
+                              {step.whyItMatters}
+                            </p>
+                          </div>
+
+                          <div>
+                            <span className="block text-[8px] font-mono font-bold text-[#5F5A52]/50 uppercase tracking-wider mb-2">
+                              Deliverable Outputs
+                            </span>
+                            <div className="flex flex-wrap gap-1.5">
+                              {step.outputs.map((out) => (
+                                <span
+                                  key={out}
+                                  className="text-[9px] px-2.5 py-0.5 rounded-lg bg-[#FAF8F3] border border-[#E6DDD0] text-[#5F5A52]"
+                                >
+                                  {out}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                  <div className="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-[#E6DDD0]/40 w-full">
-                    {step.outputs.map((out) => (
-                      <span key={out} className="text-[10px] px-2 py-0.5 rounded bg-[#FAF8F3] border border-[#E6DDD0] text-[#5F5A52]">
-                        {out}
-                      </span>
-                    ))}
-                  </div>
-                </button>
+                </div>
               );
             })}
           </div>
         </div>
 
         {/* SHARED INSIGHT PANEL */}
-        <div className="mb-6">
+        <div className="mb-6 hidden lg:block">
           <div className="bg-[#FFFDF8] border border-[#E6DDD0] rounded-2xl p-5 md:p-6 shadow-sm min-h-[90px] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               {selectedStepCard ? (

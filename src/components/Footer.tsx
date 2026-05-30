@@ -17,6 +17,7 @@ import {
   MapPin
 } from "lucide-react";
 import { EmailDisplay } from "./EmailDisplay";
+import { MobileFooter } from "./MobileFooter";
 
 export function Footer() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
@@ -120,7 +121,8 @@ export function Footer() {
         <p>Connect with Dhaka-based Systems Architect Rizwanul Islam Afraim for premium marketing, sales, and platform execution pipelines.</p>
       </div>
 
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 flex flex-col gap-0">
+      {/* DESKTOP VIEW */}
+      <div className="hidden lg:flex container mx-auto max-w-7xl px-4 md:px-8 flex-col gap-0">
         
         {/* ================= PART B — MAIN FOOTER BODY ================= */}
         <div className="py-5 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-5 items-start border-b border-[#0F5132]/8">
@@ -304,6 +306,11 @@ export function Footer() {
           </div>
         </div>
 
+      </div>
+
+      {/* MOBILE VIEW */}
+      <div className="lg:hidden">
+        <MobileFooter navGroups={navGroups} trustItems={trustItems} />
       </div>
     </footer>
   );

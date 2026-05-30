@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Search, Eye, Globe, Layers, Cpu, Network, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, Eye, Globe, Layers, Cpu, Network, ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 
 interface DiagnosticCard {
@@ -11,6 +11,7 @@ interface DiagnosticCard {
   cost: string;
   build: string;
   number: string;
+  href: string;
 }
 
 const cards: DiagnosticCard[] = [
@@ -19,42 +20,48 @@ const cards: DiagnosticCard[] = [
     icon: Search,
     title: "Scattered Sales & Market Research",
     cost: "bad targeting, slow outreach",
-    build: "research systems & lead pipelines"
+    build: "research systems & lead pipelines",
+    href: "/solutions/gtm-operations"
   },
   {
     number: "02",
     icon: Eye,
     title: "Weak Operational Visibility",
     cost: "reactive decisions, low focus",
-    build: "dashboards, reporting layers & workflow tracking"
+    build: "dashboards, reporting layers & workflow tracking",
+    href: "/solutions/gtm-operations"
   },
   {
     number: "03",
     icon: Globe,
     title: "Websites Without Growth Architecture",
     cost: "traffic leaks, low conversion",
-    build: "SEO/AEO journeys, internal linking & conversion paths"
+    build: "SEO/AEO journeys, internal linking & conversion paths",
+    href: "/solutions/dynamic-platforms"
   },
   {
     number: "04",
     icon: Layers,
     title: "Product Ideas Without Execution Systems",
     cost: "slow builds, messy scope",
-    build: "product architecture, MVP systems & internal tools"
+    build: "product architecture, MVP systems & internal tools",
+    href: "/solutions/dynamic-platforms"
   },
   {
     number: "05",
     icon: Cpu,
     title: "Manual Work That Should Be Automated",
     cost: "wasted hours, inconsistent output",
-    build: "AI-assisted workflows, automation pipelines & integrations"
+    build: "AI-assisted workflows, automation pipelines & integrations",
+    href: "/solutions/gtm-operations"
   },
   {
     number: "06",
     icon: Network,
     title: "Execution Without a Clear Operating Model",
     cost: "busy teams that do not compound",
-    build: "operating systems connecting planning, execution & reporting"
+    build: "operating systems connecting planning, execution & reporting",
+    href: "/solutions/executive-brand"
   }
 ];
 
@@ -67,6 +74,7 @@ export function WhatISolve() {
   const [isHovered, setIsHovered] = useState(false);
   const [activeNodeIndex, setActiveNodeIndex] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [mobileExpandedIndex, setMobileExpandedIndex] = useState<number | null>(0);
 
   // Check prefers-reduced-motion on mount
   useEffect(() => {
@@ -161,6 +169,8 @@ export function WhatISolve() {
               {/* Moving green node head */}
               {!prefersReducedMotion && isHovered && (
                 <motion.circle
+                  cx={100}
+                  cy={100}
                   r="2.5"
                   fill="#0F5132"
                   animate={{
@@ -234,46 +244,82 @@ export function WhatISolve() {
             })}
           </div>
 
-          {/* TABLET & MOBILE LAYOUT (Stacked / Sequential order, no path SVG) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-5">
-            {cards.map((card) => {
-              const Icon = card.icon;
+          {/* TABLET & MOBILE LAYOUT (Sequential Accordion) */}
+          <div className="flex flex-col gap-3 lg:hidden max-w-xl mx-auto w-full">
+            {cards.map((card, i) => {
+              const isExpanded = mobileExpandedIndex === i;
               return (
                 <div
                   key={card.title}
-                  className="bg-[#FFFDF8] border border-[#E6D8C8] hover:border-primary/30 rounded-xl p-5 flex flex-col justify-between transition-all duration-300 shadow-sm"
+                  className={`bg-[#FFFDF8] border rounded-xl overflow-hidden transition-all duration-300 ${
+                    isExpanded ? "border-primary shadow-sm scale-[1.01]" : "border-[#E6D8C8] hover:border-primary/40"
+                  }`}
                 >
-                  <div className="flex justify-between items-start mb-3">
-                    <span className="text-[9px] font-mono text-[#5F5A52]/50 font-bold">
-                      {card.number}
-                    </span>
-                    <div className="p-1.5 rounded bg-primary/5 text-primary">
-                      <Icon className="w-3.5 h-3.5" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-serif font-medium text-[#1F2022] mb-3 leading-snug">
-                      {card.title}
-                    </h3>
-                    <div className="space-y-2 text-[11px] sm:text-xs font-sans">
-                      <div className="flex gap-2 items-baseline">
-                        <span className="text-[8px] font-bold text-[#5F5A52]/50 uppercase tracking-wider shrink-0 w-9">
-                          Cost
+                  {/* Accordion Trigger */}
+                  <button
+                    onClick={() => setMobileExpandedIndex(isExpanded ? null : i)}
+                    className="w-full flex justify-between items-center p-4 text-left focus:outline-none cursor-pointer min-h-[48px]"
+                    aria-expanded={isExpanded}
+                  >
+                    <div className="flex flex-col gap-1 min-w-0 pr-2">
+                      <div className="flex gap-2 items-center">
+                        <span className="text-[9px] font-mono text-[#5F5A52]/50 font-bold shrink-0">
+                          {card.number}
                         </span>
-                        <p className="text-[#5F5A52] leading-tight">
-                          {card.cost}
-                        </p>
+                        <h3 className="text-xs font-serif font-bold text-[#1F2022] leading-tight">
+                          {card.title}
+                        </h3>
                       </div>
-                      <div className="flex gap-2 items-baseline pt-2 border-t border-[#E6D8C8]/40">
-                        <span className="text-[8px] font-bold text-primary/80 uppercase tracking-wider shrink-0 w-9">
-                          Build
-                        </span>
-                        <p className="text-[#1F2022] font-medium leading-tight">
-                          {card.build}
-                        </p>
-                      </div>
+                      <span className="text-[10px] text-[#5F5A52] font-semibold pl-4 truncate max-w-[280px]">
+                        Pain: {card.cost}
+                      </span>
                     </div>
-                  </div>
+                    <ChevronDown className={`w-4 h-4 text-[#5F5A52] transition-transform duration-300 shrink-0 ${isExpanded ? "rotate-180 text-primary" : ""}`} />
+                  </button>
+
+                  {/* Expanded Content */}
+                  <AnimatePresence initial={false}>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="px-4 pb-4 border-t border-[#E6D8C8]/30 pt-3 flex flex-col gap-3"
+                      >
+                        <div className="space-y-3 text-xs font-sans">
+                          {/* Cost / Pain Point */}
+                          <div className="flex gap-3 items-start">
+                            <span className="text-[9px] font-bold text-amber-600 bg-amber-50 border border-amber-200/50 px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 w-11 text-center font-mono">
+                              Cost
+                            </span>
+                            <p className="text-[#5F5A52] leading-relaxed pt-0.5">
+                              {card.cost}
+                            </p>
+                          </div>
+                          {/* What I Build */}
+                          <div className="flex gap-3 items-start pt-2.5 border-t border-[#E6D8C8]/40">
+                            <span className="text-[9px] font-bold text-primary bg-primary/5 border border-primary/10 px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 w-11 text-center font-mono">
+                              Build
+                            </span>
+                            <p className="text-[#1F2022] font-semibold leading-relaxed pt-0.5">
+                              {card.build}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* CTA Solution Link */}
+                        <div className="pt-2 border-t border-[#E6D8C8]/30 flex justify-end">
+                          <Link
+                            href={card.href}
+                            className="text-[10px] font-bold text-primary hover:text-[#168A4A] flex items-center gap-0.5 hover:underline min-h-[30px]"
+                          >
+                            Explore Solution Blueprint <ArrowRight className="w-3 h-3" />
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}

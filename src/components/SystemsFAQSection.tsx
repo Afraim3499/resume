@@ -7,6 +7,7 @@ import { faqData } from "@/data/faq";
 interface CategoryMeta {
   id: string;
   name: string;
+  shortName: string;
   desc: string;
   icon: typeof ShieldCheck;
   dataCategories: string[];
@@ -25,6 +26,7 @@ export function SystemsFAQSection() {
     {
       id: "all",
       name: "All Strategic Inquiries",
+      shortName: "All Inquiries",
       desc: "Comprehensive system objections fully resolved.",
       icon: ShieldCheck,
       dataCategories: ["Capability", "Role", "Search Strategy", "Execution", "Process", "Collaboration", "Pricing", "Value Proposition"]
@@ -32,6 +34,7 @@ export function SystemsFAQSection() {
     {
       id: "scoping",
       name: "Capability & Process",
+      shortName: "Process",
       desc: "Diagnostics, scope pipelines, and fractional advisory.",
       icon: Target,
       dataCategories: ["Capability", "Role", "Execution", "Process"]
@@ -39,6 +42,7 @@ export function SystemsFAQSection() {
     {
       id: "commercials",
       name: "Pricing & Retainers",
+      shortName: "Pricing",
       desc: "Value packages, ongoing support, and fractional scale.",
       icon: BadgeDollarSign,
       dataCategories: ["Pricing", "Collaboration", "Value Proposition"]
@@ -46,6 +50,7 @@ export function SystemsFAQSection() {
     {
       id: "search",
       name: "AEO/GEO Indexing",
+      shortName: "AEO/GEO",
       desc: "Advanced search schemas, index graphs, and LLM reference optimization.",
       icon: HeartHandshake,
       dataCategories: ["Search Strategy"]
@@ -117,8 +122,8 @@ export function SystemsFAQSection() {
           {/* Left Column: Category selectors (col-span-4) */}
           <div className="lg:col-span-4 flex flex-col justify-between gap-6 h-full">
             
-            {/* Category selection list */}
-            <div className="flex flex-col gap-2 bg-[#FFFDF8] border border-[#0F5132]/10 rounded-xl p-3.5 shadow-3xs">
+            {/* Desktop Category selection list */}
+            <div className="hidden lg:flex flex-col gap-2 bg-[#FFFDF8] border border-[#0F5132]/10 rounded-xl p-3.5 shadow-3xs">
               <span className="text-[7.5px] font-mono font-bold text-[#168A4A] uppercase tracking-wider px-2 mb-1.5">
                 Filter by Category
               </span>
@@ -148,6 +153,29 @@ export function SystemsFAQSection() {
                         {cat.desc.slice(0, 45)}...
                       </p>
                     </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Mobile Category selector (Horizontal scrolling pills) */}
+            <div className="flex lg:hidden overflow-x-auto scrollbar-none gap-2 pb-2 -mx-4 px-4 select-none mb-2">
+              {categories.map((cat) => {
+                const isActive = activeCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => {
+                      setActiveCategory(cat.id);
+                      setOpenIndex(null);
+                    }}
+                    className={`px-4 py-2.5 rounded-full border text-xs font-bold transition-all duration-200 shrink-0 cursor-pointer min-h-[40px] whitespace-nowrap ${
+                      isActive
+                        ? "bg-[#0F5132] border-[#0F5132] text-white"
+                        : "bg-white border-[#0F5132]/10 text-[#5F655F]"
+                    }`}
+                  >
+                    {cat.shortName}
                   </button>
                 );
               })}

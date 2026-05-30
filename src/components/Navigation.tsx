@@ -2,11 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Menu from "lucide-react/dist/esm/icons/menu";
-import X from "lucide-react/dist/esm/icons/x";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { MobileHeader } from "./MobileHeader";
 
 const navItems = [
   { name: "Solutions", href: "/solutions" },
@@ -19,7 +17,6 @@ const navItems = [
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pathname = usePathname();
@@ -59,7 +56,6 @@ export function Navigation() {
   }, []);
 
   const handleNavClick = (href: string) => {
-    setIsMobileMenuOpen(false);
     if (href.startsWith("/#")) {
       const id = href.replace("/#", "");
       const element = document.getElementById(id);
@@ -71,11 +67,12 @@ export function Navigation() {
 
   return (
     <>
+      <MobileHeader navItems={navItems} activeSection={activeSection} />
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#E6D8C8] shadow-sm h-16 md:h-18"
           : "bg-[#FDFBF7]/85 backdrop-blur-sm border-b border-[#E6D8C8]/30 h-16 md:h-18"
           }`}
@@ -212,140 +209,9 @@ export function Navigation() {
                 About
               </Link>
             </div>
-
-            {/* Mobile Menu Button */}
-            <div className="flex md:hidden items-center gap-2">
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 text-[#1F2022]/70 hover:text-primary transition-colors"
-                aria-label="Toggle mobile menu"
-              >
-                {isMobileMenuOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
-            </div>
           </div>
         </div>
       </motion.nav>
-
-      {/* Mobile Menu Drawer */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
-            />
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-72 bg-[#FDFBF7] border-l border-[#E6D8C8] z-50 md:hidden overflow-y-auto"
-            >
-              <div className="p-6 space-y-6 pt-24">
-                <div className="flex flex-col gap-2">
-                  {navItems.map((item) => {
-                    const sectionId = item.href.replace("/#", "");
-                    const isActive = activeSection === sectionId || pathname.startsWith(item.href);
-
-                    if (item.name === "Solutions") {
-                      return (
-                        <div key={item.name} className="flex flex-col">
-                          <Link
-                            href={item.href}
-                            onClick={() => handleNavClick(item.href)}
-                            className={`block w-full text-left px-4 py-3 rounded-lg transition-colors font-medium ${isActive
-                              ? "bg-primary/10 text-primary font-semibold"
-                              : "text-[#1F2022] hover:bg-[#FFFDF8] hover:text-primary"
-                              }`}
-                          >
-                            {item.name}
-                          </Link>
-                          <div className="pl-6 border-l border-[#0F5132]/12 flex flex-col gap-1.5 mt-1.5 mb-3">
-                            <Link
-                              href="/solutions/gtm-operations"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                              className={`text-xs font-medium py-2 px-3 rounded-md transition-colors ${
-                                pathname === "/solutions/gtm-operations"
-                                  ? "bg-[#EAF7EF] text-[#0F5132] font-semibold"
-                                  : "text-[#5F5A52] hover:text-[#0F5132] hover:bg-[#EAF7EF]/30"
-                              }`}
-                            >
-                              GTM &amp; Operations
-                            </Link>
-                            <Link
-                              href="/solutions/dynamic-platforms"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                              className={`text-xs font-medium py-2 px-3 rounded-md transition-colors ${
-                                pathname === "/solutions/dynamic-platforms"
-                                  ? "bg-[#EAF7EF] text-[#0F5132] font-semibold"
-                                  : "text-[#5F5A52] hover:text-[#0F5132] hover:bg-[#EAF7EF]/30"
-                              }`}
-                            >
-                              Dynamic Platforms
-                            </Link>
-                            <Link
-                              href="/solutions/executive-brand"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                              className={`text-xs font-medium py-2 px-3 rounded-md transition-colors ${
-                                pathname === "/solutions/executive-brand"
-                                  ? "bg-[#EAF7EF] text-[#0F5132] font-semibold"
-                                  : "text-[#5F5A52] hover:text-[#0F5132] hover:bg-[#EAF7EF]/30"
-                              }`}
-                            >
-                              Executive Brand
-                            </Link>
-                          </div>
-                        </div>
-                      );
-                    }
-
-                    return (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => handleNavClick(item.href)}
-                        className={`block w-full text-left px-4 py-3 rounded-lg transition-colors font-medium ${isActive
-                          ? "bg-primary/10 text-primary font-semibold"
-                          : "text-[#1F2022] hover:bg-[#FFFDF8] hover:text-primary"
-                          }`}
-                      >
-                        {item.name}
-                      </Link>
-                    );
-                  })}
-                </div>
-
-                <div className="border-t border-[#E6D8C8] pt-6 flex flex-col gap-3">
-                  <a
-                    href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="w-full py-3 rounded-lg bg-[#0F5132] text-white text-center font-medium hover:bg-[#168A4A] transition-colors shadow-sm block text-sm"
-                  >
-                    Start a Project
-                  </a>
-                  <Link
-                    href="/about"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="w-full py-3 rounded-lg border border-[#0F5132]/20 bg-[#FFFDF8] text-[#1F2022] text-center font-medium hover:bg-[#EAF7EF] transition-colors block text-sm"
-                  >
-                    About
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
     </>
   );
 }

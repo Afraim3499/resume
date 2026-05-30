@@ -6,6 +6,7 @@ import {
   Database, ShieldCheck, CheckCircle2, ArrowUpRight
 } from "lucide-react";
 import Link from "next/link";
+import { MobileProofOfCapability } from "./MobileProofOfCapability";
 
 interface SlideData {
   category: string;
@@ -301,7 +302,7 @@ export function ProofOfCapability() {
     }
     return false;
   });
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+
 
   // Check prefers-reduced-motion
   useEffect(() => {
@@ -478,70 +479,7 @@ export function ProofOfCapability() {
             </p>
           </div>
 
-          {/* Accordion Stack */}
-          <div className="flex flex-col gap-3">
-            {slides.map((slide, i) => {
-              const isExpanded = expandedIndex === i;
-              return (
-                <div 
-                  key={slide.category}
-                  className="bg-[#FFFDF8] border border-[#0F5132]/14 rounded-xl overflow-hidden shadow-xs transition-colors duration-200"
-                >
-                  <button
-                    onClick={() => setExpandedIndex(isExpanded ? null : i)}
-                    className="w-full flex justify-between items-center p-4 text-left focus:outline-hidden"
-                  >
-                    <div className="flex gap-3 items-center">
-                      <span className="text-[10px] font-mono text-[#0F5132]">0{i + 1}</span>
-                      <h4 className="text-xs font-bold text-[#171717]">{slide.category}</h4>
-                    </div>
-                    <span className="text-xs font-serif font-bold text-[#0F5132] bg-[#EAF7EF] px-2 py-0.5 rounded-full border border-[#168A4A]/10">
-                      {slide.proof.split(" ").slice(0, 2).join(" ")}
-                    </span>
-                  </button>
-
-                  <AnimatePresence initial={false}>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="px-4 pb-4 border-t border-[#0F5132]/10 pt-3"
-                      >
-                        <p className="text-xs text-[#5F655F] leading-relaxed mb-3">
-                          {slide.explanation}
-                        </p>
-
-                        <div className="p-3 bg-[#EAF7EF] border border-[#168A4A]/15 rounded-lg mb-4 text-left flex gap-2">
-                          <ShieldCheck className="w-4 h-4 text-[#168A4A] shrink-0 mt-0.5" />
-                          <div className="text-[10px] font-medium text-[#0F5132] leading-relaxed">
-                            {slide.businessMeaning}
-                          </div>
-                        </div>
-
-                        {/* Rendering the nested artifact inside mobile accordion (increased height to accommodate visual) */}
-                        <div className="h-[260px] w-full mb-3">
-                          {renderArtifact(i)}
-                        </div>
-
-                        <div className="flex flex-wrap gap-1 border-t border-[#0F5132]/10 pt-3">
-                          {slide.tags.map((tag) => (
-                            <span 
-                              key={tag} 
-                              className="text-[8px] px-2 py-0.5 rounded-full bg-[#F7F4EC] border border-[#0F5132]/10 text-[#5F655F]"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
+          <MobileProofOfCapability slides={slides} renderArtifact={renderArtifact} />
         </div>
       </div>
 
