@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { getTerm, getAllTerms } from "@/data/knowledge-graph";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { getAllBlogPosts } from "@/lib/blog-loader";
+import { getOGImage } from "@/lib/og-metadata";
 
 export async function generateStaticParams() {
     const terms = getAllTerms();
@@ -28,13 +29,28 @@ export async function generateMetadata({
         };
     }
 
+    const ogTitle = `${term.term} — Systems Wiki by Rizwanul Afraim`;
+    const ogDesc = term.definition || "A systems wiki entry explaining business systems, execution, AI workflows, venture architecture, and operating clarity.";
+    const { openGraphImage, twitterImage } = getOGImage("wiki");
+
     return {
         title: `${term.term} | The Orchestrator's Lexicon`,
         description: term.definition,
         openGraph: {
             type: "article",
-            title: term.term,
-            description: term.definition,
+            title: ogTitle,
+            description: ogDesc,
+            locale: "en_US",
+            url: `https://www.rizwanulafraim.com/wiki/${term.id}`,
+            siteName: "Rizwanul Islam Afraim",
+            images: [openGraphImage],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: ogTitle,
+            description: ogDesc,
+            images: [twitterImage],
+            creator: "@rizwanul_afraim",
         },
         alternates: {
             canonical: `https://www.rizwanulafraim.com/wiki/${term.id}`,

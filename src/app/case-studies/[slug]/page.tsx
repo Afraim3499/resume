@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 import { SocialShare } from "@/components/SocialShare";
 import { getBlogPostByProjectSlug } from "@/lib/blog-loader";
+import { getOGImage } from "@/lib/og-metadata";
 
 export async function generateStaticParams() {
   const caseStudies = getAllCaseStudies();
@@ -29,6 +30,10 @@ export async function generateMetadata({
     };
   }
 
+  const ogTitle = `${caseStudy.title} Case Study | Rizwanul Afraim`;
+  const ogDesc = caseStudy.problem || "A business systems case study showing how scattered work was turned into structured execution, workflow clarity, and measurable operating progress.";
+  const { openGraphImage, twitterImage } = getOGImage("case-studies");
+
   return {
     title: `${caseStudy.title} | Advanced Platform Case Study`,
     description: `Deep dive case study: ${caseStudy.problem.substring(0, 100)}... Engineering scalable solutions with ${caseStudy.technologies.slice(0, 3).join(", ")}.`,
@@ -36,9 +41,20 @@ export async function generateMetadata({
       canonical: `https://www.rizwanulafraim.com/case-studies/${caseStudy.slug}`,
     },
     openGraph: {
-      title: `${caseStudy.title} | Rizwanul Islam - Operations Expert`,
-      description: caseStudy.problem,
+      title: ogTitle,
+      description: ogDesc,
       type: "article",
+      locale: "en_US",
+      url: `https://www.rizwanulafraim.com/case-studies/${caseStudy.slug}`,
+      siteName: "Rizwanul Islam Afraim",
+      images: [openGraphImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description: ogDesc,
+      images: [twitterImage],
+      creator: "@rizwanul_afraim",
     },
   };
 }

@@ -3,13 +3,19 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowRight, BookOpen, ExternalLink, Database, Brain, Network, BarChart3 } from "lucide-react";
 import { ResearchStrip } from "@/components/ResearchStrip";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
-  title: "Research | Rizwanul Islam Afraim",
-  description: "Exploring the structural economics of agentic AI, coordination infrastructure technology, and the future of enterprise decision intelligence systems.",
+  title: "Research — SSRN-Backed Systems Thinking | Rizwanul Afraim",
+  description: "SSRN-published research on AI coordination, analytics, labor economics, and business systems behind better decisions.",
   alternates: {
     canonical: "https://www.rizwanulafraim.com/research",
   },
+  ...buildOGMetadata("research", {
+    title: "Research — SSRN-Backed Systems Thinking | Rizwanul Afraim",
+    description: "SSRN-published research on AI coordination, analytics, labor economics, and business systems behind better decisions.",
+    url: "https://www.rizwanulafraim.com/research",
+  }),
 };
 
 const researchAreas = [

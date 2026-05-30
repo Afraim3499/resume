@@ -14,13 +14,19 @@ import {
   Layers
 } from "lucide-react";
 import { solutions } from "@/data/solutions";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
-  title: "Solutions | Rizwanul Islam Afraim",
-  description: "Browse custom-engineered platform architectures built for real business models — from high-scale e-commerce to timezone-aware CRMs and automation engines.",
+  title: "Solutions — Build the Right Business System | Rizwanul",
+  description: "Find systems for sales workflows, marketing operations, product execution, automation, and SEO/AEO/GEO visibility.",
   alternates: {
     canonical: "https://www.rizwanulafraim.com/solutions",
   },
+  ...buildOGMetadata("solutions", {
+    title: "Solutions — Build the Right Business System | Rizwanul",
+    description: "Find systems for sales workflows, marketing operations, product execution, automation, and SEO/AEO/GEO visibility.",
+    url: "https://www.rizwanulafraim.com/solutions",
+  }),
 };
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {

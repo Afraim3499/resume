@@ -3,6 +3,7 @@ import { About } from "@/components/About";
 import { MyStory } from "@/components/MyStory";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionDivider } from "@/components/SectionDivider";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
   title: "About Rizwanul Islam Afraim",
@@ -11,11 +12,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.rizwanulafraim.com/about",
   },
-  openGraph: {
-    title: "About Rizwanul Islam Afraim - Systems Builder",
-    description:
-      " Dhaka-based marketing and sales operations strategist, product founder, and systems architect optimizing operations.",
-  },
+  ...buildOGMetadata("homepage", {
+    title: "About Rizwanul Islam Afraim — Systems Builder & Operations Strategist",
+    description: "Dhaka-based marketing and sales operations strategist, product founder, and systems architect optimizing operations, automation, and digital ventures.",
+    url: "https://www.rizwanulafraim.com/about",
+  }),
 };
 
 export default function AboutPage() {

@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import { Projects } from "@/components/Projects";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
-  title: "Projects | Rizwanul Islam Afraim",
-  description:
-    "Explore projects, ventures, platforms, and systems built by Rizwanul Islam Afraim across travel, media, CRM, e-commerce, SEO, automation, and product architecture.",
+  title: "Projects — Built From Idea to Execution | Rizwanul Afraim",
+  description: "Explore platforms, dashboards, CRM tools, booking systems, media products, and automation workflows built from idea to execution.",
   alternates: {
     canonical: "https://www.rizwanulafraim.com/projects",
   },
-  openGraph: {
-    title: "Projects & Ventures Showcase | Rizwanul Islam Afraim",
-    description:
-      "A complete showcase of technical innovation and systems architecture built by Rizwanul Islam Afraim.",
-  },
+  ...buildOGMetadata("projects", {
+    title: "Projects — Built From Idea to Execution | Rizwanul Afraim",
+    description: "Explore platforms, dashboards, CRM tools, booking systems, media products, and automation workflows built from idea to execution.",
+    url: "https://www.rizwanulafraim.com/projects",
+  }),
 };
 
 export default function ProjectsIndexPage() {

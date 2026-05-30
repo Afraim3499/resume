@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowUpRight, ArrowRight, Layers, ShieldCheck, Cpu, CheckCircle2, AlertTriangle, TrendingUp } from "lucide-react";
 import { solutions } from "@/data/solutions";
 import { TechnicalSpecificationsTable } from "@/components/TechnicalSpecificationsTable";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
   title: "GTM & Sales Operations Systems | Rizwanul Islam Afraim",
@@ -11,6 +12,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.rizwanulafraim.com/solutions/gtm-operations",
   },
+  ...buildOGMetadata("solutions", {
+    title: "GTM & Sales Operations Systems | Rizwanul Islam Afraim",
+    description: "Deploy custom-built, conversion-optimized e-commerce engines, real-time sales CRMs, and 4-layer SEO frameworks engineered to scale business operations.",
+    url: "https://www.rizwanulafraim.com/solutions/gtm-operations",
+  }),
 };
 
 export default function GtmOperationsPage() {

@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ExternalLink, BookOpen, ArrowRight, ChevronDown } from "lucide-react";
+import { getOGImage } from "@/lib/og-metadata";
+
+const { openGraphImage, twitterImage } = getOGImage("research");
 
 export const metadata: Metadata = {
   title: "Agentic AI as Coordination Infrastructure | Rizwanul Islam Afraim",
@@ -23,18 +26,22 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Agentic AI as Coordination Infrastructure Technology",
+    title: "Agentic AI as Coordination Infrastructure Technology | Rizwanul Afraim Research",
     description:
       "A published SSRN research paper by Rizwanul Islam Afraim on agentic AI, coordination compression, labor stratification, and economic divergence.",
     url: "https://www.rizwanulafraim.com/research/agentic-ai-coordination-infrastructure",
-    siteName: "Rizwanul Afraim",
+    siteName: "Rizwanul Islam Afraim",
     type: "article",
+    locale: "en_US",
+    images: [openGraphImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agentic AI as Coordination Infrastructure Technology",
+    title: "Agentic AI as Coordination Infrastructure Technology | Rizwanul Afraim Research",
     description:
       "A published SSRN research paper by Rizwanul Islam Afraim on agentic AI, coordination compression, labor stratification, and economic divergence.",
+    images: [twitterImage],
+    creator: "@rizwanul_afraim",
   },
 };
 

@@ -2,13 +2,19 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { getAllTerms } from "@/data/knowledge-graph";
 import { ArrowRight, Network } from "lucide-react";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
-    title: "The Knowledge Graph | Advanced Venture Architecture Lexicon",
-    description: "The Orchestrator's comprehensive digital lexicon. Advanced concepts in Venture Architecture, Founder Mode, Agentic Systems, and Operations Expert methodologies.",
+    title: "Wiki — The Vocabulary of Business Systems | Rizwanul",
+    description: "Definitions, frameworks, and mental models for business systems, AI workflows, venture architecture, execution, and clarity.",
     alternates: {
         canonical: "https://www.rizwanulafraim.com/wiki",
     },
+    ...buildOGMetadata("wiki", {
+        title: "Wiki — The Vocabulary of Business Systems | Rizwanul",
+        description: "Definitions, frameworks, and mental models for business systems, AI workflows, venture architecture, execution, and clarity.",
+        url: "https://www.rizwanulafraim.com/wiki",
+    }),
 };
 
 export default function WikiIndex() {

@@ -3,15 +3,16 @@ import { ArrowRight, Bot, Zap, BarChart3, Workflow, Layers, ArrowUpRight, Globe,
 import Link from "next/link";
 import { FAQ } from "@/components/FAQ";
 import { WorkflowEngine } from "@/components/WorkflowEngine";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
     title: "Strategic Services | Business Development & Workflow Optimization",
     description: "Partner with an Execution Strategist who bridges the gap between chaos and profit. Specialized in Workflow Optimization, Market Intelligence, and Digital Product Strategy.",
-    openGraph: {
-        title: "Built to Scale. Not Just to Launch.",
+    ...buildOGMetadata("homepage", {
+        title: "Built to Scale. Not Just to Launch. | Rizwanul Afraim Services",
         description: "Production-grade systems for growth, operations, and product execution. Work with Rizwanul Islam Afraim.",
-        type: "website",
-    },
+        url: "https://www.rizwanulafraim.com/services",
+    }),
 };
 
 const strategicStack = [

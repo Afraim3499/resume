@@ -3,6 +3,7 @@ import { getProjectBySlug, projects } from "@/data/projects";
 import { ProjectDetail } from "@/components/ProjectDetail";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
+import { getOGImage } from "@/lib/og-metadata";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -24,6 +25,10 @@ export async function generateMetadata({
     };
   }
 
+  const ogTitle = `${project.title} — Project by Rizwanul Afraim`;
+  const ogDesc = project.longDescription || project.description || "A system, platform, or workflow project by Rizwanul Islam Afraim across product architecture, operations, automation, and execution.";
+  const { openGraphImage, twitterImage } = getOGImage("projects");
+
   return {
     title: `${project.title} | Advanced Platform Project`,
     description: `${project.longDescription || project.description} Built with production-grade architecture by Rizwanul Islam (Afraim).`,
@@ -31,15 +36,20 @@ export async function generateMetadata({
       canonical: `https://www.rizwanulafraim.com/projects/${project.slug}`,
     },
     openGraph: {
-      title: `${project.title} | Rizwanul Islam - Systems Architect`,
-      description: project.longDescription || project.description,
+      title: ogTitle,
+      description: ogDesc,
       type: "website",
-      images: project.screenshots?.[0] ? [{ url: project.screenshots[0] }] : [],
+      locale: "en_US",
+      url: `https://www.rizwanulafraim.com/projects/${project.slug}`,
+      siteName: "Rizwanul Islam Afraim",
+      images: [openGraphImage],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} | Rizwanul Islam - Operations Expert`,
-      description: project.longDescription || project.description,
+      title: ogTitle,
+      description: ogDesc,
+      images: [twitterImage],
+      creator: "@rizwanul_afraim",
     },
   };
 }

@@ -2,13 +2,19 @@ import { FAQ } from "@/components/FAQ";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllFAQs } from "@/lib/faq-loader";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
-    title: "Manifesto | The Operations Expert's Protocol",
-    description: "The operating philosophy of Rizwanul Islam Afraim. Founder Mode, Advanced Systems Thinking, and the rejection of the manager/maker binary.",
+    title: 'Manifesto — Structure Beats "We\'ll Figure It Out"',
+    description: 'A personal manifesto on systems, execution, founder thinking, and building work that compounds beyond "we\'ll figure it out."',
     alternates: {
         canonical: "https://www.rizwanulafraim.com/manifesto",
     },
+    ...buildOGMetadata("manifesto", {
+        title: 'Manifesto — Structure Beats "We\'ll Figure It Out"',
+        description: 'A personal manifesto on systems, execution, founder thinking, and building work that compounds beyond "we\'ll figure it out."',
+        url: "https://www.rizwanulafraim.com/manifesto",
+    }),
 };
 
 export default function ManifestoPage() {

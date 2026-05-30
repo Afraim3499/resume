@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { solutions, getSolutionBySlug } from "@/data/solutions";
 import { SolutionLanding } from "@/components/SolutionLanding";
+import { getOGImage } from "@/lib/og-metadata";
 
 interface SolutionPageProps {
     params: Promise<{ slug: string }>;
@@ -18,14 +19,28 @@ export async function generateMetadata({ params }: SolutionPageProps): Promise<M
     const solution = getSolutionBySlug(slug);
     if (!solution) return {};
 
+    const ogTitle = `${solution.title} — Systems Built for Execution`;
+    const ogDesc = solution.metaDescription || "Systems built for teams that need clearer sales workflows, marketing operations, product execution, automation, and search visibility.";
+    const { openGraphImage, twitterImage } = getOGImage("solutions");
+
     return {
         title: solution.metaTitle,
         description: solution.metaDescription,
         openGraph: {
-            title: solution.metaTitle,
-            description: solution.metaDescription,
+            title: ogTitle,
+            description: ogDesc,
             type: "website",
+            locale: "en_US",
             url: `https://www.rizwanulafraim.com/solutions/${solution.slug}`,
+            siteName: "Rizwanul Islam Afraim",
+            images: [openGraphImage],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: ogTitle,
+            description: ogDesc,
+            images: [twitterImage],
+            creator: "@rizwanul_afraim",
         },
         alternates: {
             canonical: `https://www.rizwanulafraim.com/solutions/${solution.slug}`,

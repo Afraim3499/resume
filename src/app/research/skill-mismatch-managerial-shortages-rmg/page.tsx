@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ExternalLink, BookOpen, ArrowRight, ChevronDown } from "lucide-react";
+import { ExternalLink, ChevronDown } from "lucide-react";
+import { getOGImage } from "@/lib/og-metadata";
+
+const { openGraphImage, twitterImage } = getOGImage("research");
 
 export const metadata: Metadata = {
   title: "RMG Skill Mismatch & Managerial Shortages Research | Rizwanul Islam Afraim",
@@ -23,18 +25,22 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Skill Mismatch and Managerial Shortages in Bangladesh's RMG Industry Research",
+    title: "RMG Skill Mismatch & Managerial Shortages | Rizwanul Afraim Research",
     description:
       "A published SSRN research paper by Rizwanul Islam Afraim on ready-made garment exports, credential inflation, expatriate premium, and labor market policy in Bangladesh.",
     url: "https://www.rizwanulafraim.com/research/skill-mismatch-managerial-shortages-rmg",
-    siteName: "Rizwanul Afraim",
+    siteName: "Rizwanul Islam Afraim",
     type: "article",
+    locale: "en_US",
+    images: [openGraphImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Skill Mismatch and Managerial Shortages in Bangladesh's RMG Industry Research",
+    title: "RMG Skill Mismatch & Managerial Shortages | Rizwanul Afraim Research",
     description:
       "A published SSRN research paper by Rizwanul Islam Afraim on ready-made garment exports, credential inflation, expatriate premium, and labor market policy in Bangladesh.",
+    images: [twitterImage],
+    creator: "@rizwanul_afraim",
   },
 };
 

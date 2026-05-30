@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowUpRight, ArrowRight, Layers, ShieldCheck, UserCircle, CheckCircle2, AlertTriangle, TrendingUp } from "lucide-react";
 import { solutions } from "@/data/solutions";
 import { TechnicalSpecificationsTable } from "@/components/TechnicalSpecificationsTable";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
   title: "Premium Executive Brand Platforms | Rizwanul Islam Afraim",
@@ -11,6 +12,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.rizwanulafraim.com/solutions/executive-brand",
   },
+  ...buildOGMetadata("solutions", {
+    title: "Premium Executive Brand Platforms | Rizwanul Islam Afraim",
+    description: "Bespoke digital portfolios and thought-leadership websites engineered for founders, partners, and high-impact executives.",
+    url: "https://www.rizwanulafraim.com/solutions/executive-brand",
+  }),
 };
 
 export default function ExecutiveBrandPage() {

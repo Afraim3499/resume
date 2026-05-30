@@ -2,13 +2,19 @@ import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { getAllCaseStudies } from "@/lib/case-study-loader";
 import type { Metadata } from "next";
 import type { CaseStudy } from "@/data/case-studies";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
-  title: "Case Studies | Engineering Scalable Platform Architecture",
-  description: "Deep dive case studies on building Advanced Systems, Gaari's booking engine, and Data Operations strategies. Engineering scale for production ventures.",
+  title: "Case Studies — Proof Behind the Systems | Rizwanul Afraim",
+  description: "Deep-dive case studies showing how scattered work became structured platforms, workflows, CRM systems, and growth operations.",
   alternates: {
     canonical: "https://www.rizwanulafraim.com/case-studies",
   },
+  ...buildOGMetadata("case-studies", {
+    title: "Case Studies — Proof Behind the Systems | Rizwanul Afraim",
+    description: "Deep-dive case studies showing how scattered work became structured platforms, workflows, CRM systems, and growth operations.",
+    url: "https://www.rizwanulafraim.com/case-studies",
+  }),
 };
 
 export default function CaseStudiesPage() {

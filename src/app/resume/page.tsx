@@ -3,6 +3,7 @@ import { ResumeView } from "@/components/ResumeView";
 import { ResumeGraph } from "@/components/ResumeGraph";
 import { allSkills } from "@/data/skills";
 import { getWikidataUri } from "@/lib/wikidata-mapping";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
     title: "Resume | Rizwanul Islam Afraim - Lead Systems Architect & Tech Strategist",
@@ -10,10 +11,11 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://www.rizwanulafraim.com/resume",
     },
-    openGraph: {
-        title: "Resume | Rizwanul Islam Afraim - Lead Systems Architect",
-        description: "Professional resume of Rizwanul Islam Afraim. Lead Systems Architect building autonomous infrastructure.",
-    }
+    ...buildOGMetadata("homepage", {
+        title: "Resume — Rizwanul Islam Afraim | Systems Architect & Strategist",
+        description: "Professional resume of Rizwanul Islam Afraim. Systems architecture, marketing operations, sales ops, product execution, and SEO/AEO/GEO visibility.",
+        url: "https://www.rizwanulafraim.com/resume",
+    }),
 };
 
 export default function ResumePage() {

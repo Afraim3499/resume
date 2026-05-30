@@ -12,6 +12,7 @@ import { getCaseStudyByProject } from "@/lib/case-study-loader";
 import { projects } from "@/data/projects";
 import { solutions } from "@/data/solutions";
 import { SolutionInlineCTA } from "@/components/SolutionInlineCTA";
+import { getOGImage } from "@/lib/og-metadata";
 
 export async function generateStaticParams() {
   const posts = getAllBlogPosts();
@@ -35,27 +36,34 @@ export async function generateMetadata({
   }
 
   const url = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rizwanulafraim.com";
+  const ogTitle = `${post.title} | Rizwanul Afraim`;
+  const ogDesc = post.excerpt || "Field notes by Rizwanul Islam Afraim on systems, operations, product execution, automation, and search visibility.";
+  const { openGraphImage, twitterImage } = getOGImage("blog");
 
   return {
     title: post.title,
-    description: post.excerpt,
+    description: ogDesc,
     alternates: {
       canonical: `${url}/blog/${post.slug}`,
     },
     openGraph: {
-      title: `${post.title} | Rizwanul Islam (Afraim)`,
-      description: post.excerpt,
+      title: ogTitle,
+      description: ogDesc,
       type: "article",
+      locale: "en_US",
+      url: `${url}/blog/${post.slug}`,
+      siteName: "Rizwanul Islam Afraim",
       publishedTime: post.date,
       authors: [post.author?.name || "Rizwanul Islam (Afraim)"],
       tags: post.tags,
-      images: post.image ? [post.image] : [],
-      url: `${url}/blog/${post.slug}`,
+      images: [openGraphImage],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | Rizwanul Islam (Afraim)`,
-      description: post.excerpt,
+      title: ogTitle,
+      description: ogDesc,
+      images: [twitterImage],
+      creator: "@rizwanul_afraim",
     },
   };
 }

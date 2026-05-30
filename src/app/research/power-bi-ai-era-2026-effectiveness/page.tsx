@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ExternalLink, BookOpen, ChevronDown, BarChart3, Zap, Layers, ShieldCheck } from "lucide-react";
+import { getOGImage } from "@/lib/og-metadata";
+
+const { openGraphImage, twitterImage } = getOGImage("research");
 
 export const metadata: Metadata = {
   title: "Power BI in the AI Era: Assessing Its 2026 Effectiveness | Rizwanul Islam Afraim",
@@ -22,19 +25,22 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Power BI in the AI Era: Assessing Its 2026 Effectiveness",
+    title: "Power BI in the AI Era: 2026 Effectiveness | Rizwanul Afraim Research",
     description:
       "A published SSRN research paper by Rizwanul Islam Afraim evaluating Power BI alongside coding-centric analytical ecosystems and AI workflows.",
     url: "https://www.rizwanulafraim.com/research/power-bi-ai-era-2026-effectiveness",
-    siteName: "Rizwanul Afraim",
+    siteName: "Rizwanul Islam Afraim",
     type: "article",
-    images: [{ url: "/assets/research-powerbi-og.jpg", width: 1200, height: 630 }]
+    locale: "en_US",
+    images: [openGraphImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Power BI in the AI Era: Assessing Its 2026 Effectiveness",
+    title: "Power BI in the AI Era: 2026 Effectiveness | Rizwanul Afraim Research",
     description:
       "A published SSRN research paper by Rizwanul Islam Afraim on Power BI's role in increasingly AI-driven analytical ecosystems.",
+    images: [twitterImage],
+    creator: "@rizwanul_afraim",
   },
 };
 

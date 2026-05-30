@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowUpRight, ArrowRight, Layers, ShieldCheck, Database, CheckCircle2, AlertTriangle, TrendingUp } from "lucide-react";
 import { solutions } from "@/data/solutions";
 import { TechnicalSpecificationsTable } from "@/components/TechnicalSpecificationsTable";
+import { buildOGMetadata } from "@/lib/og-metadata";
 
 export const metadata: Metadata = {
   title: "Dynamic Product Platforms & Web Systems | Rizwanul Islam Afraim",
@@ -11,6 +12,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.rizwanulafraim.com/solutions/dynamic-platforms",
   },
+  ...buildOGMetadata("solutions", {
+    title: "Dynamic Product Platforms & Web Systems | Rizwanul Islam Afraim",
+    description: "Explore custom-built publishing systems, news aggregators, reservation booking engines, and dynamic web applications built for scale and sub-second delivery.",
+    url: "https://www.rizwanulafraim.com/solutions/dynamic-platforms",
+  }),
 };
 
 export default function DynamicPlatformsPage() {
