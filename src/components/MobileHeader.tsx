@@ -100,20 +100,20 @@ export function MobileHeader({ activeSection }: MobileHeaderProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="fixed inset-0 w-screen h-screen bg-[#FDFBF7] z-40 overflow-y-auto flex flex-col justify-between pt-20 px-6 pb-8 select-none"
+            className="fixed inset-0 w-screen h-[100dvh] bg-[#FDFBF7] z-40 overflow-y-auto flex flex-col justify-between pt-18 px-6 pb-20 select-none"
           >
             {/* Scrollable Container Wrapper */}
-            <div className="flex flex-col gap-6 w-full max-w-lg mx-auto">
+            <div className="flex flex-col gap-4 sm:gap-6 w-full max-w-lg mx-auto">
               
               {/* Brand Dashboard Profile Banner */}
-              <div className="flex items-center gap-3.5 border-b border-[#0F5132]/10 pb-5">
-                <div className="relative w-12 h-12 rounded-2xl overflow-hidden border border-[#0F5132]/20 bg-white shrink-0 shadow-xs">
+              <div className="flex items-center gap-3.5 border-b border-[#0F5132]/10 pb-4">
+                <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#0F5132]/20 bg-white shrink-0 shadow-xs">
                   <Image
                     src="/assets/afraim-logo.png"
                     alt="Rizwanul Islam Afraim Illustrated Portrait Logo"
                     fill
                     className="object-cover"
-                    sizes="48px"
+                    sizes="44px"
                   />
                 </div>
                 <div className="text-left">
@@ -130,10 +130,10 @@ export function MobileHeader({ activeSection }: MobileHeaderProps) {
               </div>
 
               {/* Grid Layout separating Primary and Audience channels */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 
                 {/* Column 1: Primary Navigation */}
-                <div className="flex flex-col gap-1.5 text-left">
+                <div className="flex flex-col gap-1 text-left">
                   <span className="text-[8px] font-mono tracking-widest text-[#0F5132] font-extrabold uppercase mb-1">
                     Primary Navigation
                   </span>
@@ -152,7 +152,7 @@ export function MobileHeader({ activeSection }: MobileHeaderProps) {
                         key={item.name}
                         href={item.href}
                         onClick={handleLinkClick}
-                        className={`text-sm font-semibold py-2.5 px-3 rounded-xl transition-all duration-150 flex items-center justify-between min-h-[44px] ${
+                        className={`text-sm font-semibold py-2 px-3 rounded-xl transition-all duration-150 flex items-center justify-between min-h-[40px] ${
                           active
                             ? "bg-[#EAF7EF] text-[#0F5132] shadow-xs"
                             : "text-[#1F2022] hover:bg-[#FAF8F3] hover:text-[#0F5132]"
@@ -166,8 +166,8 @@ export function MobileHeader({ activeSection }: MobileHeaderProps) {
                 </div>
 
                 {/* Column 2: Audience Routes & Focus Channels */}
-                <div className="flex flex-col gap-5 text-left">
-                  <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-4 text-left justify-between">
+                  <div className="flex flex-col gap-1">
                     <span className="text-[8px] font-mono tracking-widest text-[#0F5132] font-extrabold uppercase mb-1">
                       Audience Focus
                     </span>
@@ -180,7 +180,7 @@ export function MobileHeader({ activeSection }: MobileHeaderProps) {
                         key={item.name}
                         href={item.href}
                         onClick={handleLinkClick}
-                        className="text-xs font-semibold py-2.5 px-3 rounded-xl bg-[#FAF8F3]/50 border border-[#0F5132]/6 text-[#1F2022] hover:border-[#0F5132]/20 hover:bg-[#EAF7EF]/20 transition-all flex items-center justify-between min-h-[44px]"
+                        className="text-xs font-semibold py-2 px-3 rounded-xl bg-[#FAF8F3]/50 border border-[#0F5132]/6 text-[#1F2022] hover:border-[#0F5132]/20 hover:bg-[#EAF7EF]/20 transition-all flex items-center justify-between min-h-[40px]"
                       >
                         <span>{item.name}</span>
                         <ArrowRight className="w-3 h-3 text-[#5F5A52]" />
@@ -189,13 +189,13 @@ export function MobileHeader({ activeSection }: MobileHeaderProps) {
                   </div>
 
                   {/* Actions Block */}
-                  <div className="flex flex-col gap-2 mt-auto border-t border-[#0F5132]/10 pt-4">
+                  <div className="flex flex-col gap-1.5 border-t border-[#0F5132]/10 pt-3 mt-4 sm:mt-auto">
                     <a
                       href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={handleLinkClick}
-                      className="w-full py-3 px-4 rounded-xl bg-[#0F5132] text-white font-bold hover:bg-[#168A4A] transition-all flex items-center justify-center gap-2 text-xs tracking-wider uppercase min-h-[44px] shadow-sm active:scale-98"
+                      className="w-full py-2.5 px-4 rounded-xl bg-[#0F5132] text-white font-bold hover:bg-[#168A4A] transition-all flex items-center justify-center gap-2 text-xs tracking-wider uppercase min-h-[40px] shadow-sm active:scale-98"
                     >
                       <Calendar className="w-3.5 h-3.5" />
                       <span>Start a Project</span>
@@ -203,7 +203,7 @@ export function MobileHeader({ activeSection }: MobileHeaderProps) {
                     <Link
                       href="/#contact"
                       onClick={handleLinkClick}
-                      className="w-full py-3 px-4 rounded-xl border border-[#0F5132]/25 bg-white text-[#1F2022] font-bold hover:bg-[#EAF7EF] transition-all flex items-center justify-center gap-2 text-xs tracking-wider uppercase min-h-[44px] active:scale-98"
+                      className="w-full py-2.5 px-4 rounded-xl border border-[#0F5132]/25 bg-white text-[#1F2022] font-bold hover:bg-[#EAF7EF] transition-all flex items-center justify-center gap-2 text-xs tracking-wider uppercase min-h-[40px] active:scale-98"
                     >
                       <MessageSquare className="w-3.5 h-3.5 text-[#0F5132]" />
                       <span>Send Message</span>
@@ -217,7 +217,7 @@ export function MobileHeader({ activeSection }: MobileHeaderProps) {
             </div>
 
             {/* Menu Footer Contact Strip */}
-            <div className="w-full max-w-lg mx-auto border-t border-[#0F5132]/10 pt-5 flex items-center justify-between mt-auto">
+            <div className="w-full max-w-lg mx-auto border-t border-[#0F5132]/10 pt-4 flex items-center justify-between mt-auto">
               <span className="text-[9px] font-mono text-[#5F5A52]/70 uppercase tracking-widest font-bold">
                 Get In Touch
               </span>
