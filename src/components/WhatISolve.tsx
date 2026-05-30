@@ -285,38 +285,40 @@ export function WhatISolve() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="px-4 pb-4 border-t border-[#E6D8C8]/30 pt-3 flex flex-col gap-3"
+                        transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
+                        className="overflow-hidden"
                       >
-                        <div className="space-y-3 text-xs font-sans">
-                          {/* Cost / Pain Point */}
-                          <div className="flex gap-3 items-start">
-                            <span className="text-[9px] font-bold text-amber-600 bg-amber-50 border border-amber-200/50 px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 w-11 text-center font-mono">
-                              Cost
-                            </span>
-                            <p className="text-[#5F5A52] leading-relaxed pt-0.5">
-                              {card.cost}
-                            </p>
+                        <div className="px-4 pb-4 border-t border-[#E6D8C8]/30 pt-3 flex flex-col gap-3">
+                          <div className="space-y-3 text-xs font-sans">
+                            {/* Cost / Pain Point */}
+                            <div className="flex gap-3 items-start">
+                              <span className="text-[9px] font-bold text-amber-600 bg-amber-50 border border-amber-200/50 px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 w-11 text-center font-mono">
+                                Cost
+                              </span>
+                              <p className="text-[#5F5A52] leading-relaxed pt-0.5">
+                                {card.cost}
+                              </p>
+                            </div>
+                            {/* What I Build */}
+                            <div className="flex gap-3 items-start pt-2.5 border-t border-[#E6D8C8]/40">
+                              <span className="text-[9px] font-bold text-primary bg-primary/5 border border-primary/10 px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 w-11 text-center font-mono">
+                                Build
+                              </span>
+                              <p className="text-[#1F2022] font-semibold leading-relaxed pt-0.5">
+                                {card.build}
+                              </p>
+                            </div>
                           </div>
-                          {/* What I Build */}
-                          <div className="flex gap-3 items-start pt-2.5 border-t border-[#E6D8C8]/40">
-                            <span className="text-[9px] font-bold text-primary bg-primary/5 border border-primary/10 px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 w-11 text-center font-mono">
-                              Build
-                            </span>
-                            <p className="text-[#1F2022] font-semibold leading-relaxed pt-0.5">
-                              {card.build}
-                            </p>
-                          </div>
-                        </div>
 
-                        {/* CTA Solution Link */}
-                        <div className="pt-2 border-t border-[#E6D8C8]/30 flex justify-end">
-                          <Link
-                            href={card.href}
-                            className="text-[10px] font-bold text-primary hover:text-[#168A4A] flex items-center gap-0.5 hover:underline min-h-[30px]"
-                          >
-                            Explore Solution Blueprint <ArrowRight className="w-3 h-3" />
-                          </Link>
+                          {/* CTA Solution Link */}
+                          <div className="pt-2 border-t border-[#E6D8C8]/30 flex justify-end">
+                            <Link
+                              href={card.href}
+                              className="text-[10px] font-bold text-primary hover:text-[#168A4A] flex items-center gap-0.5 hover:underline min-h-[30px]"
+                            >
+                              Explore Solution Blueprint <ArrowRight className="w-3 h-3" />
+                            </Link>
+                          </div>
                         </div>
                       </motion.div>
                     )}

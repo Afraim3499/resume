@@ -218,53 +218,55 @@ export function MobileCompetencyMap() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="px-4 pb-4 border-t border-[#0F5132]/5 pt-3 bg-[#FAF8F3]/50 flex flex-col gap-3"
+                      transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
+                      className="overflow-hidden"
                     >
-                      {/* Wiki definitions if present */}
-                      {skill.wikiId && (
-                        <div>
-                          <Link
-                            href={`/wiki/${skill.wikiId}`}
-                            className="text-[10px] font-bold text-[#0F5132] hover:underline flex items-center gap-0.5"
-                          >
-                            <Sparkles className="w-3.5 h-3.5 text-[#0F5132] shrink-0" />
-                            View Wiki Definition &amp; Scope
-                            <ArrowUpRight className="w-2.5 h-2.5" />
-                          </Link>
-                        </div>
-                      )}
-
-                      {/* Production deployments list */}
-                      {skill.projects && skill.projects.length > 0 && (
-                        <div>
-                          <span className="block text-[8px] font-mono font-bold text-[#5F655F] uppercase tracking-wider mb-2">
-                            Production Deployments
-                          </span>
-                          <div className="flex flex-wrap gap-1.5">
-                            {skill.projects.map((p) => (
-                              <Link
-                                key={p.slug}
-                                href={p.type === "project" ? `/projects/${p.slug}` : `/solutions/${p.slug}`}
-                                className="px-2.5 py-1 rounded-md text-[9px] font-semibold border transition-all flex items-center gap-0.5"
-                                style={{
-                                  background: `${cfg?.hex ?? "#0F5132"}08`,
-                                  color: cfg?.hex ?? "#0F5132",
-                                  borderColor: `${cfg?.hex ?? "#0F5132"}15`,
-                                }}
-                              >
-                                <span>{p.label}</span>
-                                <ArrowUpRight className="w-2.5 h-2.5" />
-                              </Link>
-                            ))}
+                      <div className="px-4 pb-4 border-t border-[#0F5132]/5 pt-3 bg-[#FAF8F3]/50 flex flex-col gap-3">
+                        {/* Wiki definitions if present */}
+                        {skill.wikiId && (
+                          <div>
+                            <Link
+                              href={`/wiki/${skill.wikiId}`}
+                              className="text-[10px] font-bold text-[#0F5132] hover:underline flex items-center gap-0.5"
+                            >
+                              <Sparkles className="w-3.5 h-3.5 text-[#0F5132] shrink-0" />
+                              View Wiki Definition &amp; Scope
+                              <ArrowUpRight className="w-2.5 h-2.5" />
+                            </Link>
                           </div>
-                        </div>
-                      )}
+                        )}
 
-                      {/* Verification tick */}
-                      <div className="flex items-center gap-1.5 text-[9px] text-[#0F5132] font-semibold">
-                        <CheckCircle className="w-3 h-3 text-[#168A4A]" />
-                        <span>Verified production system integration</span>
+                        {/* Production deployments list */}
+                        {skill.projects && skill.projects.length > 0 && (
+                          <div>
+                            <span className="block text-[8px] font-mono font-bold text-[#5F655F] uppercase tracking-wider mb-2">
+                              Production Deployments
+                            </span>
+                            <div className="flex flex-wrap gap-1.5">
+                              {skill.projects.map((p) => (
+                                <Link
+                                  key={p.slug}
+                                  href={p.type === "project" ? `/projects/${p.slug}` : `/solutions/${p.slug}`}
+                                  className="px-2.5 py-1 rounded-md text-[9px] font-semibold border transition-all flex items-center gap-0.5"
+                                  style={{
+                                    background: `${cfg?.hex ?? "#0F5132"}08`,
+                                    color: cfg?.hex ?? "#0F5132",
+                                    borderColor: `${cfg?.hex ?? "#0F5132"}15`,
+                                  }}
+                                >
+                                  <span>{p.label}</span>
+                                  <ArrowUpRight className="w-2.5 h-2.5" />
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Verification tick */}
+                        <div className="flex items-center gap-1.5 text-[9px] text-[#0F5132] font-semibold">
+                          <CheckCircle className="w-3 h-3 text-[#168A4A]" />
+                          <span>Verified production system integration</span>
+                        </div>
                       </div>
                     </motion.div>
                   )}

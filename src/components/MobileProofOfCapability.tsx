@@ -61,28 +61,30 @@ export function MobileProofOfCapability({ slides, renderArtifact }: MobileProofO
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="px-5 pb-5 border-t border-[#0F5132]/10 pt-4"
+                  transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
+                  className="overflow-hidden"
                 >
-                  <p className="text-xs text-[#5F655F] leading-relaxed mb-4">
-                    {slide.explanation}
-                  </p>
+                  <div className="px-5 pb-5 border-t border-[#0F5132]/10 pt-4">
+                    <p className="text-xs text-[#5F655F] leading-relaxed mb-4">
+                      {slide.explanation}
+                    </p>
 
-                  {/* Visual Artifact (Only when expanded) */}
-                  <div className="h-[275px] w-full bg-[#FAF8F3] border border-[#0F5132]/5 rounded-xl p-3 mb-4 overflow-hidden relative">
-                    {renderArtifact(i)}
-                  </div>
+                    {/* Visual Artifact (Only when expanded) */}
+                    <div className="h-[275px] w-full bg-[#FAF8F3] border border-[#0F5132]/5 rounded-xl p-3 mb-4 overflow-hidden relative">
+                      {renderArtifact(i)}
+                    </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 border-t border-[#0F5132]/10 pt-3.5">
-                    {slide.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[8px] font-sans px-2.5 py-0.5 rounded-full bg-[#F7F4EC] border border-[#0F5132]/10 text-[#5F655F]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5 border-t border-[#0F5132]/10 pt-3.5">
+                      {slide.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[8px] font-sans px-2.5 py-0.5 rounded-full bg-[#F7F4EC] border border-[#0F5132]/10 text-[#5F655F]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               )}

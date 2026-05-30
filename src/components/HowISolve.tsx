@@ -434,31 +434,33 @@ export function HowISolve() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="px-4 pb-4 border-t border-[#E6DDD0]/30 pt-3 flex flex-col gap-3.5 text-xs font-sans"
+                          transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
+                          className="overflow-hidden"
                         >
-                          <div className="p-3 bg-[#EAF7EF] border border-[#168A4A]/15 rounded-xl">
-                            <span className="block text-[8px] font-mono font-bold text-[#0F5132] uppercase tracking-wider leading-none mb-1">
-                              Why It Matters
-                            </span>
-                            <p className="text-[#0F5132] font-semibold leading-relaxed italic">
-                              {step.whyItMatters}
-                            </p>
-                          </div>
+                          <div className="px-4 pb-4 border-t border-[#E6DDD0]/30 pt-3 flex flex-col gap-3.5 text-xs font-sans">
+                            <div className="p-3 bg-[#EAF7EF] border border-[#168A4A]/15 rounded-xl">
+                              <span className="block text-[8px] font-mono font-bold text-[#0F5132] uppercase tracking-wider leading-none mb-1">
+                                Why It Matters
+                              </span>
+                              <p className="text-[#0F5132] font-semibold leading-relaxed italic">
+                                {step.whyItMatters}
+                              </p>
+                            </div>
 
-                          <div>
-                            <span className="block text-[8px] font-mono font-bold text-[#5F5A52]/50 uppercase tracking-wider mb-2">
-                              Deliverable Outputs
-                            </span>
-                            <div className="flex flex-wrap gap-1.5">
-                              {step.outputs.map((out) => (
-                                <span
-                                  key={out}
-                                  className="text-[9px] px-2.5 py-0.5 rounded-lg bg-[#FAF8F3] border border-[#E6DDD0] text-[#5F5A52]"
-                                >
-                                  {out}
-                                </span>
-                              ))}
+                            <div>
+                              <span className="block text-[8px] font-mono font-bold text-[#5F5A52]/50 uppercase tracking-wider mb-2">
+                                Deliverable Outputs
+                              </span>
+                              <div className="flex flex-wrap gap-1.5">
+                                {step.outputs.map((out) => (
+                                  <span
+                                    key={out}
+                                    className="text-[9px] px-2.5 py-0.5 rounded-lg bg-[#FAF8F3] border border-[#E6DDD0] text-[#5F5A52]"
+                                  >
+                                    {out}
+                                  </span>
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </motion.div>

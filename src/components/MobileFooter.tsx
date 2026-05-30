@@ -134,7 +134,7 @@ export function MobileFooter({ navGroups, trustItems }: MobileFooterProps) {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
                     className="overflow-hidden pl-1.5"
                   >
                     <ul className="flex flex-col gap-3 py-2 text-xs font-semibold text-[#5F655F]">
