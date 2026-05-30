@@ -55,7 +55,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <ol className="flex items-center flex-wrap gap-2 text-sm text-foreground/50">
+      <ol className="flex items-center flex-wrap gap-2 text-sm text-foreground/75">
         <li className="flex items-center">
           <Link href="/" className="hover:text-primary transition-colors flex items-center gap-1">
             <Home className="w-3.5 h-3.5" />

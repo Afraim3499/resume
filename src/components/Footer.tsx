@@ -141,13 +141,13 @@ export function Footer() {
                 <h4 className="font-serif font-bold text-[#171717] text-base md:text-lg leading-tight">
                   Rizwanul Islam Afraim
                 </h4>
-                <p className="text-[9px] md:text-[10px] font-mono uppercase tracking-widest font-extrabold text-[#168A4A] mt-1.5 leading-none">
+                <p className="text-[9px] md:text-[10px] font-mono uppercase tracking-widest font-extrabold text-[#0F5132] mt-1.5 leading-none">
                   Systems Architect &bull; Marketing &amp; Sales Operations
                 </p>
               </div>
             </div>
 
-            <p className="text-xs md:text-[13px] leading-relaxed text-[#5F655F]/85 max-w-sm">
+            <p className="text-xs md:text-[13px] leading-relaxed text-[#5F655F] max-w-sm">
               I design and operate business systems that connect marketing, sales, operations, and digital execution into measurable, automated growth engines.
             </p>
 
@@ -167,8 +167,8 @@ export function Footer() {
                 </a>
               </div>
               <div className="flex items-center gap-1.5 shrink-0">
-                <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-                <span className="text-[9px] uppercase font-mono tracking-wider text-[#168A4A]">
+                <span className="w-2 h-2 rounded-full bg-[#0F5132] animate-pulse" />
+                <span className="text-[9px] uppercase font-mono tracking-wider text-[#0F5132]">
                   Active for consulting
                 </span>
               </div>
@@ -236,8 +236,8 @@ export function Footer() {
               <item.icon className="w-4 h-4 text-[#0F5132] shrink-0" />
               <span className="leading-none">
                 <strong className="font-bold">{item.title}:</strong>{" "}
-                <span className="text-[#168A4A] font-mono font-bold">{item.metric}</span>
-                <span className="text-foreground/30 mx-2">&bull;</span>
+                <span className="text-[#0F5132] font-mono font-bold">{item.metric}</span>
+                <span className="text-foreground/50 mx-2">&bull;</span>
                 <span className="text-[#5F655F] text-[11px]">{item.desc}</span>
               </span>
             </div>
@@ -274,20 +274,20 @@ export function Footer() {
           </div>
 
           <div className="relative z-10 space-y-2.5 max-w-2xl">
-            <span className="text-[9px] md:text-[10px] font-mono uppercase tracking-[0.25em] font-extrabold text-[#168A4A] block">
+            <span className="text-[9px] md:text-[10px] font-mono uppercase tracking-[0.25em] font-extrabold text-[#0F5132] block">
               SYSTEMS DON&apos;T JUST IMPROVE BUSINESSES.
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-[#171717] tracking-tight leading-none px-4 select-text selection:bg-[#0F5132] selection:text-white">
               Rizwanul Islam Afraim
             </h1>
-            <p className="text-[9px] md:text-[11px] font-mono uppercase tracking-[0.3em] font-extrabold text-[#5F655F]/85 mt-2">
+            <p className="text-[9px] md:text-[11px] font-mono uppercase tracking-[0.3em] font-extrabold text-[#5F655F] mt-2">
               THE SYSTEMS ARCHITECT
             </p>
           </div>
         </div>
 
         {/* ================= BOTTOMMOST LEGAL / UTILITY ROW ================= */}
-        <div className="py-4 border-t border-[#0F5132]/6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-[#5F655F]/75 uppercase tracking-wider">
+        <div className="py-4 border-t border-[#0F5132]/6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-[#5F655F] uppercase tracking-wider">
           <div>
             &copy; 2026 rizwanulafraim.com. All rights reserved.
           </div>

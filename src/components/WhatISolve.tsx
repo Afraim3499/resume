@@ -100,7 +100,7 @@ export function WhatISolve() {
       className="py-16 md:py-20 bg-[#FDFBF7] text-[#1F2022] relative overflow-hidden font-sans min-h-[85vh] flex flex-col justify-center"
     >
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(196,90,42,0.015),transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(15,81,50,0.015),transparent_60%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(230,216,200,0.15),transparent_60%)] pointer-events-none" />
 
       <div className="container px-4 md:px-8 mx-auto max-w-7xl relative z-10">
@@ -147,7 +147,7 @@ export function WhatISolve() {
               {!prefersReducedMotion && isHovered && (
                 <motion.path
                   d="M 100,100 H 500 V 300 H 100 Z"
-                  stroke="#10B981"
+                  stroke="#0F5132"
                   strokeWidth="1.5"
                   strokeDasharray="1200"
                   animate={{ strokeDashoffset: [1200, 0] }}
@@ -162,7 +162,7 @@ export function WhatISolve() {
               {!prefersReducedMotion && isHovered && (
                 <motion.circle
                   r="2.5"
-                  fill="#10B981"
+                  fill="#0F5132"
                   animate={{
                     cx: [100, 300, 500, 500, 300, 100, 100],
                     cy: [100, 100, 100, 300, 300, 300, 100],
@@ -189,8 +189,8 @@ export function WhatISolve() {
                   <div
                     className={`relative bg-[#FFFDF8] border rounded-xl p-5 h-full flex flex-col justify-between transition-all duration-500 ease-in-out ${
                       isNodeHere
-                        ? "border-[#10B981] shadow-sm shadow-[#10B981]/15 scale-[1.01]"
-                        : "border-[#E6D8C8] hover:border-[#10B981]/25"
+                        ? "border-primary shadow-sm shadow-primary/15 scale-[1.01]"
+                        : "border-[#E6D8C8] hover:border-primary/25"
                     }`}
                   >
                     <div className="flex justify-between items-start mb-2.5">
@@ -199,7 +199,7 @@ export function WhatISolve() {
                       </span>
                       <div className={`p-1.5 rounded border transition-all duration-500 ${
                         isNodeHere 
-                          ? "bg-[#10B981] text-white border-[#10B981]" 
+                          ? "bg-primary text-white border-primary" 
                           : "bg-primary/5 text-primary border-primary/5"
                       }`}>
                         <Icon className="w-3.5 h-3.5" />
@@ -290,7 +290,7 @@ export function WhatISolve() {
           </div>
           <Link
             href="/services"
-            className="group inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-[#8F3F1C] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm whitespace-nowrap"
+            className="group inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-[#168A4A] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm whitespace-nowrap"
           >
             Explore Solutions
             <ArrowRight className="w-3.5 h-3.5 ml-1.5 transition-transform duration-200 group-hover:translate-x-1" />

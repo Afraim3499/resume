@@ -18,7 +18,7 @@ const stats = [
         companies: ["The Trail", "PrimeSync"],
         gradient: "from-emerald-500/20 via-emerald-500/10 to-transparent",
         borderColor: "border-emerald-500/30",
-        iconColor: "text-emerald-400",
+        iconColor: "text-emerald-700",
         bgPattern: "radial-gradient(circle_at_30%_50%,rgba(16,185,129,0.15),transparent_50%)",
     },
     {
@@ -30,7 +30,7 @@ const stats = [
         companies: ["Quantanite", "SSRN"],
         gradient: "from-purple-500/20 via-purple-500/10 to-transparent",
         borderColor: "border-purple-500/30",
-        iconColor: "text-purple-400",
+        iconColor: "text-purple-700",
         bgPattern: "radial-gradient(circle_at_70%_30%,rgba(168,85,247,0.15),transparent_50%)",
     },
     {
@@ -42,7 +42,7 @@ const stats = [
         companies: ["NSUSS", "Gaari"],
         gradient: "from-blue-500/20 via-blue-500/10 to-transparent",
         borderColor: "border-blue-500/30",
-        iconColor: "text-blue-400",
+        iconColor: "text-blue-700",
         bgPattern: "radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15),transparent_50%)",
     },
     {
@@ -54,7 +54,7 @@ const stats = [
         companies: ["InshortBD", "The Trail", "Gaari"],
         gradient: "from-emerald-500/20 via-cyan-500/10 to-transparent",
         borderColor: "border-emerald-500/30",
-        iconColor: "text-emerald-400",
+        iconColor: "text-emerald-700",
         bgPattern: "radial-gradient(circle_at_80%_20%,rgba(16,185,129,0.15),transparent_50%)",
     },
 ];
@@ -80,7 +80,7 @@ export function About() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="inline-block px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6 uppercase tracking-widest"
+                        className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6 uppercase tracking-widest"
                     >
                         The Architecture of Intelligence
                     </motion.span>

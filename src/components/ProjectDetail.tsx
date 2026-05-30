@@ -30,31 +30,31 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
       icon: Code,
       label: "Components",
       value: `${project.metrics.components}+`,
-      color: "text-emerald-400",
+      color: "text-emerald-700",
     },
     project.metrics?.apiEndpoints && {
       icon: Layers,
       label: "API Endpoints",
       value: `${project.metrics.apiEndpoints}+`,
-      color: "text-blue-400",
+      color: "text-blue-700",
     },
     project.metrics?.databaseTables && {
       icon: Database,
       label: "Database Tables",
       value: `${project.metrics.databaseTables}+`,
-      color: "text-purple-400",
+      color: "text-purple-700",
     },
     project.metrics?.linesOfCode && {
       icon: Code,
       label: "Lines of Code",
       value: `${project.metrics.linesOfCode.toLocaleString()}+`,
-      color: "text-orange-400",
+      color: "text-orange-700",
     },
     project.performance?.lighthouse && {
       icon: Zap,
       label: "Lighthouse Score",
       value: `${project.performance.lighthouse}/100`,
-      color: "text-green-400",
+      color: "text-green-700",
     },
   ].filter(Boolean) as Array<{
     icon: typeof Code;
@@ -85,7 +85,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 {project.year}
               </div>
               {project.status === "production" && (
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-medium">
+                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-medium">
                   Live
                 </span>
               )}
@@ -134,7 +134,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
             {caseStudySlug && (
               <Link
                 href={`/case-studies/${caseStudySlug}`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 border border-emerald-500/30 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 transition-colors"
               >
                 <FileText className="w-4 h-4" />
                 View Case Study
@@ -144,7 +144,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
             {blogSlug && (
               <Link
                 href={`/blog/${blogSlug}`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 border border-blue-500/30 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-700/10 text-blue-700 hover:bg-blue-700/20 border border-blue-700/20 transition-colors"
               >
                 <BookOpen className="w-4 h-4" />
                 Read Blog Post
@@ -279,7 +279,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 className="group p-6 rounded-lg bg-secondary/30 border border-white/5 hover:border-primary/50 transition-colors flex items-center justify-between"
               >
                 <div>
-                  <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors mb-1">
+                  <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors mb-1">
                     {article.title}
                   </h3>
                   <div className="text-sm text-foreground/60">Published on {article.publisher}</div>
@@ -446,7 +446,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 href={`/projects/${relatedProject.slug}`}
                 className="p-6 rounded-lg bg-secondary/30 border border-white/5 hover:border-primary/50 transition-colors"
               >
-                <h3 className="text-xl font-bold text-white hover:text-primary transition-colors mb-2">
+                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
                   {relatedProject.title}
                 </h3>
                 <p className="text-foreground/70 text-sm line-clamp-2">

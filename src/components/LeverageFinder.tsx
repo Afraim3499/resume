@@ -573,7 +573,7 @@ export function LeverageFinder() {
                     : "bg-white border-[#0F5132]/10 text-[#5F655F] hover:border-[#0F5132]/25 hover:text-[#0F5132] hover:bg-[#FFFDF8]"
                 }`}
               >
-                <span className={`text-[8.5px] font-mono font-semibold ${isActive ? "text-white/80" : "text-[#168A4A]/60"}`}>
+                <span className={`text-[8.5px] font-mono font-semibold ${isActive ? "text-white/80" : "text-[#0F5132]"}`}>
                   {area.index}
                 </span>
                 <SelectorIcon className="w-3.5 h-3.5" />
@@ -600,7 +600,7 @@ export function LeverageFinder() {
                 {/* 1. Left Column: Constraint Identity & Diagnostics (Streamlined) */}
                 <div className="col-span-12 lg:col-span-3 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#0F5132]/10 pb-4 lg:pb-0 lg:pr-5">
                   <div>
-                    <span className="inline-block text-[8px] font-mono font-bold text-[#168A4A] tracking-wider uppercase mb-1">
+                    <span className="inline-block text-[8px] font-mono font-bold text-[#0F5132] tracking-wider uppercase mb-1">
                       Selected Constraint
                     </span>
                     <div className="flex items-center gap-2 mb-2">
@@ -639,7 +639,7 @@ export function LeverageFinder() {
                 {/* 2. Center Column: Widescreen Horizontal Node Blueprint (Compact) */}
                 <div className="col-span-12 lg:col-span-6 flex flex-col justify-between py-0.5 border-b lg:border-b-0 lg:border-r border-[#0F5132]/10 pb-4 lg:pb-0 lg:px-4">
                   <div className="w-full">
-                    <span className="inline-block text-[8px] font-mono font-bold text-[#168A4A] tracking-wider uppercase mb-2">
+                    <span className="inline-block text-[8px] font-mono font-bold text-[#0F5132] tracking-wider uppercase mb-2">
                       The System I Build
                     </span>
 
@@ -688,7 +688,7 @@ export function LeverageFinder() {
                 <div className="col-span-12 lg:col-span-3 flex flex-col justify-between pl-0 lg:pl-5">
                   {/* Changes Section */}
                   <div>
-                    <span className="inline-block text-[8px] font-mono font-bold text-[#168A4A] tracking-wider uppercase mb-1.5">
+                    <span className="inline-block text-[8px] font-mono font-bold text-[#0F5132] tracking-wider uppercase mb-1.5">
                       What Changes After
                     </span>
                     <ul className="flex flex-col gap-1 text-[11px] md:text-xs text-[#5F655F] font-medium pl-1 mb-4">
@@ -703,7 +703,7 @@ export function LeverageFinder() {
 
                   {/* Related Proof Cards (Limited to 2 items for extreme height efficiency) */}
                   <div>
-                    <span className="inline-block text-[8px] font-mono font-bold text-[#168A4A] tracking-wider uppercase mb-2">
+                    <span className="inline-block text-[8px] font-mono font-bold text-[#0F5132] tracking-wider uppercase mb-2">
                       Related Proof
                     </span>
                     <div className="flex flex-col gap-2">
@@ -747,7 +747,7 @@ export function LeverageFinder() {
                   ))}
                   <Link
                     href="#projects"
-                    className="text-[9.5px] font-semibold text-[#168A4A] hover:underline flex items-center gap-0.5 ml-1"
+                    className="text-[9.5px] font-semibold text-[#0F5132] hover:text-[#168A4A] hover:underline flex items-center gap-0.5 ml-1"
                   >
                     View work <ChevronRight className="w-2.5 h-2.5 inline" />
                   </Link>

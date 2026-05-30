@@ -105,7 +105,7 @@ ${message}`;
           <input
             id="name"
             {...register("name")}
-            className="w-full px-4 py-3 rounded-lg bg-foreground/5 border border-foreground/10 text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
+            className="w-full px-4 py-3 rounded-lg bg-foreground/5 border border-foreground/10 text-foreground placeholder-foreground/70 focus:outline-none focus:border-primary/50 transition-colors"
             placeholder="Your name"
             autoComplete="name"
           />
@@ -122,7 +122,7 @@ ${message}`;
             id="email"
             type="email"
             {...register("email")}
-            className="w-full px-4 py-3 rounded-lg bg-foreground/5 border border-foreground/10 text-foreground placeholder-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
+            className="w-full px-4 py-3 rounded-lg bg-foreground/5 border border-foreground/10 text-foreground placeholder-foreground/70 focus:outline-none focus:border-primary/50 transition-colors"
             placeholder="your.email@example.com"
             autoComplete="email"
           />
@@ -170,10 +170,10 @@ ${message}`;
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center gap-3"
+          className="p-4 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center gap-3"
         >
-          <CheckCircle className="w-5 h-5 text-emerald-400" />
-          <p className="text-emerald-400">
+          <CheckCircle className="w-5 h-5 text-emerald-800" />
+          <p className="text-emerald-800">
             WhatsApp opened! Send the message to connect with me.
           </p>
         </motion.div>
@@ -184,10 +184,10 @@ ${message}`;
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 rounded-lg bg-red-500/20 border border-red-500/30 flex items-center gap-3"
+          className="p-4 rounded-lg bg-red-50 border border-red-200 flex items-center gap-3"
         >
-          <AlertCircle className="w-5 h-5 text-red-400" />
-          <p className="text-red-400">
+          <AlertCircle className="w-5 h-5 text-red-800" />
+          <p className="text-red-800">
             {errorMessage || "Failed to send message. Please try again."}
           </p>
         </motion.div>

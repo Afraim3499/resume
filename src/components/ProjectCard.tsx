@@ -65,7 +65,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                             {project.title}
                         </h3>
                         {project.status === "production" && (
-                            <span className="px-2 py-1 text-xs font-medium rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                            <span className="px-2 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
                                 Live
                             </span>
                         )}
@@ -211,7 +211,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                             return (
                                 <Link
                                     href={`/solutions/${solutionSlug}`}
-                                    className="inline-flex items-center text-sm font-medium text-emerald-500 hover:text-emerald-600 transition-colors"
+                                    className="inline-flex items-center text-sm font-medium text-primary hover:text-primary-hover transition-colors"
                                 >
                                     View Solution <Zap className="ml-1 w-3 h-3" />
                                 </Link>

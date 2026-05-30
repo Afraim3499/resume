@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, BookOpen, FileText, Activity, TrendingDown, Layers, HelpCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 interface ArticleCard {
@@ -15,11 +15,15 @@ interface ArticleCard {
 
 export function ResearchInsightsSection() {
   const [activeTab, setActiveTab] = useState<"firm-scale" | "economic-divergence">("firm-scale");
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -303,7 +307,7 @@ export function ResearchInsightsSection() {
               <div className="flex items-center gap-4 shrink-0 text-xs font-bold">
                 <Link
                   href="/research"
-                  className="text-[#168A4A] hover:text-[#0F5132] hover:underline flex items-center gap-1 transition-colors cursor-pointer"
+                  className="text-[#0F5132] hover:text-[#168A4A] hover:underline flex items-center gap-1 transition-colors cursor-pointer"
                 >
                   <span>Research Library</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -311,7 +315,7 @@ export function ResearchInsightsSection() {
                 <span className="text-[#0F5132]/25 select-none">|</span>
                 <Link
                   href="/blog"
-                  className="text-[#168A4A] hover:text-[#0F5132] hover:underline flex items-center gap-1 transition-colors cursor-pointer"
+                  className="text-[#0F5132] hover:text-[#168A4A] hover:underline flex items-center gap-1 transition-colors cursor-pointer"
                 >
                   <span>Read Insights</span>
                   <ArrowRight className="w-3.5 h-3.5" />

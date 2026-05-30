@@ -27,36 +27,36 @@ const CATEGORY_CONFIG: Record<string, {
   solutionHref?: string;
 }> = {
   gtm_operations: {
-    hex: "#D97706",
-    bg: "rgba(217,119,6,0.06)",
-    glow: "0 0 18px 4px rgba(217,119,6,0.35), 0 0 4px 1px rgba(217,119,6,0.5)",
+    hex: "#B45309",
+    bg: "rgba(180,83,9,0.06)",
+    glow: "0 0 18px 4px rgba(180,83,9,0.35), 0 0 4px 1px rgba(180,83,9,0.5)",
     icon: BarChart3,
     label: "GTM & Ops",
     description: "Lead routing, CRM pipelines, Meta CAPI, Google Merchant feeds, and voice agent integrations that drive revenue operations.",
     solutionHref: "/solutions/gtm-operations",
   },
   brand_execution: {
-    hex: "#E11D48",
-    bg: "rgba(225,29,72,0.06)",
-    glow: "0 0 18px 4px rgba(225,29,72,0.35), 0 0 4px 1px rgba(225,29,72,0.5)",
+    hex: "#BE123C",
+    bg: "rgba(190,18,60,0.06)",
+    glow: "0 0 18px 4px rgba(190,18,60,0.35), 0 0 4px 1px rgba(190,18,60,0.5)",
     icon: Megaphone,
     label: "Brand",
     description: "Large-scale event operations (25,000+ audiences), competitor research, organic brand campaigns, and team/vendor coordination.",
     solutionHref: "/solutions/executive-brand",
   },
   digital_platforms: {
-    hex: "#059669",
-    bg: "rgba(5,150,105,0.06)",
-    glow: "0 0 18px 4px rgba(5,150,105,0.35), 0 0 4px 1px rgba(5,150,105,0.5)",
+    hex: "#047857",
+    bg: "rgba(4,120,87,0.06)",
+    glow: "0 0 18px 4px rgba(4,120,87,0.35), 0 0 4px 1px rgba(4,120,87,0.5)",
     icon: Server,
     label: "Platforms",
     description: "Next.js pre-rendering, multi-stage CMS workflows, SEO/AEO frameworks, RAG chatbots, and automated testing pipelines.",
     solutionHref: "/solutions/dynamic-platforms",
   },
   systems_infrastructure: {
-    hex: "#2563EB",
-    bg: "rgba(37,99,235,0.06)",
-    glow: "0 0 18px 4px rgba(37,99,235,0.35), 0 0 4px 1px rgba(37,99,235,0.5)",
+    hex: "#1D4ED8",
+    bg: "rgba(29,78,216,0.06)",
+    glow: "0 0 18px 4px rgba(29,78,216,0.35), 0 0 4px 1px rgba(29,78,216,0.5)",
     icon: Brain,
     label: "Infra",
     description: "PostgreSQL schema design, Supabase RLS security, API architecture, deterministic state locking, and Redis availability caching.",
@@ -612,7 +612,7 @@ export function ResumeGraph() {
               color = vs === "lit" || vs === "dragging" ? "#fff" : cfg.hex;
               border = cfg.hex;
               shadow = vs === "lit" || vs === "dragging" ? cfg.glow : "none";
-              opacity = vs === "dimmed" ? 0.22 : vs === "resting" ? 0.85 : 1;
+              opacity = vs === "dimmed" ? 0.35 : vs === "resting" ? 0.85 : 1;
               scale = vs === "lit" || vs === "dragging" ? 1.1 : 1;
             } else {
               // Skill node
@@ -623,14 +623,14 @@ export function ResumeGraph() {
                 : "#FFFDF8";
               color = vs === "lit" || vs === "dragging"
                 ? "#fff"
-                : isExpert ? "#171717" : "#8A8F8A";
+                : isExpert ? "#171717" : "#5A605B";
               border = vs === "lit" || vs === "dragging"
                 ? (cfg?.hex ?? "#0F5132")
                 : isExpert ? `${cfg?.hex ?? "#0F5132"}40` : "#0f513215";
               shadow = vs === "lit" || vs === "dragging"
                 ? (cfg?.glow ?? "0 0 12px rgba(15,81,50,0.3)")
                 : "none";
-              opacity = vs === "dimmed" ? 0.15 : vs === "resting" ? (isExpert ? 0.9 : 0.65) : 1;
+              opacity = vs === "dimmed" ? 0.35 : vs === "resting" ? (isExpert ? 0.9 : 0.65) : 1;
               scale = vs === "lit" || vs === "dragging" ? 1.12 : 1;
             }
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { Zap, ArrowUpRight, ArrowRight, Layers, ShieldCheck, Database, CheckCircle2, AlertTriangle, TrendingUp } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Layers, ShieldCheck, Database, CheckCircle2, AlertTriangle, TrendingUp } from "lucide-react";
 import { solutions } from "@/data/solutions";
 import { TechnicalSpecificationsTable } from "@/components/TechnicalSpecificationsTable";
 
@@ -405,7 +405,7 @@ export default function DynamicPlatformsPage() {
         <section className="mt-20 p-8 rounded-3xl bg-[#0F5132] text-white text-center">
           <h2 className="text-2xl md:text-3xl font-serif font-bold mb-4">Need to deploy a custom application?</h2>
           <p className="text-white/80 text-sm max-w-xl mx-auto mb-6">
-            Let's structure a clean database design and define your scaling parameters.
+            Let&apos;s structure a clean database design and define your scaling parameters.
           </p>
           <a
             href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"

@@ -75,7 +75,7 @@ export function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 theme-copper ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#E6D8C8] shadow-sm h-16 md:h-18"
           : "bg-[#FDFBF7]/85 backdrop-blur-sm border-b border-[#E6D8C8]/30 h-16 md:h-18"
           }`}
@@ -247,7 +247,7 @@ export function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-72 bg-[#FDFBF7] border-l border-[#E6D8C8] z-50 md:hidden overflow-y-auto theme-copper"
+              className="fixed top-0 right-0 bottom-0 w-72 bg-[#FDFBF7] border-l border-[#E6D8C8] z-50 md:hidden overflow-y-auto"
             >
               <div className="p-6 space-y-6 pt-24">
                 <div className="flex flex-col gap-2">

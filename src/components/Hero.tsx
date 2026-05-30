@@ -111,7 +111,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[calc(100vh-4.5rem)] flex flex-col items-center justify-center bg-[#FDFBF7] text-[#1F2022] pt-24 md:pt-28 pb-8 md:pb-12 px-4 md:px-8 selection:bg-primary selection:text-white overflow-hidden theme-copper"
+      className="relative min-h-[calc(100vh-4.5rem)] flex flex-col items-center justify-center bg-[#FDFBF7] text-[#1F2022] pt-24 md:pt-28 pb-8 md:pb-12 px-4 md:px-8 selection:bg-primary selection:text-white overflow-hidden"
     >
       {/* Background Subtle Aesthetics */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -163,14 +163,14 @@ export function Hero() {
                 e.preventDefault();
                 document.getElementById("what-i-solve")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="group px-5 py-3 rounded-lg bg-primary text-white font-medium text-center hover:bg-[#8F3F1C] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm text-xs sm:text-sm flex items-center justify-center gap-1.5"
+              className="group px-5 py-3 rounded-lg bg-primary text-white font-medium text-center hover:bg-[#168A4A] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm text-xs sm:text-sm flex items-center justify-center gap-1.5"
             >
               Show Me What You Solve
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </a>
             <Link
               href="/case-studies"
-              className="px-5 py-3 rounded-lg border border-[#E6D8C8] bg-[#FFFDF8] text-[#1F2022] font-medium text-center hover:bg-[#F4E7DA] transition-colors text-xs sm:text-sm"
+              className="px-5 py-3 rounded-lg border border-[#E6D8C8] bg-[#FFFDF8] text-[#1F2022] font-medium text-center hover:bg-[#EAF7EF] hover:border-primary/30 transition-colors text-xs sm:text-sm"
             >
               See Case Studies
             </Link>
@@ -281,7 +281,7 @@ export function Hero() {
                       active ? "bg-primary" : "bg-[#E6D8C8]"
                     }`} />
                     
-                    <div className="p-1.5 rounded-lg bg-[#F4E7DA] text-primary flex-shrink-0">
+                    <div className="p-1.5 rounded-lg bg-[#EAF7EF] text-primary flex-shrink-0">
                       <Icon className="w-3.5 h-3.5" />
                     </div>
                     
@@ -302,7 +302,7 @@ export function Hero() {
             <div
               className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[420px] min-h-[76px] px-4 py-3 rounded-xl border bg-[#FFFDF8] transition-all duration-300 text-center flex items-center justify-center ${
                 activeMode !== "idle"
-                  ? "border-primary shadow-md shadow-primary/10 scale-[1.02] bg-[#F4E7DA]/30"
+                  ? "border-primary shadow-md shadow-primary/10 scale-[1.02] bg-[#EAF7EF]/30"
                   : "border-[#E6D8C8] shadow-sm"
               }`}
             >
@@ -370,7 +370,7 @@ export function Hero() {
                       active ? "bg-primary" : "bg-[#E6D8C8]"
                     }`} />
                     
-                    <div className="p-1 rounded-lg bg-[#F4E7DA] text-primary flex-shrink-0">
+                    <div className="p-1 rounded-lg bg-[#EAF7EF] text-primary flex-shrink-0">
                       <Icon className="w-3.5 h-3.5" />
                     </div>
                     
@@ -390,7 +390,7 @@ export function Hero() {
             {/* Mobile Shared Insight Panel */}
             <div
               className={`p-4 rounded-xl border transition-all duration-300 text-center w-full max-w-sm min-h-[72px] flex items-center justify-center bg-[#FFFDF8] ${
-                activeMode !== "idle" ? "border-primary scale-[1.01] bg-[#F4E7DA]/20" : "border-[#E6D8C8]"
+                activeMode !== "idle" ? "border-primary scale-[1.01] bg-[#EAF7EF]/20" : "border-[#E6D8C8]"
               }`}
             >
               <AnimatePresence mode="wait">

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Quote, Sparkles, Building2, CheckCircle2, Terminal, RefreshCw, Layers } from "lucide-react";
+import { Quote, Building2, Terminal } from "lucide-react";
 
 interface TestimonialTab {
   id: "cms" | "attribution" | "operations";
@@ -15,11 +15,15 @@ interface TestimonialTab {
 
 export function ExternalCredibilitySection() {
   const [activeTab, setActiveTab] = useState<"cms" | "attribution" | "operations">("cms");
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -97,7 +101,7 @@ export function ExternalCredibilitySection() {
             
             {/* Pill Tab Selector */}
             <div className="flex flex-col gap-2 bg-[#FFFDF8] border border-[#0F5132]/10 rounded-xl p-3 shadow-3xs">
-              <span className="text-[7.5px] font-mono font-bold text-[#168A4A] uppercase tracking-wider px-2 mb-1">
+              <span className="text-[7.5px] font-mono font-bold text-[#0F5132] uppercase tracking-wider px-2 mb-1">
                 SELECT TRUST CAPABILITY
               </span>
               {tabs.map((tab) => {
@@ -113,7 +117,7 @@ export function ExternalCredibilitySection() {
                     }`}
                   >
                     <span>{tab.shortTag}</span>
-                    <span className={`text-[9px] font-mono ${isActive ? "text-white/60" : "text-[#5F655F]/50"}`}>
+                    <span className={`text-[9px] font-mono ${isActive ? "text-white/60" : "text-[#5F655F]"}`}>
                       {tab.company}
                     </span>
                   </button>
@@ -203,7 +207,7 @@ export function ExternalCredibilitySection() {
                       ].map((node, idx) => (
                         <div key={idx} className="bg-white border border-[#0F5132]/10 rounded-lg p-2.5 flex flex-col justify-between h-20 shadow-3xs">
                           <span className="text-[8px] font-serif font-bold text-[#171717]">{node.title}</span>
-                          <span className="text-[6.5px] font-mono text-[#168A4A] mt-auto font-bold leading-none">
+                          <span className="text-[6.5px] font-mono text-[#0F5132] mt-auto font-bold leading-none">
                             {node.status}
                           </span>
                         </div>
@@ -254,7 +258,7 @@ export function ExternalCredibilitySection() {
 
                       <div className="w-16 h-14 rounded-lg bg-white border border-[#0F5132]/10 p-1.5 flex flex-col justify-between z-10 shadow-3xs">
                         <span className="text-[7px] font-mono text-[#5F655F] uppercase block font-bold leading-none">Server Dispatch</span>
-                        <span className="text-[6.5px] font-mono text-[#168A4A] font-bold mt-1">200 Sync OK</span>
+                        <span className="text-[6.5px] font-mono text-[#0F5132] font-bold mt-1">200 Sync OK</span>
                       </div>
 
                       <div className="w-16 h-14 rounded-lg bg-[#0F5132] border border-[#0F5132] p-1.5 flex flex-col justify-between z-10 shadow-3xs">
@@ -316,7 +320,7 @@ export function ExternalCredibilitySection() {
                         <div className="text-center my-auto">
                           <span className="text-lg font-serif font-bold text-[#171717]">99.99%</span>
                         </div>
-                        <span className="text-[6px] font-mono text-[#168A4A] font-bold uppercase leading-none">Stable Scale</span>
+                        <span className="text-[6.5px] font-mono text-[#0F5132] font-bold uppercase leading-none">Stable Scale</span>
                       </div>
                     </div>
 

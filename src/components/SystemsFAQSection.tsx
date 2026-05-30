@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Plus, Minus, HelpCircle, ShieldCheck, Target, BadgeDollarSign, HeartHandshake } from "lucide-react";
 import { faqData } from "@/data/faq";
 
@@ -15,16 +15,7 @@ interface CategoryMeta {
 export function SystemsFAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("all");
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setPrefersReducedMotion(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
 
   const handleToggle = (idx: number) => {
     setOpenIndex(openIndex === idx ? null : idx);
@@ -153,7 +144,7 @@ export function SystemsFAQSection() {
                     </div>
                     <div>
                       <h4 className="text-xs font-serif font-bold leading-none mb-0.5">{cat.name}</h4>
-                      <p className={`text-[9px] font-mono ${isActive ? "text-white/60" : "text-[#5F655F]/60"}`}>
+                      <p className={`text-[9px] font-mono ${isActive ? "text-white/90" : "text-[#5F655F]"}`}>
                         {cat.desc.slice(0, 45)}...
                       </p>
                     </div>
@@ -175,7 +166,7 @@ export function SystemsFAQSection() {
 
           {/* Right Column: Accordion Panels (col-span-8) */}
           <div className="lg:col-span-8 flex flex-col gap-3.5 justify-center">
-            {filteredFAQs.map((item, idx) => {
+            {filteredFAQs.map((item) => {
               // Find index of item in global faqData for stable IDs
               const globalIdx = faqData.indexOf(item);
               const isOpen = openIndex === globalIdx;

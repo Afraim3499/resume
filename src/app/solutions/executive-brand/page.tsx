@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { Zap, ArrowUpRight, ArrowRight, Layers, ShieldCheck, UserCircle, CheckCircle2, AlertTriangle, TrendingUp } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Layers, ShieldCheck, UserCircle, CheckCircle2, AlertTriangle, TrendingUp } from "lucide-react";
 import { solutions } from "@/data/solutions";
 import { TechnicalSpecificationsTable } from "@/components/TechnicalSpecificationsTable";
 
@@ -195,7 +195,7 @@ export default function ExecutiveBrandPage() {
                       <TrendingUp className="w-4 h-4" /> Real-World Case Study Link
                     </h4>
                     <p className="text-xs text-[#5F655F] leading-relaxed mb-4">
-                      Developed thought-leadership portfolio for PrimeSync AI's Head of Operations, integrating dynamic OG cards and structured schemas.
+                      Developed thought-leadership portfolio for PrimeSync AI&apos;s Head of Operations, integrating dynamic OG cards and structured schemas.
                     </p>
                   </div>
                   <div className="flex justify-between items-center pt-2 border-t border-[#0F5132]/6">
@@ -225,7 +225,7 @@ export default function ExecutiveBrandPage() {
                 The Architecture of Influence: Engineering High-Authority Personal Ecosystems
               </h2>
               <p className="leading-relaxed text-sm">
-                A personal brand site for an executive or founder should not read like a generic résumé. It functions as a specialized information engine that establishes authority for both human readers and search engines' entity classifiers.
+                A personal brand site for an executive or founder should not read like a generic résumé. It functions as a specialized information engine that establishes authority for both human readers and search engines&apos; entity classifiers.
               </p>
             </div>
 
@@ -236,7 +236,7 @@ export default function ExecutiveBrandPage() {
                   Wikidata Entity Loop &amp; Semantic SEO
                 </h3>
                 <p className="leading-relaxed text-xs">
-                  AI engines classify people based on structured context. By embedding Person and Organization JSON-LD schemas that target specific Wikidata endpoints, search crawlers understand the creator's relationships to companies, academic research, and patents directly.
+                  AI engines classify people based on structured context. By embedding Person and Organization JSON-LD schemas that target specific Wikidata endpoints, search crawlers understand the creator&apos;s relationships to companies, academic research, and patents directly.
                 </p>
               </div>
 
@@ -292,7 +292,7 @@ export default function ExecutiveBrandPage() {
         <section className="mt-20 p-8 rounded-3xl bg-[#0F5132] text-white text-center">
           <h2 className="text-2xl md:text-3xl font-serif font-bold mb-4">Want to build your digital authority?</h2>
           <p className="text-white/80 text-sm max-w-xl mx-auto mb-6">
-            Let's design a custom platform that aligns with your professional credentials and research.
+            Let&apos;s design a custom platform that aligns with your professional credentials and research.
           </p>
           <a
             href="https://calendar.app.google/GYA3R9Ct4Aq5Qu74A"

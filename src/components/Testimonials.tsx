@@ -92,7 +92,7 @@ export function Testimonials() {
                     )}
                   </div>
                   {testimonial.date && (
-                    <div className="text-xs text-foreground/60 mt-1">
+                    <div className="text-xs text-foreground/80 mt-1">
                       {format(new Date(testimonial.date), "MMMM yyyy")}
                     </div>
                   )}

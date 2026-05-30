@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
 };
 
-const iconMap: Record<string, React.ComponentType<any>> = {
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   ShoppingCart,
   Newspaper,
   CalendarDays,
@@ -162,7 +162,7 @@ export default function SolutionsIndexPage() {
               Need a bespoke integration or a custom system?
             </h2>
             <p className="text-white/80 text-base mb-8">
-              Whether you need to bridge dynamic sales pipelines, design serverless CRM synchronization loops, or optimize localized e-commerce transaction performance, let's explore your business architecture.
+              Whether you need to bridge dynamic sales pipelines, design serverless CRM synchronization loops, or optimize localized e-commerce transaction performance, let&apos;s explore your business architecture.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a

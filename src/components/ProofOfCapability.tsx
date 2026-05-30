@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent, useTransform } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Database, Users, Globe, LineChart, FileText, ArrowRight, 
-  ChevronRight, Compass, ShieldCheck, CheckCircle2, ArrowUpRight
+  Database, ShieldCheck, CheckCircle2, ArrowUpRight
 } from "lucide-react";
 import Link from "next/link";
 
@@ -199,7 +198,7 @@ function ArtifactProductSystems() {
 
       {/* Unified Operating Layer */}
       <div className="p-3 bg-[#EAF7EF] border border-[#168A4A]/25 rounded-lg text-left flex flex-col justify-between">
-        <div className="text-[9px] font-mono font-bold text-[#0F5132]/70 uppercase tracking-widest leading-none mb-2 pb-1 border-b border-[#168A4A]/10">
+        <div className="text-[9px] font-mono font-bold text-[#0F5132] uppercase tracking-widest leading-none mb-2 pb-1 border-b border-[#168A4A]/10">
           Unified Operating Layer
         </div>
         <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[10px] text-[#5F655F] font-semibold">
@@ -296,13 +295,17 @@ function ArtifactResearchThinking() {
 
 export function ProofOfCapability() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+    return false;
+  });
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
   // Check prefers-reduced-motion
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
     const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mediaQuery.addEventListener("change", listener);
     return () => mediaQuery.removeEventListener("change", listener);
@@ -369,7 +372,7 @@ export function ProofOfCapability() {
 
                     <div>
                       <span className={`block text-[9px] font-mono leading-none ${
-                        isActive ? "text-[#168A4A] font-bold" : "text-[#5F655F]/60"
+                        isActive ? "text-[#0F5132] font-bold" : "text-[#5F655F]"
                       }`}>
                         0{i + 1}
                       </span>
@@ -403,7 +406,7 @@ export function ProofOfCapability() {
                       <div>
                         {/* Card Header Info */}
                         <div className="border-b border-[#0F5132]/10 pb-3 mb-3">
-                          <span className="text-[9px] font-mono text-[#168A4A]/70 uppercase tracking-widest leading-none block">
+                          <span className="text-[9px] font-mono text-[#0F5132] uppercase tracking-widest leading-none block">
                             Capability Record // 0{activeIndex + 1}
                           </span>
                           <h3 className="text-sm font-bold text-[#171717] mt-1 leading-none">
@@ -423,7 +426,7 @@ export function ProofOfCapability() {
                         <div className="p-3 bg-[#EAF7EF] border border-[#168A4A]/15 rounded-lg text-left flex gap-2">
                           <ShieldCheck className="w-4 h-4 text-[#168A4A] shrink-0 mt-0.5" />
                           <div>
-                            <span className="block text-[8px] font-mono font-bold text-[#0F5132]/60 uppercase tracking-wider leading-none mb-0.5">
+                            <span className="block text-[8px] font-mono font-bold text-[#0F5132] uppercase tracking-wider leading-none mb-0.5">
                               Business Significance
                             </span>
                             <p className="text-[10px] font-medium text-[#0F5132] leading-relaxed">
@@ -489,7 +492,7 @@ export function ProofOfCapability() {
                     className="w-full flex justify-between items-center p-4 text-left focus:outline-hidden"
                   >
                     <div className="flex gap-3 items-center">
-                      <span className="text-[10px] font-mono text-[#168A4A]/85">0{i + 1}</span>
+                      <span className="text-[10px] font-mono text-[#0F5132]">0{i + 1}</span>
                       <h4 className="text-xs font-bold text-[#171717]">{slide.category}</h4>
                     </div>
                     <span className="text-xs font-serif font-bold text-[#0F5132] bg-[#EAF7EF] px-2 py-0.5 rounded-full border border-[#168A4A]/10">

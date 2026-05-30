@@ -12,12 +12,8 @@ import {
   Cpu,
   TrendingUp,
   User,
-  ShieldCheck,
   Sparkles,
-  FileText,
   Download,
-  Share2,
-  Mail,
   Zap,
 } from "lucide-react";
 import Link from "next/link";
@@ -156,7 +152,7 @@ function BlueprintVisual() {
             { label: "IMPLEMENTATION", icon: Code },
             { label: "WORKFLOW", icon: Cpu },
             { label: "RESULTS", icon: TrendingUp },
-          ].map((n, idx) => {
+          ].map((n) => {
             const NodeIcon = n.icon;
             return (
               <div
@@ -210,7 +206,7 @@ function ResumeVisual() {
       <div className="grid grid-cols-12 gap-2.5 py-2">
         {/* Left Col: Core Strengths */}
         <div className="col-span-7 flex flex-col justify-center">
-          <span className="text-[6.5px] font-mono font-bold text-[#168A4A] tracking-wider uppercase mb-1 leading-none block">
+          <span className="text-[6.5px] font-mono font-bold text-[#0F5132] tracking-wider uppercase mb-1 leading-none block">
             CORE STRENGTHS
           </span>
           <ul className="flex flex-col gap-0.5">
@@ -225,7 +221,7 @@ function ResumeVisual() {
 
         {/* Right Col: Experience Visualizer */}
         <div className="col-span-5 flex flex-col justify-center border-l border-[#0F5132]/5 pl-2 gap-1.5">
-          <span className="text-[6.5px] font-mono font-bold text-[#168A4A] tracking-wider uppercase leading-none block">
+          <span className="text-[6.5px] font-mono font-bold text-[#0F5132] tracking-wider uppercase leading-none block">
             EXPERIENCE TRACK
           </span>
           <div className="space-y-1">
@@ -311,12 +307,16 @@ function PartnershipVisual() {
 /* ─────────────────────── MAIN SECTION ─────────────────────── */
 
 export function EngagementPathsSection() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+    return false;
+  });
 
   // Check prefers-reduced-motion on mount
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -409,7 +409,7 @@ export function EngagementPathsSection() {
                     <div className="w-5 h-5 rounded-full bg-[#0F5132]/10 border border-[#0F5132]/15 flex items-center justify-center text-[#0F5132] text-[10px] font-mono font-bold leading-none">
                       {card.index}
                     </div>
-                    <span className="text-[9px] font-mono text-[#168A4A] font-bold tracking-wider uppercase">
+                    <span className="text-[9px] font-mono text-[#0F5132] font-bold tracking-wider uppercase">
                       {card.audienceLabel}
                     </span>
                   </div>
@@ -423,7 +423,7 @@ export function EngagementPathsSection() {
 
                 {/* 2-Column Capability Bullets */}
                 <div>
-                  <span className="inline-block text-[8px] font-mono font-bold text-[#168A4A] tracking-wider uppercase mb-2">
+                  <span className="inline-block text-[8px] font-mono font-bold text-[#0F5132] tracking-wider uppercase mb-2">
                     What this path is for
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 max-w-xl">
@@ -456,7 +456,7 @@ export function EngagementPathsSection() {
                     <a
                       href={card.secondaryCtaHref}
                       download
-                      className="text-xs md:text-sm font-semibold text-[#168A4A] hover:text-[#0F5132] hover:underline flex items-center gap-1.5 transition-colors duration-200 cursor-pointer"
+                      className="text-xs md:text-sm font-semibold text-[#0F5132] hover:text-[#168A4A] hover:underline flex items-center gap-1.5 transition-colors duration-200 cursor-pointer"
                     >
                       <Download className="w-3.5 h-3.5 shrink-0" />
                       <span>{card.secondaryCtaLabel}</span>
@@ -464,7 +464,7 @@ export function EngagementPathsSection() {
                   ) : (
                     <Link
                       href={card.secondaryCtaHref}
-                      className="text-xs md:text-sm font-semibold text-[#168A4A] hover:text-[#0F5132] hover:underline flex items-center gap-1 transition-colors duration-200 cursor-pointer"
+                      className="text-xs md:text-sm font-semibold text-[#0F5132] hover:text-[#168A4A] hover:underline flex items-center gap-1 transition-colors duration-200 cursor-pointer"
                     >
                       <span>{card.secondaryCtaLabel}</span>
                       <ArrowRight className="w-3.5 h-3.5 shrink-0" />
