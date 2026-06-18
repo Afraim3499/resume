@@ -93,19 +93,21 @@ export function MobileFooter({ navGroups, trustItems }: MobileFooterProps) {
         {/* Social Icons Row */}
         <div className="flex items-center gap-3">
           {[
-            { icon: Linkedin, href: "https://linkedin.com/in/rizwanul-islam-afraim" },
-            { icon: Twitter, href: "https://x.com/islamafraim" },
-            { icon: Github, href: "https://github.com/afraim" },
-            { icon: Mail, href: "mailto:hello@rizwanulafraim.com" }
+            { icon: Linkedin, href: "https://linkedin.com/in/rizwanul-islam-afraim", label: "LinkedIn profile" },
+            { icon: Twitter, href: "https://x.com/islamafraim", label: "X profile" },
+            { icon: Github, href: "https://github.com/afraim", label: "GitHub profile" },
+            { icon: Mail, href: "mailto:hello@rizwanulafraim.com", label: "Email Rizwanul" }
           ].map((social, sIdx) => (
             <a
               key={sIdx}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={social.label}
+              title={social.label}
               className="w-10 h-10 rounded-full border border-[#0F5132]/10 hover:border-[#168A4A]/30 text-[#171717] hover:text-[#0F5132] bg-white flex items-center justify-center transition-all min-w-[40px] min-h-[40px]"
             >
-              <social.icon className="w-4 h-4" />
+              <social.icon className="w-4 h-4" aria-hidden="true" />
             </a>
           ))}
         </div>

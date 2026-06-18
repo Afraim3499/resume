@@ -1,32 +1,59 @@
 "use client";
 
 import { ReactNode, useEffect } from "react";
-import Lenis from "lenis";
+
+type LenisInstance = {
+    raf: (time: number) => void;
+    destroy: () => void;
+};
 
 export function SmoothScroll({ children }: { children: ReactNode }) {
     useEffect(() => {
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential easing
-            orientation: "vertical",
-            gestureOrientation: "vertical",
-            smoothWheel: true,
-        });
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (window as any).lenis = lenis;
-
-        function raf(time: number) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
+        if (prefersReducedMotion || coarsePointer) {
+            return;
         }
 
-        requestAnimationFrame(raf);
+        let frameId = 0;
+        let cancelled = false;
+        let lenis: LenisInstance | null = null;
+        const win = window as Window & { lenis?: LenisInstance };
+
+        async function startSmoothScroll() {
+            const { default: Lenis } = await import("lenis");
+
+            if (cancelled) {
+                return;
+            }
+
+            lenis = new Lenis({
+                duration: 1.2,
+                easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                orientation: "vertical",
+                gestureOrientation: "vertical",
+                smoothWheel: true,
+            });
+            win.lenis = lenis;
+
+            function raf(time: number) {
+                lenis?.raf(time);
+                frameId = requestAnimationFrame(raf);
+            }
+
+            frameId = requestAnimationFrame(raf);
+        }
+
+        startSmoothScroll();
 
         return () => {
-            lenis.destroy();
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            delete (window as any).lenis;
+            cancelled = true;
+            if (frameId) {
+                cancelAnimationFrame(frameId);
+            }
+            lenis?.destroy();
+            delete win.lenis;
         };
     }, []);
 

@@ -283,9 +283,11 @@ export function ResearchInsightsSection() {
                     href={art.url}
                     target={art.url.startsWith("http") ? "_blank" : "_self"}
                     rel="noopener noreferrer"
+                    aria-label={`Read ${art.title}`}
+                    title={`Read ${art.title}`}
                     className="self-start sm:self-center shrink-0 w-9 h-9 rounded-full bg-[#FAF8F3] hover:bg-[#0F5132] text-[#0F5132] hover:text-white border border-[#0F5132]/10 flex items-center justify-center transition-all duration-200 shadow-3xs"
                   >
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </a>
                 </motion.div>
               ))}

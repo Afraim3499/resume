@@ -193,7 +193,7 @@ function ResumeVisual() {
         </div>
         <div>
           <div className="flex items-center gap-1.5">
-            <h4 className="text-[10px] font-serif font-bold text-[#171717] leading-none">Rizwanul Islam Afraim</h4>
+            <p className="text-[10px] font-serif font-bold text-[#171717] leading-none">Rizwanul Islam Afraim</p>
             <Sparkles className="w-2.5 h-2.5 text-amber-500 shrink-0" />
           </div>
           <p className="text-[7px] font-mono font-bold text-[#5F655F] uppercase tracking-wider mt-0.5 leading-none">
@@ -499,7 +499,7 @@ export function EngagementPathsSection() {
               <Compass className="w-4 h-4 animate-[spin_90s_linear_infinite]" />
             </div>
             <div>
-              <h4 className="text-xs font-serif font-bold text-[#171717] leading-none mb-0.5">Not sure where to start?</h4>
+              <p className="text-xs font-serif font-bold text-[#171717] leading-none mb-0.5">Not sure where to start?</p>
               <p className="text-[11px] md:text-xs text-[#5F655F] leading-tight">
                 Send a short context note and I&apos;ll route the conversation from there.
               </p>

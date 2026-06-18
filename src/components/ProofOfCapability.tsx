@@ -88,7 +88,7 @@ function ArtifactDataOperations() {
       <div className="w-full p-3 bg-[#EAF7EF] rounded-lg border border-[#168A4A]/25 text-left flex flex-col justify-between">
         <div className="flex justify-between items-start">
           <div>
-            <div className="text-[9px] uppercase tracking-wider font-bold text-[#0F5132]/60">Actionable Records</div>
+            <div className="text-[9px] uppercase tracking-wider font-bold text-[#0F5132]">Actionable Records</div>
             <div className="text-sm font-bold text-[#0F5132] font-serif leading-none mt-1">1,001,529</div>
           </div>
           <div className="bg-white border border-[#168A4A]/10 px-2 py-0.5 rounded text-[9px] font-mono text-[#168A4A] font-semibold">
@@ -253,7 +253,7 @@ function ArtifactResearchThinking() {
       <div className="w-full sm:flex-1 p-3 bg-[#FAF8F3] border border-[#0F5132]/10 rounded-lg flex flex-col justify-between text-left shadow-xs">
         <div>
           <span className="text-[8.5px] uppercase font-bold text-[#168A4A] tracking-wider leading-none">SSRN Research Paper</span>
-          <h5 className="font-serif font-bold text-[#0F5132] text-[10.5px] sm:text-[11px] mt-1.5 leading-snug">Agentic AI as Coordination Infrastructure</h5>
+          <p className="font-serif font-bold text-[#0F5132] text-[10.5px] sm:text-[11px] mt-1.5 leading-snug">Agentic AI as Coordination Infrastructure</p>
           <p className="text-[9.5px] text-[#5F655F] mt-1.5 leading-normal line-clamp-3 sm:line-clamp-4">
             Analyzing firm coordination costs compression, operational structural shifts, and macroeconomic divergence...
           </p>
@@ -487,9 +487,9 @@ export function ProofOfCapability() {
       <div className="bg-[#F7F4EC] border-t border-[#0F5132]/14 py-12 relative z-10">
         <div className="container mx-auto max-w-4xl px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-left">
           <div className="max-w-xl">
-            <h4 className="text-base md:text-lg font-serif font-medium text-[#0F5132] leading-tight mb-2">
+            <p className="text-base md:text-lg font-serif font-medium text-[#0F5132] leading-tight mb-2">
               These numbers are not the goal. They are proof of the journey.
-            </h4>
+            </p>
             <p className="text-xs text-[#5F655F] leading-relaxed">
               Each data point, person, system, and article shaped the way I solve problems today — across research, operations, products, growth, and execution.
             </p>

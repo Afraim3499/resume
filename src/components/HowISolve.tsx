@@ -154,7 +154,7 @@ export function HowISolve() {
               <Repeat className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-[#1F2022]">Not a one-time project.</h4>
+              <p className="text-xs font-bold text-[#1F2022]">Not a one-time project.</p>
               <p className="text-[11px] text-[#5F5A52] leading-tight mt-0.5">
                 A system that learns, improves, and compounds over time.
               </p>
@@ -340,7 +340,7 @@ export function HowISolve() {
                   >
                     <div>
                       <div className="flex justify-between items-start mb-2">
-                        <span className="text-[9px] font-mono text-[#5F5A52]/50 font-bold">{step.number}</span>
+                        <span className="text-[9px] font-mono text-[#5F5A52] font-bold">{step.number}</span>
                         <div className={`p-1.5 rounded transition-all duration-500 ${
                           isSelected || isHighlighted
                             ? "bg-[#0F5132] text-white border-[#0F5132]"
@@ -403,7 +403,7 @@ export function HowISolve() {
                     >
                       <div className="flex flex-col gap-2 min-w-0 pr-2 select-none">
                         <div>
-                          <span className="text-[8px] font-mono text-[#5F5A52]/50 font-bold uppercase tracking-wider leading-none">
+                          <span className="text-[8px] font-mono text-[#5F5A52] font-bold uppercase tracking-wider leading-none">
                             Step 0{index + 1}
                           </span>
                           <h3 className="text-xs font-serif font-bold text-[#1F2022] leading-tight mt-0.5">
@@ -448,7 +448,7 @@ export function HowISolve() {
                             </div>
 
                             <div>
-                              <span className="block text-[8px] font-mono font-bold text-[#5F5A52]/50 uppercase tracking-wider mb-2">
+                              <span className="block text-[8px] font-mono font-bold text-[#5F5A52] uppercase tracking-wider mb-2">
                                 Deliverable Outputs
                               </span>
                               <div className="flex flex-wrap gap-1.5">
@@ -494,14 +494,14 @@ export function HowISolve() {
                       })()}
                     </div>
                     <div>
-                      <span className="block text-[9px] font-mono font-bold text-[#5F5A52]/50">Selected Step</span>
-                      <h4 className="text-sm font-serif font-medium text-[#1F2022] leading-none">
+                      <span className="block text-[9px] font-mono font-bold text-[#5F5A52]">Selected Step</span>
+                      <p className="text-sm font-serif font-medium text-[#1F2022] leading-none">
                         {selectedStepCard.number} {selectedStepCard.title}
-                      </h4>
+                      </p>
                     </div>
                   </div>
                   <div className="md:col-span-5 border-t md:border-t-0 md:border-l border-[#E6DDD0]/60 pt-3 md:pt-0 md:pl-5 text-xs font-sans">
-                    <span className="block text-[8px] font-bold text-[#5F5A52]/50 uppercase tracking-wider mb-0.5">What Happens</span>
+                    <span className="block text-[8px] font-bold text-[#5F5A52] uppercase tracking-wider mb-0.5">What Happens</span>
                     <p className="text-[#5F5A52] leading-relaxed">{selectedStepCard.copy}</p>
                   </div>
                   <div className="md:col-span-4 border-t md:border-t-0 md:border-l border-[#E6DDD0]/60 pt-3 md:pt-0 md:pl-5 text-xs font-sans">
@@ -536,7 +536,7 @@ export function HowISolve() {
                 <Compass className="w-3.5 h-3.5" />
               </div>
               <div>
-                <h5 className="font-bold text-[#1F2022] text-[11px] leading-tight">Clear Direction</h5>
+                <p className="font-bold text-[#1F2022] text-[11px] leading-tight">Clear Direction</p>
                 <p className="text-[10px] text-[#5F5A52]/80 leading-none mt-0.5">Know where to focus.</p>
               </div>
             </div>
@@ -545,7 +545,7 @@ export function HowISolve() {
                 <Rocket className="w-3.5 h-3.5" />
               </div>
               <div>
-                <h5 className="font-bold text-[#1F2022] text-[11px] leading-tight">Faster Execution</h5>
+                <p className="font-bold text-[#1F2022] text-[11px] leading-tight">Faster Execution</p>
                 <p className="text-[10px] text-[#5F5A52]/80 leading-none mt-0.5">Remove friction.</p>
               </div>
             </div>
@@ -554,7 +554,7 @@ export function HowISolve() {
                 <BarChart3 className="w-3.5 h-3.5" />
               </div>
               <div>
-                <h5 className="font-bold text-[#1F2022] text-[11px] leading-tight">Measurable Impact</h5>
+                <p className="font-bold text-[#1F2022] text-[11px] leading-tight">Measurable Impact</p>
                 <p className="text-[10px] text-[#5F5A52]/80 leading-none mt-0.5">Track key signals.</p>
               </div>
             </div>
@@ -563,7 +563,7 @@ export function HowISolve() {
                 <Repeat className="w-3.5 h-3.5" />
               </div>
               <div>
-                <h5 className="font-bold text-[#1F2022] text-[11px] leading-tight">Compounding Growth</h5>
+                <p className="font-bold text-[#1F2022] text-[11px] leading-tight">Compounding Growth</p>
                 <p className="text-[10px] text-[#5F5A52]/80 leading-none mt-0.5">Cycles scale stronger.</p>
               </div>
             </div>

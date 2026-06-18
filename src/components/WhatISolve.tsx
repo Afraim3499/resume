@@ -205,7 +205,7 @@ export function WhatISolve() {
                     }`}
                   >
                     <div className="flex justify-between items-start mb-2.5">
-                      <span className="text-[9px] font-mono text-[#5F5A52]/50 font-bold">
+                      <span className="text-[9px] font-mono text-[#5F5A52] font-bold">
                         {card.number}
                       </span>
                       <div className={`p-1.5 rounded border transition-all duration-500 ${
@@ -222,7 +222,7 @@ export function WhatISolve() {
                       </h3>
                       <div className="space-y-1.5 text-[11px] font-sans">
                         <div className="flex gap-1.5 items-baseline">
-                          <span className="text-[8px] font-bold text-[#5F5A52]/50 uppercase tracking-wider shrink-0 w-8">
+                          <span className="text-[8px] font-bold text-[#5F5A52] uppercase tracking-wider shrink-0 w-8">
                             Cost
                           </span>
                           <p className="text-[#5F5A52] leading-tight">
@@ -264,7 +264,7 @@ export function WhatISolve() {
                   >
                     <div className="flex flex-col gap-1 min-w-0 pr-2">
                       <div className="flex gap-2 items-center">
-                        <span className="text-[9px] font-mono text-[#5F5A52]/50 font-bold shrink-0">
+                        <span className="text-[9px] font-mono text-[#5F5A52] font-bold shrink-0">
                           {card.number}
                         </span>
                         <h3 className="text-xs font-serif font-bold text-[#1F2022] leading-tight">
@@ -292,7 +292,7 @@ export function WhatISolve() {
                           <div className="space-y-3 text-xs font-sans">
                             {/* Cost / Pain Point */}
                             <div className="flex gap-3 items-start">
-                              <span className="text-[9px] font-bold text-amber-600 bg-amber-50 border border-amber-200/50 px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 w-11 text-center font-mono">
+                              <span className="text-[9px] font-bold text-amber-800 bg-amber-50 border border-amber-200/50 px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 w-11 text-center font-mono">
                                 Cost
                               </span>
                               <p className="text-[#5F5A52] leading-relaxed pt-0.5">
@@ -331,7 +331,7 @@ export function WhatISolve() {
 
         {/* BOTTOM CTA STRIP */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-10 pt-6 border-t border-[#E6D8C8]/60 text-xs sm:text-sm font-sans z-10 relative">
-          <div className="text-[#5F5A52]/50 font-bold uppercase tracking-widest text-[9px] sm:text-xs">
+          <div className="text-[#5F5A52] font-bold uppercase tracking-widest text-[9px] sm:text-xs">
             Turn friction into systems.
           </div>
           <div className="text-[#5F5A52] font-serif italic text-center text-xs">

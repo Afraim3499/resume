@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { Search, Users, Layers, Cpu, BarChart3, ArrowRight } from "lucide-react";
 
 type ActiveMode = "idle" | "all" | "market" | "sales" | "product" | "automation" | "reporting";
@@ -86,52 +85,16 @@ export function Hero() {
   const isCardActive = (id: string) => activeMode === "all" || activeMode === id;
   const isCardMuted = (id: string) => activeMode !== "idle" && activeMode !== "all" && activeMode !== id;
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.05,
-      },
-    },
-  } as const;
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 12 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 100, damping: 15 },
-    },
-  } as const;
-
-
-
   return (
     <section
       id="hero"
       className="relative min-h-[calc(100vh-4.5rem)] flex flex-col items-center justify-center bg-[#FDFBF7] text-[#1F2022] pt-24 md:pt-28 pb-8 md:pb-12 px-4 md:px-8 selection:bg-primary selection:text-white overflow-hidden"
     >
-      {/* Background Subtle Aesthetics */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/3 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3" />
-      </div>
-
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="container relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
-      >
+      <div className="container relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Left Column: Text & CTAs */}
         <div className="lg:col-span-7 flex flex-col justify-center select-none">
           {/* 1. Portrait on mobile viewports, hidden on larger screens */}
-          <motion.div
-            variants={itemVariants}
-            className="block sm:hidden order-1 my-3 flex justify-center"
-          >
+          <div className="block sm:hidden order-1 my-3 flex justify-center">
             <div className="w-24 h-24 rounded-full overflow-hidden border border-[#0F5132]/25 bg-white p-1 relative shadow-xs">
               <div className="relative w-full h-full rounded-full overflow-hidden">
                 <Image
@@ -140,58 +103,50 @@ export function Hero() {
                   fill
                   className="object-cover"
                   sizes="96px"
-                  priority={true}
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* 2a. Mobile Role Chip */}
-          <motion.div
-            variants={itemVariants}
-            className="block sm:hidden order-2 mb-4 text-center"
-          >
+          <div className="block sm:hidden order-2 mb-4 text-center">
             <span className="inline-block px-3 py-1 rounded-full bg-[#EAF7EF] border border-[#168A4A]/15 text-[#0F5132] text-[10px] font-mono tracking-widest font-extrabold uppercase leading-none">
               Systems Architect &bull; GTM Ops
             </span>
-          </motion.div>
+          </div>
 
           {/* 2b. Desktop Label */}
-          <motion.div variants={itemVariants} className="hidden sm:flex order-2">
+          <div className="hidden sm:flex order-2">
             <span className="inline-block px-3 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-5 leading-none">
               FOR TEAMS WITH MESSY GROWTH, OPERATIONS & PRODUCT WORK
             </span>
-          </motion.div>
+          </div>
 
           {/* 3. Headline */}
-          <motion.h1
-            variants={itemVariants}
+          <h1
             className="order-3 text-center sm:text-left text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-serif font-medium leading-[1.12] tracking-tight text-[#1F2022] mb-5 max-w-[680px]"
           >
             When growth gets messy, <br />
             I turn it into <br />
             <span className="text-primary italic font-serif">a system.</span>
-          </motion.h1>
+          </h1>
 
           {/* 4a. Mobile Subcopy */}
-          <motion.p
-            variants={itemVariants}
+          <p
             className="block sm:hidden order-4 text-xs text-[#5F5A52] leading-relaxed text-center max-w-sm mx-auto mb-6"
           >
             I build and operate marketing, sales, and product systems that transform scattered, repetitive manual work into automated growth engines.
-          </motion.p>
+          </p>
 
           {/* 4b. Desktop Subcopy */}
-          <motion.p
-            variants={itemVariants}
+          <p
             className="hidden sm:block order-4 text-sm sm:text-base md:text-lg text-[#5F5A52] leading-relaxed font-sans max-w-2xl mb-7"
           >
             I help teams organize market research, sales operations, product workflows, SEO systems, automation, and reporting into one clear execution engine — so decisions get smarter, teams move faster, and growth compounds.
-          </motion.p>
+          </p>
 
           {/* 5. CTAs */}
-          <motion.div
-            variants={itemVariants}
+          <div
             className="order-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-8"
           >
             <a
@@ -217,10 +172,10 @@ export function Hero() {
             >
               View Resume
             </Link>
-          </motion.div>
+          </div>
 
           {/* 6. Capabilities Row */}
-          <motion.div variants={itemVariants} className="order-6 border-t border-[#E6D8C8]/60 pt-5">
+          <div className="order-6 border-t border-[#E6D8C8]/60 pt-5">
             <p className="text-[9px] uppercase tracking-widest text-[#5F5A52] font-bold mb-2.5 text-center sm:text-left">Key Capabilities</p>
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-2.5">
               {["Market Research", "Sales Ops", "Product Systems", "SEO / AEO", "Automation"].map((cap) => (
@@ -232,15 +187,14 @@ export function Hero() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* 7. Mobile Scroll Cue */}
-          <motion.div
-            variants={itemVariants}
-            className="block sm:hidden order-7 text-center mt-6 text-[#5F5A52]/40 text-[9px] font-mono animate-bounce uppercase tracking-widest"
+          <div
+            className="block sm:hidden order-7 text-center mt-6 text-[#5F5A52]/80 text-[9px] font-mono animate-bounce uppercase tracking-widest"
           >
             &darr; scroll to diagnose &darr;
-          </motion.div>
+          </div>
         </div>
 
         {/* Right Column: Visual Trust Anchor + Connected modules */}
@@ -298,7 +252,6 @@ export function Hero() {
                   fill
                   className="object-cover"
                   sizes="176px"
-                  priority={true}
                 />
               </div>
             </button>
@@ -351,26 +304,19 @@ export function Hero() {
                   : "border-[#E6D8C8] shadow-sm"
               }`}
             >
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={activeMode}
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.15 }}
-                  className={`text-xs font-serif font-medium leading-normal ${
-                    activeMode !== "idle" ? "text-primary font-semibold" : "text-[#1F2022]"
-                  }`}
-                >
-                  {activeMode === "idle" && "One execution engine. Aligned teams. Smarter decisions. Real growth."}
-                  {activeMode === "all" && "One connected execution engine that turns scattered research, sales, product, automation, and reporting work into clearer decisions and faster execution."}
-                  {activeMode === "market" && "I turn scattered market, competitor, and customer signals into clear direction."}
-                  {activeMode === "sales" && "I structure lead research, CRM flows, follow-up logic, and sales visibility."}
-                  {activeMode === "product" && "I map product ideas into workflows, dashboards, systems, and buildable roadmaps."}
-                  {activeMode === "automation" && "I remove repeated manual work through AI-assisted workflows and process automation."}
-                  {activeMode === "reporting" && "I create dashboards and reporting layers that make decisions clearer."}
-                </motion.p>
-              </AnimatePresence>
+              <p
+                className={`text-xs font-serif font-medium leading-normal transition-colors ${
+                  activeMode !== "idle" ? "text-primary font-semibold" : "text-[#1F2022]"
+                }`}
+              >
+                {activeMode === "idle" && "One execution engine. Aligned teams. Smarter decisions. Real growth."}
+                {activeMode === "all" && "One connected execution engine that turns scattered research, sales, product, automation, and reporting work into clearer decisions and faster execution."}
+                {activeMode === "market" && "I turn scattered market, competitor, and customer signals into clear direction."}
+                {activeMode === "sales" && "I structure lead research, CRM flows, follow-up logic, and sales visibility."}
+                {activeMode === "product" && "I map product ideas into workflows, dashboards, systems, and buildable roadmaps."}
+                {activeMode === "automation" && "I remove repeated manual work through AI-assisted workflows and process automation."}
+                {activeMode === "reporting" && "I create dashboards and reporting layers that make decisions clearer."}
+              </p>
             </div>
           </div>
 
@@ -418,31 +364,24 @@ export function Hero() {
                 activeMode !== "idle" ? "border-primary scale-[1.01] bg-[#EAF7EF]/20" : "border-[#E6D8C8]"
               }`}
             >
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={activeMode}
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.15 }}
-                  className={`text-xs font-serif font-medium leading-normal ${
-                    activeMode !== "idle" ? "text-primary font-semibold" : "text-[#1F2022]"
-                  }`}
-                >
-                  {activeMode === "idle" && "One execution engine. Aligned teams. Smarter decisions. Real growth."}
-                  {activeMode === "all" && "One connected execution engine that turns scattered research, sales, product, automation, and reporting work into clearer decisions and faster execution."}
-                  {activeMode === "market" && "I turn scattered market, competitor, and customer signals into clear direction."}
-                  {activeMode === "sales" && "I structure lead research, CRM flows, follow-up logic, and sales visibility."}
-                  {activeMode === "product" && "I map product ideas into workflows, dashboards, systems, and buildable roadmaps."}
-                  {activeMode === "automation" && "I remove repeated manual work through AI-assisted workflows and process automation."}
-                  {activeMode === "reporting" && "I create dashboards and reporting layers that make decisions clearer."}
-                </motion.p>
-              </AnimatePresence>
+              <p
+                className={`text-xs font-serif font-medium leading-normal transition-colors ${
+                  activeMode !== "idle" ? "text-primary font-semibold" : "text-[#1F2022]"
+                }`}
+              >
+                {activeMode === "idle" && "One execution engine. Aligned teams. Smarter decisions. Real growth."}
+                {activeMode === "all" && "One connected execution engine that turns scattered research, sales, product, automation, and reporting work into clearer decisions and faster execution."}
+                {activeMode === "market" && "I turn scattered market, competitor, and customer signals into clear direction."}
+                {activeMode === "sales" && "I structure lead research, CRM flows, follow-up logic, and sales visibility."}
+                {activeMode === "product" && "I map product ideas into workflows, dashboards, systems, and buildable roadmaps."}
+                {activeMode === "automation" && "I remove repeated manual work through AI-assisted workflows and process automation."}
+                {activeMode === "reporting" && "I create dashboards and reporting layers that make decisions clearer."}
+              </p>
             </div>
           </div>
 
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

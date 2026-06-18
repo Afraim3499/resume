@@ -152,22 +152,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const faqItems = getAllFAQs();
+  const enableVercelAnalytics = process.env.VERCEL === "1";
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        {/* Priority Preload: Hero Image - LCP Optimization */}
-        <link
-          rel="preload"
-          as="image"
-          href="/assets/afraim-logo.png"
-          imageSrcSet="/assets/afraim-logo.png 320w, /assets/afraim-logo.png 640w"
-          imageSizes="(max-width: 768px) 256px, (max-width: 1200px) 320px, 320px"
-          fetchPriority="high"
-        />
         <link rel="alternate" href="https://www.rizwanulafraim.com/" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://d2fltix0v2e0sb.cloudfront.net" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml" />
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -195,7 +184,7 @@ export default function RootLayout({
           <SchemaData faqItems={faqItems} />
           <Suspense fallback={null}>
             <Analytics />
-            <VercelAnalytics />
+            {enableVercelAnalytics ? <VercelAnalytics /> : null}
           </Suspense>
           <CustomCursor />
           <ScrollProgress />

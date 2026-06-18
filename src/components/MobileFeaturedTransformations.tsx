@@ -235,7 +235,7 @@ export function MobileFeaturedTransformations({
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <h4 className="text-xs font-serif font-bold text-[#171717]">{p.title}</h4>
-                    <span className="text-[7px] font-mono text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-full font-semibold uppercase leading-none">
+                    <span className="text-[7px] font-mono text-amber-800 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-full font-semibold uppercase leading-none">
                       Building
                     </span>
                   </div>

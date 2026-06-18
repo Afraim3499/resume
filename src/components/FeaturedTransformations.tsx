@@ -466,9 +466,9 @@ export function FeaturedTransformations() {
                     <div className="col-span-8 flex flex-col justify-between">
                       <div>
                         <div className="flex items-center gap-2.5 mb-1.5">
-                          <span className="text-[9px] font-mono text-[#168A4A]/60 font-bold">{p.index}</span>
-                          <h4 className="text-sm font-serif font-bold text-[#171717]">{p.title}</h4>
-                          <span className="text-[7px] font-mono text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-full font-semibold uppercase leading-none">
+                          <span className="text-[9px] font-mono text-[#168A4A] font-bold">{p.index}</span>
+                          <p className="text-sm font-serif font-bold text-[#171717]">{p.title}</p>
+                          <span className="text-[7px] font-mono text-amber-800 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-full font-semibold uppercase leading-none">
                             In Development
                           </span>
                         </div>
@@ -543,9 +543,9 @@ export function FeaturedTransformations() {
       <div className="bg-[#F7F4EC] border-t border-[#0F5132]/14 pt-12 mt-16 relative z-10">
         <div className="container mx-auto max-w-4xl px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-left">
           <div className="max-w-xl">
-            <h4 className="text-base md:text-lg font-serif font-medium text-[#0F5132] leading-tight mb-2">
+            <p className="text-base md:text-lg font-serif font-medium text-[#0F5132] leading-tight mb-2">
               Every system started as a problem no one wanted to touch.
-            </h4>
+            </p>
             <p className="text-xs text-[#5F655F] leading-relaxed">
               From mobility ecosystems to media pipelines — each transformation proves that structured thinking
               applied to messy operations creates compounding business value.
@@ -665,7 +665,7 @@ export function FeaturedTransformations() {
                 <span className="text-xs md:text-sm font-serif font-bold text-white leading-none">
                   {lightboxProject.title}
                 </span>
-                <span className="text-[10px] md:text-xs text-white/60 font-medium ml-2 border-l border-white/20 pl-2 leading-none">
+                <span className="text-[10px] md:text-xs text-white/85 font-medium ml-2 border-l border-white/20 pl-2 leading-none">
                   {lightboxProject.subtitle}
                 </span>
               </div>

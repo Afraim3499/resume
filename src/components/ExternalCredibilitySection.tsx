@@ -117,7 +117,7 @@ export function ExternalCredibilitySection() {
                     }`}
                   >
                     <span>{tab.shortTag}</span>
-                    <span className={`text-[9px] font-mono ${isActive ? "text-white/60" : "text-[#5F655F]"}`}>
+                    <span className={`text-[9px] font-mono ${isActive ? "text-white/85" : "text-[#5F655F]"}`}>
                       {tab.company}
                     </span>
                   </button>
@@ -263,7 +263,7 @@ export function ExternalCredibilitySection() {
                       </div>
 
                       <div className="w-16 h-14 rounded-lg bg-[#0F5132] border border-[#0F5132] p-1.5 flex flex-col justify-between z-10 shadow-3xs">
-                        <span className="text-[7px] font-mono text-white/60 uppercase block font-bold leading-none">Meta Ads API</span>
+                        <span className="text-[7px] font-mono text-white/85 uppercase block font-bold leading-none">Meta Ads API</span>
                         <span className="text-[7.5px] font-serif font-bold text-white mt-1">Matched 99%</span>
                       </div>
                     </div>

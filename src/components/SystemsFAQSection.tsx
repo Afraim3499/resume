@@ -148,7 +148,7 @@ export function SystemsFAQSection() {
                       <CatIcon className="w-3.5 h-3.5" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-serif font-bold leading-none mb-0.5">{cat.name}</h4>
+                      <span className="block text-xs font-serif font-bold leading-none mb-0.5">{cat.name}</span>
                       <p className={`text-[9px] font-mono ${isActive ? "text-white/90" : "text-[#5F655F]"}`}>
                         {cat.desc.slice(0, 45)}...
                       </p>
@@ -184,7 +184,7 @@ export function SystemsFAQSection() {
             {/* Micro-insight box */}
             <div className="bg-[#FFFDF8] border border-[#E6DDD0]/60 rounded-xl p-5 shadow-3xs flex-1 flex flex-col justify-center select-none text-left">
               <HelpCircle className="w-5 h-5 text-[#0F5132] mb-2" />
-              <h5 className="text-xs font-serif font-bold text-[#171717] mb-1">Looking for a custom project setup?</h5>
+              <p className="text-xs font-serif font-bold text-[#171717] mb-1">Looking for a custom project setup?</p>
               <p className="text-[11px] text-[#5F655F] leading-relaxed">
                 If your specific system bottleneck isn&apos;t covered here, feel free to submit a blueprint inquiry via the WhatsApp terminal below for fractional scoping.
               </p>
