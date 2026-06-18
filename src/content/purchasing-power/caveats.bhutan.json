@@ -1,0 +1,7 @@
+{
+  "caveats": {
+    "world-bank-source": {
+      "body": "Bhutan uses World Bank WDI series FP.CPI.TOTL, sourced from IMF International Financial Statistics. Coverage starts in 1980 and amounts are treated as Bhutanese ngultrum."
+    }
+  }
+}

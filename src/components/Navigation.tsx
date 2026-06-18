@@ -9,6 +9,7 @@ import { MobileHeader } from "./MobileHeader";
 const navItems = [
   { name: "Solutions", href: "/solutions" },
   { name: "Work", href: "/case-studies" },
+  { name: "Tools", href: "/tools/purchasing-power" },
   { name: "Research", href: "/research" },
   { name: "Writing", href: "/blog" },
   { name: "Resume", href: "/resume" },

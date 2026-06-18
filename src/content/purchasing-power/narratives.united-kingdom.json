@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1900s": {
+      "title": "Long-run UK RPI coverage",
+      "body": "The UK prototype uses the ONS long-run RPI series, which gives broad historical coverage for pound-denominated purchasing power estimates.",
+      "sourceIds": ["ons-rpi-long-run-cdko"]
+    },
+    "1940s": {
+      "title": "UK wartime controls",
+      "body": "Wartime rationing, controls, and shortages shaped British household costs. A price index captures official prices, not every hardship of scarcity.",
+      "sourceIds": ["ons-rpi-long-run-cdko"]
+    },
+    "1970s": {
+      "title": "UK inflation volatility",
+      "body": "The 1970s brought intense UK inflation pressure, with energy shocks, wage disputes, and policy changes weakening the purchasing power of pounds.",
+      "sourceIds": ["ons-rpi-long-run-cdko"]
+    },
+    "2020s": {
+      "title": "Recent UK price surge",
+      "body": "The early 2020s saw rapid UK price increases, especially around energy, food, and household costs. The MVP reflects this through the ONS long-run RPI source.",
+      "sourceIds": ["ons-rpi-long-run-cdko"]
+    }
+  }
+}

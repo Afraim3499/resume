@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1980s": {
+      "title": "Hydropower economy begins scaling",
+      "body": "Bhutan's price story is tied to a small import-dependent economy, the ngultrum's link to the Indian rupee, and early hydropower-led development.",
+      "event": "Hydropower-led development and India-linked trade",
+      "stakeholders": ["Royal Monetary Authority", "hydropower agencies", "trading households"],
+      "driver": "Imported goods, food, Indian price spillovers",
+      "outcome": "Inflation moved through trade links as much as domestic demand.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-bhutan"]
+    },
+    "1990s": {
+      "title": "Small-market prices and regional trade",
+      "body": "Limited domestic production, road access, and regional trade made consumer prices sensitive to food and imported goods.",
+      "event": "Expansion of public services and regional trade links",
+      "stakeholders": ["Royal Monetary Authority", "public agencies", "retail traders"],
+      "driver": "Food, transport, imported consumer goods",
+      "outcome": "Purchasing power changed gradually but remained exposed to imported inflation.",
+      "evidence": "Annual CPI path, 1990s",
+      "sourceIds": ["worldbank-wdi-cpi-bhutan"]
+    },
+    "2000s": {
+      "title": "Democratic transition and commodity shock",
+      "body": "Bhutan's 2008 democratic transition coincided with global food and fuel pressure, bringing external price shocks into household budgets.",
+      "event": "2008 democratic transition and global commodity spike",
+      "stakeholders": ["Royal Monetary Authority", "new elected government", "fuel importers"],
+      "driver": "Fuel, food imports, regional prices",
+      "outcome": "The price index rose as global shocks reached local markets.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-bhutan"]
+    },
+    "2010s": {
+      "title": "Credit, imports, and rupee-link pressure",
+      "body": "Credit growth, imported goods, and the India trade link shaped inflation as Bhutan balanced modernization with external-account constraints.",
+      "event": "Rupee-liquidity pressure and import-management debates",
+      "stakeholders": ["Royal Monetary Authority", "commercial banks", "importers"],
+      "driver": "Credit, imported vehicles, food, fuel",
+      "outcome": "A small economy's purchasing power stayed tightly linked to regional price movements.",
+      "evidence": "Annual CPI path, 2010s",
+      "sourceIds": ["worldbank-wdi-cpi-bhutan"]
+    },
+    "2020s": {
+      "title": "Pandemic reopening and import costs",
+      "body": "Tourism disruption, reopening, fuel costs, and imported goods shaped household purchasing power in the early 2020s.",
+      "event": "COVID-19 tourism shock and reopening",
+      "stakeholders": ["Royal Monetary Authority", "tourism operators", "import-dependent households"],
+      "driver": "Tourism income, fuel, imported goods",
+      "outcome": "The 2024 endpoint captures post-pandemic price pressure in a highly open small economy.",
+      "evidence": "Latest final WDI CPI year: 2024",
+      "sourceIds": ["worldbank-wdi-cpi-bhutan"]
+    }
+  }
+}

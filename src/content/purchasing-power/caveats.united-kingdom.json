@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "caveats": {
+    "pre-decimal-pound": {
+      "appliesBeforeYear": 1971,
+      "body": "For pre-decimal UK years, this prototype still treats the input as a pound-denominated amount. It does not model shillings or pence display."
+    }
+  }
+}

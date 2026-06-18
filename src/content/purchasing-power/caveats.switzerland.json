@@ -1,0 +1,7 @@
+{
+  "caveats": {
+    "latest-2024": {
+      "body": "Switzerland uses the Swiss FSO LIK yearly long series. The pulled official app state provides final annual values through 2024, so 2025 is not shown for Switzerland yet."
+    }
+  }
+}

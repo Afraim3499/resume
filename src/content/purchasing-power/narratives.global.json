@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1900s": {
+      "title": "Gold standard price anchors",
+      "body": "Many economies still operated around gold-linked monetary systems. Price levels often moved slowly, but the experience varied by country and by data source.",
+      "sourceIds": []
+    },
+    "1910s": {
+      "title": "War finance and price pressure",
+      "body": "World War I disrupted trade, public finance, and production. Consumer prices rose sharply in many countries as governments borrowed, rationed, and redirected output.",
+      "sourceIds": []
+    },
+    "1920s": {
+      "title": "A difficult return to stability",
+      "body": "The 1920s mixed postwar adjustment, debt burdens, uneven growth, and attempts to restore monetary order. Purchasing power could move very differently across countries.",
+      "sourceIds": []
+    },
+    "1930s": {
+      "title": "Depression-era deflation risk",
+      "body": "The Great Depression pushed demand and prices down in many economies. Deflation could increase the purchasing power of cash while economic hardship intensified.",
+      "sourceIds": []
+    },
+    "1940s": {
+      "title": "War controls and shortages",
+      "body": "World War II brought rationing, shortages, and price controls. Official price index data may understate the lived cost of scarcity in wartime economies.",
+      "sourceIds": []
+    },
+    "1950s": {
+      "title": "Postwar rebuilding",
+      "body": "Postwar recovery, industrial expansion, and rising household consumption shaped price trends. Inflation was often steadier than during the war years.",
+      "sourceIds": []
+    },
+    "1960s": {
+      "title": "Growth before the inflation shock",
+      "body": "Strong growth and changing policy regimes defined the decade. In many countries, later-1960s price pressure set the stage for more volatile 1970s inflation.",
+      "sourceIds": []
+    },
+    "1970s": {
+      "title": "Oil shocks and monetary change",
+      "body": "Energy shocks, exchange-rate changes, and policy uncertainty made the 1970s a turning point for purchasing power in many advanced economies.",
+      "sourceIds": []
+    },
+    "1980s": {
+      "title": "Disinflation and high rates",
+      "body": "Many central banks fought inflation with tighter policy. The transition often reduced inflation but came with recessions, unemployment, and slower demand.",
+      "sourceIds": []
+    },
+    "1990s": {
+      "title": "Lower inflation period",
+      "body": "Global trade, technology, and inflation-focused policy helped many economies experience lower and more stable consumer price growth than in the 1970s.",
+      "sourceIds": []
+    },
+    "2000s": {
+      "title": "Globalization and financial stress",
+      "body": "The decade combined global supply integration with a severe financial crisis. Price trends were shaped by energy, credit conditions, and central bank response.",
+      "sourceIds": []
+    },
+    "2010s": {
+      "title": "Low-rate recovery",
+      "body": "After the financial crisis, many economies saw low interest rates and modest consumer price growth. Asset prices and consumer prices did not always move together.",
+      "sourceIds": []
+    },
+    "2020s": {
+      "title": "Pandemic-era price shock",
+      "body": "Supply disruptions, policy support, energy swings, and reopening demand created unusually fast price increases in the early 2020s.",
+      "sourceIds": []
+    }
+  }
+}

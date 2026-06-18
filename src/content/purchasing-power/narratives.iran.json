@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1960s": {
+      "title": "Oil revenue and modernization pressures",
+      "body": "Iran's 1960s economy mixed oil revenue, state-led modernization, and urban wage growth, with consumer prices shaped by rapid structural change.",
+      "event": "White Revolution era and oil-backed development",
+      "stakeholders": ["Central Bank of Iran", "oil sector", "urban households"],
+      "driver": "Oil revenue, wages, imported goods, urban demand",
+      "outcome": "The rial's purchasing power starts before revolution, war, and sanctions reshaped the economy.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-iran"]
+    },
+    "1970s": {
+      "title": "Oil boom, revolution, and price instability",
+      "body": "The oil boom increased state spending, while the 1979 revolution disrupted institutions, trade, and expectations around prices.",
+      "event": "Oil-price boom and 1979 revolution",
+      "stakeholders": ["Central Bank of Iran", "government ministries", "oil workers"],
+      "driver": "Oil revenue, public spending, political disruption",
+      "outcome": "The decade bridges oil-financed expansion and revolutionary uncertainty.",
+      "evidence": "Annual CPI path, 1970s",
+      "sourceIds": ["worldbank-wdi-cpi-iran"]
+    },
+    "1980s": {
+      "title": "War economy and rationing",
+      "body": "The Iran-Iraq War brought rationing, fiscal pressure, and supply disruption, changing how households experienced prices even when controls were in place.",
+      "event": "Iran-Iraq War and wartime rationing",
+      "stakeholders": ["Central Bank of Iran", "war-time government agencies", "rationed households"],
+      "driver": "Supply disruption, fiscal finance, shortages",
+      "outcome": "Official CPI captures prices, but wartime scarcity also affected lived purchasing power.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-iran"]
+    },
+    "1990s": {
+      "title": "Reconstruction and exchange-rate pressure",
+      "body": "Postwar reconstruction, multiple exchange rates, and fiscal adjustment shaped inflation as Iran rebuilt after the war.",
+      "event": "Postwar reconstruction and exchange-rate management",
+      "stakeholders": ["Central Bank of Iran", "reconstruction ministries", "importers"],
+      "driver": "Exchange rates, subsidies, reconstruction spending",
+      "outcome": "Purchasing power weakened as rebuilding costs and monetary pressures accumulated.",
+      "evidence": "Annual CPI path, 1990s",
+      "sourceIds": ["worldbank-wdi-cpi-iran"]
+    },
+    "2000s": {
+      "title": "Oil income, subsidies, and sanctions risk",
+      "body": "Oil revenue supported spending, while subsidy policy, sanctions risk, and currency management shaped the cost of imported and essential goods.",
+      "event": "Oil revenue cycle and rising sanctions pressure",
+      "stakeholders": ["Central Bank of Iran", "oil exporters", "subsidized households"],
+      "driver": "Oil prices, subsidies, exchange rates, imports",
+      "outcome": "The rial's purchasing power remained exposed to policy and external constraints.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-iran"]
+    },
+    "2010s": {
+      "title": "Sanctions and currency depreciation",
+      "body": "International sanctions, exchange-rate depreciation, and subsidy reforms made inflation a central household and policy issue.",
+      "event": "Sanctions escalation, JCPOA period, and renewed sanctions",
+      "stakeholders": ["Central Bank of Iran", "households", "import-dependent firms"],
+      "driver": "Currency depreciation, import costs, subsidy reform",
+      "outcome": "Purchasing power losses accelerated when exchange-rate pressure reached consumer prices.",
+      "evidence": "Annual CPI path, 2010s",
+      "sourceIds": ["worldbank-wdi-cpi-iran"]
+    },
+    "2020s": {
+      "title": "High inflation under sanctions pressure",
+      "body": "Currency stress, sanctions, subsidy changes, and food and housing costs kept inflation high in the early 2020s.",
+      "event": "Sanctions-era adjustment and currency-market stress",
+      "stakeholders": ["Central Bank of Iran", "food retailers", "wage earners"],
+      "driver": "Exchange rate, food, housing, subsidy changes",
+      "outcome": "The 2024 endpoint shows one of the steepest cumulative price climbs in the supported set.",
+      "evidence": "Latest final WDI CPI year: 2024",
+      "sourceIds": ["worldbank-wdi-cpi-iran"]
+    }
+  }
+}

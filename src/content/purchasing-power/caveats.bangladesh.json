@@ -1,0 +1,7 @@
+{
+  "caveats": {
+    "world-bank-source": {
+      "body": "Bangladesh uses World Bank WDI series FP.CPI.TOTL, sourced from IMF International Financial Statistics. Coverage starts in 1986 and amounts are treated as Bangladeshi taka."
+    }
+  }
+}

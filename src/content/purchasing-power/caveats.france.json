@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "caveats": {
+    "franc-euro": {
+      "appliesBeforeYear": 2002,
+      "body": "For French years before 2002, amounts are treated as historical French francs. Old francs before 1960 and francs from 1960 to 2001 are scaled to euros using official domestic conversion factors before the price-index comparison."
+    }
+  }
+}

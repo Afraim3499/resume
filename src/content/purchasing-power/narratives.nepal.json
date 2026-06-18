@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1960s": {
+      "title": "Roads, trade, and a narrow price base",
+      "body": "Nepal's early CPI record sits in a smaller, more trade-dependent economy where food supply, transport links, and Indian price movements mattered heavily.",
+      "event": "Early development planning and transport expansion",
+      "stakeholders": ["Nepal Rastra Bank", "Government of Nepal", "trading households"],
+      "driver": "Food supply, transport costs, Indian price spillovers",
+      "outcome": "Small changes in supply chains could move household prices strongly.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-nepal"]
+    },
+    "1970s": {
+      "title": "Oil shock reaches a mountain economy",
+      "body": "Global oil shocks raised transport and import costs, which mattered in a landlocked economy dependent on cross-border trade routes.",
+      "event": "Global oil shock and import-cost pressure",
+      "stakeholders": ["Nepal Rastra Bank", "import traders", "transport operators"],
+      "driver": "Fuel, freight, food imports",
+      "outcome": "Purchasing power was shaped by prices moving through trade corridors.",
+      "evidence": "Annual CPI path, 1970s",
+      "sourceIds": ["worldbank-wdi-cpi-nepal"]
+    },
+    "1980s": {
+      "title": "Managed economy under trade constraints",
+      "body": "State controls, import dependence, and limited industrial depth kept prices sensitive to food supply and cross-border conditions.",
+      "event": "Pre-1990 political economy and trade dependence",
+      "stakeholders": ["Nepal Rastra Bank", "state agencies", "food traders"],
+      "driver": "Food, imports, administered prices",
+      "outcome": "Inflation was not just monetary; it was also logistical.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-nepal"]
+    },
+    "1990s": {
+      "title": "Democracy, liberalization, and open borders",
+      "body": "After the 1990 democratic transition, liberalization and labor migration changed incomes, while the India link remained central to price dynamics.",
+      "event": "1990 democratic transition and market reforms",
+      "stakeholders": ["Nepal Rastra Bank", "migrant households", "India-linked traders"],
+      "driver": "Remittances, food prices, Indian inflation",
+      "outcome": "Household purchasing power increasingly reflected remittance income and imported-price pressure.",
+      "evidence": "Annual CPI path, 1990s",
+      "sourceIds": ["worldbank-wdi-cpi-nepal"]
+    },
+    "2000s": {
+      "title": "Conflict, remittances, and food prices",
+      "body": "The civil conflict, migration, and the global food and fuel shock all affected household budgets through employment, remittances, and staple prices.",
+      "event": "Civil conflict period and 2006 peace transition",
+      "stakeholders": ["Nepal Rastra Bank", "migrant workers", "rural households"],
+      "driver": "Food, fuel, remittances, transport",
+      "outcome": "The price index reflects both domestic instability and global commodity pressure.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-nepal"]
+    },
+    "2010s": {
+      "title": "Earthquake and border-disruption price shock",
+      "body": "The 2015 earthquake and subsequent border disruption made reconstruction materials, fuel, and everyday goods more expensive for many households.",
+      "event": "2015 earthquake and India-Nepal border disruption",
+      "stakeholders": ["Nepal Rastra Bank", "reconstruction agencies", "fuel importers"],
+      "driver": "Fuel shortages, construction demand, imports",
+      "outcome": "Physical disruption translated directly into purchasing-power stress.",
+      "evidence": "Annual CPI path, 2010s",
+      "sourceIds": ["worldbank-wdi-cpi-nepal"]
+    },
+    "2020s": {
+      "title": "Pandemic recovery and imported inflation",
+      "body": "COVID-19, remittance swings, fuel prices, and imported inflation shaped the early 2020s purchasing-power experience.",
+      "event": "Pandemic reopening and global commodity pressure",
+      "stakeholders": ["Nepal Rastra Bank", "migrant households", "fuel distributors"],
+      "driver": "Fuel, food, remittances, exchange-linked imports",
+      "outcome": "The 2024 endpoint shows a much higher price level than the 1960s base years.",
+      "evidence": "Latest final WDI CPI year: 2024",
+      "sourceIds": ["worldbank-wdi-cpi-nepal"]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "caveats": {
+    "australian-pound-dollar": {
+      "appliesBeforeYear": 1966,
+      "body": "For Australian years before 1966, amounts are treated as Australian pounds and scaled to Australian dollars at A$2 per £A1 before the price-index comparison."
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1980s": {
+      "title": "Garment exports enter the price story",
+      "body": "Bangladesh's ready-made garment sector expanded from a small base while food prices, import bills, and monetary management shaped household purchasing power.",
+      "event": "RMG export takeoff and late-military-era policy normalization",
+      "stakeholders": ["Bangladesh Bank", "garment exporters", "urban wage earners"],
+      "driver": "Food prices, import costs, money supply",
+      "outcome": "The index begins after the early post-independence inflation era, so the route starts in 1986.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-bangladesh"]
+    },
+    "1990s": {
+      "title": "Democratic transition and export acceleration",
+      "body": "After the 1990 democratic transition, apparel exports, remittances, and donor-supported reforms became larger forces in the economy while prices still moved with food supply shocks.",
+      "event": "Return to parliamentary democracy and export-led growth",
+      "stakeholders": ["Bangladesh Bank", "Ministry of Finance", "RMG employers"],
+      "driver": "Food harvests, credit conditions, imported inputs",
+      "outcome": "Purchasing power changed more gradually than in crisis decades, but inflation still mattered for wage earners.",
+      "evidence": "Annual CPI path, 1990s",
+      "sourceIds": ["worldbank-wdi-cpi-bangladesh"]
+    },
+    "2000s": {
+      "title": "Food and fuel shocks hit household budgets",
+      "body": "The 2007-2008 global food and fuel price shock pushed basic costs higher, making rice, energy, and transport central to the purchasing power experience.",
+      "event": "Global food-price spike and caretaker-government period",
+      "stakeholders": ["Bangladesh Bank", "food importers", "low-income households"],
+      "driver": "Rice prices, fuel costs, global commodity pressure",
+      "outcome": "The price index moved faster as essentials became more expensive relative to wages.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-bangladesh"]
+    },
+    "2010s": {
+      "title": "Fast growth, wages, and urban costs",
+      "body": "Industrial growth, garment wages, remittances, and infrastructure spending changed the economy, while rent, food, and transport costs kept pressure on urban households.",
+      "event": "Middle-income growth push and garment-sector wage debates",
+      "stakeholders": ["Bangladesh Bank", "garment workers", "export buyers"],
+      "driver": "Food, housing, transport, wage adjustments",
+      "outcome": "Inflation was less dramatic than in the 2020s, but compounding still reduced the value of older taka amounts.",
+      "evidence": "Annual CPI path, 2010s",
+      "sourceIds": ["worldbank-wdi-cpi-bangladesh"]
+    },
+    "2020s": {
+      "title": "Pandemic, exchange pressure, and energy costs",
+      "body": "COVID-19 disruption, global commodity prices, energy adjustments, and pressure on foreign reserves made the early 2020s a sharp purchasing-power moment.",
+      "event": "Pandemic recovery and balance-of-payments pressure",
+      "stakeholders": ["Bangladesh Bank", "energy regulators", "import-dependent firms"],
+      "driver": "Fuel, food imports, exchange-rate pressure",
+      "outcome": "The 2024 endpoint captures a much higher price level than the 1986 starting point.",
+      "evidence": "Latest final WDI CPI year: 2024",
+      "sourceIds": ["worldbank-wdi-cpi-bangladesh"]
+    }
+  }
+}

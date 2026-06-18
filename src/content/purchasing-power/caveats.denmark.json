@@ -1,0 +1,7 @@
+{
+  "caveats": {
+    "official-series": {
+      "body": "Denmark uses Statistics Denmark PRIS8 annual consumer price index values. Amounts are treated as Danish kroner throughout the supported period."
+    }
+  }
+}

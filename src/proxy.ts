@@ -15,13 +15,18 @@ export async function proxy(request: NextRequest) {
     const currentSearch = request.nextUrl.search;
     const primaryDomain = 'www.rizwanulafraim.com';
     const isProduction = process.env.NODE_ENV === 'production';
+    const isLocalHost =
+        hostname.includes('localhost') ||
+        hostname.startsWith('127.0.0.1') ||
+        hostname.startsWith('0.0.0.0') ||
+        hostname.startsWith('[::1]');
 
     // 1. Canonical Header Injection
     const canonicalUrl = `https://${primaryDomain}${currentPath}`;
     response.headers.set('Link', `<${canonicalUrl}>; rel="canonical"`);
 
     // 2. Proxy Domain Lockdown (301 Redirect)
-    if (isProduction && hostname !== primaryDomain && !hostname.includes('localhost')) {
+    if (isProduction && hostname !== primaryDomain && !isLocalHost) {
         if (hostname) {
             const newUrl = new URL(`https://${primaryDomain}${currentPath}${currentSearch}`);
             return NextResponse.redirect(newUrl, { status: 301 });

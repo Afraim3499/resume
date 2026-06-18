@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "caveats": {
+    "guilder-euro": {
+      "appliesBeforeYear": 2002,
+      "body": "For Dutch years before 2002, amounts are treated as Dutch guilders and scaled to euros using the official conversion rate of EUR 1 = NLG 2.20371 before the price-index comparison."
+    }
+  }
+}

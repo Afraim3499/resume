@@ -1,0 +1,12 @@
+{
+  "caveats": {
+    "pre-euro-pound": {
+      "appliesBeforeYear": 2002,
+      "body": "Irish amounts before 2002 are treated as Irish pounds and scaled to euros using the official conversion rate. The current official open CPI dataset used here starts in 1975."
+    },
+    "open-data-start": {
+      "appliesFromYear": 2002,
+      "body": "Ireland uses CSO CPA01 all-items annual CPI values from the current official open dataset."
+    }
+  }
+}
