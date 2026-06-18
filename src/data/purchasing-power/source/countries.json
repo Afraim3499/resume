@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-18",
+  "countries": {
+    "united-states": {
+      "slug": "united-states",
+      "countryName": "United States",
+      "countryCode": "US",
+      "currencyCode": "USD",
+      "currencySymbol": "$",
+      "amountLabel": "U.S. dollars",
+      "currencyTransitions": [
+        {
+          "fromYear": 1913,
+          "currencyCode": "USD",
+          "currencySymbol": "$",
+          "currencyName": "U.S. dollars",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI-U",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "BLS CPI-U",
+      "publicSourceDetail": "Annual average CPI-U",
+      "sourcePolicy": "Use BLS CPI-U annual average, series CUUR0000SA0, all items in U.S. city average, not seasonally adjusted. 2026 excluded until annual final data is available.",
+      "availableFrom": 1913,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "bls-cpi-u"
+      ]
+    },
+    "united-kingdom": {
+      "slug": "united-kingdom",
+      "countryName": "United Kingdom",
+      "countryCode": "GB",
+      "currencyCode": "GBP",
+      "currencySymbol": "£",
+      "amountLabel": "pounds sterling",
+      "currencyTransitions": [
+        {
+          "fromYear": 1900,
+          "currencyCode": "GBP",
+          "currencySymbol": "£",
+          "currencyName": "pounds sterling",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "RPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "ONS long-run RPI",
+      "publicSourceDetail": "MM23 series CDKO",
+      "sourcePolicy": "Use ONS long-run RPI, MM23 series CDKO. Public UI should say price index, not CPI, because the UK MVP source is RPI.",
+      "availableFrom": 1900,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "ons-rpi-long-run-cdko"
+      ]
+    },
+    "canada": {
+      "slug": "canada",
+      "countryName": "Canada",
+      "countryCode": "CA",
+      "currencyCode": "CAD",
+      "currencySymbol": "$",
+      "amountLabel": "Canadian dollars",
+      "currencyTransitions": [
+        {
+          "fromYear": 1914,
+          "currencyCode": "CAD",
+          "currencySymbol": "$",
+          "currencyName": "Canadian dollars",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "Statistics Canada CPI",
+      "publicSourceDetail": "Table 18-10-0005-01 all-items annual average",
+      "sourcePolicy": "Use Statistics Canada Table 18-10-0005-01 annual average Consumer Price Index for Canada, all-items, 2002=100. 2026 excluded until annual final data is available.",
+      "availableFrom": 1914,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "statcan-cpi-annual-all-items"
+      ]
+    },
+    "netherlands": {
+      "slug": "netherlands",
+      "countryName": "Netherlands",
+      "countryCode": "NL",
+      "currencyCode": "EUR",
+      "currencySymbol": "€",
+      "amountLabel": "Dutch guilders before 2002, euros from 2002",
+      "currencyTransitions": [
+        {
+          "fromYear": 1900,
+          "currencyCode": "NLG",
+          "currencySymbol": "ƒ",
+          "currencyName": "Dutch guilders",
+          "scaleToLatest": 0.4537802160901389
+        },
+        {
+          "fromYear": 2002,
+          "currencyCode": "EUR",
+          "currencySymbol": "€",
+          "currencyName": "euros",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "CBS consumer price index",
+      "publicSourceDetail": "71905eng, price index 1900=100",
+      "sourcePolicy": "Use Statistics Netherlands CBS table 71905eng, Consumer prices; price index 1900=100. Pre-2002 guilder values are scaled to euros using the legal conversion rate.",
+      "availableFrom": 1900,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "cbs-cpi-1900"
+      ]
+    },
+    "sweden": {
+      "slug": "sweden",
+      "countryName": "Sweden",
+      "countryCode": "SE",
+      "currencyCode": "SEK",
+      "currencySymbol": "kr",
+      "amountLabel": "Swedish kronor",
+      "currencyTransitions": [
+        {
+          "fromYear": 1900,
+          "currencyCode": "SEK",
+          "currencySymbol": "kr",
+          "currencyName": "Swedish kronor",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "SCB historical CPI",
+      "publicSourceDetail": "Historical annual averages, July 1914=100",
+      "sourcePolicy": "Use Statistics Sweden SCB historical CPI annual-average table. 2026 partial monthly rows are excluded from start-year routes.",
+      "availableFrom": 1900,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "scb-cpi-historical-annual"
+      ]
+    },
+    "france": {
+      "slug": "france",
+      "countryName": "France",
+      "countryCode": "FR",
+      "currencyCode": "EUR",
+      "currencySymbol": "€",
+      "amountLabel": "French francs before 2002, euros from 2002",
+      "currencyTransitions": [
+        {
+          "fromYear": 1901,
+          "currencyCode": "FRF-OLD",
+          "currencySymbol": "F",
+          "currencyName": "old French francs",
+          "scaleToLatest": 0.0015244901723741038
+        },
+        {
+          "fromYear": 1960,
+          "currencyCode": "FRF",
+          "currencySymbol": "F",
+          "currencyName": "French francs",
+          "scaleToLatest": 0.1524490172374104
+        },
+        {
+          "fromYear": 2002,
+          "currencyCode": "EUR",
+          "currencySymbol": "€",
+          "currencyName": "euros",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "PRICE_INDEX",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "INSEE franc/euro price index",
+      "publicSourceDetail": "Series 011813530, 2025=100",
+      "sourcePolicy": "Use INSEE series 011813530, a 2025-base annual euro/franc transformation coefficient. Old franc and franc values are scaled to euros using official domestic conversion factors.",
+      "availableFrom": 1901,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "insee-franc-euro-price-index-2025"
+      ]
+    },
+    "australia": {
+      "slug": "australia",
+      "countryName": "Australia",
+      "countryCode": "AU",
+      "currencyCode": "AUD",
+      "currencySymbol": "A$",
+      "amountLabel": "Australian pounds before 1966, Australian dollars from 1966",
+      "currencyTransitions": [
+        {
+          "fromYear": 1949,
+          "currencyCode": "AUP",
+          "currencySymbol": "£A",
+          "currencyName": "Australian pounds",
+          "scaleToLatest": 2
+        },
+        {
+          "fromYear": 1966,
+          "currencyCode": "AUD",
+          "currencySymbol": "A$",
+          "currencyName": "Australian dollars",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "ABS all-groups CPI",
+      "publicSourceDetail": "Table 17, annual averages from quarterly CPI",
+      "sourcePolicy": "Use Australian Bureau of Statistics Table 17 quarterly all-groups CPI for Australia, converted to annual averages only where all four final quarters exist. Pre-1966 Australian pounds are scaled to Australian dollars at A$2 per £A1.",
+      "availableFrom": 1949,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "abs-cpi-quarterly-all-groups"
+      ]
+    },
+    "new-zealand": {
+      "slug": "new-zealand",
+      "countryName": "New Zealand",
+      "countryCode": "NZ",
+      "currencyCode": "NZD",
+      "currencySymbol": "NZ$",
+      "amountLabel": "New Zealand pounds before 1967, New Zealand dollars from 1967",
+      "currencyTransitions": [
+        {
+          "fromYear": 1926,
+          "currencyCode": "NZP",
+          "currencySymbol": "NZ£",
+          "currencyName": "New Zealand pounds",
+          "scaleToLatest": 2
+        },
+        {
+          "fromYear": 1967,
+          "currencyCode": "NZD",
+          "currencySymbol": "NZ$",
+          "currencyName": "New Zealand dollars",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "Stats NZ all-groups CPI",
+      "publicSourceDetail": "CPIQ.SE9A, annual averages from quarterly CPI",
+      "sourcePolicy": "Use Stats NZ quarterly all-groups CPI for New Zealand, converted to annual averages only where all four final quarters exist. Pre-1967 New Zealand pounds are scaled to New Zealand dollars at NZ$2 per NZ£1.",
+      "availableFrom": 1926,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "statsnz-cpi-quarterly-all-groups"
+      ]
+    },
+    "denmark": {
+      "slug": "denmark",
+      "countryName": "Denmark",
+      "countryCode": "DK",
+      "currencyCode": "DKK",
+      "currencySymbol": "kr",
+      "amountLabel": "Danish kroner",
+      "currencyTransitions": [
+        {
+          "fromYear": 1900,
+          "currencyCode": "DKK",
+          "currencySymbol": "kr",
+          "currencyName": "Danish kroner",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "Statistics Denmark CPI",
+      "publicSourceDetail": "PRIS8 annual average, 1900=100",
+      "sourcePolicy": "Use Statistics Denmark StatBank PRIS8 annual consumer price index values, 1900=100. 2026 is excluded until final annual data is available.",
+      "availableFrom": 1900,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "statbank-denmark-pris8"
+      ]
+    },
+    "belgium": {
+      "slug": "belgium",
+      "countryName": "Belgium",
+      "countryCode": "BE",
+      "currencyCode": "EUR",
+      "currencySymbol": "€",
+      "amountLabel": "Belgian francs before 2002, euros from 2002",
+      "currencyTransitions": [
+        {
+          "fromYear": 1920,
+          "currencyCode": "BEF",
+          "currencySymbol": "BEF",
+          "currencyName": "Belgian francs",
+          "scaleToLatest": 0.02478935247732394
+        },
+        {
+          "fromYear": 2002,
+          "currencyCode": "EUR",
+          "currencySymbol": "€",
+          "currencyName": "euros",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "Statbel CPI",
+      "publicSourceDetail": "All base years workbook, annual averages on 2025 base",
+      "sourcePolicy": "Use Statbel CPI all base years workbook, all-items monthly CPI on the 2025 base, annualized only for complete 12-month calendar years. Pre-2002 Belgian francs are scaled to euros using EUR 1 = BEF 40.3399.",
+      "availableFrom": 1920,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "statbel-cpi-all-base-years"
+      ]
+    },
+    "ireland": {
+      "slug": "ireland",
+      "countryName": "Ireland",
+      "countryCode": "IE",
+      "currencyCode": "EUR",
+      "currencySymbol": "€",
+      "amountLabel": "Irish pounds before 2002, euros from 2002",
+      "currencyTransitions": [
+        {
+          "fromYear": 1975,
+          "currencyCode": "IEP",
+          "currencySymbol": "IEP",
+          "currencyName": "Irish pounds",
+          "scaleToLatest": 1.2697380784291816
+        },
+        {
+          "fromYear": 2002,
+          "currencyCode": "EUR",
+          "currencySymbol": "€",
+          "currencyName": "euros",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "CSO Consumer Price Index",
+      "publicSourceDetail": "CPA01 all-items annual CPI, December 2023=100",
+      "sourcePolicy": "Use the Irish Central Statistics Office CPA01 all-items annual CPI values from the current official open dataset. The MVP starts Ireland in 1975 because that is the auditable current open-data coverage pulled for launch.",
+      "availableFrom": 1975,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "cso-cpa01-cpi"
+      ]
+    },
+    "switzerland": {
+      "slug": "switzerland",
+      "countryName": "Switzerland",
+      "countryCode": "CH",
+      "currencyCode": "CHF",
+      "currencySymbol": "CHF ",
+      "amountLabel": "Swiss francs",
+      "currencyTransitions": [
+        {
+          "fromYear": 1914,
+          "currencyCode": "CHF",
+          "currencySymbol": "CHF ",
+          "currencyName": "Swiss francs",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "Swiss FSO CPI",
+      "publicSourceDetail": "LIK yearly long series, June 1914=100",
+      "sourcePolicy": "Use the Swiss Federal Statistical Office LIK yearly long-series values from the official CPI calculator app state. The latest final annual value available in the pulled app state is 2024.",
+      "availableFrom": 1914,
+      "latestFinalYear": 2024,
+      "latestDisplayYear": 2024,
+      "sourceIds": [
+        "fso-lik-yearly-long-series"
+      ]
+    },
+    "norway": {
+      "slug": "norway",
+      "countryName": "Norway",
+      "countryCode": "NO",
+      "currencyCode": "NOK",
+      "currencySymbol": "kr",
+      "amountLabel": "Norwegian kroner",
+      "currencyTransitions": [
+        {
+          "fromYear": 1900,
+          "currencyCode": "NOK",
+          "currencySymbol": "kr",
+          "currencyName": "Norwegian kroner",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "Statistics Norway CPI",
+      "publicSourceDetail": "Table 08184 historical annual CPI, 2015=100",
+      "sourcePolicy": "Use Statistics Norway StatBank table 08184 historical annual consumer price index values, 2015=100. 2026 is excluded until final annual data is available.",
+      "availableFrom": 1900,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "ssb-cpi-historical-08184"
+      ]
+    },
+    "finland": {
+      "slug": "finland",
+      "countryName": "Finland",
+      "countryCode": "FI",
+      "currencyCode": "EUR",
+      "currencySymbol": "€",
+      "amountLabel": "Finnish markka before 2002, euros from 2002",
+      "currencyTransitions": [
+        {
+          "fromYear": 1900,
+          "currencyCode": "FIM",
+          "currencySymbol": "mk",
+          "currencyName": "Finnish markka",
+          "scaleToLatest": 0.16818792646151104
+        },
+        {
+          "fromYear": 2002,
+          "currencyCode": "EUR",
+          "currencySymbol": "€",
+          "currencyName": "euros",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "PRICE_INDEX",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "Statistics Finland cost-of-living index",
+      "publicSourceDetail": "11xy annual cost-of-living index, 1914:1-6=100",
+      "sourcePolicy": "Use Statistics Finland table 11xy annual cost-of-living index values, 1914:1-6=100. Pre-2002 Finnish markka are scaled to euros using EUR 1 = FIM 5.94573.",
+      "availableFrom": 1900,
+      "latestFinalYear": 2025,
+      "latestDisplayYear": 2025,
+      "sourceIds": [
+        "statfin-cost-of-living-11xy"
+      ]
+    },
+    "india": {
+      "slug": "india",
+      "countryName": "India",
+      "countryCode": "IN",
+      "currencyCode": "INR",
+      "currencySymbol": "₹",
+      "amountLabel": "Indian rupees",
+      "currencyTransitions": [
+        {
+          "fromYear": 1960,
+          "currencyCode": "INR",
+          "currencySymbol": "₹",
+          "currencyName": "Indian rupees",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "World Bank / IMF IFS CPI",
+      "publicSourceDetail": "FP.CPI.TOTL annual index, 2010=100",
+      "sourcePolicy": "Use World Bank World Development Indicators series FP.CPI.TOTL, sourced from IMF International Financial Statistics, annual Consumer Price Index with 2010=100. World Bank / IMF IFS annual CPI coverage starts in 1960 for India. 2025 is excluded until final annual data appears in the source.",
+      "availableFrom": 1960,
+      "latestFinalYear": 2024,
+      "latestDisplayYear": 2024,
+      "sourceIds": [
+        "worldbank-wdi-cpi-india"
+      ]
+    },
+    "bangladesh": {
+      "slug": "bangladesh",
+      "countryName": "Bangladesh",
+      "countryCode": "BD",
+      "currencyCode": "BDT",
+      "currencySymbol": "৳",
+      "amountLabel": "Bangladeshi taka",
+      "currencyTransitions": [
+        {
+          "fromYear": 1986,
+          "currencyCode": "BDT",
+          "currencySymbol": "৳",
+          "currencyName": "Bangladeshi taka",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "World Bank / IMF IFS CPI",
+      "publicSourceDetail": "FP.CPI.TOTL annual index, 2010=100",
+      "sourcePolicy": "Use World Bank World Development Indicators series FP.CPI.TOTL, sourced from IMF International Financial Statistics, annual Consumer Price Index with 2010=100. World Bank / IMF IFS annual CPI coverage starts in 1986 for Bangladesh. 2025 is excluded until final annual data appears in the source.",
+      "availableFrom": 1986,
+      "latestFinalYear": 2024,
+      "latestDisplayYear": 2024,
+      "sourceIds": [
+        "worldbank-wdi-cpi-bangladesh"
+      ]
+    },
+    "nepal": {
+      "slug": "nepal",
+      "countryName": "Nepal",
+      "countryCode": "NP",
+      "currencyCode": "NPR",
+      "currencySymbol": "Rs",
+      "amountLabel": "Nepalese rupees",
+      "currencyTransitions": [
+        {
+          "fromYear": 1964,
+          "currencyCode": "NPR",
+          "currencySymbol": "Rs",
+          "currencyName": "Nepalese rupees",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "World Bank / IMF IFS CPI",
+      "publicSourceDetail": "FP.CPI.TOTL annual index, 2010=100",
+      "sourcePolicy": "Use World Bank World Development Indicators series FP.CPI.TOTL, sourced from IMF International Financial Statistics, annual Consumer Price Index with 2010=100. World Bank / IMF IFS annual CPI coverage starts in 1964 for Nepal. 2025 is excluded until final annual data appears in the source.",
+      "availableFrom": 1964,
+      "latestFinalYear": 2024,
+      "latestDisplayYear": 2024,
+      "sourceIds": [
+        "worldbank-wdi-cpi-nepal"
+      ]
+    },
+    "pakistan": {
+      "slug": "pakistan",
+      "countryName": "Pakistan",
+      "countryCode": "PK",
+      "currencyCode": "PKR",
+      "currencySymbol": "Rs",
+      "amountLabel": "Pakistani rupees",
+      "currencyTransitions": [
+        {
+          "fromYear": 1960,
+          "currencyCode": "PKR",
+          "currencySymbol": "Rs",
+          "currencyName": "Pakistani rupees",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "World Bank / IMF IFS CPI",
+      "publicSourceDetail": "FP.CPI.TOTL annual index, 2010=100",
+      "sourcePolicy": "Use World Bank World Development Indicators series FP.CPI.TOTL, sourced from IMF International Financial Statistics, annual Consumer Price Index with 2010=100. World Bank / IMF IFS annual CPI coverage starts in 1960 for Pakistan. 2025 is excluded until final annual data appears in the source.",
+      "availableFrom": 1960,
+      "latestFinalYear": 2024,
+      "latestDisplayYear": 2024,
+      "sourceIds": [
+        "worldbank-wdi-cpi-pakistan"
+      ]
+    },
+    "bhutan": {
+      "slug": "bhutan",
+      "countryName": "Bhutan",
+      "countryCode": "BT",
+      "currencyCode": "BTN",
+      "currencySymbol": "Nu.",
+      "amountLabel": "Bhutanese ngultrum",
+      "currencyTransitions": [
+        {
+          "fromYear": 1980,
+          "currencyCode": "BTN",
+          "currencySymbol": "Nu.",
+          "currencyName": "Bhutanese ngultrum",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "World Bank / IMF IFS CPI",
+      "publicSourceDetail": "FP.CPI.TOTL annual index, 2010=100",
+      "sourcePolicy": "Use World Bank World Development Indicators series FP.CPI.TOTL, sourced from IMF International Financial Statistics, annual Consumer Price Index with 2010=100. World Bank / IMF IFS annual CPI coverage starts in 1980 for Bhutan. 2025 is excluded until final annual data appears in the source.",
+      "availableFrom": 1980,
+      "latestFinalYear": 2024,
+      "latestDisplayYear": 2024,
+      "sourceIds": [
+        "worldbank-wdi-cpi-bhutan"
+      ]
+    },
+    "china": {
+      "slug": "china",
+      "countryName": "China",
+      "countryCode": "CN",
+      "currencyCode": "CNY",
+      "currencySymbol": "¥",
+      "amountLabel": "Chinese yuan",
+      "currencyTransitions": [
+        {
+          "fromYear": 1986,
+          "currencyCode": "CNY",
+          "currencySymbol": "¥",
+          "currencyName": "Chinese yuan",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "World Bank / IMF IFS CPI",
+      "publicSourceDetail": "FP.CPI.TOTL annual index, 2010=100",
+      "sourcePolicy": "Use World Bank World Development Indicators series FP.CPI.TOTL, sourced from IMF International Financial Statistics, annual Consumer Price Index with 2010=100. World Bank / IMF IFS annual CPI coverage starts in 1986 for China. 2025 is excluded until final annual data appears in the source.",
+      "availableFrom": 1986,
+      "latestFinalYear": 2024,
+      "latestDisplayYear": 2024,
+      "sourceIds": [
+        "worldbank-wdi-cpi-china"
+      ]
+    },
+    "iran": {
+      "slug": "iran",
+      "countryName": "Iran",
+      "countryCode": "IR",
+      "currencyCode": "IRR",
+      "currencySymbol": "IRR ",
+      "amountLabel": "Iranian rials",
+      "currencyTransitions": [
+        {
+          "fromYear": 1960,
+          "currencyCode": "IRR",
+          "currencySymbol": "IRR ",
+          "currencyName": "Iranian rials",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "World Bank / IMF IFS CPI",
+      "publicSourceDetail": "FP.CPI.TOTL annual index, 2010=100",
+      "sourcePolicy": "Use World Bank World Development Indicators series FP.CPI.TOTL, sourced from IMF International Financial Statistics, annual Consumer Price Index with 2010=100. World Bank / IMF IFS annual CPI coverage starts in 1960 for Iran. Amounts are treated as Iranian rials; toman display is not modeled. 2025 is excluded until final annual data appears in the source.",
+      "availableFrom": 1960,
+      "latestFinalYear": 2024,
+      "latestDisplayYear": 2024,
+      "sourceIds": [
+        "worldbank-wdi-cpi-iran"
+      ]
+    },
+    "iraq": {
+      "slug": "iraq",
+      "countryName": "Iraq",
+      "countryCode": "IQ",
+      "currencyCode": "IQD",
+      "currencySymbol": "IQD ",
+      "amountLabel": "Iraqi dinars",
+      "currencyTransitions": [
+        {
+          "fromYear": 1960,
+          "currencyCode": "IQD",
+          "currencySymbol": "IQD ",
+          "currencyName": "Iraqi dinars",
+          "scaleToLatest": 1
+        }
+      ],
+      "indexKind": "CPI",
+      "publicIndexLabel": "official historical price index data",
+      "publicSourceLabel": "World Bank / IMF IFS CPI",
+      "publicSourceDetail": "FP.CPI.TOTL annual index, 2010=100",
+      "sourcePolicy": "Use World Bank World Development Indicators series FP.CPI.TOTL, sourced from IMF International Financial Statistics, annual Consumer Price Index with 2010=100. World Bank / IMF IFS annual CPI coverage starts in 1960 for Iraq, but 1979-1989 are missing and are not interpolated. 2025 is excluded until final annual data appears in the source.",
+      "availableFrom": 1960,
+      "latestFinalYear": 2024,
+      "latestDisplayYear": 2024,
+      "sourceIds": [
+        "worldbank-wdi-cpi-iraq"
+      ]
+    }
+  }
+}

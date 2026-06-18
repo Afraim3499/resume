@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "defaultExampleAmounts": {
+    "united-states": 100,
+    "united-kingdom": 100
+  },
+  "defaultCopy": {
+    "titleSuffix": "Purchasing Power",
+    "description": "Estimate how purchasing power changed from {year} using official historical price index data. Available years vary by country and data source."
+  }
+}

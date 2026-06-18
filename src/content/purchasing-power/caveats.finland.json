@@ -1,0 +1,12 @@
+{
+  "caveats": {
+    "pre-euro-markka": {
+      "appliesBeforeYear": 2002,
+      "body": "Finnish amounts before 2002 are treated as Finnish markka and scaled to euros using the official conversion rate. Finland uses the long-run cost-of-living index rather than a single modern CPI-only label."
+    },
+    "euro-period": {
+      "appliesFromYear": 2002,
+      "body": "Finnish euro-period values use Statistics Finland's long-run cost-of-living index series."
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "caveats": {
+    "official-series": {
+      "body": "Norway uses Statistics Norway table 08184 historical annual consumer price index values. Amounts are treated as Norwegian kroner throughout the supported period."
+    }
+  }
+}

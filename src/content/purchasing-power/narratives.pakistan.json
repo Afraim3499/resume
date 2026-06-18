@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1960s": {
+      "title": "Development decade and controlled prices",
+      "body": "Pakistan's 1960s growth period mixed industrial policy, administered prices, and agriculture-linked household costs.",
+      "event": "Industrialization push and Green Revolution spillovers",
+      "stakeholders": ["State Bank of Pakistan", "Planning Commission", "farm households"],
+      "driver": "Food supply, credit, administered prices",
+      "outcome": "The rupee's purchasing power begins from a relatively low index base.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-pakistan"]
+    },
+    "1970s": {
+      "title": "Oil shock, nationalization, and fiscal strain",
+      "body": "The 1970s brought political reset, nationalization, oil-price shocks, and fiscal pressure, all of which affected consumer prices.",
+      "event": "Post-1971 restructuring and oil-price shock",
+      "stakeholders": ["State Bank of Pakistan", "federal government", "state-owned enterprises"],
+      "driver": "Fuel imports, fiscal deficits, food prices",
+      "outcome": "Energy and government finance became important inflation channels.",
+      "evidence": "Annual CPI path, 1970s",
+      "sourceIds": ["worldbank-wdi-cpi-pakistan"]
+    },
+    "1980s": {
+      "title": "Remittances and managed adjustment",
+      "body": "Migration remittances, aid flows, and managed exchange-rate policy shaped household incomes and import costs during the 1980s.",
+      "event": "Gulf remittance expansion",
+      "stakeholders": ["State Bank of Pakistan", "overseas workers", "importers"],
+      "driver": "Exchange rate, imported goods, money growth",
+      "outcome": "Purchasing power moved with both domestic prices and external financing.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-pakistan"]
+    },
+    "1990s": {
+      "title": "IMF programs and rupee pressure",
+      "body": "Fiscal deficits, IMF programs, energy pricing, and exchange-rate pressure made inflation a recurring policy issue in the 1990s.",
+      "event": "Adjustment programs and currency pressure",
+      "stakeholders": ["State Bank of Pakistan", "IMF", "federal tax authorities"],
+      "driver": "Exchange rate, taxes, energy tariffs",
+      "outcome": "Older rupee values lost purchasing power through repeated adjustment cycles.",
+      "evidence": "Annual CPI path, 1990s",
+      "sourceIds": ["worldbank-wdi-cpi-pakistan"]
+    },
+    "2000s": {
+      "title": "Commodity shock after a growth boom",
+      "body": "Growth, credit expansion, and then the 2007-2008 food and oil shock pushed inflation sharply into everyday budgets.",
+      "event": "Food, oil, and balance-of-payments stress",
+      "stakeholders": ["State Bank of Pakistan", "energy importers", "urban consumers"],
+      "driver": "Wheat, fuel, exchange rate, credit",
+      "outcome": "The decade converted global commodity stress into domestic price pressure.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-pakistan"]
+    },
+    "2010s": {
+      "title": "Energy reform and stabilization attempts",
+      "body": "Electricity pricing, IMF-backed stabilization, and exchange-rate management shaped inflation as Pakistan tried to contain external imbalances.",
+      "event": "Energy-sector reforms and stabilization programs",
+      "stakeholders": ["State Bank of Pakistan", "IMF", "power-sector regulators"],
+      "driver": "Tariffs, taxes, exchange rate, food prices",
+      "outcome": "Inflation eased in some years, but structural pressure remained.",
+      "evidence": "Annual CPI path, 2010s",
+      "sourceIds": ["worldbank-wdi-cpi-pakistan"]
+    },
+    "2020s": {
+      "title": "Floods, currency stress, and food inflation",
+      "body": "The pandemic, import-price pressure, rupee depreciation, energy adjustments, and the 2022 floods made purchasing power a national crisis issue.",
+      "event": "2022 floods and external financing pressure",
+      "stakeholders": ["State Bank of Pakistan", "IMF", "flood-affected households"],
+      "driver": "Food, fuel, rupee depreciation, tariffs",
+      "outcome": "The 2024 endpoint reflects an especially steep early-2020s price climb.",
+      "evidence": "Latest final WDI CPI year: 2024",
+      "sourceIds": ["worldbank-wdi-cpi-pakistan"]
+    }
+  }
+}

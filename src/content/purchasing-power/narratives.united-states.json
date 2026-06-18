@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1910s": {
+      "title": "BLS CPI-U series begins",
+      "body": "The United States data starts in 1913. World War I and postwar adjustment pushed prices higher, so a dollar from this period lost purchasing power quickly.",
+      "sourceIds": ["bls-cpi-u"]
+    },
+    "1930s": {
+      "title": "U.S. depression deflation",
+      "body": "U.S. prices fell during the early Great Depression, raising the measured purchasing power of dollars while unemployment and business failures made conditions severe.",
+      "sourceIds": ["bls-cpi-u"]
+    },
+    "1970s": {
+      "title": "U.S. inflation accelerates",
+      "body": "Oil shocks, policy strain, and the end of dollar-gold convertibility contributed to a steep erosion of U.S. purchasing power through the 1970s.",
+      "sourceIds": ["bls-cpi-u"]
+    },
+    "2020s": {
+      "title": "U.S. prices reprice after COVID",
+      "body": "The early 2020s brought the fastest U.S. price increases in decades, driven by supply disruption, reopening demand, energy costs, and policy support.",
+      "sourceIds": ["bls-cpi-u"]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "caveats": {
+    "new-zealand-pound-dollar": {
+      "appliesBeforeYear": 1967,
+      "body": "For New Zealand years before 1967, amounts are treated as New Zealand pounds and scaled to New Zealand dollars at NZ$2 per NZ£1 before the price-index comparison."
+    }
+  }
+}

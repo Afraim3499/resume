@@ -1,0 +1,7 @@
+{
+  "caveats": {
+    "world-bank-source": {
+      "body": "Iran uses World Bank WDI series FP.CPI.TOTL, sourced from IMF International Financial Statistics. Coverage starts in 1960; amounts are treated as Iranian rials, and toman display is not modeled."
+    }
+  }
+}

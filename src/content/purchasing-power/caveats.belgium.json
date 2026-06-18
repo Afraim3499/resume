@@ -1,0 +1,12 @@
+{
+  "caveats": {
+    "pre-euro-francs": {
+      "appliesBeforeYear": 2002,
+      "body": "Belgian amounts before 2002 are treated as Belgian francs and scaled to euros using the official conversion rate. The estimate does not model coins, banknote design, or household-specific spending."
+    },
+    "euro-period": {
+      "appliesFromYear": 2002,
+      "body": "Belgian euro-period values use Statbel all-items CPI annual averages on the 2025 base."
+    }
+  }
+}

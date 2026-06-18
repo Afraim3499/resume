@@ -1,0 +1,7 @@
+{
+  "caveats": {
+    "missing-years": {
+      "body": "Iraq uses World Bank WDI series FP.CPI.TOTL, sourced from IMF International Financial Statistics. Coverage starts in 1960, but 1979-1989 are missing and are not interpolated."
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1980s": {
+      "title": "Price reforms and inflation anxiety",
+      "body": "China's market reforms loosened planned prices, and the late-1980s inflation surge made consumer prices a major political and household concern.",
+      "event": "Dual-track price reform and 1988 inflation spike",
+      "stakeholders": ["People's Bank of China", "State Council", "urban households"],
+      "driver": "Price liberalization, credit growth, food prices",
+      "outcome": "The route starts in 1986, just as reform-era price pressure became visible.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-china"]
+    },
+    "1990s": {
+      "title": "Market reforms and mid-decade inflation",
+      "body": "Deng Xiaoping's southern tour, investment acceleration, and tax and exchange-rate reforms reshaped China's price system before later stabilization.",
+      "event": "1992 reform acceleration and 1994 macro reforms",
+      "stakeholders": ["People's Bank of China", "State Council", "state-owned enterprises"],
+      "driver": "Credit, investment, exchange-rate reform, food prices",
+      "outcome": "Inflation rose sharply mid-decade before policy tightening cooled it.",
+      "evidence": "Annual CPI path, 1990s",
+      "sourceIds": ["worldbank-wdi-cpi-china"]
+    },
+    "2000s": {
+      "title": "WTO era and global commodity exposure",
+      "body": "WTO entry, export manufacturing, urbanization, and global commodity cycles changed how prices moved through China's economy.",
+      "event": "WTO accession and export-manufacturing boom",
+      "stakeholders": ["People's Bank of China", "export manufacturers", "urban workers"],
+      "driver": "Food, energy, wages, global commodities",
+      "outcome": "China became more globally connected, but food and energy still drove household inflation episodes.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-china"]
+    },
+    "2010s": {
+      "title": "Property cycle and rebalancing",
+      "body": "The economy shifted toward services and consumption while property, pork prices, and local-government investment shaped the lived cost environment.",
+      "event": "Rebalancing, property expansion, and pork-price cycles",
+      "stakeholders": ["People's Bank of China", "property developers", "local governments"],
+      "driver": "Housing-related demand, food, credit policy",
+      "outcome": "Headline CPI stayed moderate in many years, but household costs varied by city and basket.",
+      "evidence": "Annual CPI path, 2010s",
+      "sourceIds": ["worldbank-wdi-cpi-china"]
+    },
+    "2020s": {
+      "title": "Pandemic controls and weak demand",
+      "body": "COVID controls, reopening, property stress, and softer demand made China's early-2020s price story different from many high-inflation economies.",
+      "event": "Zero-COVID period, reopening, and property slowdown",
+      "stakeholders": ["People's Bank of China", "local governments", "households"],
+      "driver": "Demand weakness, food cycles, property stress",
+      "outcome": "The 2024 endpoint shows less cumulative CPI pressure than many peers, despite major economic disruption.",
+      "evidence": "Latest final WDI CPI year: 2024",
+      "sourceIds": ["worldbank-wdi-cpi-china"]
+    }
+  }
+}

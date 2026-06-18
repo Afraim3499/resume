@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1960s": {
+      "title": "Oil state formation and administered prices",
+      "body": "Iraq's early CPI record reflects an oil-backed state economy where public spending, food supply, and administered prices shaped household costs.",
+      "event": "Oil-state expansion and state-led development",
+      "stakeholders": ["Central Bank of Iraq", "oil sector", "public employees"],
+      "driver": "Public spending, food imports, administered prices",
+      "outcome": "The dinar route starts before nationalization, wars, sanctions, and currency reform.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-iraq"]
+    },
+    "1970s": {
+      "title": "Oil nationalization and spending surge",
+      "body": "Oil nationalization and the 1970s oil boom expanded state revenue and public spending before later conflict transformed the economy.",
+      "event": "Oil nationalization and oil-price boom",
+      "stakeholders": ["Central Bank of Iraq", "Oil Ministry", "public-sector workers"],
+      "driver": "Oil revenue, public wages, imports",
+      "outcome": "The route includes the 1970s, but later 1979-1989 CPI rows are missing in the source and are not interpolated.",
+      "evidence": "Annual CPI path, 1970s",
+      "sourceIds": ["worldbank-wdi-cpi-iraq"]
+    },
+    "1990s": {
+      "title": "Sanctions and currency collapse",
+      "body": "After the Gulf War, sanctions, fiscal crisis, and currency weakness reshaped purchasing power in ways far beyond ordinary inflation cycles.",
+      "event": "Gulf War aftermath and UN sanctions",
+      "stakeholders": ["Central Bank of Iraq", "UN agencies", "ration-card households"],
+      "driver": "Sanctions, shortages, currency weakness, rationing",
+      "outcome": "Official CPI is a narrow window into a much deeper purchasing-power shock.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-iraq"]
+    },
+    "2000s": {
+      "title": "War, currency reform, and reconstruction",
+      "body": "The 2003 invasion, new Iraqi dinar issuance, security disruption, and reconstruction changed prices through supply, wages, and public finance.",
+      "event": "2003 war, new dinar, and reconstruction",
+      "stakeholders": ["Central Bank of Iraq", "Coalition Provisional Authority", "Oil Ministry"],
+      "driver": "Security, imports, public wages, currency reform",
+      "outcome": "The decade's CPI movement sits inside a broader institutional reset.",
+      "evidence": "Annual CPI path, 2000s",
+      "sourceIds": ["worldbank-wdi-cpi-iraq"]
+    },
+    "2010s": {
+      "title": "Oil prices, conflict, and fiscal pressure",
+      "body": "Oil-price swings, the conflict with ISIS, displacement, and public-sector spending pressures affected prices and household resilience.",
+      "event": "ISIS conflict and oil-price downturn",
+      "stakeholders": ["Central Bank of Iraq", "displaced households", "public-sector workers"],
+      "driver": "Oil revenue, security disruption, food and housing costs",
+      "outcome": "Inflation was tied to both conflict logistics and oil-funded public finance.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-iraq"]
+    },
+    "2020s": {
+      "title": "Devaluation and food-price pressure",
+      "body": "The early 2020s brought oil-market swings, a dinar devaluation, and global food-price pressure into household budgets.",
+      "event": "2020 oil shock and dinar devaluation period",
+      "stakeholders": ["Central Bank of Iraq", "Finance Ministry", "food importers"],
+      "driver": "Oil revenue, exchange rate, food imports",
+      "outcome": "The 2024 endpoint reflects a post-shock economy still tied to oil and import prices.",
+      "evidence": "Latest final WDI CPI year: 2024",
+      "sourceIds": ["worldbank-wdi-cpi-iraq"]
+    }
+  }
+}

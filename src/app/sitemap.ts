@@ -4,6 +4,7 @@ import { getAllBlogPosts } from "@/lib/blog-loader";
 import { getAllCaseStudies } from "@/lib/case-study-loader";
 import { getAllTerms } from "@/data/knowledge-graph";
 import { solutions } from "@/data/solutions";
+import { routeManifest } from "@/lib/purchasing-power/routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   /* Absolute URL Verification: Hardcoded for production SEO stability */
@@ -115,6 +116,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
       images: [makeAbsolute("/assets/afraim-logo.png")],
+    },
+    {
+      url: `${baseUrl}/tools/purchasing-power`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tools/purchasing-power/methodology`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/research`,
@@ -249,7 +262,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  const allRoutes = [...routes, ...projectRoutes, ...blogRoutes, ...caseStudyRoutes, ...wikiRoutes, ...solutionRoutes];
+  const purchasingPowerRoutes = routeManifest.routes.map((route) => ({
+    url: `${baseUrl}/tools/purchasing-power/${route.country}/${route.year}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  const allRoutes = [
+    ...routes,
+    ...projectRoutes,
+    ...blogRoutes,
+    ...caseStudyRoutes,
+    ...wikiRoutes,
+    ...solutionRoutes,
+    ...purchasingPowerRoutes,
+  ];
 
   const lastModified = new Date();
 

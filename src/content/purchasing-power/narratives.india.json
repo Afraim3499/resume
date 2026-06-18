@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "narratives": {
+    "1960s": {
+      "title": "Food security and planning-era price pressure",
+      "body": "Droughts, food imports, administered prices, and the Green Revolution shaped India's 1960s price environment before the later liberalization era.",
+      "event": "Food shortages, devaluation, and Green Revolution buildup",
+      "stakeholders": ["Reserve Bank of India", "Government of India", "Food Corporation of India"],
+      "driver": "Food supply, procurement prices, import dependence",
+      "outcome": "Older rupee amounts compound across decades of structural change.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-india"]
+    },
+    "1970s": {
+      "title": "Oil shocks and administered prices",
+      "body": "The oil shocks, state-administered prices, and food-market volatility made the 1970s a high-pressure decade for Indian household budgets.",
+      "event": "Global oil shocks and domestic price controls",
+      "stakeholders": ["Reserve Bank of India", "public-sector oil firms", "ration-card households"],
+      "driver": "Oil imports, food prices, fiscal pressure",
+      "outcome": "Energy and food costs became central to purchasing-power loss.",
+      "evidence": "Annual CPI path, 1970s",
+      "sourceIds": ["worldbank-wdi-cpi-india"]
+    },
+    "1980s": {
+      "title": "Deficits before the reform break",
+      "body": "Higher public spending and external borrowing supported growth but also set up macroeconomic strain before the 1991 balance-of-payments crisis.",
+      "event": "Pre-1991 macro imbalance",
+      "stakeholders": ["Reserve Bank of India", "Finance Ministry", "state-owned banks"],
+      "driver": "Fiscal deficits, import bills, credit expansion",
+      "outcome": "The decade sits between planning-era controls and the reform economy.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-india"]
+    },
+    "1990s": {
+      "title": "Liberalization changes the inflation map",
+      "body": "The 1991 reforms, exchange-rate adjustment, trade opening, and financial-sector changes altered how prices moved through the economy.",
+      "event": "1991 economic reforms and rupee adjustment",
+      "stakeholders": ["Reserve Bank of India", "Finance Ministry", "IMF"],
+      "driver": "Exchange rate, import liberalization, administered prices",
+      "outcome": "Price formation became more market-linked as the economy opened.",
+      "evidence": "Annual CPI path, 1990s",
+      "sourceIds": ["worldbank-wdi-cpi-india"]
+    },
+    "2000s": {
+      "title": "High growth meets food and fuel stress",
+      "body": "Rapid growth, credit expansion, and the 2008 commodity shock put food and fuel prices at the center of India's inflation debate.",
+      "event": "Credit boom and 2008 global commodity shock",
+      "stakeholders": ["Reserve Bank of India", "oil marketing companies", "urban consumers"],
+      "driver": "Fuel, food, credit, global commodities",
+      "outcome": "Purchasing power eroded even during years of strong headline growth.",
+      "evidence": "World Bank / IMF IFS annual CPI",
+      "sourceIds": ["worldbank-wdi-cpi-india"]
+    },
+    "2010s": {
+      "title": "Inflation targeting and supply shocks",
+      "body": "India moved toward formal inflation targeting while food shocks, GST implementation, and fuel prices kept household costs politically important.",
+      "event": "Flexible inflation targeting framework",
+      "stakeholders": ["Reserve Bank of India", "Monetary Policy Committee", "GST Council"],
+      "driver": "Food, fuel, tax transition, monetary policy",
+      "outcome": "Policy credibility improved, but price shocks still reached consumers quickly.",
+      "evidence": "Annual CPI path, 2010s",
+      "sourceIds": ["worldbank-wdi-cpi-india"]
+    },
+    "2020s": {
+      "title": "Pandemic recovery and food inflation",
+      "body": "Supply disruption, energy swings, and food-price pressure made the early 2020s a visible test of household purchasing power.",
+      "event": "COVID-19 recovery and global commodity volatility",
+      "stakeholders": ["Reserve Bank of India", "food distributors", "households"],
+      "driver": "Food, fuel, supply chains, interest rates",
+      "outcome": "The 2024 comparison shows decades of compounding rather than a single-year shock.",
+      "evidence": "Latest final WDI CPI year: 2024",
+      "sourceIds": ["worldbank-wdi-cpi-india"]
+    }
+  }
+}
