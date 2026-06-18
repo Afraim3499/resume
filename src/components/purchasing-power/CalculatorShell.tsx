@@ -41,6 +41,13 @@ type CalculatorShellProps = {
   children?: React.ReactNode;
 };
 
+type DraftState = {
+  sourceKey: string;
+  country: CountrySlug;
+  year: number;
+  amountInput: string;
+};
+
 export function CalculatorShell({
   initialCountry = 'united-states',
   initialYear = 1950,
@@ -77,20 +84,26 @@ export function CalculatorShell({
     [committed.amount, readAmountFromQuery, searchParams]
   );
 
-  const [draftCountry, setDraftCountry] = useState<CountrySlug>(committed.country);
-  const [draftYear, setDraftYear] = useState<number>(committed.year);
-  const [draftAmountInput, setDraftAmountInput] = useState<string>(draftAmountFromQuery);
+  const committedDraftKey = `${committed.country}:${committed.year}:${draftAmountFromQuery}`;
+  const committedDraft = useMemo<DraftState>(
+    () => ({
+      sourceKey: committedDraftKey,
+      country: committed.country,
+      year: committed.year,
+      amountInput: draftAmountFromQuery
+    }),
+    [committed.country, committed.year, committedDraftKey, draftAmountFromQuery]
+  );
+  const [draft, setDraft] = useState<DraftState>(committedDraft);
+  const activeDraft = draft.sourceKey === committedDraftKey ? draft : committedDraft;
 
   useEffect(() => {
-    setDraftCountry(committed.country);
-    setDraftYear(committed.year);
-    setDraftAmountInput(draftAmountFromQuery);
     document.documentElement.dataset.countryTheme = committed.country;
 
     return () => {
       delete document.documentElement.dataset.countryTheme;
     };
-  }, [committed.country, committed.year, draftAmountFromQuery]);
+  }, [committed.country]);
 
   useEffect(() => {
     function handleScroll() {
@@ -114,8 +127,7 @@ export function CalculatorShell({
   }, [committed.amount, committed.country, committed.year]);
 
   const committedCountryData = getCountryData(committed.country) ?? countries[0];
-  const draftCountryData = getCountryData(draftCountry) ?? countries[0];
-  const draftAmountResult = parseAmountInput(draftAmountInput);
+  const draftAmountResult = parseAmountInput(activeDraft.amountInput);
   const draftAmountError = draftAmountResult.ok ? undefined : draftAmountResult.error;
 
   const timelineNodes = useMemo(
@@ -154,8 +166,25 @@ export function CalculatorShell({
 
   function handleCountryChange(nextCountry: CountrySlug) {
     const nextRoute = getDefaultRouteForCountry(nextCountry);
-    setDraftCountry(nextCountry);
-    setDraftYear(nextRoute.year);
+    setDraft({
+      ...activeDraft,
+      country: nextCountry,
+      year: nextRoute.year
+    });
+  }
+
+  function handleYearChange(nextYear: number) {
+    setDraft({
+      ...activeDraft,
+      year: nextYear
+    });
+  }
+
+  function handleAmountChange(nextAmountInput: string) {
+    setDraft({
+      ...activeDraft,
+      amountInput: nextAmountInput
+    });
   }
 
   function handleUpdate() {
@@ -164,15 +193,15 @@ export function CalculatorShell({
     }
 
     const href = buildPurchasingPowerHref({
-      country: draftCountry,
-      year: draftYear,
+      country: activeDraft.country,
+      year: activeDraft.year,
       amount: draftAmountResult.amount
     });
 
     trackCalculation(
       buildCalculationAnalyticsEvent({
-        country: draftCountry,
-        startYear: draftYear,
+        country: activeDraft.country,
+        startYear: activeDraft.year,
         amount: draftAmountResult.amount,
         estimateEndpointShown
       })
@@ -201,13 +230,13 @@ export function CalculatorShell({
           <div className="calculator-panel">
             <CalculatorForm
               countries={countries}
-              country={draftCountry}
-              year={draftYear}
-              amountInput={draftAmountInput}
+              country={activeDraft.country}
+              year={activeDraft.year}
+              amountInput={activeDraft.amountInput}
               amountError={draftAmountError}
               onCountryChange={handleCountryChange}
-              onYearChange={setDraftYear}
-              onAmountChange={setDraftAmountInput}
+              onYearChange={handleYearChange}
+              onAmountChange={handleAmountChange}
               onSubmit={handleUpdate}
             />
 
